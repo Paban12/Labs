@@ -1,0 +1,125 @@
+.account-edit-page{
+  .card{
+    .header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      .date{
+
+      }
+      .barcode{
+        .no{
+          text-align: center; 
+          font-size: 0.65rem;
+        }
+        img{
+          width: 10rem;
+        }
+      }
+    }
+  }
+}
+
+
+
+//media queries
+@media (max-width: 768px){
+  .account-edit-page{
+    .form{
+      .row{
+        gap: 0;
+      }
+      .row1{
+        flex-direction: column;
+        .two-inputs{
+          flex-direction: row;
+          width: 100%;
+          gap: 1rem;
+          .col-25{
+            width: 25%;
+          }
+          .col-3{
+            // width: 30%;
+          }
+          .col-4{
+            // width: 40%;
+          }
+        }
+
+      }
+      .row2{
+        flex-direction: column;
+        .two-inputs{
+          flex-direction: row;
+          gap: 1rem;
+          width: 100%;
+
+        }
+      }
+      .row3{
+        flex-direction: column;
+        .two-inputs{
+          flex-direction: row;
+          width: 100%;
+          gap: 1rem;
+        }
+        .col-3{
+          .col-6{
+            // width: 50%;
+          }
+          .col-4{
+            // width: 40%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .account-edit-page{
+    .header{
+      gap: 0.5rem;
+      align-items: flex-end;
+      .date{
+        font-size: 0.65rem;
+      }
+      .barcode{
+        .no{
+          font-size: 0.6rem;
+        }
+        img{
+          width: 9rem !important;
+        }
+      }
+    }
+    .form{
+      .row1{
+        .two-inputs{
+          &:last-child{
+            flex-direction: column;
+            gap: 0;
+          }
+        }
+      }
+      .row2{
+        .two-inputs{
+          gap: 0;
+          flex-direction: column;
+        }
+      }
+      .row3{
+        .two-inputs{
+          gap: 0;
+          flex-direction: column;
+        }
+      }
+      .save-btn{
+        .btn{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.staff-details-page{
+  .pic-upload{
+    height: 2.5rem;
+    width: 100px;
+    .pic{
+      object-fit: fill;
+    }
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .save-btn{
+    .btn{
+      width: 50% !important;
+    }
+  }
+}

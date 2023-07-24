@@ -1,0 +1,134 @@
+.prescription-page{
+  .card{
+    padding: 1rem;
+    .heading{
+      border: 1px solid #e1dede;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+      .barcode{
+        .no{
+          text-align: center;
+          font-size: 0.65rem;
+        }
+        img{
+          width: 10rem;
+        }
+      }
+      .doctor-info{
+        .name{
+          color: var(--orange);
+          // margin-bottom: 5px;
+        }
+        .deg{
+          font-size: 0.8rem;
+        }
+      }
+    }
+    .detail-card{
+      border: 1px solid #e1dede;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      .card-head{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-bottom: 1px solid #e1dede;
+        padding: 0.5rem 1rem;
+        img{
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+        h5{
+          font-size: 0.9rem;
+        }
+      }
+      .card-body{
+        padding: 1rem;
+        font-size: 0.85rem;
+        .detail-row{
+          display: flex;
+          gap: 1.5rem;
+          &:not(:last-child){
+            margin-bottom: 1.5rem;
+          }
+          .data{
+            width: 50%;
+            display: flex;
+            align-items: flex-start;
+            .title{
+              font-weight: 700;
+              width: 6rem;
+            }
+            .val{
+              width: calc(100% - 6rem);
+            }
+          }
+          .w-100{
+            width: 100%;
+          }
+        }
+        .text{
+          margin-bottom: 0.5rem;
+          // color: grey;
+        }
+      }
+    }
+    .btns{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      .btn{
+        border: none;
+        padding: 0.5rem 1rem;
+        color: var(--white);
+        text-decoration: none;
+        width: 7rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+
+
+//media queries
+@media (max-width: 560px){
+  .prescription-page{
+    .card{
+      padding: 0.5rem;
+      .heading{
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+      }
+      .detail-card{
+        .card-head{
+
+        }
+        .card-body{
+          .detail-row{
+            gap: 0;
+            flex-direction: column;
+            margin-bottom: 0 !important;
+            .data{
+              margin-bottom: 1rem;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .btns{
+        gap: 0.5rem;
+        .btn{
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+  }
+}

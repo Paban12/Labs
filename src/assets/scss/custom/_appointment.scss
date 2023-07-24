@@ -1,0 +1,45 @@
+.appointment-page{
+  .table-form{
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    .apt-table{
+      width: calc(100% - 550px);
+      .table-header{
+        padding: 0.5rem 1rem;
+        font-weight: 700;
+        border-bottom: 1px solid var(--border-color);
+
+      }
+      .table-body{
+        // padding: 0.5rem;
+        .table-outer{
+
+        }
+      }
+    } 
+    .apt-form{
+      width: 550px; 
+      padding: 1rem;
+      .form{
+        
+      }
+    }
+  }
+}
+
+
+//media queries
+@media (max-width: 768px){
+  .appointment-page{
+    .table-form{
+      flex-direction: column;
+      .apt-table{
+        width: 100%;
+      }
+      .apt-form{
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,264 @@
+.profile-page{
+  .container{
+    .profile-details{
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      .profile-card{
+        width: 40%;
+        padding: 1.5rem;
+        box-shadow: var(--box-shadow);
+        background: var(--white);
+        border-radius: 5px;
+        position: relative;
+        .top-details{
+          border-bottom: 1px solid #eee;
+          .profile-img{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            img{
+              border: 2px solid var(--black);
+              border-radius: 100%;
+              height: 9rem;
+              width: 9rem;
+            }
+          }
+          h2{
+            font-size: 25px;
+            margin-bottom: 1rem;
+            text-align: center;
+          }
+          .data{
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 1rem;
+            .title{
+              // width: 5rem;
+              margin-right: 1rem;
+              white-space: nowrap;
+            }
+            .val{
+
+            }
+            .verified{
+              margin-left: 6px;
+            }
+          }
+        }
+        .bottom-details{
+          margin-top: 1rem;
+          text-align: center;
+          
+          .deg{
+            font-weight: 700;
+            font-size: 18px;
+          }
+          .sub{
+            color: grey;
+          }
+        }
+        .edit-btn{
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          z-index: 20;
+          padding: 0.5rem 1rem;
+          border: none;
+          font-size: 0.8rem;
+        }
+      }
+      .other-cards{
+        width: 60%;
+        .hospital-details{
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+          .card{
+            position: relative;
+            width: 50%;
+            padding: 0;
+            .info{
+              padding: 1.5rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 1rem;
+              // height: 7rem;
+              .img{
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                img{
+                  height: 6rem;
+                  width: 6rem;
+                  border-radius: 100%;
+                }
+              }
+              .no{
+                font-size: 30px;
+                width: 50%;
+                display: flex;
+                justify-content: center;
+              }
+            }
+            .tag{
+              height: 2.5rem;
+              background: var(--btn-bg);
+              color: var(--white);
+              text-align: center;
+              font-weight: 700;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 0 0 5px 5px;
+              width: 100%;
+              font-size: 0.9rem;
+            }
+            .add-btn{
+              position: absolute;
+              top: 0.5rem;
+              right: 0.5rem;
+              z-index: 20;
+              border: none;
+              font-size: 0.85rem;
+              padding: 0.5rem 1rem;
+            }
+          }
+        }
+        .about-cards{
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(1, 1fr);
+          grid-auto-rows: 1fr;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          .about-card{
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            &:hover{
+              transition: all 0.4s linear;
+              box-shadow: none;
+            }
+            &:nth-child(1){
+              background: #FEF2C3;
+            }
+            &:nth-child(2){
+              background: #F4EED8;
+            }
+            &:nth-child(3){
+              background: #F7FAD4;
+            }
+            &:nth-child(4){
+              background: #FEF5E3;
+            }
+            .img{
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 0.5rem;
+              img{
+                width: 50%;
+              }
+            }
+            .text{
+              text-align: center;
+              font-size: 0.8rem;
+            }
+          }
+        }
+        .update-cards{
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(1, 1fr);
+          grid-auto-rows: 1fr;
+          gap: 1rem;
+          .card{
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            background: #F7F5F1;
+            &:hover{
+              transition: all 0.4s linear;
+              box-shadow: none;
+            }
+            img{
+              height: 3rem;
+              width: 3rem;
+              margin-right: 0.5rem;
+            }
+            .info{
+              .title{
+                font-weight: 700;
+                font-size: 0.85rem;
+              }
+              .sub-title{
+                color: grey;
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//media queries
+@media (max-width: 768px){
+  .profile-page{
+    .container{
+      .profile-details{
+        flex-direction: column;
+        .profile-card{
+          width: 100%;
+        }
+        .other-cards{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .profile-page{
+    .container{
+      .profile-details{
+        .profile-card{
+          padding: 1rem;
+        }
+        .other-cards{
+          .hospital-details{
+            flex-direction: column;
+            gap: 1rem;
+            .card{
+              width: 100%;
+            }
+          }
+          .about-cards{
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .update-cards{
+            grid-template-columns: repeat(1, 1fr);
+            .card{
+              // flex-direction: column;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

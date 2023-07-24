@@ -1,0 +1,96 @@
+.staff-list-page {
+  .container {
+    .staff-list {
+      padding: 0;
+      .card-header {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        .top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+          .head {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+          }
+          .btn {
+            width: max-content;
+          }
+        }
+        .searchbar {
+          position: relative;
+          display: flex;
+          input {
+            width: 100%;
+            background: rgba(222, 251, 255, 0.4);
+            padding-right: 3rem;
+            height: 2.5rem;
+          }
+          img {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            height: 2rem;
+            width: 2.7rem;
+            cursor: pointer;
+          }
+        }
+      }
+      .card-body {
+        padding: 1rem 0.5rem;
+        .list-item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem;
+          border-radius: 5px;
+          cursor: pointer;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+            rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+          &:not(:last-child) {
+            margin-bottom: 8px;
+          }
+          .img {
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+              height: 3.1rem;
+              width: 3.1rem;
+              border-radius: 100%;
+            }
+          }
+          .info {
+            width: calc(100% - 3.3rem);
+            .staff-name {
+              font-weight: 700;
+              font-size: 1rem;
+              margin-bottom: 3px;
+            }
+            .contact-info {
+              color: grey;
+              font-size: 0.85rem;
+              display: flex;
+              justify-content: space-between;
+            }
+          }
+          .post {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: var(--white);
+            padding: 3px 5px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 0 0 0 5px;
+          }
+        }
+      }
+    }
+  }
+}

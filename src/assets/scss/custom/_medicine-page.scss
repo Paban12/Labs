@@ -1,0 +1,62 @@
+
+
+//media queries
+@media (max-width: 768px){
+  .medicine-page{
+    .container{
+      .form{
+        .card{
+          .row{
+            flex-direction: column;
+            gap: 0;
+            .two-inputs{
+              flex-direction: row;
+              width: 100%;
+              gap: 1rem;
+            }
+            .dose-row{
+              width: 100%;
+              .dose-inputs{
+                flex-direction: row;
+                gap: 1rem;
+              }
+            }
+            .name-input{
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .medicine-page{
+    .container{
+      .form{
+        .card{
+          .row{
+            .two-inputs{
+              flex-direction: column;
+              gap: 0;
+            }
+            .dose-row{
+              .dose-inputs{
+
+              }
+            }
+          }
+          .save-btn{
+            .btn{
+              width: 100%;
+            }
+          }
+          .name-input{
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}

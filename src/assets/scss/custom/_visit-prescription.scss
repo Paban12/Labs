@@ -1,0 +1,269 @@
+
+
+.visit-prescription{
+  .preview-card{
+    padding: 0.5rem;
+    background-image: url(/src/assets/images/png/logo2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50% 50%;
+    position: relative;
+    
+    .card-content{
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.8rem;
+      padding-bottom: 12rem;
+      .logo{
+        display: none;
+      }
+      .clinic-details{
+        color: var(--red);
+        display: flex;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--red);
+        padding-bottom: 0.5rem;
+        .info{
+          width: calc(50% - 3rem);
+          font-size: 0.8rem;
+          .name{
+            font-size: 1rem;
+          }
+          .time{
+            display: flex;
+            .day{
+              width: 4rem;
+            }
+          }
+        }
+        .clinic-logo{
+          width: 6rem;
+          img{
+            width: 100%;
+          }
+        }
+        .dr-info{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+      }
+      .patient-content{
+        // min-height: 40rem;
+        padding: 1rem 0;
+        font-size: 13px;
+        .p-details{
+          margin-bottom: 1rem;
+          .row{
+            // flex-direction: column;
+            .col-5, .col-33{
+              .title{
+                width: 5rem;
+              }
+            }
+          }
+        }
+        .mob-table{
+          // min-height: 40rem;
+          // padding: 1rem 0;
+          // background-image: url(/src/assets/images/png/logo2.png);
+          // background-repeat: no-repeat;
+          // background-position: center;
+          // background-size: auto;
+        }
+      }
+      .bottom-content{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        .bottom-details{
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 1rem;
+          padding: 1rem 0;
+          border-bottom: 1px solid var(--red);
+          .left{
+            .id{
+              font-size: 0.8rem;
+              text-align: center;
+            }
+          }
+          .right{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            img{
+              width: 4rem;
+            }
+            h4{
+              font-size: 1rem;
+            }
+            .deg{
+              font-size: 0.8rem;
+            }
+          }
+        }
+        .contact-details{
+          margin-top: 1rem;
+          .data-row{
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            .data{
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              #icon{
+                height: 1rem;
+                width: 1rem;
+                #icon-inner{
+                  fill: var(--black);
+                }
+              }
+              .val{
+                font-size: 0.85rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .share-btns{
+    position: fixed;
+    right: 1rem;
+    bottom: 5rem;
+    // transform: translateY(-50%);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    .btn{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 3.5rem;
+      height: 3rem;
+      border-radius: 4px;
+      
+      img{
+        height: 1rem;
+        width: 1rem;
+      }
+      .text{
+        font-size: 0.6rem;
+      }
+    }
+  }
+}
+
+@media print {
+  body #app{
+    display: none !important;
+  }
+  .preview-card,
+  .preview-card * {
+    display: none !important;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+  }
+}
+
+// media queries
+@media screen and (max-width: 560px){
+  .visit-prescription{
+    .preview-card{
+      background-size: contain;
+      .card-content{
+        padding-bottom: 0 !important;
+        .logo{
+          display: flex !important;
+          justify-content: center;
+          margin-bottom: 1rem;
+          img{
+            width: 6rem;
+          }
+        }
+        .clinic-details{
+          flex-direction: column;
+          gap: 1rem;
+          .info{
+            width: 100% !important;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+          }
+          .clinic-logo{
+            display: none;
+          }
+          .dr-info{
+            align-items: center !important;
+          }
+        }
+        .patient-content{
+          background-size: 100%;
+          min-height: 30rem;
+          .p-details{
+            flex-direction: column !important;
+            .row{
+              // flex-direction: column !important;
+              width: 100% !important;
+              margin-bottom: 0;
+              gap: 0 !important;
+              .col-5, .col-33{
+                width: 100% !important;
+                margin-bottom: 13px !important;
+              }
+              .col-5{
+                flex-direction: column;
+              }
+            }
+          }
+        }
+        .bottom-content{
+          position: unset !important;
+          padding: 0 !important;
+          .bottom-details{
+            gap: 0.5rem !important;
+            .left{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .id{
+                font-size: 0.65rem;
+              }
+              img{
+                width: 8rem;
+              }
+            }
+            .right{
+              h4{
+                font-size: 0.9rem;
+              }
+            }
+          }
+          .contact-details{
+            .data-row{
+              flex-direction: column;
+              gap: 0;
+              text-align: center;
+              .data{
+                margin-bottom: 0.5rem;
+                flex-direction: column;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

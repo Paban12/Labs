@@ -1,0 +1,87 @@
+.medicine-serach-page{
+  .container{
+    .medicine-list-card{
+      // width: 40%;
+      // height: 100%;
+      // background: #ffffff5c;
+      border-radius: 5px;
+      // padding: 1rem;
+      // padding-right: 0;
+      .pre-search{
+        padding: 1rem;
+        border-bottom: 1px solid #ccc;
+        background: #ffffff5c;
+        border-radius: 5px 5px 0 0;
+        .heading{
+          display: flex;
+          justify-content: space-between;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+        .text{
+          color: grey;
+          font-size: 0.8rem;
+          margin-bottom: 0.8rem;
+        }
+        .searchbar{
+          position: relative;
+          display: flex;
+          input{
+            width: 100%;
+            background: rgba(222, 251, 255, 0.40);
+            padding-right: 3rem;
+            height: 2.5rem;
+          }
+          img{
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            height: 2rem;
+            width: 2.7rem;
+            cursor: pointer;
+          }
+        }
+      }
+      .medicine-list{
+        // display: none;
+        background: #ffffff5c;
+        padding: 0.5rem;
+        border-radius: 0 0 5px 5px;
+        .list-item{
+          background: rgba(255, 255, 255, 0.74);
+          border-radius: 4px;
+          padding: 0.5rem 1rem;
+          margin-bottom: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-right: 3rem;
+          font-size: 14px;
+          position: relative;
+          .med-info{
+            .name{
+              font-weight: 700;
+            }
+            .drugs{
+              font-size: 13px;
+              color: grey;
+            }
+          }
+          .power{
+            color: grey;
+            font-weight: 700;
+          }
+          .star-img{
+            position: absolute;
+            top: 50%;
+            right: 0.5rem;
+            transform: translateY(-50%);
+            height: 1.2rem;
+            width: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

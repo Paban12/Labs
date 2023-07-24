@@ -1,0 +1,102 @@
+.consult-form-page{
+  .container{
+    .row{
+      .consult-table-data{
+        width: calc(100% - 550px);
+        // .stat-card{
+        //   .stats{
+        //     display: flex;
+        //     align-items: center; 
+        //     gap: 1.5rem;
+        //     padding-bottom: 1rem;
+        //     border-bottom: 1px solid var(--border-color);
+        //     .stat{
+        //       flex: 1;
+        //       display: flex;
+        //       align-items: center;
+        //       justify-content: center;
+        //       padding: 1rem;
+        //       border-radius: 5px;
+        //       box-shadow: var(--card-box-shadow);
+        //       gap: 1rem;
+        //       img{
+        //         height: 3.5rem;
+        //         width: 3.5rem;
+        //       }
+        //       .vals{
+        //         display: flex;
+        //         flex-direction: column;
+        //         align-items: center;
+        //         text-align: center;
+        //         .no{
+        //           font-size: 22px;
+        //           margin-bottom: 5px;
+        //         }
+        //         .text{
+        //           font-weight: 700;
+        //         }
+        //       }
+        //     }
+        //   }
+        //   .search-section{
+        //     padding-top: 1rem;
+        //   }
+        // }
+        .table-card{
+          .consult-table{ 
+            display: none;
+          }
+        }
+      }
+      .consult-form{
+        width: 550px;
+      }
+    }
+  }
+}
+
+
+//media queries
+@media (max-width: 768px){
+  .consult-form-page{
+    .container{
+      .container-row{
+        flex-direction: column;
+        .consult-table-data{
+          width: 100%;
+        }
+        .consult-form{
+          width: 100%;
+          .two-inputs{
+            flex-direction: row;
+            gap: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .consult-form-page{
+    .container{
+      .container-row{
+        .consult-table-data{
+          
+        }
+        .consult-form{
+          width: 100%;
+          .two-inputs{
+            flex-direction: column;
+            gap: 0rem;
+          }
+          .save-btn{
+            .btn{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.bills-page{
+  .card{
+    .card-body{
+      padding: 0;
+      .bill-table{
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        .table-body{
+          .table-outer{
+            padding: 0.5rem;
+          }
+          .table-footer{
+            padding: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

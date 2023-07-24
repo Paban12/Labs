@@ -1,0 +1,58 @@
+.appointment-status{
+  .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    .img{
+      margin-bottom: 0.5rem;
+      img{
+        width: 13rem;
+      }
+    }
+    .no{
+      color: #3FB06D;
+      margin-bottom: 0.5rem;
+    }
+    h3{
+      margin-bottom: 0.5rem;
+    }
+    .text{
+      color: grey;
+      margin-bottom: 1rem;
+    }
+    .btns{
+      display: flex;
+      gap: 1rem;
+      .btn{
+        padding: 0.5rem 1rem;
+        color: var(--white);
+        text-decoration: none;
+      }
+      .make-btn{
+        background: #B00;
+      }
+    }
+  }
+}
+
+
+
+
+//media quereis
+@media (max-width: 560px){
+  .appointment-status{
+    .card{
+      padding: 1rem;
+      .btns{
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+        .btn{
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+.staff-slot-page{
+  .form{
+    .form-item{
+      .day{
+        border: 1px solid var(--light-blue);
+        background: var(--light-blue);
+        height: 2.5rem;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+      }
+    }
+    .save-btn{
+      .btn{
+        width: 50%;
+      }
+    }
+  }
+}
+
+
+//media queries
+@media (max-width: 768px){
+  .staff-slot-page{
+    .form{
+      .top-inputs{
+        flex-direction: row;
+        gap: 1rem;
+        width: 100%;
+        .form-item{
+          width: 50%;
+        }
+      }
+      .row{
+        .two-inputs{
+          flex-direction: row;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .staff-slot-page{
+    .form{
+      .top-inputs{
+        .form-item{
+          
+        }
+      }
+      .row{
+        .form-item{
+          margin-bottom: 0.5rem;
+        }
+        .two-inputs{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

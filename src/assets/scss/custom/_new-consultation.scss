@@ -1,0 +1,233 @@
+.new-consultation-page {
+  .visit-section {
+    .header-section {
+      text-align: center;
+      margin-bottom: 1rem;
+      h3 {
+        font-size: 25px;
+        margin-bottom: 0.5rem;
+      }
+      span { 
+        color: grey;
+        font-size: 16px;
+      }
+    }
+    .card {
+      padding: 0;
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--light-blue);
+        padding: 1rem 1rem;
+        border-radius: 5px 5px 0 0;
+        .left {
+          display: flex;
+          align-items: center;
+          .date {
+            font-size: 16px;
+            border-right: 1px solid #ccc;
+            margin-right: 0.5rem;
+            padding-right: 0.5rem;
+          }
+          .dr-name {
+            font-weight: 700;
+          }
+        }
+        .right-options {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          .data {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: inherit;
+            img {
+              height: 1.2rem;
+              width: 1.2rem;
+            }
+            .text {
+              font-size: 0.85rem;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .card-body {
+        padding: 1rem;
+        .top-details {
+          margin-bottom: 1.5rem;
+          .input-row {
+            display: flex;
+            .form-item {
+              .title {
+              }
+              .bp-input {
+                // display: none;
+                width: 3rem !important;
+              }
+            }
+          }
+        }
+        .consultation-cards-table{
+          tbody{
+            tr{
+              td{
+                min-width: 100%;
+                input{
+                  min-width: 5rem !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//media queries
+
+@media (max-width: 850px) {
+  .consultation-cards-table {
+    box-shadow: none !important;
+    border: none !important;
+    thead {
+      display: none;
+    }
+    tbody {
+      border: none !important;
+      tr {
+        // height: auto;
+        // margin-top: 1rem;
+        // display: table-row;
+        display: block;
+        &:not(:first-child){
+          margin-top: 0.5rem;
+        }
+        td:before {
+          content: attr(data-label);
+          float: left;
+          font-size: 12px;
+          // text-transform: uppercase;
+          font-weight: bold;
+          width: 6rem;
+          background: var(--light-blue);
+          margin-left: -0.6rem;
+          height: 3.4rem;
+          margin-right: 1rem;
+          padding-left: 0.5rem;
+          display: flex;
+          align-items: center;
+        }
+        td {
+          display: flex;
+          align-items: center;
+          text-align: right;
+          font-size: 14px;
+          height: 3.5rem;
+          // border: 1px solid #c8ced38c;
+          padding: 10px 10px !important;
+          .single-select, .input{
+            width: calc(100% - 7rem);
+            padding: 0.5rem 0;
+            input{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px){
+  .new-consultation-page{
+    .visit-section{
+      .card{
+        .card-header{
+
+        }
+        .card-body{
+          .top-details{
+            .input-row{
+              flex-direction: row;
+              gap: 1rem;
+            }
+            .two-inputs{
+              flex-direction: row;
+              gap: 0.5rem;
+            }
+          }
+          .bottom-row{
+            flex-direction: column;
+            gap: 0;
+            .two-inputs{
+              flex-direction: row;
+              width: 100%;
+              gap: 1rem;
+              .form-item{
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .new-consultation-page{
+    .visit-section{
+      .card{
+        .card-header{
+          flex-direction: column;
+          gap: 0.5rem;
+          .left{
+            .date{
+              font-size: 0.85rem;
+            }
+          }
+        }
+        .card-body{
+          .top-details{
+            margin-bottom: 0;
+            .input-row{
+              flex-direction: column;
+            }
+            .other-details{
+              .row{
+                gap: 0;
+                flex-direction: column;
+                .form-item{
+                  width: 100%;
+                }
+              }
+            }
+            .two-inputs{
+
+            }
+          }
+          .bottom-row{
+            .two-inputs{
+              flex-direction: column;
+              gap: 0;
+            }
+          }
+          .save-btns{
+            .col-25{
+              width: 50%;
+              .btn{
+                font-size: 0.85rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

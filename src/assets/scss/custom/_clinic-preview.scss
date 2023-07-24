@@ -1,0 +1,189 @@
+.clinic-preview-page{
+  .pic-upload-wrapper{
+    height: 5rem;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .pic-upload{
+      height: 70%;
+      width: 6rem;
+      .pic{
+        object-fit: fill;
+      }
+    }
+  } 
+  .preview-card{
+    // min-height: 25rem;
+    padding: 0.5rem;
+    .card-content{
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.8rem;
+      .logo{
+        display: none;
+      }
+      .clinic-details{
+        color: var(--red);
+        display: flex;
+        margin-bottom: 1rem;
+        // justify-content: space-between;
+        border-bottom: 1px solid var(--red);
+        padding-bottom: 0.5rem;
+        .info{
+          width: calc(50% - 3rem);
+          font-size: 0.8rem;
+          .name{
+            font-size: 1rem;
+          }
+          .time{
+            display: flex;
+            .day{
+              width: 4rem;
+            }
+          }
+        }
+        .clinic-logo{
+          width: 4rem;
+          img{
+            width: 100%;
+          }
+        }
+        .dr-info{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+      }
+      .patient-content{
+        min-height: 25rem;
+        padding: 1rem 0;
+        .p-details{
+          .row{
+            .col-5{
+              .title{
+                width: 4rem;
+              }
+            }
+          }
+        }
+      }
+      .bottom-details{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        .left{
+          .id{
+            font-size: 0.8rem;
+            text-align: center;
+          }
+        }
+        .right{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          img{
+            width: 4rem;
+          }
+          h4{
+            font-size: 1rem;
+          }
+          .deg{
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//media queries
+@media (max-width: 768px){
+  .clinic-preview-page{
+    .container{
+      .container-row{
+        flex-direction: column;
+        gap: 1.5rem;
+        .col-5{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .clinic-preview-page{
+    .container{
+
+      .card{
+        .card-body{
+          .row{
+            .col-6{
+              width: 100%;
+            }
+          }
+        }
+      }
+      .preview-card{
+        .logo{
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1rem;
+          img{
+            width: 6rem;
+          }
+        }
+        .clinic-details{
+          flex-direction: column;
+          gap: 1rem;
+          .info{
+            width: 100%;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+          }
+          .clinic-logo{
+            display: none;
+          }
+          .dr-info{
+            // align-items: flex-start;
+          }
+        }
+        .patient-content{
+          .p-details{
+            .row{
+              flex-direction: column;
+              margin-bottom: 0;
+              .col-5{
+                width: 100%;
+                margin-bottom: 10px;
+              }
+            }
+          }
+        }
+        .bottom-details{
+          .left{
+            .id{
+              font-size: 0.55rem;
+            }
+            img{
+              width: 6rem;
+            }
+          }
+          .right{
+            h4{
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

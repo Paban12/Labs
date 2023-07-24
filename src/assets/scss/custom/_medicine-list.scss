@@ -1,0 +1,41 @@
+.our-medicine{
+  .card{
+    padding: 1rem;
+    h3{
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 22px;
+    }
+    .text{
+      text-align: center;
+      font-size: 0.85rem;
+      color: grey;
+      margin-bottom: 1rem;
+    }
+    .list-container{
+      .list-item{
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        border: 1px solid var(--border-color);
+        .med-info{
+          .name{
+            font-weight: 700;
+          }
+          .drugs{
+            font-size: 13px;
+            color: grey;
+          }
+        }
+        .power{
+          color: grey;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
