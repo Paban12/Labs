@@ -1,7 +1,6 @@
 import { defineAsyncComponent } from 'vue'
 
 // components
-const Navbar = defineAsyncComponent(() => import('../components/Navbar.vue'))
 const DashNavbar = defineAsyncComponent(() => import('../components/DashNavbar.vue'))
 const Footer = defineAsyncComponent(() => import('../components/Footer.vue'))
 const SingleSelect = defineAsyncComponent(() => import('../components/Dropdown/SingleSelect.vue'))
@@ -40,11 +39,11 @@ const LinkedinIcon = defineAsyncComponent(() => import('../components/icons/link
 const TelegramIcon = defineAsyncComponent(() => import('../components/icons/telegram-svg.vue'))
 const StarIcon = defineAsyncComponent(() => import('../components/icons/star-svg.vue'))
 const QuoteIcon = defineAsyncComponent(() => import('../components/icons/quote-svg.vue'))
+const LoginIcon = defineAsyncComponent(() => import('../components/icons/login-svg.vue'))
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
   install (app) {
-    app.component('Navbar', Navbar)
     app.component('DashNavbar', DashNavbar)
     app.component('Footer', Footer)
     app.component('SingleSelect', SingleSelect)
@@ -83,6 +82,7 @@ const GlobalComponents = {
     app.component('icon-telegram', TelegramIcon)
     app.component('icon-star', StarIcon)
     app.component('icon-quote', QuoteIcon)
+    app.component('icon-login', LoginIcon)
     // app.component('icon-', Icon)
   }
 }

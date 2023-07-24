@@ -16,10 +16,6 @@
               <img src="/src/assets/images/png/help.png" alt="image">
               <div class="text">Email</div>
             </div>
-            <router-link to="/" class="data">
-              <img src="/src/assets/images/png/eye.png" alt="image">
-              <div class="text">View</div>
-            </router-link>
             <div class="data">
               <img src="/src/assets/images/png/help.png" alt="image">
               <div class="text">Share</div>

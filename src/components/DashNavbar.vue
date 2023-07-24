@@ -14,7 +14,7 @@
             <div class="text grade-text">PARCHI</div>
           </router-link>
         </div>
-        <div class="right">
+        <div class="right"> 
           <div class="searchbar">
             <div class="search-modal desk-data" v-click-outside="closeSearch">
               <div class="search-modal-header">
@@ -73,6 +73,12 @@
           <router-link to="/notification" class="bell-icon">
             <img src="/src/assets/images/png/bell.png" alt="" />
             <div class="no"></div>
+          </router-link>
+          <router-link to="/" class="bell-icon desk-icon">
+            <img src="/src/assets/images/png/add.png" alt="" />
+          </router-link>
+          <router-link to="/" class="bell-icon desk-icon">
+            <img src="/src/assets/images/png/note.png" alt="" />
           </router-link>
           <div class="account" v-click-outside="closeAccMenu">
             <div class="account-card grade-btn btn" @click.prevent="nav.accMenu = true">

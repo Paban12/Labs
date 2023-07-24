@@ -1,53 +1,55 @@
 <template>
-  <section class="login-page">
-    <form class="login-card form">
-      <h1>Welcome to Parchi</h1>
+  <section class="login-form-inner">
+    <form class="form">
+      <h2>Welcome to Parchi</h2>
       <span>
         Enter OTP for Login
       </span>
-      <div class="otp-inputs">
-        <input
-          class="otp-input"
-          v-model="otpData.input1"
-          type="number"
-          @input="digitValidate(1)"
-          @keyup="tabChange(1)"
-          maxlength="1"
-        />
-        <input
-          class="otp-input"
-          v-model="otpData.input2"
-          type="number"
-          @input="digitValidate(2)"
-          @keyup="tabChange(2)"
-          maxlength="1"
-        />
-        <input
-          class="otp-input"
-          v-model="otpData.input3"
-          type="number"
-          @input="digitValidate(3)"
-          @keyup="tabChange(3)"
-          maxlength="1"
-        />
-        <input
-          class="otp-input"
-          v-model="otpData.input4"
-          type="number"
-          @input="digitValidate(4)"
-          @keyup="tabChange(4)"
-          maxlength="1"
-        />
+      <div class="form-item">
+        <div class="otp-inputs">
+          <input
+            class="otp-input"
+            v-model="otpData.input1"
+            type="number"
+            @input="digitValidate(1)"
+            @keyup="tabChange(1)"
+            maxlength="1"
+          />
+          <input
+            class="otp-input"
+            v-model="otpData.input2"
+            type="number"
+            @input="digitValidate(2)"
+            @keyup="tabChange(2)"
+            maxlength="1"
+          />
+          <input
+            class="otp-input"
+            v-model="otpData.input3"
+            type="number"
+            @input="digitValidate(3)"
+            @keyup="tabChange(3)"
+            maxlength="1"
+          />
+          <input
+            class="otp-input"
+            v-model="otpData.input4"
+            type="number"
+            @input="digitValidate(4)"
+            @keyup="tabChange(4)"
+            maxlength="1"
+          />
+        </div>
       </div>
       <div class="send-again">
         Didn't get it? 
         <strong>Send Again</strong>
       </div>
-      <div class="submit-btn form-item">
-        <!-- <button class="btn black-btn">Submit</button> -->
-        <button class="btn black-btn load-btn">
+      <div class="login-btn form-item">
+        <button class="btn black-btn">Verify <icon-right-arrow></icon-right-arrow> </button>
+        <!-- <button class="btn black-btn load-btn">
           <icon-login-loader></icon-login-loader>
-        </button>
+        </button> -->
       </div>
       <div class="reg">
         New On Parchi
