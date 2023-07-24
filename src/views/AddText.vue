@@ -8,7 +8,7 @@
             <input type="text" placeholder="Search...">
             <!-- <icon-search></icon-search> -->
           </div>
-          <div class="no text-small">1-89 of 89</div>
+          <div class="no text-small">1-89 of 87</div>
         </div>
         <button class="btn black-btn" @click.prevent="addText.addModal = true">Add new Text</button>
       </div>
