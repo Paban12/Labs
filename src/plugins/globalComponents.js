@@ -40,6 +40,10 @@ const TelegramIcon = defineAsyncComponent(() => import('../components/icons/tele
 const StarIcon = defineAsyncComponent(() => import('../components/icons/star-svg.vue'))
 const QuoteIcon = defineAsyncComponent(() => import('../components/icons/quote-svg.vue'))
 const LoginIcon = defineAsyncComponent(() => import('../components/icons/login-svg.vue'))
+const Notification = defineAsyncComponent(() => import('../components/Notification.vue'));
+const NotificationList = defineAsyncComponent(() => import('../components/NotificationList.vue'));
+const NotificationMessage = defineAsyncComponent(() => import('../components/NotificationMessage.vue'));
+const spinner = defineAsyncComponent(() => import('../components/Spinner.vue'));
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
@@ -83,6 +87,10 @@ const GlobalComponents = {
     app.component('icon-star', StarIcon)
     app.component('icon-quote', QuoteIcon)
     app.component('icon-login', LoginIcon)
+    app.component('Notification', Notification)
+		app.component('Notification-list', NotificationList)
+		app.component('Notification-message', NotificationMessage)
+    app.component('base-spinner', spinner);
     // app.component('icon-', Icon)
   }
 }
