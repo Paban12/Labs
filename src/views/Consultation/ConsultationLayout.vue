@@ -26,7 +26,7 @@
             </div>
             <div class="text">Attachment</div>
           </router-link>
-          <router-link to="/">
+          <router-link to="/new-consultation">
             <button class="btn grade-btn">New Visit</button>
           </router-link>
           <div class="visit-btn btn">

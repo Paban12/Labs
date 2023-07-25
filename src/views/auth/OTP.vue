@@ -1,7 +1,7 @@
 <template>
-  <section class="login-page">
-    <form class="login-card form">
-      <h1>Welcome to Parchi</h1>
+  <section class="login-form-inner">
+    <form class="form">
+      <h2>Welcome to Parchi</h2>
       <span>
         Enter OTP for Login
       </span>
@@ -14,17 +14,18 @@
         @keyup="tabChange(3)" maxlength="1" />
         <input class="otp-input" v-model="formVar.input4" type="text" v-on:keypress="isNumber($event)" 
         @keyup="tabChange(4)" maxlength="1" />
+
       </div>
       <div class="err-msg" v-if="formVar.submit && otpValid">{{ otpValid }}</div>
       <div class="send-again">
         Didn't get it?
         <strong>Send Again</strong>
       </div>
-      <div class="submit-btn form-item">
-        <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
+      <div class="login-btn form-item">
+        <button class="btn black-btn load-btn" v-if="storeVar.loaderButton">
           <icon-login-loader></icon-login-loader>
         </button>
-        <button type="button" class="btn black-btn" v-else @click="onSubmitOtp">Submit</button>
+        <button class="btn black-btn" v-else @click="onSubmitOtp">Verify <icon-right-arrow></icon-right-arrow> </button>
       </div>
       <div class="reg">
         New On Parchi

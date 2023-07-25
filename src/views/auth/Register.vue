@@ -1,7 +1,7 @@
 <template>
-  <section class="login-page register-page">
-    <form class="login-card form" @submit.prevent="onSubmitRegister">
-      <h1>Welcome to Parchi</h1>
+  <section class="login-form-inner register-form">
+    <form class="form" @submit.prevent="onSubmitRegister">
+      <h2>Welcome to Parchi</h2>
       <span>
         Enter details for Register
       </span>
@@ -27,6 +27,10 @@
           <div class="col-5 form-item">
             <input type="radio" v-model="formVar.gender" value="Female" autocomplete="off" name="gender" id="female">
             <label for="female">Female</label>
+          </div>
+          <div class="col-5 form-item">
+            <input type="radio" name="gender" id="other">
+            <label for="other">Other</label>
           </div>
         </div>
         <div class="err-msg text-left" v-if="formVar.submit && genderValid">{{ genderValid }}</div>

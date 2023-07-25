@@ -3,19 +3,27 @@ import { createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
     {
-        path: '/login',
-        name: 'login',
-        component: () => import( /* webpackChunkName: "login" */ '../views/auth/Login.vue')
-    },
-    {
-        path: '/otp',
-        name: 'otp',
-        component: () => import( /* webpackChunkName: "otp" */ '../views/auth/OTP.vue')
-    },
-    {
-        path: '/register',
-        name: 'register',
-        component: () => import( /* webpackChunkName: "register" */ '../views/auth/Register.vue')
+        path: '/login-layout',
+        redirect: '/login',
+        name: 'login layout',
+        component: () => import( /* webpackChunkName: "login layout" */ '../views/auth/LoginLayout.vue'),
+        children : [
+            {
+                path: '/login',
+                name: 'login',
+                component: () => import( /* webpackChunkName: "login" */ '../views/auth/Login.vue')
+            },
+            {
+                path: '/otp',
+                name: 'otp',
+                component: () => import( /* webpackChunkName: "otp" */ '../views/auth/OTP.vue')
+            },
+            {
+                path: '/register',
+                name: 'register',
+                component: () => import( /* webpackChunkName: "register" */ '../views/auth/Register.vue')
+            },
+        ]
     },
 
     {
@@ -173,10 +181,11 @@ const routes = [
                 name: 'diagnosis',
                 component: () => import( /* webpackChunkName: "diagnosis" */ '../views/Diagnosis.vue')
             },
+            //Rx Group
             {
-                path: '/create-rx',
-                name: 'create rx',
-                component: () => import( /* webpackChunkName: "create rx" */ '../views/CreateRX.vue')
+                path: '/rx/add-medicine',
+                name: 'rx add medicine',
+                component: () => import( /* webpackChunkName: "create rx" */ '../views/RxGroup/AddMedicine.vue')
             },
             {
                 path: '/appointment-service',

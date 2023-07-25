@@ -1,17 +1,18 @@
 <template>
-  <section class="login-page">
-    <form class="login-card form">
-      <h1>Welcome to Parchi</h1>
-      <span>
-        Enter details for Login
-      </span>
+  <section class="login-form-inner">
+    <form action="" class="form">
+      <h2>Welcome to Parchi</h2>
+      <div class="text">Login to continue</div>
       <div class="form-item mb-16">
-        <input type="number" v-model="formVar.loginId" class="" placeholder="Enter your phone number" v-on:keyup="phnum($event.target.value)">
-        <!-- <div class="err-msg">Please enter your phone number</div> -->
+        <div class="title">Phone Number</div>
+        <div class="input">
+          <input type="number" v-model="formVar.loginId" placeholder="+91 8888888888" v-on:keyup="phnum($event.target.value)">
+        </div>
         <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
       </div>
-      <div class="submit-btn form-item">
-        <button type="button" class="btn black-btn" @click="onSubmitLogin">Verify Now</button>
+
+      <div class="login-btn">
+        <button class="btn black-btn" @click="onSubmitLogin">Get OTP <icon-right-arrow></icon-right-arrow> </button>
       </div>
       <div class="reg">
         New On Parchi

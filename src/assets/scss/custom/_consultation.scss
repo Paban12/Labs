@@ -1,7 +1,12 @@
-.consult-page{
-  .container{
-    .consult-table-data{
-      
+
+.consult-table-data{
+  .table{
+    .token{
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      padding: 3px 4px;
+      border-radius: 5px;
     }
   }
 }

@@ -79,7 +79,9 @@
                     <tr v-for="(item, index) in consultData" :key="item">
                       <td>{{ index + 1 }}</td>
                       <td>{{ item.id }}</td>
-                      <td>{{ item.token }}</td>
+                      <td>
+                        <span class="token">{{ item.token }}</span>
+                      </td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.recent_visit }}</td>
                       <td>{{ item.total_visits }}</td>
