@@ -10,10 +10,15 @@
         </div>
         <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
       </div>
-
-      <div class="login-btn">
-        <button class="btn black-btn" @click="onSubmitLogin">Get OTP <icon-right-arrow></icon-right-arrow> </button>
+      <div class="login-btn form-item">
+        <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
+          <icon-login-loader></icon-login-loader>
+        </button>
+        <button type="button" class="btn black-btn" v-else @click="onSubmitLogin">Get OTP <icon-right-arrow></icon-right-arrow> </button>
       </div>
+      <!-- <div class="login-btn">
+        <button type="button" class="btn black-btn" @click="onSubmitLogin"> <icon-right-arrow></icon-right-arrow> </button>
+      </div> -->
       <div class="reg">
         New On Parchi
         <icon-right-arrow></icon-right-arrow> 

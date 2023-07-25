@@ -25,7 +25,7 @@
         <button class="btn black-btn load-btn" v-if="storeVar.loaderButton">
           <icon-login-loader></icon-login-loader>
         </button>
-        <button class="btn black-btn" v-else @click="onSubmitOtp">Verify <icon-right-arrow></icon-right-arrow> </button>
+        <button type="button" class="btn black-btn" v-else @click="onSubmitOtp">Verify <icon-right-arrow></icon-right-arrow> </button>
       </div>
       <div class="reg">
         New On Parchi
