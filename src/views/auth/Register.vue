@@ -59,9 +59,6 @@
         </button>
         <button type="button" class="btn black-btn" v-else @click="onSubmitRegister">Verify Now <icon-right-arrow></icon-right-arrow> </button>
       </div>
-      <!-- <div class="submit-btn form-item">
-        <button type="submit" class="btn black-btn"></button>
-      </div> -->
       <div class="reg">
         Back to
         <icon-right-arrow></icon-right-arrow>

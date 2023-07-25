@@ -10,13 +10,16 @@
           <div class="text">
              Dolore, expedita. Fugit nostrum quisquam animi modi? Illo beatae cum ducimus dolore!
           </div>
-          <div class="searchbar">
-            <input type="text" placeholder="Search for Medicine">
-            <img src="/src/assets/images/png/search.png" alt="">
+          <div class="search-row">
+            <div class="searchbar">
+              <input type="text" placeholder="Search for Medicine">
+              <img src="/src/assets/images/png/search.png" alt="">
+            </div>
+            <router-link to="/add-medicine" class="btn black-btn">Add Medicine</router-link>
           </div>
         </div>
         <div class="medicine-list">
-          <div class="list-item">
+          <router-link to="/medicine-list" class="list-item">
             <div class="med-info">
               <div class="name">Corocine 650</div>
               <div class="drugs">
@@ -25,7 +28,7 @@
             </div>
             <div class="power">650 MG</div>
             <img src="/src/assets/images/png/star.png" class="star-img" alt="">
-          </div>
+          </router-link>
         </div>
       </div>
     </div>

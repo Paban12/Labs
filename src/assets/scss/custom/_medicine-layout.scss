@@ -29,23 +29,29 @@
           font-size: 0.8rem;
           margin-bottom: 0.8rem;
         }
-        .searchbar{
-          position: relative;
+        .search-row{
           display: flex;
-          input{
+          align-items: center;
+          gap: 1rem;
+          .searchbar{
+            position: relative;
+            display: flex;
             width: 100%;
-            background: rgba(222, 251, 255, 0.40);
-            padding-right: 3rem;
-            height: 2.5rem;
-          }
-          img{
-            position: absolute;
-            top: 50%;
-            right: 0px;
-            transform: translateY(-50%);
-            height: 2rem;
-            width: 2.7rem;
-            cursor: pointer;
+            input{
+              width: 100%;
+              background: rgba(222, 251, 255, 0.40);
+              padding-right: 3rem;
+              height: 2.5rem;
+            }
+            img{
+              position: absolute;
+              top: 50%;
+              right: 0px;
+              transform: translateY(-50%);
+              height: 2rem;
+              width: 2.7rem;
+              cursor: pointer;
+            }
           }
         }
       }
@@ -81,6 +87,9 @@
           padding-right: 3rem;
           font-size: 14px;
           position: relative;
+          cursor: pointer;
+          color: inherit;
+          // gap: 1rem;
           .med-info{
             .name{
               font-weight: 700;
@@ -101,6 +110,26 @@
             transform: translateY(-50%);
             height: 1.2rem;
             width: 1.2rem;
+          }
+          .edit-img{
+            img{
+              height: 1rem;
+              width: 1rem;
+            }
+          }
+        }
+        .active{
+          background: var(--btn-bg);
+          color: var(--white);
+          .med-info{
+            .drugs{
+              color: var(--white);
+              opacity: 0.8;
+            }
+          }
+          .power{
+            color: var(--white);
+            opacity: 0.8;
           }
         }
       }
@@ -133,6 +162,24 @@
       .medicine-container{
         width: 100%;
         padding: 0.5rem;
+      }
+    }
+  }
+  .rx-list-mob-page{
+    .container{
+      .medicine-list-card{
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        .pre-search{
+          .search-row{
+            gap: 0.5rem;
+          }
+        }
+        .medicine-list{
+          height: max-content;
+          overflow: hidden;
+        }
       }
     }
   }

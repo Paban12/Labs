@@ -1,4 +1,10 @@
 
+.medicine-page{
+  .mob-view{
+    display: none;
+  }
+}
+
 
 //media queries
 @media (max-width: 768px){
@@ -27,6 +33,12 @@
           }
         }
       }
+    }
+    .mob-view{
+      display: flex;
+    }
+    .desk-view{
+      display: none;
     }
   }
 }
