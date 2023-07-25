@@ -26,7 +26,7 @@
                   <div class="text">Waiting</div>
                 </div>
               </div>
-            </div> 
+            </div>
             <div class="search-section">
               <div class="row">
                 <div class="col-25">
@@ -50,8 +50,8 @@
 
             </div>
           </div>
-          <div class="card table-card"> 
-            <div class="date-no-found">
+          <div class="card table-card">
+            <div class="date-no-found" v-if="consultData.length <= 0">
               <div class="no-found-card">
                 <img src="/src/assets/images/png/calender.png" alt="image">
                 <div class="text">No appointments for the selected date!</div>
@@ -112,7 +112,7 @@
               </div>
               <div class="table-footer">
                 <div class="entries">
-                  Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
+                  Showing <span>0</span> to <span>0</span> of <span>0</span> entries
                 </div>
                 <div class="pagination">
                   <span>First</span>
@@ -126,120 +126,95 @@
           </div>
         </div>
         <div class="consult-form card">
-          <form action="" class="form">
+          <form action="" class="form" @submit.prevent="onSubmitConsultation">
             <h3>Book Consultation</h3>
             <span>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita, quod!
             </span>
             <div class="form-item mb-16">
-              <input type="number" placeholder="Enter Phone no">
-              <div class="err-msg">Enter mobile no</div>
+              <input type="number" v-model="formVar.phone" placeholder="Enter Phone no" v-on:keypress="isNumber($event)"
+                v-on:keyup="phnum($event.target.value)">
+              <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
             </div>
             <div class="row mb-16">
               <div class="col-25 form-item">
-                <SingleSelect
-                  v-model="consult.prefix"
-                  :options="prefixOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select Prefix"
-                ></SingleSelect>
-                <div class="err-msg">Select</div>
+                <SingleSelect v-model="formVar.prefix" :options="prefixOptions" @selected="handleSelectedOption"
+                  placeholder="Select Prefix"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && prefixValid">{{ prefixValid }}</div>
               </div>
               <div class="col-75 form-item">
-                <input type="text" placeholder="Patient Name">
-                <div class="err-msg">Enter patient name</div>
+                <input type="text" v-model="formVar.name" placeholder="Patient Name">
+                <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
               </div>
             </div>
             <div class="two-inputs">
               <div class="col-25 form-item mb-16">
-                <SingleSelect
-                  v-model="consult.gender"
-                  :options="genderOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select Gender"
-                ></SingleSelect>
-                <div class="err-msg">Select gender</div>
+                <SingleSelect v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
+                  placeholder="Select Gender"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
               </div>
               <div class="col-5 form-item mb-16">
                 <div class="date-input">
-                  <input type="date">
+                  <input type="date" v-model="formVar.dob" :max="today()">
                   <div class="icon">
                     <img src="/src/assets/images/icons/calender.svg" alt="">
                   </div>
                 </div>
-                <div class="err-msg">Select DOB</div>
+                <div>{{ ageCalculate }}</div>
+                <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
               </div>
               <div class="col-25 form-item mb-16">
-                <input type="text" class="bg-blue" value="25 Year" disabled>
+                <input type="text" v-model="formVar.age" class="bg-blue" disabled>
               </div>
             </div>
             <div class="two-inputs">
               <div class="col-5 form-item mb-16">
-                <SingleSelect
-                  v-model="consult.blood"
-                  :options="bloodOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select Blood Group"
-                ></SingleSelect>
-                <div class="err-msg">Select blood group</div>
+                <SingleSelect v-model="formVar.blood" :options="bloodOptions" @selected="handleSelectedOption"
+                  placeholder="Select Blood Group"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && bloodValid">{{ bloodValid }}</div>
               </div>
               <div class="col-5 form-item mb-16">
-                <SingleSelect
-                  v-model="consult.language"
-                  :options="langOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select Language"
-                ></SingleSelect>
-                <div class="err-msg">Select language</div>
+                <SingleSelect v-model="formVar.language" :options="langOptions" @selected="handleSelectedOption"
+                  placeholder="Select Language"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && languageValid">{{ languageValid }}</div>
               </div>
             </div>
             <div class="form-item mb-16">
-              <input type="text" placeholder="Enter Email">
-              <div class="err-msg">Enter email</div>
+              <input type="text" placeholder="Enter Email" v-model="formVar.email">
+              <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
             </div>
             <div class="form-item mb-16">
-              <input type="text" placeholder="Enter Address">
-              <div class="err-msg">Enter address</div>
+              <input type="text" placeholder="Enter Address" v-model="formVar.address">
+              <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
             </div>
             <div class="two-inputs">
               <div class="col-5 form-item mb-16">
-                <SingleSelect
-                  v-model="consult.state"
-                  :options="stateOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select State"
-                ></SingleSelect>
-                <div class="err-msg">Select state</div>
+                <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
+                  placeholder="Select State"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && stateValid">{{ stateValid }}</div>
               </div>
               <div class="col-5 form-item mb-16">
-                <SingleSelect
-                  v-model="consult.city"
-                  :options="cityOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select City"
-                ></SingleSelect>
-                <div class="err-msg">Select city</div>
+                <SingleSelect v-model="formVar.city" :options="cityOptions" @selected="handleSelectedOption"
+                  placeholder="Select City"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
               </div>
             </div>
             <div class="two-inputs">
               <div class="col-5 form-item mb-16">
                 <div class="dr-input">
                   <div class="dr-tag">Dr</div>
-                  <input type="text" placeholder="Refered by">
+                  <input type="text" placeholder="Refered by" v-model="formVar.doctor">
                 </div>
+                <div class="err-msg" v-if="formVar.submit && doctorValid">{{ doctorValid }}</div>
               </div>
               <div class="col-5 form-item mb-16">
-                <SingleSelect
-                  v-model="consult.speciality"
-                  :options="specialityOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select Speciality"
-                ></SingleSelect>
-                <div class="err-msg">Select speciality</div>
+                <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
+                  placeholder="Select Speciality"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
               </div>
             </div>
             <div class="save-btn flex justify-cente">
-              <button class="btn black-btn">Book Consultation</button>
+              <button type="submit" class="btn black-btn">Book Consultation</button>
             </div>
           </form>
         </div>
@@ -249,73 +224,229 @@
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { computed, reactive } from "vue";
+import { useStore } from "vuex";
+import moment from 'moment';
 
-  const consult = reactive({
-    prefix: "",
-    gender: "",
-    blood: "",
-    state: "",
-    city: "",
-    speciality: "",
-    language: "",
-  })
+/* Constants */
+const store = useStore();
+const storeVar = computed(() => store.state.Auth);
+const formVar = reactive({
+  submit: false,
+  phone: null,
+  name: null,
+  email: null,
+  address: null,
+  doctor: null,
+  dob: null,
+  prefix: "",
+  gender: "",
+  blood: "",
+  state: "",
+  city: "",
+  speciality: "",
+  language: "",
+  age: 0,
+})
 
-  const consultData = reactive([
-    {
-      id: 125,
-      token: 25478,
-      name: 'Prakash Jhaa',
-      recent_visit: '20 Days ago',
-      total_visits: 10,
-      purpose: 'Consultation',
-    },
-  ])
+const consultData = [
+  {
+    id: 125,
+    token: 25478,
+    name: 'Prakash Jhaa',
+    recent_visit: '20 Days ago',
+    total_visits: 10,
+    purpose: 'Consultation',
+    time: '09:30 AM',
+  },
+]
 
-  //search select start//
-  const stateOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const cityOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const langOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const specialityOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const genderOptions = [
-    { name: 'Male', id: 'male' },  
-    { name: 'Female', id: 'female' },  
-    { name: 'Other', id: 'other' },  
-  ];
-  const prefixOptions = [
-    { name: 'Mr.', id: 'mr' },  
-    { name: 'Mrs.', id: 'mrs' },  
-  ];
-  const bloodOptions = [
-    { name: 'A+', id: 'a+' },
-    { name: 'B+', id: 'b+' },
-    { name: 'O+', id: 'o+' },
-    { name: 'AB+', id: 'ab+' },
-    { name: 'A-', id: 'a-' },
-    { name: 'B-', id: 'b-' },
-    { name: 'O-', id: 'o-' },
-    { name: 'AB-', id: 'ab-' },
-  ]
+//search select start//
+const stateOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const cityOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const langOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const specialityOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const genderOptions = [
+  { name: 'Male', id: 'male' },
+  { name: 'Female', id: 'female' },
+  { name: 'Other', id: 'other' },
+];
+const prefixOptions = [
+  { name: 'Mr.', id: 'mr' },
+  { name: 'Mrs.', id: 'mrs' },
+];
+const bloodOptions = [
+  { name: 'A+', id: 'a+' },
+  { name: 'B+', id: 'b+' },
+  { name: 'O+', id: 'o+' },
+  { name: 'AB+', id: 'ab+' },
+  { name: 'A-', id: 'a-' },
+  { name: 'B-', id: 'b-' },
+  { name: 'O-', id: 'o-' },
+  { name: 'AB-', id: 'ab-' },
+]
+/* Constants */
 
-  const handleSelectedOption = (option) => {
-    console.log("Selected option:", option);
-  };
-  //search select end//
+/* Lifecycle/Hooks */
+/* Lifecycle/Hooks */
+
+/* Functions/Methods */
+const onSubmitConsultation = () => {
+  if (
+    phoneValid.value ||
+    prefixValid.value ||
+    nameValid.value ||
+    genderValid.value ||
+    dobValid.value ||
+    bloodValid.value ||
+    languageValid.value ||
+    emailValid.value ||
+    addressValid.value ||
+    stateValid.value ||
+    cityValid.value ||
+    doctorValid.value ||
+    specialityValid.value
+  ) {
+    formVar.submit = true;
+    return;
+  }
+  formVar.submit = false;
+  store.dispatch("Auth/verifyUser", {
+    userId: 10563543453,
+    password: 4532453,
+  });
+};
+const handleSelectedOption = (option) => {
+  console.log("Selected option:", option);
+};
+function today() {
+  var fullDate = new Date()
+  var tDate = fullDate.getDate()
+  var tYear = fullDate.getFullYear()
+  var tMonth = fullDate.getMonth() + 1
+  if (tMonth < 10) {
+    tMonth = '0' + tMonth
+  }
+  if (tDate < 10) {
+    tDate = '0' + tDate
+  }
+  var minDate = tYear + '-' + tMonth + '-' + tDate
+  return minDate
+}
+
+/* Functions/Methods */
+
+/* Validation */
+const phoneValid = computed(() => {
+  let phoneValid = /^[6-9][0-9]{9}$/
+  if (!formVar.phone) {
+    return "Enter mobile no!!";
+  } else if (!phoneValid.test(formVar.phone)) {
+    return "Please enter valid phone no!";
+  }
+});
+const prefixValid = computed(() => {
+  if (!formVar.prefix) {
+    return "Please select prefix!";
+  }
+});
+const nameValid = computed(() => {
+  if (!formVar.name) {
+    return "Enter patient name!";
+  }
+});
+const genderValid = computed(() => {
+  if (!formVar.gender) {
+    return "Select gender!";
+  }
+});
+const dobValid = computed(() => {
+  if (!formVar.dob) {
+    return "Select DOB!";
+  }
+});
+const ageCalculate = computed(() => {
+  if (formVar.dob) {
+    console.log(formVar.dob);
+    // var years = moment().diff(formVar.dob, 'years');
+    // var month = moment().diff(formVar.dob, 'month');
+    // var days = moment().diff(formVar.dob, 'days');
+    // console.log({ years, month, days });
+    // formVar.age = years ? years + ' Y' : "" + month ? month + ' M' : "" + days ? days + ' D' : ""
+    var diff = moment(formVar.dob).diff(moment(), 'milliseconds');
+  var duration = moment.duration(diff);
+  // var age=duration.format().replace("-","");
+    console.log({duration});
+  }
+});
+
+const bloodValid = computed(() => {
+  if (!formVar.blood) {
+    return "Select blood group!";
+  }
+});
+const languageValid = computed(() => {
+  if (!formVar.language) {
+    return "Select language!";
+  }
+});
+
+const emailValid = computed(() => {
+  let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
+  if (!formVar.email) {
+    return "Enter email!!";
+  } else if (!emailValid.test(formVar.email)) {
+    return "Please enter valid email!";
+  }
+});
+const addressValid = computed(() => {
+  if (!formVar.address) {
+    return "Enter address!";
+  }
+});
+const stateValid = computed(() => {
+  if (!formVar.state) {
+    return "Select state!";
+  }
+});
+const cityValid = computed(() => {
+  if (!formVar.city) {
+    return "Select city!";
+  }
+});
+const doctorValid = computed(() => {
+  if (!formVar.doctor) {
+    return "Enter doctor name!";
+  }
+});
+const specialityValid = computed(() => {
+  if (!formVar.speciality) {
+    return "Select speciality!";
+  }
+});
+
+function isNumber(e) {
+  let char = String.fromCharCode(e.keyCode);
+  if (/^[0-9]+$/.test(char)) return true;
+  else e.preventDefault();
+}
+function phnum(e) {
+  formVar.phone = e.slice(0, 10)
+}
+/* Validation */
 
 </script>
 
-<style>
-
-</style>
+<style></style>

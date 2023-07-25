@@ -10,7 +10,8 @@
         <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
       </div>
       <div class="form-item mb-16">
-        <input type="number" v-model="formVar.phone" class="" placeholder="Enter your phone no" v-on:keyup="phnum($event.target.value)">
+        <input type="number" v-model="formVar.phone" class="" placeholder="Enter your phone no"
+        v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)">
         <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
       </div>
       <div class="form-item mb-16">

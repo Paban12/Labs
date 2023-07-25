@@ -2,7 +2,7 @@
   <section class="dashboard-page">
     <div class="container">
       <div class="dash-cards">
-        <router-link to="" class="card card1">
+        <router-link to="/all-appointment" class="card card1">
           <img src="/src/assets/images/png/mobile.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Appointments</div>
@@ -14,13 +14,13 @@
           <div class="title">Lab Test</div>
           <div class="tooltip">You can do <strong>Lab Test</strong></div>
         </router-link>
-        <router-link to="" class="card card3">
+        <router-link to="/medicine" class="card card3">
           <img src="/src/assets/images/png/medicine.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Medicine</div>
           <div class="tooltip">You can order <strong>Medicines</strong></div>
         </router-link>
-        <router-link to="" class="card card2">
+        <router-link to="/prescription" class="card card2">
           <img src="/src/assets/images/png/report.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Prescription</div>
