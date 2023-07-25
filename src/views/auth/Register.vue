@@ -1,6 +1,6 @@
 <template>
   <section class="login-form-inner register-form">
-    <form class="form" @submit.prevent="onSubmitRegister">
+    <form class="form">
       <h2>Welcome to Parchi</h2>
       <span>
         Enter details for Register
@@ -10,7 +10,8 @@
         <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
       </div>
       <div class="form-item mb-16">
-        <input type="number" v-model="formVar.phone" class="" placeholder="Enter your phone no" v-on:keyup="phnum($event.target.value)">
+        <input type="number" v-model="formVar.phone" class="" placeholder="Enter your phone no"
+        v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)">
         <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
       </div>
       <div class="form-item mb-16">
@@ -52,9 +53,15 @@
           placeholder="Select city"></SingleSelect>
         <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
       </div>
-      <div class="submit-btn form-item">
-        <button type="submit" class="btn black-btn">Verify Now</button>
+      <div class="login-btn form-item">
+        <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
+          <icon-login-loader></icon-login-loader>
+        </button>
+        <button type="button" class="btn black-btn" v-else @click="onSubmitRegister">Verify Now <icon-right-arrow></icon-right-arrow> </button>
       </div>
+      <!-- <div class="submit-btn form-item">
+        <button type="submit" class="btn black-btn"></button>
+      </div> -->
       <div class="reg">
         Back to
         <icon-right-arrow></icon-right-arrow>
@@ -116,7 +123,7 @@ const onSubmitRegister = () => {
     return;
   }
   formVar.submit = false;
-  store.dispatch("Auth/otpVerifyUser", {  });
+  store.dispatch("Auth/register", { userId:453245 });
 };
 
 const handleSelectedOption = (option) => {

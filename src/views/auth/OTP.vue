@@ -5,17 +5,16 @@
       <span>
         Enter OTP for Login
       </span>
-      <div class="form-item">
-        <div class="otp-inputs">
-          <input class="otp-input" v-model="formVar.input1" type="text" v-on:keypress="isNumber($event)"
-          @keyup="tabChange(1,$event.target.value)" maxlength="1" />
-          <input class="otp-input" v-model="formVar.input2" type="text" v-on:keypress="isNumber($event)" 
-          @keyup="tabChange(2,$event.target.value)" maxlength="1" />
-          <input class="otp-input" v-model="formVar.input3" type="text" v-on:keypress="isNumber($event)" 
-          @keyup="tabChange(3,$event.target.value)" maxlength="1" />
-          <input class="otp-input" v-model="formVar.input4" type="text" v-on:keypress="isNumber($event)" 
-          @keyup="tabChange(4,$event.target.value)" maxlength="1" />
-        </div>
+      <div class="otp-inputs">
+        <input class="otp-input" v-model="formVar.input1" type="text" v-on:keypress="isNumber($event)"
+         @keyup="tabChange(1)" maxlength="1" />
+        <input class="otp-input" v-model="formVar.input2" type="text" v-on:keypress="isNumber($event)" 
+        @keyup="tabChange(2)" maxlength="1" />
+        <input class="otp-input" v-model="formVar.input3" type="text" v-on:keypress="isNumber($event)" 
+        @keyup="tabChange(3)" maxlength="1" />
+        <input class="otp-input" v-model="formVar.input4" type="text" v-on:keypress="isNumber($event)" 
+        @keyup="tabChange(4)" maxlength="1" />
+
       </div>
       <div class="err-msg" v-if="formVar.submit && otpValid">{{ otpValid }}</div>
       <div class="send-again">
@@ -26,7 +25,7 @@
         <button class="btn black-btn load-btn" v-if="storeVar.loaderButton">
           <icon-login-loader></icon-login-loader>
         </button>
-        <button class="btn black-btn" v-else @click="onSubmitOtp">Verify <icon-right-arrow></icon-right-arrow> </button>
+        <button type="button" class="btn black-btn" v-else @click="onSubmitOtp">Verify <icon-right-arrow></icon-right-arrow> </button>
       </div>
       <div class="reg">
         New On Parchi
@@ -72,7 +71,7 @@ const onSubmitOtp = () => {
     otp: formVar.input1 + formVar.input2 + formVar.input3 + formVar.input4,});
   };
 
-function tabChange(val,e) {
+function tabChange(val) {
   let ele = document.querySelectorAll('input');
   if (ele[val - 1].value != '') {
     if (val < 4) {

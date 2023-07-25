@@ -3,16 +3,17 @@ import { successHandler, errorHandler } from '../../../services/_helper';
 import router from '../../../router';
 
 export const verifyUser = async ({ commit, dispatch }, { userId, password }) => {
-	commit("SET_LOADER", true, { root: true });
-	// await apiServices.verifyId(userId, password).then(
-	// 	(response) => {
-	// 		commit("SET_LOADER", false, { root: true });
-	// 	},
-	// 	(error) => {
-	// 		commit("SET_LOADER", false, { root: true });
-	// 		errorHandler(error.response)
-	// 	}
-	// );
+	// commit("SET_LOADER", true, { root: true });
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.verifyId(userId, password).then(
+		(response) => {
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
 };
 export const otpVerifyUser = async ({ commit, dispatch }, { userId, otp }) => {
 	commit("SET_LOADER_BUTTON", true);
@@ -26,16 +27,15 @@ export const otpVerifyUser = async ({ commit, dispatch }, { userId, otp }) => {
 		}
 	);
 };
-export const register = async ({ commit }, { loginId, emailId, password }) => {
-	commit("SET_LOADER", true, { root: true });
-	await apiServices.register(loginId, emailId, password).then(
+export const register = async ({ commit }, { userId }) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.verifyId(userId).then(
 		(response) => {
-			successHandler("Registered Successfully!")
-			commit("SET_LOADER", false, { root: true });
+			commit("SET_LOADER_BUTTON", false);
 		},
 		(error) => {
+			commit("SET_LOADER_BUTTON", false);
 			errorHandler(error.response)
-			commit("SET_LOADER", false, { root: true });
 		}
 	);
 };
