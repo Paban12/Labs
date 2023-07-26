@@ -169,23 +169,35 @@
               </div>
               <div class="text">RX Medicines</div>
             </router-link>
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/staff/details" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
-              <div class="text">Lab</div>
+              <div class="text">Staff</div>
             </router-link>
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/notes" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
-              <div class="text">Bills</div>
+              <div class="text">Notes</div>
             </router-link>
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/complaints" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
-                <img src="/src/assets/images/png/time.png" alt="image" />
+                <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
-              <div class="text">Appointment</div>
+              <div class="text">Complaints</div>
+            </router-link>
+            <router-link to="/diagnosis" class="list" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Diagnosis</div>
+            </router-link>
+            <router-link to="/account" class="list" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Account</div>
             </router-link>
           </div>
         </div>

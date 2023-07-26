@@ -87,6 +87,7 @@ const routes = [
             },
             {
                 path: '/account',
+                redirect: '/account/edit',
                 name: 'account',
                 component: () => import( /* webpackChunkName: "account layout" */ '../views/AccountLayout/AccountLayout.vue'),
                 children: [
@@ -292,6 +293,11 @@ const routes = [
                 path: '/terms',
                 name: 'terms',
                 component: () => import( /* webpackChunkName: "terms" */ '../views/PolicyPages/Terms.vue')
+            },
+            {
+                path: '/test',
+                name: 'test',
+                component: () => import( /* webpackChunkName: "test" */ '../views/Test.vue')
             },
         ]
     },
