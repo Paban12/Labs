@@ -15,36 +15,36 @@
         <div class="card">
           <h2>Send Us a Message</h2>
           <span>Your details will not be published</span>
-          <form action="" class="form">
+          <form action="" class="form" @submit.prevent="onSubmitContact">
             <div class="form-item mb-16">
               <div class="input">
-                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Name" v-model="formVar.name" />
                 <div class="icon">
                   <icon-user></icon-user>
                 </div>
               </div>
-              <div class="err-msg">Please enter</div>
+              <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
             </div>
             <div class="form-item mb-16">
               <div class="input">
-                <input type="text" placeholder="Email" />
+                <input type="text" placeholder="Email" v-model="formVar.email" />
                 <div class="icon">
                   <icon-mail></icon-mail>
                 </div>
               </div>
-              <div class="err-msg">Please enter email</div>
+              <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
             </div>
             <div class="form-item mb-16">
               <div class="input">
-                <textarea name="" placeholder="Message"></textarea>
+                <textarea name="" v-model="formVar.message" placeholder="Message"></textarea>
                 <div class="icon">
                   <icon-message></icon-message>
                 </div>
               </div>
-              <div class="err-msg mt-0">Please enter message</div>
+              <div class="err-msg" v-if="formVar.submit && messageValid">{{ messageValid }}</div>
             </div>
             <div class="submit-btn">
-              <button class="btn black-btn">Send Message</button>
+              <button type="submit" class="btn black-btn">Send Message</button>
             </div>
           </form>
         </div>
@@ -106,8 +106,63 @@
   </section>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { computed, reactive } from "vue";
+import { useStore } from "vuex";
+
+/* Constants */
+const store = useStore();
+const storeVar = computed(() => store.state.Auth);
+const formVar = reactive({
+  submit: false,
+  name: null,
+  email: null,
+  message: null,
+});
+
+/* Constants */
+
+/* Lifecycle/Hooks */
+/* Lifecycle/Hooks */
+
+/* Functions/Methods */
+
+const onSubmitContact = () => {
+  if (
+    nameValid.value ||
+    emailValid.value ||
+    messageValid.value 
+  ) {
+    formVar.submit = true;
+    return;
+  }
+  formVar.submit = false;
+  store.dispatch("Auth/verifyUser", {     
+    userId: 10563543453,
+    password: 4532453, });
+};
+/* Functions/Methods */
+
+/* Validation */
+const nameValid = computed(() => {
+  if (!formVar.name) {
+    return "Please enter your name!";
+  }
+});
+const emailValid = computed(() => {
+  let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
+  if (!formVar.email) {
+    return "Please enter your email!";
+  }else if (!emailValid.test(formVar.email)) {
+    return "Please enter valid email!";
+  }
+});
+const messageValid = computed(() => {
+  if (!formVar.message) {
+    return "Please enter message!";
+  }
+});
+/* Validation */
 </script>
 
 <style>

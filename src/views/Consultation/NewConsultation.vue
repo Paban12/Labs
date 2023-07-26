@@ -38,32 +38,32 @@
                 <div class="form-item w-max mb-16">
                   <div class="title">BP</div>
                   <div class="two-inputs align-center">
-                    <input type="number" class="bp-input" placeholder="0" /> /
-                    <input type="number" class="bp-input" placeholder="0" />
+                    <input type="number" v-model="formVar.bp1" class="bp-input" placeholder="0" /> /
+                    <input type="number" v-model="formVar.bp2" class="bp-input" placeholder="0" />
                   </div>
-                  <div class="err-msg">Enter</div>
+                  <div class="err-msg" v-if="formVar.submit && bpValid">{{ bpValid }}</div>
                 </div>
                 <div class="form-item mb-16">
                   <div class="title">Pulse</div>
-                  <input type="number" placeholder="Per Minute" />
-                  <div class="err-msg">Enter</div>
+                  <input type="number" v-model="formVar.pulse" placeholder="Per Minute" />
+                  <div class="err-msg" v-if="formVar.submit && pulseValid">{{ pulseValid }}</div>
                 </div>
               </div>
               <div class="bottom flex gap-16 w-100">
                 <div class="form-item mb-16">
                   <div class="title">Height</div>
-                  <input type="number" placeholder="In CM" />
-                  <div class="err-msg">Enter</div>
+                  <input type="number" v-model="formVar.height" placeholder="In CM" />
+                  <div class="err-msg" v-if="formVar.submit && heightValid">{{ heightValid }}</div>
                 </div>
                 <div class="form-item mb-16">
                   <div class="title">Weight</div>
-                  <input type="number" placeholder="In KG" />
-                  <div class="err-msg">Enter</div>
+                  <input type="number" v-model="formVar.weight" placeholder="In KG" />
+                  <div class="err-msg" v-if="formVar.submit && weightValid">{{ weightValid }}</div>
                 </div>
                 <div class="form-item mb-16">
                   <div class="title">Temperature</div>
-                  <input type="number" placeholder="In Fahrenheit" />
-                  <div class="err-msg">Enter</div>
+                  <input type="number" v-model="formVar.temperature" placeholder="In Fahrenheit" />
+                  <div class="err-msg" v-if="formVar.submit && temperatureValid">{{ pulseValid }}</div>
                 </div>
               </div>
             </div>
@@ -71,91 +71,64 @@
               <div class="row">
                 <div class="col-5 form-item mb-16">
                   <div class="title">Complaints</div>
-                  <MultiSelect
-                    :options="complaintOtions"
-                    :tabs="tab"
-                    @specific="handleSelectOption"
-                    @selected="handleSelectedOption"
-                  />
-                  <div class="err-msg">Please select</div>
+                  <MultiSelect v-model="formVar.complaints" :options="complaintOtions" :tabs="tab" @specific="handleSelectOption"
+                    @selected="handleSelectedOption" />
+                    <div class="err-msg" v-if="formVar.submit && complaintsValid">{{ complaintsValid }}</div>
                 </div>
                 <div class="col-5 form-item mb-16">
                   <div class="title">Quick Notes</div>
-                  <input type="text" placeholder="Note" />
-                  <div class="err-msg">Please enter</div>
+                  <input type="text" v-model="formVar.quick_notes" placeholder="Note" />
+                  <div class="err-msg" v-if="formVar.submit && quickNotesValid">{{ quickNotesValid }}</div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5 form-item mb-16">
                   <div class="title">Past History</div>
-                  <MultiSelect
-                    :options="historyOptions"
-                    :tabs="tab"
-                    @specific="handleSelectOption"
-                    @selected="handleSelectedOption"
-                  />
-                  <div class="err-msg">Please select</div>
+                  <MultiSelect v-model="formVar.past_history" :options="historyOptions" :tabs="tab" @specific="handleSelectOption"
+                    @selected="handleSelectedOption" />
+                    <div class="err-msg" v-if="formVar.submit && pastHistoryValid">{{ pastHistoryValid }}</div>
                 </div>
                 <div class="col-5 form-item mb-16">
                   <div class="title">Advice</div>
-                  <input type="text" placeholder="Advice" />
-                  <div class="err-msg">Please enter</div>
+                  <input type="text" v-model="formVar.advice" placeholder="Advice" />
+                  <div class="err-msg" v-if="formVar.submit && adviceValid">{{ adviceValid }}</div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5 form-item mb-16">
                   <div class="title">Past Medication</div>
-                  <MultiSelect
-                    :options="medicationOptions"
-                    :tabs="tab"
-                    @specific="handleSelectOption"
-                    @selected="handleSelectedOption"
-                  />
-                  <div class="err-msg">Please select</div>
+                  <MultiSelect v-model="formVar.past_medication" :options="medicationOptions" :tabs="tab" @specific="handleSelectOption"
+                    @selected="handleSelectedOption" />
+                    <div class="err-msg" v-if="formVar.submit && pastMedicationValid">{{ pastMedicationValid }}</div>
                 </div>
                 <div class="col-5 form-item mb-16">
                   <div class="title">Tests Require</div>
-                  <MultiSelect
-                    :options="testOptions"
-                    :tabs="tab"
-                    @specific="handleSelectOption"
-                    @selected="handleSelectedOption"
-                  />
-                  <div class="err-msg">Please select</div>
+                  <MultiSelect v-model="formVar.tests_require" :options="testOptions" :tabs="tab" @specific="handleSelectOption"
+                    @selected="handleSelectedOption" />
+                    <div class="err-msg" v-if="formVar.submit && testsRequireValid">{{ testsRequireValid }}</div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5 form-item mb-16">
                   <div class="title">Other Notes</div>
-                  <MultiSelect
-                    :options="noteOptions"
-                    :tabs="tab"
-                    @specific="handleSelectOption"
-                    @selected="handleSelectedOption"
-                  />
-                  <div class="err-msg">Please select</div>
+                  <MultiSelect v-model="formVar.other_notes" :options="noteOptions" :tabs="tab" @specific="handleSelectOption"
+                    @selected="handleSelectedOption" />
+                    <div class="err-msg" v-if="formVar.submit && otherNotesValid">{{ otherNotesValid }}</div>
                 </div>
                 <div class="col-5 form-item mb-16">
                   <div class="title">Next Visit</div>
                   <div class="row two-inputs">
                     <div class="col-7 form-item mb-16">
                       <div class="date-input">
-                        <input type="date" />
+                        <input type="date" v-model="formVar.next_visit" />
                         <div class="icon">
-                          <img
-                            src="/src/assets/images/icons/calender.svg"
-                            alt=""
-                          />
+                          <img src="/src/assets/images/icons/calender.svg" alt="" />
                         </div>
                       </div>
+                      <div class="err-msg" v-if="formVar.submit && nextVisitValid">{{ nextVisitValid }}</div>
                     </div>
                     <div class="col-3 form-item mb-16">
-                      <input
-                        type="text"
-                        class="bg-blue"
-                        value="5 Days"
-                        disabled
-                      />
+                      <input type="text" class="bg-blue" value="5 Days" disabled />
                     </div>
                   </div>
                   <div class="err-msg"></div>
@@ -164,11 +137,7 @@
             </div>
           </div>
 
-          <table
-            class="consultation-cards-table table mb-16"
-            ref="tableRef"
-            @click="handleTableClick"
-          >
+          <table class="consultation-cards-table table mb-16" ref="tableRef" @click="handleTableClick">
             <thead class="">
               <tr>
                 <th>Sr. No.</th>
@@ -183,44 +152,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                class="val-row"
-                v-for="(item, index) in formVar.consultData"
-                :key="index"
-              >
+              <tr class="val-row" v-for="(item, index) in formVar.consultData" :key="index">
                 <td data-label="Sr. No.">{{ index + 1 }}</td>
                 <td data-label="Medicine">
-                  <SingleSelect
-                    v-model="item.medicine_name"
-                    @selected="addNewRow(index + 1)"
-                    :options="medicineOptions"
-                    :outside="formVar.outside"
-                    placeholder=""
-                  ></SingleSelect>
+                  <SingleSelect v-model="item.medicine_name" @selected="addNewRow(index + 1)" :options="medicineOptions"
+                    :outside="formVar.outside" placeholder=""></SingleSelect>
                 </td>
                 <td data-label="Dose">
-                  <SingleSelect
-                    v-model="item.tab.duration"
-                    :options="doseOptions"
-                    :outside="formVar.outside"
-                    placeholder=""
-                  ></SingleSelect>
+                  <SingleSelect v-model="item.tab.duration" :options="doseOptions" :outside="formVar.outside"
+                    placeholder=""></SingleSelect>
                 </td>
                 <td data-label="Timing">
-                  <SingleSelect
-                    v-model="item.tab.frequency"
-                    :options="timeOptions"
-                    :outside="formVar.outside"
-                    placeholder=""
-                  ></SingleSelect>
+                  <SingleSelect v-model="item.tab.frequency" :options="timeOptions" :outside="formVar.outside"
+                    placeholder=""></SingleSelect>
                 </td>
                 <td data-label="When">
-                  <SingleSelect
-                    v-model="item.tab.instruction"
-                    :options="whenOptions"
-                    :outside="formVar.outside"
-                    placeholder=""
-                  ></SingleSelect>
+                  <SingleSelect v-model="item.tab.instruction" :options="whenOptions" :outside="formVar.outside"
+                    placeholder=""></SingleSelect>
                 </td>
                 <td data-label="Action">
                   <div class="option-btns pointer" @click.prevent="formVar.confirmModal = true">
@@ -257,19 +205,15 @@
                 <div class="title">Refered By</div>
                 <div class="dr-input">
                   <div class="dr-tag">Dr</div>
-                  <input type="text" placeholder="Refered by" />
+                  <input type="text" v-model="formVar.refered_by" placeholder="Refered by" />
                 </div>
-                <div class="err-msg">Enter doctor name</div>
+                <div class="err-msg" v-if="formVar.submit && referedByValid">{{ referedByValid }}</div>
               </div>
               <div class="col-5 form-item mb-16">
                 <div class="title">Select Speciality</div>
-                <SingleSelect
-                  v-model="formVar.keyword1"
-                  :options="specialityOptions"
-                  @selected="handleSelectedOption"
-                  placeholder="Select Speciality"
-                ></SingleSelect>
-                <div class="err-msg">Select speciality</div>
+                <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
+                  placeholder="Select Speciality"></SingleSelect>
+                  <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
               </div>
             </div>
             <div class="two-inputs col-4">
@@ -278,17 +222,18 @@
                 <div class="dr-input">
                   <div class="dr-tag">+91</div>
                   by
-                  <input type="number" placeholder="Phone no" />
+                  <input type="number" v-model="formVar.phone" placeholder="Phone no"
+                   v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
                 </div>
-                <div class="err-msg">Enter phone no</div>
+                <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
               </div>
               <div class="col-5 form-item mb-16">
                 <div class="title">Email Id</div>
                 <div class="dr-input">
                   <div class="dr-tag">M</div>
-                  <input type="text" placeholder="Email" />
+                  <input type="text" v-model="formVar.email" placeholder="Email" />
                 </div>
-                <div class="err-msg">Enter email</div>
+                <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
               </div>
             </div>
           </div>
@@ -297,11 +242,7 @@
               <button class="btn black-btn">Add Investigation</button>
             </div>
             <div class="col-25">
-              <button
-                type="button"
-                class="btn black-btn"
-                @click.prevent="onSubmit"
-              >
+              <button type="button" class="btn black-btn" @click.prevent="onSubmit">
                 Save
               </button>
             </div>
@@ -317,22 +258,23 @@
       <div class="btns">
         <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">Cancel</button>
         <button class="btn confirm-btn">Confirm</button>
-      </div>      
+      </div>
     </Modal>
   </section>
 </template>
 
 <script setup>
-import { onBeforeMount, onBeforeUnmount, reactive, ref } from "vue";
+import { onBeforeMount, onBeforeUnmount, reactive, ref, computed } from "vue";
+import { useStore } from "vuex";
+
+/* Constants */
+const store = useStore();
+const storeVar = computed(() => store.state.Auth);
 
 const tableRef = ref(null);
 
 const formVar = reactive({
   keyword1: "",
-  keyword2: "",
-  keyword3: "",
-  keyword4: "",
-  keyword5: "",
   keyword6: "",
   keyword7: "",
   consultData: [
@@ -349,6 +291,25 @@ const formVar = reactive({
   ],
   outside: false,
   confirmModal: false,
+  submit:false,
+  bp1:null,
+  bp2:null,
+  pulse:null,
+  height:null,
+  weight:null,
+  temperature:null,
+  complaints:null,
+  quick_notes:null,
+  past_history:null,
+  advice:null,
+  past_medication:null,
+  tests_require:null,
+  other_notes:null,
+  next_visit:null,
+  speciality:null,
+  refered_by:null,
+  phone:null,
+  email:null,
 });
 
 const addNewRow = (index) => {
@@ -366,18 +327,41 @@ const addNewRow = (index) => {
   }
 };
 const onSubmit = () => {
+  if (
+    bpValid.value ||
+    pulseValid.value ||
+    heightValid.value ||
+    weightValid.value ||
+    temperatureValid.value ||
+    complaintsValid.value ||
+    quickNotesValid.value ||
+    pastHistoryValid.value ||
+    adviceValid.value ||
+    pastMedicationValid.value ||
+    testsRequireValid.value ||
+    otherNotesValid.value ||
+    nextVisitValid.value ||
+    referedByValid.value ||
+    specialityValid.value ||
+    phoneValid.value ||
+    emailValid.value 
+  ) {
+    formVar.submit = true;
+    return;
+  }
   console.log(formVar.consultData);
+  formVar.submit = false;
+  store.dispatch("Auth/verifyUser", {     
+    userId: 10563543453,
+    password: 4532453, });
 };
 
 const handleDocumentClick = (event) => {
   const isClickedInsideTable = tableRef.value.contains(event.target);
   if (!isClickedInsideTable) {
     // const clickedElement = event.target;
-    console.log(isClickedInsideTable);
     const elements = document.getElementsByClassName("single-select");
-    console.log(elements);
     const elementsArray = Array.from(elements);
-    console.log(elementsArray);
 
     // Iterate over each element and remove the class from its class list
     elementsArray.forEach((element) => {
@@ -431,9 +415,16 @@ const specialityOptions = [
 ];
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);
+  formVar.complaints=option
+};
+const handleSelectedComplaints = (option) => {
+  formVar.complaints=option
+};
+const handleSelectedPastHistory = (option) => {
+  formVar.past_history=option
 };
 const handleSelectOption = (option) => {
-  console.log("Selected option:", option);
+  console.log("Selected one option:", option);
 };
 
 //multi select
@@ -463,6 +454,110 @@ const noteOptions = [
   { id: 3, name: "Option 3" },
 ];
 const tab = [];
+
+/* Validation */
+const bpValid = computed(() => {
+  if (!formVar.bp1 || !formVar.bp2 ) {
+    return "Please enter your BP!";
+  }
+});
+const pulseValid = computed(() => {
+  if (!formVar.pulse) {
+    return "Please enter pulse!";
+  }
+});
+const heightValid = computed(() => {
+  if (!formVar.height) {
+    return "Please enter height!";
+  }
+});
+const weightValid = computed(() => {
+  if (!formVar.weight) {
+    return "Please enter weight!";
+  }
+});
+const temperatureValid = computed(() => {
+  if (!formVar.temperature) {
+    return "Please enter temperature!";
+  }
+});
+const complaintsValid = computed(() => {
+  if (!formVar.complaints) {
+    return "Please select complaints!";
+  }
+});
+const quickNotesValid = computed(() => {
+  if (!formVar.quick_notes) {
+    return "Please enter quick notes!";
+  }
+});
+const pastHistoryValid = computed(() => {
+  if (!formVar.past_history) {
+    return "Please select past history!";
+  }
+});
+const adviceValid = computed(() => {
+  if (!formVar.advice) {
+    return "Please enter advice!";
+  }
+});
+const pastMedicationValid = computed(() => {
+  if (!formVar.past_medication) {
+    return "Please select past medication!";
+  }
+});
+const testsRequireValid = computed(() => {
+  if (!formVar.tests_require) {
+    return "Please select tests require!";
+  }
+});
+const otherNotesValid = computed(() => {
+  if (!formVar.other_notes) {
+    return "Please select other notes!";
+  }
+});
+const nextVisitValid = computed(() => {
+  if (!formVar.next_visit) {
+    return "Please select next visit!";
+  }
+});
+const referedByValid = computed(() => {
+  if (!formVar.refered_by) {
+    return "Please enter doctor name!";
+  }
+});
+const specialityValid = computed(() => {
+  if (!formVar.speciality) {
+    return "Please select speciality!";
+  }
+});
+const phoneValid = computed(() => {
+  let phoneValid = /^[6-9][0-9]{9}$/
+  if (!formVar.phone) {
+    return "Please enter your phone no!";
+  }else if (!phoneValid.test(formVar.phone)) {
+    return "Please enter valid phone no!";
+  }
+});
+const emailValid = computed(() => {
+  let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
+  if (!formVar.email) {
+    return "Please enter your email!";
+  }else if (!emailValid.test(formVar.email)) {
+    return "Please enter valid email!";
+  }
+});
+
+function isNumber(e) {
+  let char = String.fromCharCode(e.keyCode);
+  if (/^[0-9]+$/.test(char)) return true;
+  else e.preventDefault();
+}
+function phnum(e) {
+  formVar.loginId = e.slice(0, 10)
+}
+/* Validation */
+
 
 //search select
 </script>

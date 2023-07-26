@@ -121,7 +121,7 @@ const medicine = reactive({
   dosage2:null,
   dosage3:null,
 });
-
+ 
 //search select
 const medicineTypeOptions = [
   { id: 1, name: "Option 1" },
