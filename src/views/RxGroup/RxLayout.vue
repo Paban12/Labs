@@ -38,7 +38,7 @@
           <div class="card">
             <div class="heading">
               <div class="title">
-                <h3>Our Medicines</h3>
+                <h3>RX Group</h3>
                 <router-link to="/rx/add-medicine" class="btn black-btn">Add Medicine</router-link>
               </div>
               <div class="text">
