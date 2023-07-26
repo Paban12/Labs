@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <event-time
-      :date="formVar.date"
-      :eventList="data"
-      @update:changeDate="onDateChange($event)"
-    ></event-time>
-  </div>
+  <section class="apt-calender-page">
+    <div class="container">
+      <event-time
+        :date="formVar.date"
+        :eventList="data"
+        @update:changeDate="onDateChange($event)"
+      ></event-time>
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -13,7 +15,7 @@ import moment from "moment";
 import { reactive } from "vue";
 import EventTime from "../components/EventCalender.vue";
 
-const data = [
+const data = [ 
   {
     id: 3,
     title: "asdas",

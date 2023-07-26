@@ -45,6 +45,7 @@ const Notification = defineAsyncComponent(() => import('../components/Notificati
 const NotificationList = defineAsyncComponent(() => import('../components/NotificationList.vue'));
 const NotificationMessage = defineAsyncComponent(() => import('../components/NotificationMessage.vue'));
 const spinner = defineAsyncComponent(() => import('../components/Spinner.vue'));
+const MobileIcon = defineAsyncComponent(() => import('../components/icons/mobile-svg.vue'))
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
@@ -93,6 +94,7 @@ const GlobalComponents = {
 		app.component('Notification-list', NotificationList)
 		app.component('Notification-message', NotificationMessage)
     app.component('base-spinner', spinner);
+    app.component('icon-mobile', MobileIcon)
     // app.component('icon-', Icon)
   }
 }
