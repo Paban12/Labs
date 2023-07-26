@@ -3,7 +3,7 @@
     <div class="container">
       <form action="" class="form" @submit.prevent="onSubmitAddMedicine">
         <div class="card">
-          <h4 class="mb-16">Create RX Group</h4>
+          <h4 class="mb-16">Add Medicine to RX Group</h4>
           <div class="row gap-16">
             <div class="form-item name-input col-2 mb-16">
               <div class="title">Enter name of RX Group</div>

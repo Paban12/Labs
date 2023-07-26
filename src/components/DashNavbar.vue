@@ -145,11 +145,29 @@
               </div>
               <div class="text">Visit</div>
             </router-link>
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/medicine-search" class="list mob-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/edit.png" alt="image" />
               </div>
-              <div class="text">Edit</div>
+              <div class="text">Medicines</div>
+            </router-link>
+            <router-link to="/medicine-list" class="list desk-view" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/edit.png" alt="image" />
+              </div>
+              <div class="text">Medicines</div>
+            </router-link>
+            <router-link to="/rx/list" class="list mob-view" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/edit.png" alt="image" />
+              </div>
+              <div class="text">RX Medicines</div>
+            </router-link>
+            <router-link to="/rx/medicine" class="list desk-view" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/edit.png" alt="image" />
+              </div>
+              <div class="text">RX Medicines</div>
             </router-link>
             <router-link to="/" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">

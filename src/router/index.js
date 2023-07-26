@@ -71,16 +71,19 @@ const routes = [
                 ]
             },
             {
-                path: '/medicine-layout',
-                name: 'medicine layout',
+                path: '/medicine-list',
+                name: 'medicine list',
                 component: () => import( /* webpackChunkName: "medicine layout" */ '../views/Medicine/MedicineLayout.vue'),
-                children: [
-                    {
-                        path: '/medicine-list',
-                        name: 'medicine list',
-                        component: () => import( /* webpackChunkName: "medicine list" */ '../views/Medicine/MedicineList.vue')
-                    },
-                ]
+            },
+            {
+                path: '/medicine',
+                name: 'medicine',
+                component: () => import( /* webpackChunkName: "medicine" */ '../views/Medicine/MedicinePage.vue')
+            },
+            {
+                path: '/add-medicine',
+                name: 'add medicine',
+                component: () => import( /* webpackChunkName: "add medicine" */ '../views/Medicine/AddMedicine.vue')
             },
             {
                 path: '/account',
@@ -157,16 +160,6 @@ const routes = [
                 component: () => import( /* webpackChunkName: "add text" */ '../views/AddText.vue')
             },
             {
-                path: '/medicine',
-                name: 'medicine',
-                component: () => import( /* webpackChunkName: "medicine" */ '../views/Medicine/MedicinePage.vue')
-            },
-            {
-                path: '/add-medicine',
-                name: 'add medicine',
-                component: () => import( /* webpackChunkName: "add medicine" */ '../views/Medicine/AddMedicine.vue')
-            },
-            {
                 path: '/notes',
                 name: 'notes',
                 component: () => import( /* webpackChunkName: "notes" */ '../views/Notes.vue')
@@ -183,9 +176,19 @@ const routes = [
             },
             //Rx Group
             {
+                path: '/rx/medicine',
+                name: 'rx medicine',
+                component: () => import( /* webpackChunkName: "rx medicine" */ '../views/RxGroup/RxLayout.vue')
+            },
+            {
                 path: '/rx/add-medicine',
                 name: 'rx add medicine',
-                component: () => import( /* webpackChunkName: "create rx" */ '../views/RxGroup/AddMedicine.vue')
+                component: () => import( /* webpackChunkName: "rx add medicine" */ '../views/RxGroup/AddMedicine.vue')
+            },
+            {
+                path: '/rx/list',
+                name: 'rx list',
+                component: () => import( /* webpackChunkName: "rx list" */ '../views/RxGroup/RxList.vue')
             },
             {
                 path: '/appointment-service',

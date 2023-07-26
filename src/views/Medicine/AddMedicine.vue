@@ -5,7 +5,8 @@
         <div class="card">
           <div class="card-head flex align-center justify-space mb-16">
             <h4 class="">Medicine Library</h4>
-            <router-link to="/medicine-list" class="btn black-btn">View Medicines</router-link>
+            <router-link to="/medicine-list" class="btn black-btn desk-view">View Medicines</router-link>
+            <router-link to="/medicine-search" class="btn black-btn mob-view">View Medicines</router-link>
           </div>
           <div class="row">
             <div class="two-inputs col-4">
