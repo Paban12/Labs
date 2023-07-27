@@ -138,7 +138,7 @@
                 v-on:keyup="phnum($event.target.value)">
               <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
             </div>
-            <div class="row mb-16">
+            <div class="row mb-16 prefix-row">
               <div class="col-25 form-item">
                 <SingleSelect v-model="formVar.prefix" :options="prefixOptions" @selected="handleSelectedOption"
                   placeholder="Select Prefix"></SingleSelect>

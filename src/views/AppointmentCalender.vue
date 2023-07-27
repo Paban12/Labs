@@ -1,12 +1,280 @@
 <template>
   <section class="apt-calender-page">
     <div class="container">
-      <event-time
-        :date="formVar.date"
-        :eventList="data"
-        @update:changeDate="onDateChange($event)"
-      ></event-time>
+      <div class="calender-page-row">
+        <div class="doctor-list-card card">
+          <div class="list-header">Doctors</div>
+          <div class="list-sub-header">All Reference Doctors (114)</div>
+          <div class="list">
+            <div class="list-item">
+              <div class="left">
+                <div class="dot red-dot"></div>
+                <div class="dr-name">Dr. Snehal</div>
+              </div>
+              <div class="val">131</div>
+            </div>
+            <div class="list-item">
+              <div class="left">
+                <div class="dot green-dot"></div>
+                <div class="dr-name">Dr. Atharva</div>
+              </div>
+              <div class="val">131</div>
+            </div>
+            <div class="list-item">
+              <div class="left">
+                <div class="dot green-dot"></div>
+                <div class="dr-name">Dr. Kamal</div>
+              </div>
+              <div class="val">131</div>
+            </div>
+          </div>
+        </div>
+        <event-time
+          :date="formVar.date"
+          :eventList="data"
+          @update:changeDate="onDateChange($event)"
+        ></event-time>
+        <div class="patient-list-card card">
+          <div class="tabs">
+            <div
+              class="tab"
+              @click.prevent="formVar.tab = 1"
+              :class="formVar.tab === 1 ? 'active' : ''"
+            >
+              <div class="val bg-grey">2</div>
+              <div class="text">Schedule</div>
+            </div>
+            <div
+              class="tab"
+              @click.prevent="formVar.tab = 2"
+              :class="formVar.tab === 2 ? 'active' : ''"
+            >
+              <div class="val bg-red">2</div>
+              <div class="text">Collection</div>
+            </div>
+            <div
+              class="tab"
+              @click.prevent="formVar.tab = 3"
+              :class="formVar.tab === 3 ? 'active' : ''"
+            >
+              <div class="val bg-blue">2</div>
+              <div class="text">Progress</div>
+            </div>
+            <div
+              class="tab"
+              @click.prevent="formVar.tab = 4"
+              :class="formVar.tab === 4 ? 'active' : ''"
+            >
+              <div class="val bg-green">2</div>
+              <div class="text">Done</div>
+            </div>
+          </div>
+          <div class="searchbar">
+            <input type="text" placeholder="Search for Patients" />
+            <img src="/src/assets/images/png/search.png" alt="" />
+          </div>
+          <div class="patient-list">
+            <div class="list-item">
+              <div class="time">11:15 AM</div>
+              <div class="info">
+                <div class="name">Miss. Sharmila (PID: 226)</div>
+                <div class="dr-name">Dr Suraj</div>
+                <div class="token">Token: 1</div>
+              </div>
+              <div class="img">
+                <img src="/src/assets/images/png/verified.png" alt="" />
+              </div>
+              <div class="p-info-card card card1">
+                <div class="top">
+                  <div class="p-img">
+                    <img src="/src/assets/images/png/user.png" alt="" />
+                  </div>
+                  <div class="p-info">
+                    <div class="name">Mrs Rekha</div>
+                    <div class="about">
+                      <span>Female</span>- <span>49 Years</span>-
+                      <span>A+</span>
+                    </div>
+                    <div class="p-id">PID : 189</div>
+                    <div class="amt">₹00</div>
+                  </div>
+                </div>
+                <div class="contact-info">
+                  <span>
+                    <icon-mobile></icon-mobile>
+                    +91 8888888888
+                  </span>
+                  <span>
+                    <icon-mail></icon-mail>
+                    company@mail.com
+                  </span>
+                </div>
+                <div class="message">
+                  <span>Feedback Message</span>
+                  <span>Thanks Message</span>
+                </div>
+                <div class="schedule">
+                  <div class="time">10:45 AM For 5 Min</div>
+                  <div class="dr">Dr. Self</div>
+                </div>
+                <div class="data flex gap-5">
+                  <strong>Barcode : </strong>
+                  <div class="val">206LL68</div>
+                  <img src="/src/assets/images/png/printer.png" alt="" />
+                </div>
+                <div class="data flex gap-5">
+                  <strong>Collection at : </strong>
+                  <div class="val">Lab Address</div>
+                </div>
+                <div class="data">
+                  <strong>Tests : </strong>
+                  <div class="val">
+                    <div class="list">Fasting Blood Glucose</div>
+                    <div class="list">Fasting Blood Glucose</div>
+                  </div>
+                </div>
+                <div class="message">
+                  <span>Prescription</span>
+                  <span>Lab</span>
+                </div>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="time">11:15 AM</div>
+              <div class="info">
+                <div class="name">Miss. Sharmila (PID: 226)</div>
+                <div class="dr-name">Dr Suraj</div>
+                <div class="token">Token: 1</div>
+              </div>
+              <div class="img">
+                <img src="/src/assets/images/png/verified.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- modals -->
+    <Modal v-model:show="formVar.aptModal" class="book-apt-modal" headerClasses="header-bg">
+      <template v-slot:header>
+        <div class="title" showHeader="true">Book Appointment</div>
+        <div class="close-btn" @click.prevent="formVar.aptModal = false">
+          <icon-cross></icon-cross>
+        </div>
+      </template>
+      <form action="" class="form">
+        <div class="form-item mb-16">
+          <input type="number" placeholder="Enter Phone no" />
+          <div class="err-msg">Enter mobile no</div>
+        </div>
+        <div class="row mb-16">
+          <div class="col-25 form-item">
+            <SingleSelect
+              v-model="consult.prefix"
+              :options="prefixOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Prefix"
+            ></SingleSelect>
+            <div class="err-msg">Select</div>
+          </div>
+          <div class="col-75 form-item">
+            <input type="text" placeholder="Patient Name" />
+            <div class="err-msg">Enter patient name</div>
+          </div>
+        </div>
+        <div class="two-inputs">
+          <div class="col-25 form-item mb-16">
+            <SingleSelect
+              v-model="consult.gender"
+              :options="genderOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Gender"
+            ></SingleSelect>
+            <div class="err-msg">Select gender</div>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <div class="date-input">
+              <input type="date" />
+              <div class="icon">
+                <img src="/src/assets/images/icons/calender.svg" alt="" />
+              </div>
+            </div>
+            <div class="err-msg">Select DOB</div>
+          </div>
+          <div class="col-25 form-item mb-16">
+            <input type="text" class="bg-blue" value="25 Year" disabled />
+          </div>
+        </div>
+        <div class="two-inputs">
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="consult.blood"
+              :options="bloodOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Blood Group"
+            ></SingleSelect>
+            <div class="err-msg">Select blood group</div>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="consult.language"
+              :options="langOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Language"
+            ></SingleSelect>
+            <div class="err-msg">Select language</div>
+          </div>
+        </div>
+        <div class="form-item mb-16">
+          <input type="text" placeholder="Enter Email" />
+          <div class="err-msg">Enter email</div>
+        </div>
+        <div class="form-item mb-16">
+          <input type="text" placeholder="Enter Address" />
+          <div class="err-msg">Enter address</div>
+        </div>
+        <div class="two-inputs">
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="consult.state"
+              :options="stateOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select State"
+            ></SingleSelect>
+            <div class="err-msg">Select state</div>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="consult.city"
+              :options="cityOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select City"
+            ></SingleSelect>
+            <div class="err-msg">Select city</div>
+          </div>
+        </div>
+        <div class="two-inputs">
+          <div class="col-5 form-item mb-16">
+            <div class="dr-input">
+              <div class="dr-tag">Dr</div>
+              <input type="text" placeholder="Refered by" />
+            </div>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="consult.speciality"
+              :options="specialityOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Speciality"
+            ></SingleSelect>
+            <div class="err-msg">Select speciality</div>
+          </div>
+        </div>
+        <div class="save-btn form-item">
+          <button class="btn black-btn">Book Consultation</button>
+        </div>
+      </form>
+    </Modal>
   </section>
 </template>
 
@@ -15,7 +283,7 @@ import moment from "moment";
 import { reactive } from "vue";
 import EventTime from "../components/EventCalender.vue";
 
-const data = [ 
+const data = [
   {
     id: 3,
     title: "asdas",
@@ -64,7 +332,7 @@ const data = [
   },
   {
     id: 1,
-    title: 'asdas',
+    title: "asdas",
     date: "2023-07-27 07:25 PM",
     patient: {
       id: 1,
@@ -77,9 +345,63 @@ const formVar = reactive({
   date: new Date(),
   fromDate: moment().format("YYYY-MM-DD"),
   toDate: moment().format("YYYY-MM-DD"),
+  tab: 1,
+  aptModal: true,
 });
 
 const onDateChange = (date) => {
   console.log(date);
 };
+
+const consult = reactive({
+  prefix: "",
+  gender: "",
+  blood: "",
+  state: "",
+  city: "",
+  speciality: "",
+  language: "",
+});
+
+//search select start//
+const stateOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const cityOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const langOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const specialityOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const genderOptions = [
+  { name: "Male", id: "male" },
+  { name: "Female", id: "female" },
+  { name: "Other", id: "other" },
+];
+const prefixOptions = [
+  { name: "Mr.", id: "mr" },
+  { name: "Mrs.", id: "mrs" },
+];
+const bloodOptions = [
+  { name: "A+", id: "a+" },
+  { name: "B+", id: "b+" },
+  { name: "O+", id: "o+" },
+  { name: "AB+", id: "ab+" },
+  { name: "A-", id: "a-" },
+  { name: "B-", id: "b-" },
+  { name: "O-", id: "o-" },
+  { name: "AB-", id: "ab-" },
+];
+
+const handleSelectedOption = (option) => {
+  console.log("Selected option:", option);
+};
+//search select end//
 </script>

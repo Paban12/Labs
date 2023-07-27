@@ -1,6 +1,5 @@
 <template>
   <div class="event-calendar-section">
-    <h2>Event Scheduler</h2>
     <div class="top-row">
       <div class="date-input">
         <input type="date" v-model="inputDate" @change="onDateChange" />
@@ -31,11 +30,11 @@
           <li class="list-item">Sun 25/7</li>
         </ul>
       </div>
-      <div class="days-row days-row-day">
+      <!-- <div class="days-row days-row-day">
         <ul>
           <li class="list-item">Mon 19/7</li>
         </ul>
-      </div>
+      </div> -->
       <ul :class="typeIndex" class="main-list">
         <li class="main-list-item" v-for="item in gridList" :key="item.time">
           <div class="main-list-time">{{ item.time }}</div>
@@ -83,6 +82,7 @@
                 <div class="data flex gap-5">
                   <strong>Barcode : </strong>
                   <div class="val">206LL68</div>
+                  <img src="/src/assets/images/png/printer.png" alt="">
                 </div>
                 <div class="data flex gap-5">
                   <strong>Collection at : </strong>
@@ -94,6 +94,10 @@
                     <div class="list">Fasting Blood Glucose</div>
                     <div class="list">Fasting Blood Glucose</div>
                   </div>
+                </div>
+                <div class="message">
+                  <span>Prescription</span>
+                  <span>Lab</span>
                 </div>
               </div>
             </li>
@@ -123,7 +127,7 @@ const props = defineProps({
 const instance = getCurrentInstance();
 const gridList = ref([]);
 const inputDate = ref(null);
-const typeList = ["Day", "Week", "Month"];
+const typeList = ["Today", "Day", "Week", "Month"];
 const typeIndex = ref("Day");
 
 let startOfDay = moment(inputDate).startOf(typeIndex.value);

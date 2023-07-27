@@ -769,6 +769,115 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
 }
 
+//p-info card
+.p-info-card{
+  position: absolute;
+  z-index: 15;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1.5rem;
+  padding: 0.5rem;
+  width: 290px;
+  color: var(--black);
+  font-size: 0.75rem;
+  cursor: auto;
+  border: 1px solid #49ba72ab;
+  &::before {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -10px;
+    content:"";
+    display:block;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #49ba72; 
+    
+  }
+  .top{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+    .p-img{
+      img{
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+    .p-info{
+      .name{
+        font-weight: 700;
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin-bottom: 0.0rem;
+      }
+      .about{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        span{
+          
+        }
+      }
+    }
+  }
+  .contact-info{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 0.5rem;
+    span{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      #icon{
+        height: 0.9rem;
+        width: 0.9rem;
+      }
+    }
+  }
+  .message{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 0.5rem;
+    span{
+      padding: 3px 5px;
+      width: 50%;
+      cursor: pointer;
+      background: var(--primary);
+      border-radius: 3px;
+      color: var(--white);
+      text-align: center;
+      font-size: 0.75rem;
+    }
+  }
+  .schedule{
+    background: #3db39d8c;
+    padding: 4px 8px;
+    margin-bottom: 0.5rem !important;
+    margin: 0 -0.5rem;
+  }
+  .data{
+    margin-bottom: 0.5rem;
+    .val{
+      .list{
+        &:not(:last-child){
+          margin-bottom: 0.2rem;
+        }
+      }
+
+    }
+    img{
+      height: 1rem;
+      width: 1rem;
+      cursor: pointer;
+      margin-left: 3px;
+    }
+  }
+}
+
 
 
 
@@ -804,6 +913,13 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
   .container{
     padding: 0.5rem;
+  }
+  .stat-card{
+    .search-section{
+      .row{
+        gap: 0.5rem;
+      }
+    }
   }
 }
 
