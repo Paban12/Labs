@@ -271,7 +271,7 @@
           </div>
         </div>
         <div class="save-btn form-item">
-          <button class="btn black-btn">Book Consultation</button>
+          <button class="btn black-btn">Book</button>
         </div>
       </form>
     </Modal>
@@ -346,7 +346,7 @@ const formVar = reactive({
   fromDate: moment().format("YYYY-MM-DD"),
   toDate: moment().format("YYYY-MM-DD"),
   tab: 1,
-  aptModal: true,
+  aptModal: false,
 });
 
 const onDateChange = (date) => {

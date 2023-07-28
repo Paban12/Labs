@@ -810,7 +810,24 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
         font-weight: 700;
         font-size: 0.9rem;
         opacity: 0.9;
-        margin-bottom: 0.0rem;
+        margin-bottom: 0.3rem;
+        display: flex;
+        flex-wrap: wrap;
+        .edit-btn{
+          background: var(--primary);
+          height: 1.3rem;
+          width: 1.3rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 1rem;
+          border-radius: 100%;
+          cursor: pointer;
+          img{
+            height: 0.8rem;
+            width: 0.8rem;
+          }
+        }
       }
       .about{
         display: flex;
