@@ -53,7 +53,7 @@
           </div>
           <div class="table-footer">
             <div class="entries">
-              Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
+              Showing <span>0</span> to <span>0</span> of <span>0</span> entries
             </div>
             <div class="pagination">
               <span>First</span>
@@ -66,56 +66,40 @@
         </div>
       </div>
       <div class="card apt-form">
-        <form action="" class="form">
+        <form action="" class="form" @submit.prevent="onSubmitAppointment">
           <h3>Book Appointment</h3>
-          <span class="text"> 
+          <span class="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, expedita!
           </span>
           <div class="form-item mb-16">
-            <SingleSelect
-              v-model="appointment.doctor"
-              :options="doctorOptions"
-              @selected="handleSelectedOption"
-              placeholder="Select Doctor"
-            ></SingleSelect>
-            <div class="err-msg">Please select doctor</div>
+            <SingleSelect v-model="formVar.doctor" :options="doctorOptions" @selected="handleSelectedOption"
+              placeholder="Select Doctor"></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && doctorValid">{{ doctorValid }}</div>
           </div>
           <div class="form-item mb-16">
-            <SingleSelect
-              v-model="appointment.service"
-              :options="serviceOptions"
-              @selected="handleSelectedOption"
-              placeholder="Select Service"
-            ></SingleSelect>
-            <div class="err-msg">Please select service</div>
+            <SingleSelect v-model="formVar.service" :options="serviceOptions" @selected="handleSelectedOption"
+              placeholder="Select Service"></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && serviceValid">{{ serviceValid }}</div>
           </div>
           <div class="form-item mb-16">
             <div class="date-input">
-              <input type="date">
+              <input type="date" v-model="formVar.dob">
               <div class="icon">
                 <img src="/src/assets/images/icons/calender.svg" alt="">
               </div>
             </div>
-            <div class="err-msg">Please select date</div>
+            <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
           </div>
           <div class="row two-inputs">
             <div class="form-item col-5 mb-16">
-              <SingleSelect
-                v-model="appointment.time"
-                :options="timeOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Time"
-              ></SingleSelect>
-              <div class="err-msg">Please select time</div>
+              <SingleSelect v-model="formVar.time" :options="timeOptions" @selected="handleSelectedOption"
+                placeholder="Select Time"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && timeValid">{{ timeValid }}</div>
             </div>
             <div class="form-item col-5 mb-16">
-              <SingleSelect
-                v-model="appointment.duration"
-                :options="durationOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Duration"
-              ></SingleSelect>
-              <div class="err-msg">Please select duration</div>
+              <SingleSelect v-model="formVar.duration" :options="durationOptions" @selected="handleSelectedOption"
+                placeholder="Select Duration"></SingleSelect>
+                <div class="err-msg" v-if="formVar.submit && durationValid">{{ durationValid }}</div>
             </div>
           </div>
           <div class="book-btn form-item flex justify-center">
@@ -128,49 +112,108 @@
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { computed, reactive } from "vue";
+import { useStore } from "vuex";
 
-  const appointment = reactive({
-    doctor: "",
-    service: "",
-    time: "",
-    duration: "",
-  })
+/* Constants */
+const store = useStore();
+const storeVar = computed(() => store.state.Auth);
+const formVar = reactive({
+  submit: false,
+  doctor: "",
+  service: "",
+  time: "",
+  duration: "",
+  dob: null,
+})
 
-  const billData = reactive([
-    {
-      date: '12-05-2023',
-      time: '12:45',
-      doctor_name: 'Dr. Harish Verma',
-      service: 'ENT'
-    },
-  ])
+const billData = reactive([
+  {
+    date: '12-05-2023',
+    time: '12:45',
+    doctor_name: 'Dr. Harish Verma',
+    service: 'ENT'
+  },
+])
 
-  //search select start//
-  const doctorOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const serviceOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const timeOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
-  const durationOptions = [
-    { id: 1, name: "Option1" },
-    { id: 2, name: "Option2" },
-  ];
+//search select start//
+const doctorOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const serviceOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const timeOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const durationOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
 
-  const handleSelectedOption = (option) => {
-    console.log("Selected option:", option);
-  };
-  //search select end//
+const handleSelectedOption = (option) => {
+  console.log("Selected option:", option);
+};
+//search select end//
+
+/* Constants */
+
+/* Lifecycle/Hooks */
+/* Lifecycle/Hooks */
+
+/* Functions/Methods */ 
+
+const onSubmitAppointment = () => {
+  if (
+    doctorValid.value ||
+    serviceValid.value ||
+    timeValid.value ||
+    durationValid.value ||
+    dobValid.value 
+  ) {
+    formVar.submit = true;
+    return;
+  }
+  formVar.submit = false;
+  store.dispatch("Auth/verifyUser", {
+    userId: 10563543453,
+    password: 4532453,
+  });
+};
+/* Functions/Methods */
+
+/* Validation */
+const doctorValid = computed(() => {
+  if (!formVar.doctor) {
+    return "Please select doctor!";
+  }
+});
+const serviceValid = computed(() => {
+  if (!formVar.service) {
+    return "Please select service!";
+  }
+});
+const timeValid = computed(() => {
+  if (!formVar.time) {
+    return "Please select time!";
+  }
+});
+const durationValid = computed(() => {
+  if (!formVar.duration) {
+    return "Please select duration!";
+  }
+});
+const dobValid = computed(() => {
+  if (!formVar.dob) {
+    return "Please select dob!";
+  }
+});
+
+/* Validation */
 
 </script>
 
-<style>
-
-</style>
+<style></style>

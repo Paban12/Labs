@@ -1,5 +1,5 @@
 <template>
-  <section class="notes-page">
+  <section class="formVar-page">
     <div class="container">
       <div class="card search-btn-head flex align-center justify-space mb-16">
         <div class="search flex align-center gap-16">
@@ -11,8 +11,8 @@
           <div class="no text-small">1-89 of 89</div>
         </div>
         <div class="btns flex align-center gap-16">
-          <div class="btn black-btn" @click.prevent="notes.addModal = true">Add Complaints</div>
-          <div class="btn clear-btn" @click.prevent="notes.confirmModal = true">Delete Complaints</div>
+          <div class="btn black-btn" @click.prevent="formVar.addModal = true">Add Complaints</div>
+          <div class="btn clear-btn" @click.prevent="formVar.confirmModal = true">Delete Complaints</div>
         </div>
       </div>
       <div class="card">
@@ -39,7 +39,7 @@
                     <router-link to="/" class="edit-icon">
                       <img src="/src/assets/images/png/edit.png" alt="">
                     </router-link>
-                    <div class="pointer" @click.prevent="notes.confirmModal = true">
+                    <div class="pointer" @click.prevent="formVar.confirmModal = true">
                       <img src="/src/assets/images/png/delete.png" alt="">
                     </div>
                   </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="table-footer">
           <div class="entries">
-            Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
+            Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
             <span>First</span>
@@ -68,52 +68,87 @@
       </div>
     </div>
     <!-- modals -->
-    <Modal v-model:show="notes.confirmModal" class="confirm-modal">
+    <Modal v-model:show="formVar.confirmModal" class="confirm-modal">
       <h4>
         Are you sure want to Delete
       </h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="notes.confirmModal = false">Cancel</button>
+        <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">Cancel</button>
         <button class="btn confirm-btn">Confirm</button>
-      </div>      
+      </div>
     </Modal>
-    <Modal v-model:show="notes.addModal" class="" headerClasses="header-bg">
+    <Modal v-model:show="formVar.addModal" class="" headerClasses="header-bg">
       <template v-slot:header>
-        <div class="title" showHeader="true"> 
+        <div class="title" showHeader="true">
           Add Complaints
         </div>
-        <div class="close-btn" @click.prevent="notes.addModal = false">
+        <div class="close-btn" @click.prevent="formVar.addModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
-      <form action="" class="form">
+      <form action="" class="form" @submit.prevent="onSubmitComplaints">
         <div class="form-item mb-16 mt-16">
-          <input type="text" placeholder="Text">
-          <div class="err-msg">Please enter complaint</div>
+          <input type="text" v-model="formVar.complaints" placeholder="Text">
+          <div class="err-msg" v-if="formVar.submit && complaintsValid">{{ complaintsValid }}</div>
         </div>
-        <button class="btn black-btn w-100 mt-16">Add</button>
+        <button type="submit" class="btn black-btn w-100 mt-16">Add</button>
       </form>
     </Modal>
   </section>
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { computed, reactive } from "vue";
+import { useStore } from "vuex";
 
-  const notes = reactive({
-    confirmModal: false,
-    addModal: false,
-  })
+/* Constants */
+const store = useStore();
+const storeVar = computed(() => store.state.Auth);
+const formVar = reactive({
+  confirmModal: false,
+  addModal: false,
+  submit: false,
+  complaints: null,
+})
 
-  const textData = reactive([
-    {
-      med_name: 'Corosine',
-      use_count: '2 Tabs daily',
-      last_use: '15 days ago'
-    },
-  ])
+const textData = reactive([
+  {
+    med_name: 'Corosine',
+    use_count: '2 Tabs daily',
+    last_use: '15 days ago'
+  },
+])
+
+/* Constants */
+
+/* Lifecycle/Hooks */
+/* Lifecycle/Hooks */
+
+/* Functions/Methods */
+
+const onSubmitComplaints = () => {
+  if (
+    complaintsValid.value
+  ) {
+    formVar.submit = true;
+    return;
+  }
+  formVar.submit = false;
+  store.dispatch("Auth/verifyUser", {
+    userId: 10563543453,
+    password: 4532453,
+  });
+};
+/* Functions/Methods */
+
+/* Validation */
+const complaintsValid = computed(() => {
+  if (!formVar.complaints) {
+    return "Please enter complaints!";
+  }
+});
+
+/* Validation */
 </script>
 
-<style>
-
-</style>
+<style></style>

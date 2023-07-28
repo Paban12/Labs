@@ -16,7 +16,7 @@
       </div>
       <div class="form-item mb-16">
         <input type="text" v-model="formVar.email" class="" placeholder="Enter your email">
-        <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
+        <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div> 
       </div>
       <div class="radio-btns mb-16">
         <div class="two-inputs">
@@ -29,7 +29,7 @@
             <label for="female">Female</label>
           </div>
           <div class="col-5 form-item">
-            <input type="radio" name="gender" id="other">
+            <input type="radio" v-model="formVar.gender" value="Other" name="gender" id="other">
             <label for="other">Other</label>
           </div>
         </div>
