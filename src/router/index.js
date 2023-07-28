@@ -295,9 +295,9 @@ const routes = [
                 component: () => import( /* webpackChunkName: "terms" */ '../views/PolicyPages/Terms.vue')
             },
             {
-                path: '/test',
-                name: 'test',
-                component: () => import( /* webpackChunkName: "test" */ '../views/Test.vue')
+                path: '/appointment-calender',
+                name: 'appointment calender',
+                component: () => import( /* webpackChunkName: "appointment calender" */ '../views/AppointmentCalender.vue')
             },
         ]
     },

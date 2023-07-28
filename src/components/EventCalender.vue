@@ -1,8 +1,12 @@
 <template>
-  <div class="event-calendar">
-    <h2>Event Scheduler</h2>
-    <div>
-      <input type="date" v-model="inputDate" @change="onDateChange" />
+  <div class="event-calendar-section">
+    <div class="top-row">
+      <div class="date-input">
+        <input type="date" v-model="inputDate" @change="onDateChange" />
+        <div class="icon">
+          <img src="/src/assets/images/icons/calender.svg" alt="">
+        </div>
+      </div>
       <button
         type="button"
         v-for="item in typeList"
@@ -10,22 +14,97 @@
         :class="`btn ${typeIndex === item ? 'active' : ''}`"
         @click="onTypeChange(item)"
       >
-        {{ item }}
+        {{ item }} 
       </button>
     </div>
-    <ul :class="typeIndex">
-      <li v-for="item in gridList" :key="item.time">
-        {{ item.time }}
+    <div class="calender-content">
+      <div class="days-row days-row-month">
         <ul>
-          <li
-            v-for="event in checkKeyInEventList(item.date)"
-            :key="event.title"
-          >
-            {{ event.title }}
-          </li>
+          <!-- <li class="list-item"></li> -->
+          <li class="list-item">Mon 19/7</li>
+          <li class="list-item">Tue 20/7</li>
+          <li class="list-item">Wed 21/7</li>
+          <li class="list-item">Thu 22/7</li>
+          <li class="list-item">Fri 23/7</li>
+          <li class="list-item">Sat 24/7</li>
+          <li class="list-item">Sun 25/7</li>
         </ul>
-      </li>
-    </ul>
+      </div>
+      <!-- <div class="days-row days-row-day">
+        <ul>
+          <li class="list-item">Mon 19/7</li>
+        </ul>
+      </div> -->
+      <ul :class="typeIndex" class="main-list">
+        <li class="main-list-item" v-for="item in gridList" :key="item.time">
+          <div class="main-list-time">{{ item.time }}</div>
+          <ul class="sub-list">
+            <li
+              class="sub-list-item"
+              v-for="event in checkKeyInEventList(item.date)"
+              :key="event.title"
+            >
+              {{ event.title }}
+              <div class="p-info-card card card1">
+                <div class="top">
+                  <div class="p-img">
+                    <img src="/src/assets/images/png/user.png" alt="">
+                  </div>
+                  <div class="p-info">
+                    <div class="name">Mrs Rekha</div>
+                    <div class="about">
+                      <span>Female</span>-
+                      <span>49 Years</span>-
+                      <span>A+</span>
+                    </div>
+                    <div class="p-id">PID : 189</div>
+                    <div class="amt">₹00</div>
+                  </div>
+                </div>
+                <div class="contact-info">
+                  <span>
+                    <icon-mobile></icon-mobile>
+                    +91 8888888888
+                  </span>
+                  <span>
+                    <icon-mail></icon-mail>
+                    company@mail.com
+                  </span>
+                </div>
+                <div class="message">
+                  <span>Feedback Message</span>
+                  <span>Thanks Message</span>
+                </div>
+                <div class="schedule">
+                  <div class="time">10:45 AM For 5 Min</div>
+                  <div class="dr">Dr. Self</div>
+                </div>
+                <div class="data flex gap-5">
+                  <strong>Barcode : </strong>
+                  <div class="val">206LL68</div>
+                  <img src="/src/assets/images/png/printer.png" alt="">
+                </div>
+                <div class="data flex gap-5">
+                  <strong>Collection at : </strong>
+                  <div class="val">Lab Address</div>
+                </div>
+                <div class="data">
+                  <strong>Tests : </strong>
+                  <div class="val">
+                    <div class="list">Fasting Blood Glucose</div>
+                    <div class="list">Fasting Blood Glucose</div>
+                  </div>
+                </div>
+                <div class="message">
+                  <span>Prescription</span>
+                  <span>Lab</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -48,7 +127,7 @@ const props = defineProps({
 const instance = getCurrentInstance();
 const gridList = ref([]);
 const inputDate = ref(null);
-const typeList = ["Day", "Week", "Month"];
+const typeList = ["Today", "Day", "Week", "Month"];
 const typeIndex = ref("Day");
 
 let startOfDay = moment(inputDate).startOf(typeIndex.value);
@@ -59,7 +138,6 @@ let endOfDay = moment(inputDate).endOf(typeIndex.value);
 /** Lifecycle/Hooks **/
 onBeforeMount(() => {
   inputDate.value = moment(props.date).format("YYYY-MM-DD");
-
   generateGridList();
 });
 /** Lifecycle/Hooks **/
