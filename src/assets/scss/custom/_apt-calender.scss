@@ -78,6 +78,10 @@
       .event-calendar-section{
         width: 56%;
         height: 100%;
+        background: var(--white);
+        border-radius: 5px;
+        // box-shadow: var(--box-shadow);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         .calender-content{
           height: calc(100% - 3.5rem);
           .main-list{
@@ -209,4 +213,54 @@
       }
     }
   }
+  .book-apt-modal{
+    .modal{
+      .modal-dialog{
+        width: 550px;
+      }
+    }
+  }
 }
+
+
+//media queries
+@media (max-width: 768px){
+  .apt-calender-page {
+    height: max-content;
+    .container{
+      padding-bottom: 0.5rem;
+       .calender-page-row{
+        .doctor-list-card, .patient-list-card{
+          display: none;
+        }
+        .event-calendar-section{
+          width: 100%;
+        }
+      }
+    }
+  }
+  .apt-doctor-page{
+    .container{
+      .calender-page-row{
+        .doctor-list-card{
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .apt-patient-page{
+    .container{
+      .calender-page-row{
+        .patient-list-card{
+          display: block;
+          width: 100%;
+          .patient-list{
+            overflow: visible;
+          }
+        }
+      }
+    }
+  }
+}
+

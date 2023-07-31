@@ -294,10 +294,21 @@ const routes = [
                 name: 'terms',
                 component: () => import( /* webpackChunkName: "terms" */ '../views/PolicyPages/Terms.vue')
             },
+            //appointments
             {
-                path: '/appointment-calender',
+                path: '/appointment/calender',
                 name: 'appointment calender',
                 component: () => import( /* webpackChunkName: "appointment calender" */ '../views/AppointmentCalender.vue')
+            },
+            {
+                path: '/appointment/doctor',
+                name: 'appointment doctor',
+                component: () => import( /* webpackChunkName: "appointment doctor" */ '../views/Appointment/Doctor.vue')
+            },
+            {
+                path: '/appointment/patient',
+                name: 'appointment patient',
+                component: () => import( /* webpackChunkName: "appointment patient" */ '../views/Appointment/Patient.vue')
             },
         ]
     },

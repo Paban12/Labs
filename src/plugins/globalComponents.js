@@ -9,6 +9,7 @@ const Loader = defineAsyncComponent(() => import('../components/Loader.vue'))
 const Modal = defineAsyncComponent(() => import('../components/Modal.vue'))
 const Alert = defineAsyncComponent(() => import('../components/Alert.vue'))
 const EventCalender = defineAsyncComponent(() => import('../components/EventCalender.vue'))
+const Popup = defineAsyncComponent(() => import('../components/Popup.vue'))
 // const  = defineAsyncComponent(() => import('../components/.vue'))
 
 //icons
@@ -46,6 +47,7 @@ const NotificationList = defineAsyncComponent(() => import('../components/Notifi
 const NotificationMessage = defineAsyncComponent(() => import('../components/NotificationMessage.vue'));
 const spinner = defineAsyncComponent(() => import('../components/Spinner.vue'));
 const MobileIcon = defineAsyncComponent(() => import('../components/icons/mobile-svg.vue'))
+const LeftArrowIcon = defineAsyncComponent(() => import('../components/icons/left-arrow-svg.vue'))
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
@@ -58,6 +60,7 @@ const GlobalComponents = {
     app.component('Modal', Modal)
     app.component('Alert', Alert)
     app.component('EventCalender', EventCalender)
+    app.component('Popup', Popup)
     // app.component('', )
     
     // icons
@@ -95,6 +98,7 @@ const GlobalComponents = {
 		app.component('Notification-message', NotificationMessage)
     app.component('base-spinner', spinner);
     app.component('icon-mobile', MobileIcon)
+    app.component('icon-left-arrow', LeftArrowIcon)
     // app.component('icon-', Icon)
   }
 }
