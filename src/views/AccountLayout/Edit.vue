@@ -34,11 +34,12 @@
             <div class="col-4 form-item mb-16">
               <div class="title">Select DOB</div>
               <div class="date-input">
-                <input type="date" v-model="formVar.dob">
+                <input type="date" v-model="formVar.dob" :max="today()">
                 <div class="icon">
                   <img src="/src/assets/images/icons/calender.svg" alt="">
                 </div>
               </div>
+              <span>{{ ageCalculate }}</span>
               <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
             </div>
             <div class="col-3 form-item mb-16">
@@ -297,6 +298,38 @@ const onSubmitAccount = () => {
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);
 };
+function today() {
+  var fullDate = new Date()
+  var tDate = fullDate.getDate()
+  var tYear = fullDate.getFullYear()
+  var tMonth = fullDate.getMonth() + 1
+  if (tMonth < 10) {
+    tMonth = '0' + tMonth
+  }
+  if (tDate < 10) {
+    tDate = '0' + tDate
+  }
+  var minDate = tYear + '-' + tMonth + '-' + tDate
+  return minDate
+}
+function getAge(dateString) {
+			var today = new Date();
+			var birthDate = new Date(dateString);
+			var age = today.getFullYear() - birthDate.getFullYear();
+			var m = today.getMonth() - birthDate.getMonth();
+			var d = today.getDay() - birthDate.getDay();
+			if (age === 0 ) {
+				var total_age = `${m} m`
+			} else {
+				var total_age = `${age} y`
+			}
+			formVar.age= total_age;
+		}
+const ageCalculate = computed(() => {
+  if (formVar.dob) {
+    getAge(formVar.dob)
+  }
+});
 /* Functions/Methods */
 
 /* Validation */

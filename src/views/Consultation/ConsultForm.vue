@@ -347,6 +347,23 @@ function today() {
   var minDate = tYear + '-' + tMonth + '-' + tDate
   return minDate
 }
+function getAge(dateString) {
+			var today = new Date();
+			var birthDate = new Date(dateString);
+			var age = today.getFullYear() - birthDate.getFullYear();
+			var m = today.getMonth() - birthDate.getMonth();
+			if (age === 0) {
+				var total_age = `${m}m`
+			} else {
+				var total_age = `${age}y`
+			}
+			formVar.age= total_age;
+		}
+const ageCalculate = computed(() => {
+  if (formVar.dob) {
+    getAge(formVar.dob)
+  }
+});
 
 /* Functions/Methods */
 
@@ -379,20 +396,7 @@ const dobValid = computed(() => {
     return "Select DOB!";
   }
 });
-const ageCalculate = computed(() => {
-  if (formVar.dob) {
-    console.log(formVar.dob);
-    // var years = moment().diff(formVar.dob, 'years');
-    // var month = moment().diff(formVar.dob, 'month');
-    // var days = moment().diff(formVar.dob, 'days');
-    // console.log({ years, month, days });
-    // formVar.age = years ? years + ' Y' : "" + month ? month + ' M' : "" + days ? days + ' D' : ""
-    var diff = moment(formVar.dob).diff(moment(), 'milliseconds');
-  var duration = moment.duration(diff);
-  // var age=duration.format().replace("-","");
-    console.log({duration});
-  }
-});
+
 
 const bloodValid = computed(() => {
   if (!formVar.blood) {
