@@ -13,17 +13,34 @@
         </div>
       </div>
       <div class="rights">
-        <div class="left">All Rights Reserved By Parchi @2023</div>
-        <div class="right">Design and Developed By WASS</div>
+        <div class="left">© {{ getYear(new Date()) }} All Rights Reserved By Parchi</div>
+        <div class="right">Design and Developed By 
+          <a href="https://webappssoft.com/" class="developed" target="_blank" rel="noopener noreferrer">WASS</a>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
+<script setup>
+import moment from "moment";
+import { computed } from 'vue';
+import { useStore } from 'vuex'
+import router from '../router';
 
+const store = useStore()
+const storeVar = computed(() => store.state.Auth)
+
+function navigate(link, id) {
+  router.push({ path: link, query: { id } })
 }
+function getYear(date) {
+  if (date) {
+    return moment(date).format('YYYY');
+  }
+  return "-";
+}
+
 </script>
 
 <style>
