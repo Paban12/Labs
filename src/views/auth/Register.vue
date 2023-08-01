@@ -4,7 +4,7 @@
       <h2>Welcome to Parchi</h2>
       <span>
         Enter details for Register
-      </span>
+      </span> 
       <div class="form-item mb-16">
         <input type="text" v-model="formVar.name" class="" placeholder="Enter your name">
         <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
