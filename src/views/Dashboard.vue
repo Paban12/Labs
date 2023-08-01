@@ -50,13 +50,19 @@
           <div class="title">Hospitals</div>
           <div class="tooltip">You can manage <strong>Hospitals</strong></div>
         </router-link>
+        <router-link to="/specialization" class="card card4">
+          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <div class="val">254</div>
+          <div class="title">Specialization</div>
+          <div class="tooltip">You can manage <strong>Specialization</strong></div>
+        </router-link>
         <router-link to="/payment-history" class="card card5">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Payment History</div>
           <div class="tooltip">You can manage <strong>Payment History</strong></div>
         </router-link>
-        <router-link to="" class="card card6">
+        <router-link to="/labtest" class="card card6">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Test</div>

@@ -4,6 +4,8 @@ export default {
   loader: false,
   loaderButton: false,
 
+  addTestModal: false,
+
   user: {
     profile: "src/assets/img/image.svg",
   },

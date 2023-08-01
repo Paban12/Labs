@@ -1,12 +1,12 @@
 <template>
-  <section class="laboratory-page common-list-page">
+  <section class="speciality-page common-list-page">
     <div class="container">
       <div class="card">
         <div class="heading">
-          <div class="title">All Laboratories</div>
+          <div class="title">Specializations</div>
           <div class="right">
             <div class="searchbar">
-              <input type="text" placeholder="Search Laboratory" />
+              <input type="text" placeholder="Search Specialization" />
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
             <div class="add-btn">
@@ -24,23 +24,15 @@
             <table class="table">
               <thead>
                 <th>Sr. No.</th>
-                <th>ID</th>
                 <th>Name</th>
-                <th>Lab Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Speciality</th>
+                <th>Description</th>
                 <th class="text-center">View</th>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in doctorData" :key="item">
+                <tr v-for="(item, index) in specialityData" :key="item">
                   <td>{{ index + 1 }}</td>
-                  <td>{{ item.id }}</td>
                   <td>{{ item.name }}</td>
-                  <td>{{ item.lab_name }}</td>
-                  <td>{{ item.phone }}</td>
-                  <td>{{ item.email }}</td>
-                  <td>{{ item.speciality }}</td>
+                  <td>{{ item.desc }}</td>
                   <td class="text-center">
                     <div class="option-btns">
                       <div class="" @click.prevent="patient.viewModal = true">
@@ -94,60 +86,19 @@
     </Modal>
     <Modal v-model:show="patient.addModal" class="" headerClasses="header-bg">
       <template v-slot:header>
-        <div class="title" showHeader="true">Add Laboratory</div>
+        <div class="title" showHeader="true">Add Specialization</div>
         <div class="close-btn" @click.prevent="patient.addModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
       <form action="" class="form">
         <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Lab Name" />
-          <div class="err-msg">Enter lab name</div>
+          <input type="text" placeholder="Enter Specialization" />
+          <div class="err-msg">Enter Specialization</div>
         </div>
         <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Lab Licence Number" />
-          <div class="err-msg">Enter lab licence number</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="number" placeholder="Enter Phone no" />
-          <div class="err-msg">Enter phone no</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Email" />
-          <div class="err-msg">Enter email</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Address" />
-          <div class="err-msg">Enter address</div>
-        </div>
-        <div class="col-5 form-item mb-16">
-          <SingleSelect
-            v-model="doctorAdd.speciality"
-            :options="specialityOptions"
-            @selected="handleSelectedOption"
-            placeholder="Select Lab Speciality"
-          ></SingleSelect>
-          <div class="err-msg">Select Lab speciality</div>
-        </div>
-        <div class="two-inputs">
-          <div class="col-5 form-item mb-16">
-            <SingleSelect
-              v-model="doctorAdd.state"
-              :options="stateOptions"
-              @selected="handleSelectedOption"
-              placeholder="Select State"
-            ></SingleSelect>
-            <div class="err-msg">Select state</div>
-          </div>
-          <div class="col-5 form-item mb-16">
-            <SingleSelect
-              v-model="doctorAdd.city"
-              :options="cityOptions"
-              @selected="handleSelectedOption"
-              placeholder="Select City"
-            ></SingleSelect>
-            <div class="err-msg">Select city</div>
-          </div>
+          <textarea name="" id="" placeholder="Enter Description"></textarea>
+          <div class="err-msg">Enter description</div>
         </div>
         <div class="save-btn form-item">
           <button class="btn black-btn">Add</button>
@@ -156,42 +107,19 @@
     </Modal>
     <Modal v-model:show="patient.viewModal" class="view-modal" headerClasses="header-bg">
       <template v-slot:header>
-        <div class="title" showHeader="true">Laboratory Details</div>
+        <div class="title" showHeader="true">Specialization Details</div>
         <div class="close-btn" @click.prevent="patient.viewModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
       <div class="data">
-        <div class="title">Lab Name : </div>
-        <div class="val">Sai Tech Lab</div>
+        <div class="title">Specialization : </div>
+        <div class="val">Gynacologist</div>
       </div>
       <div class="data">
-        <div class="title">Phone Number : </div>
-        <div class="val">+91 8888888888</div>
-      </div>
-      <div class="data">
-        <div class="title">Email : </div>
-        <div class="val">patient@mai.com</div>
-      </div>
-      <div class="data">
-        <div class="title">Lab Speciality : </div>
-        <div class="val">ENT</div>
-      </div>
-      <div class="data">
-        <div class="title">Address : </div>
+        <div class="title">Description : </div>
         <div class="val">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quod perferendis</div>
       </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">State : </div>
-          <div class="val">Maharashtra</div>
-        </div>
-        <div class="data">
-          <div class="title">City : </div>
-          <div class="val">Nashik</div>
-        </div>
-      </div>
-      
     </Modal>
   </section>
 </template>
@@ -205,45 +133,21 @@ const patient = reactive({
   viewModal: false,
 });
 
-const doctorData = reactive([
+const specialityData = reactive([
   {
-    id: 125,
-    name: "Prakash Jhaa",
-    phone: 8888888888,
-    email: "patient@mail.com",
-    speciality: 'ENT'
+    name: "Gynacologist",
+    desc: '8 years of experience in this feild'
   },
 ]);
 
-const doctorAdd = reactive({
-  prefix: "",
-  gender: "",
-  state: "",
-  city: "",
+const specialityAdd = reactive({
   speciality: "",
 });
 
 //search select start//
-const stateOptions = [
-  { id: 1, name: "Option1" },
-  { id: 2, name: "Option2" },
-];
-const cityOptions = [
-  { id: 1, name: "Option1" },
-  { id: 2, name: "Option2" },
-];
 const specialityOptions = [
   { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
-];
-const genderOptions = [
-  { name: "Male", id: "male" },
-  { name: "Female", id: "female" },
-  { name: "Other", id: "other" },
-];
-const prefixOptions = [
-  { name: "Mr.", id: "mr" },
-  { name: "Mrs.", id: "mrs" },
 ];
 
 const handleSelectedOption = (option) => {

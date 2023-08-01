@@ -12,6 +12,9 @@ const EventCalender = defineAsyncComponent(() => import('../components/EventCale
 const Popup = defineAsyncComponent(() => import('../components/Popup.vue'))
 // const  = defineAsyncComponent(() => import('../components/.vue'))
 
+//Lab Test
+const AddTestModal = defineAsyncComponent(() => import('../components/Labtest/AddTestModal.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -62,6 +65,9 @@ const GlobalComponents = {
     app.component('EventCalender', EventCalender)
     app.component('Popup', Popup)
     // app.component('', )
+
+    //Lab Test
+    app.component('AddTestModal', AddTestModal)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

@@ -106,12 +106,10 @@
                       <td>{{ item.note }}</td>
                     </tr>
                   </tbody>
-                  <tfoot class="no-data">
-                    <tr>
-                      <td colspan="10" rowspan="1">No records Found!</td>
-                    </tr>
-                  </tfoot>
                 </table>
+              </div>
+              <div class="table-no-data">
+                <div >No records Found!</div>
               </div>
               <div class="table-footer">
                 <div class="entries">
@@ -139,12 +137,10 @@
                       <td class="f-w-bold">Done</td>
                     </tr>
                   </tbody>
-                  <tfoot class="no-data">
-                    <tr>
-                      <td colspan="10" rowspan="1">No records Found!</td>
-                    </tr>
-                  </tfoot>
                 </table>
+              </div>
+              <div class="table-no-data">
+                <div >No records Found!</div>
               </div>
             </div>
           </div>
