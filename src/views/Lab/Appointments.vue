@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="card table-card">
-          <!-- <div class="no-found">
+          <!-- <div class="date-no-found">
             <div class="no-found-card">
               <img src="/src/assets/images/png/calender.png" alt="image">
               <div class="text">No appointments for the selected date!</div>
@@ -57,7 +57,7 @@
           </div> -->
           <div class="consult-table">
             <div class="title-header mb-16">
-              <div class="title f-w-bold">All Appointments</div>
+              <div class="title f-w-bold">Lab Appointments</div>
             </div>
             <div class="table-outer">
               <table class="table">

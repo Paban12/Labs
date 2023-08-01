@@ -659,10 +659,11 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  a{
+  a, div{
     img{
       height: 1.2rem;
       width: 1.2rem;
+      cursor: pointer;
     }
   }
 }

@@ -118,9 +118,33 @@
                 </div>
               </div>
             </li>
+            <!-- after click more btn -->
+            <!-- <div class="more-list-card">
+              <div class="icon">
+                <icon-cross></icon-cross>
+              </div>
+              <div class="more-list">
+                <div class="more-list-item">
+                  xvashshasgxj
+                </div>
+                <div class="more-list-item">
+                  xvashshasgxj
+                </div>
+                <div class="more-list-item">
+                  xvashshasgxj
+                </div>
+                <div class="more-list-item">
+                  xvashshasgxj
+                </div>
+                <div class="more-list-item">
+                  xvashshasgxj
+                </div>
+              </div>
+            </div> -->
           </ul>
         </li>
       </ul>
+      <!-- dummy for week -->
       <div class="week-time">
         <div class="week-time-row">
           <div class="item">00:00 AM</div>
