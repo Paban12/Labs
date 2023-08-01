@@ -50,6 +50,16 @@
       text-align: center;
       font-size: 0.8rem;
       gap: 1.5rem;
+      .right{
+        .developed{
+          text-decoration: none;
+          font-weight: bold;
+          color: pink;
+          &:hover{
+            color: #4747f5;
+          }
+        }
+      }
     }
   }
 }
