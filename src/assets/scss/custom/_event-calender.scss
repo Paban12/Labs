@@ -254,6 +254,7 @@
       .sub-list{
         display: flex;
         gap: 5px;
+        position: relative;
         .sub-list-item{
           list-style-type: none;
           // width: 100%;
@@ -282,6 +283,72 @@
           }
           .p-info-card{
             display: none;
+          }
+        }
+        .more-list-card{
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 10;
+          background: var(--light-blue);
+          width: 100%;
+          height: 7rem;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          &::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            background: #F5F5F5;
+          }
+          &::-webkit-scrollbar{
+            width: 6px;
+            background: #F5F5F5;
+          }
+          &::-webkit-scrollbar-thumb{
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: var(--blue);
+          }
+          .icon{
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            height: 1rem;
+            #icon{
+              height: 0.8rem;
+              width: 0.8rem;
+              cursor: pointer;
+              fill: #4b4949;
+              // opacity: 0.8;
+            }
+          }
+          .more-list{
+            padding: 5px 3px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            .more-list-item{
+              list-style-type: none;
+              // width: 100%;
+              padding: 0px 3px;
+              border-radius: 5px;
+              border: 1px solid transparent;
+              font-size: 0.85rem;
+              position: relative;
+              cursor: pointer;
+              white-space: nowrap;
+              // overflow: hidden;
+              &:nth-child(odd){
+                border-color: #49BA73;
+                color: #49BA73;
+                background: #DDFCE7;
+              }
+              &:nth-child(even){
+                border-color: #7095da;
+                color: #7095da;
+                background: #DBEAFE;
+              }
+            }
           }
         }
       }

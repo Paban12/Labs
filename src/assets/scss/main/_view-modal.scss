@@ -1,0 +1,52 @@
+.view-modal{
+  .modal{
+    .modal-dialog{
+      .modal-content{
+        .modal-body{
+          .data{
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            &:not(:last-child){
+              margin-bottom: 1rem;
+            }
+            .title{
+              font-weight: 700;
+              white-space: nowrap;
+              font-size: 14px;
+              opacity: 0.8;
+            }
+            .val{
+              font-size: 13px;
+            }
+          }
+          .two-data{
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            .data{
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//media queries
+@media (max-width: 560px){
+  .view-modal{
+    .modal{
+      .two-data{
+        flex-direction: column;
+        gap: 0;
+        .data{
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

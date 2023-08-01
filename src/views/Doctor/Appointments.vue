@@ -1,5 +1,5 @@
 <template>
-  <section class="consult-page">
+  <section class="consult-page appointment-page">
     <div class="container">
       <div class="consult-table-data">
         <div class="card stat-card mb-16">
@@ -8,21 +8,21 @@
               <img src="/src/assets/images/png/mobile.png" alt="image">
               <div class="vals">
                 <div class="no">25</div>
-                <div class="text">Completed</div>
+                <div class="text">Total</div>
               </div>
             </div>
             <div class="stat card2">
               <img src="/src/assets/images/png/mobile.png" alt="image">
               <div class="vals">
                 <div class="no">25</div>
-                <div class="text">Pending</div>
+                <div class="text">Cancelled</div>
               </div>
             </div>
             <div class="stat card3">
               <img src="/src/assets/images/png/mobile.png" alt="image">
               <div class="vals">
                 <div class="no">25</div>
-                <div class="text">Waiting</div>
+                <div class="text">Absent</div>
               </div>
             </div>
           </div> 
@@ -57,46 +57,30 @@
           </div> -->
           <div class="consult-table">
             <div class="title-header mb-16">
-              <div class="title">Consultation Logs</div>
+              <div class="title f-w-bold">Doctor Appointments</div>
             </div>
             <div class="table-outer">
               <table class="table">
                 <thead>
                   <th>Sr. No.</th>
+                  <th>Date</th>
                   <th>ID</th>
-                  <th>#Token</th>
                   <th>Name</th>
-                  <th>Recent Visit</th>
-                  <th>#Visits</th>
-                  <th>Time</th>
-                  <th>Status</th>
-                  <th>Purpose</th>
-                  <th class="text-center">Actions</th>
+                  <th>Phone</th>
+                  <th>Last Visit</th>
+                  <th class="text-center">View</th>
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in consultData" :key="item">
                     <td>{{ index + 1 }}</td>
+                    <td>{{ item.date }}</td>
                     <td>{{ item.id }}</td>
-                    <td>
-                      <span class="token">{{ item.token }}</span>
-                    </td>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.recent_visit }}</td>
-                    <td>{{ item.total_visits }}</td>
-                    <td>{{ item.time }}</td>
-                    <td>
-                      <div class="tag green-tag">Booked</div>
-                    </td>
-                    <td>{{ item.purpose }}</td>
+                    <td>{{ item.phone }}</td>
+                    <td>{{ item.last_visit }}</td>
                     <td class="text-center">
                       <div class="option-btns">
                         <router-link to="/" class="">
-                          <img src="/src/assets/images/png/printer.png" alt="">
-                        </router-link>
-                        <router-link to="/" class="">
-                          <img src="/src/assets/images/icons/mail.svg" alt="">
-                        </router-link>
-                        <router-link to="/visits" class="">
                           <img src="/src/assets/images/png/eye.png" alt="">
                         </router-link>
                       </div>
@@ -134,12 +118,11 @@
 
   const consultData = reactive([
     {
+      date: '12-05-2023',
       id: 125,
-      token: 25478,
       name: 'Prakash Jhaa',
+      phone: 8888888888,
       recent_visit: '20 Days ago',
-      total_visits: 10,
-      purpose: 'Consultation',
     },
   ])
 
