@@ -43,9 +43,12 @@
                       <div class="" @click.prevent="formVar.viewModal = true">
                         <img src="/src/assets/images/png/eye.png" alt="" />
                       </div>
-                      <div class="" @click.prevent="formVar.addModal = true">
+                      <router-link to="/account/visits" class="">
+                        <img src="/src/assets/images/png/man.png" alt="" />
+                      </router-link>
+                      <router-link to="/account/edit" class="">
                         <img src="/src/assets/images/png/edit.png" alt="" />
-                      </div>
+                      </router-link>
                       <div class="" @click.prevent="formVar.confirmModal = true">
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
@@ -91,13 +94,13 @@
         </div>
       </template>
       <form action="" class="form" @submit.prevent="onSubmitPatient">
-        <div class="row mb-16">
-          <div class="col-25 form-item">
+        <div class="row">
+          <div class="col-25 form-item mb-16">
             <SingleSelect v-model="formVar.prefix" :options="prefixOptions" @selected="handleSelectedOption"
               placeholder="Select Prefix"></SingleSelect>
               <div class="err-msg" v-if="formVar.submit && prefixValid">{{ prefixValid }}</div>
           </div>
-          <div class="col-75 form-item">
+          <div class="col-75 form-item mb-16">
             <input type="text" v-model="formVar.name" placeholder="Patient Name" />
             <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
           </div>
@@ -115,7 +118,7 @@
                 <img src="/src/assets/images/icons/calender.svg" alt="" />
               </div>
             </div>
-            <span>{{ ageCalculate }}</span>
+            <div>{{ ageCalculate }}</div>
             <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
           </div>
           <div class="col-2 form-item mb-16">

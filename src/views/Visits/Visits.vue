@@ -90,13 +90,13 @@
                     <td>{{ item.purpose }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <router-link to="/" class="">
+                        <div class="">
                           <img src="/src/assets/images/png/printer.png" alt="">
-                        </router-link>
-                        <router-link to="/" class="">
+                        </div>
+                        <div class="">
                           <img src="/src/assets/images/icons/mail.svg" alt="">
-                        </router-link>
-                        <router-link to="/visits" class="">
+                        </div>
+                        <router-link to="/visit-summary" class="">
                           <img src="/src/assets/images/png/eye.png" alt="">
                         </router-link>
                       </div>

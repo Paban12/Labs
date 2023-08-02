@@ -75,6 +75,9 @@
           }
         }
       }
+      .mob-view-card{
+        display: none;
+      }
     }
     .other-cards{
       margin-bottom: 1.5rem;
@@ -198,6 +201,22 @@
 
 
 //media queries
+
+@media (max-width: 560px){
+  .dashboard-page{
+    .container{
+      .dash-cards{
+        .mob-view-card{
+          display: flex;
+        }
+        .desk-view-card{
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 560px){
   .dashboard-page{
     .container{

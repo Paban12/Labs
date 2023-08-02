@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="list-item card1">
+          <router-link to="/staff/details" class="list-item card1">
             <div class="img">
               <img src="/src/assets/images/png/dr2.png" alt="image" />
             </div>
@@ -34,7 +34,7 @@
               </div>
             </div>
             <div class="post dr">Doctor</div>
-          </div>
+          </router-link>
           <div class="list-item card2">
             <div class="img">
               <img src="/src/assets/images/png/dr2.png" alt="image" />

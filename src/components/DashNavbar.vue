@@ -139,12 +139,6 @@
               </div>
               <div class="text">Home</div>
             </router-link>
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/eye.png" alt="image" />
-              </div>
-              <div class="text">Visit</div>
-            </router-link>
             <router-link to="/medicine-search" class="list mob-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/edit.png" alt="image" />
@@ -169,11 +163,29 @@
               </div>
               <div class="text">RX Medicines</div>
             </router-link>
-            <router-link to="/staff/details" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/staff/details" class="list desk-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
               <div class="text">Staff</div>
+            </router-link>
+            <router-link to="/staff" class="list mob-view" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Staff</div>
+            </router-link>
+            <router-link to="/labtest" class="list" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Tests</div>
+            </router-link>
+            <router-link to="/visits" class="list" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Visits</div>
             </router-link>
             <router-link to="/notes" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">

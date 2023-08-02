@@ -5,6 +5,7 @@ export default {
   loaderButton: false,
 
   addTestModal: false,
+  aptSuccessModal: false,
 
   user: {
     profile: "src/assets/img/image.svg",

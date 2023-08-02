@@ -74,7 +74,13 @@
           <div class="title">Labtest Reports</div>
           <div class="tooltip">You can do <strong>Labtest Reports</strong></div>
         </router-link>
-        <router-link to="" class="card card8">
+        <router-link to="/staff/details" class="card card8 desk-view-card">
+          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <div class="val">254</div>
+          <div class="title">Staff</div>
+          <div class="tooltip">You can do <strong>Staff</strong></div>
+        </router-link>
+        <router-link to="/staff" class="card card8 mob-view-card">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Staff</div>
@@ -86,12 +92,18 @@
           <div class="title">Medicine</div>
           <div class="tooltip">You can order <strong>Medicines</strong></div>
         </router-link>
-        <router-link to="/prescription" class="card card2">
+        <router-link to="/rx/medicine" class="card card1">
+          <img src="/src/assets/images/png/medicine.png" alt="image" />
+          <div class="val">254</div>
+          <div class="title">RX Group</div>
+          <div class="tooltip">You can manage <strong>RX Group</strong></div>
+        </router-link>
+        <!-- <router-link to="/prescription" class="card card2">
           <img src="/src/assets/images/png/report.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Prescription</div>
           <div class="tooltip">Your <strong>Prescriptions</strong></div>
-        </router-link>
+        </router-link> -->
       </div>
       <div class="other-cards cards-carousel">
         <h3>Our Achivements</h3>

@@ -141,6 +141,12 @@
                 </div>
               </div>
             </div> -->
+            <!-- <div class="date-no-found">
+              <div class="no-found-card">
+                <img src="/src/assets/images/png/calender.png" alt="image">
+                <div class="text">No appointments for the selected date!</div>
+              </div>
+            </div> -->
           </ul>
         </li>
       </ul>

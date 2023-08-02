@@ -45,7 +45,7 @@
                         <router-link to="/" class="">
                           <img src="/src/assets/images/icons/mail.svg" alt="">
                         </router-link>
-                        <router-link to="/" class="">
+                        <router-link to="/visit-summary" class="">
                           <img src="/src/assets/images/png/eye.png" alt="">
                         </router-link>
                       </div>
