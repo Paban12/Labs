@@ -71,6 +71,19 @@
         </div>
       </div>
     </div>
+    
+    <div @mouseover="handleHover" @mouseout="hoverElementPosition = null">
+      <!-- Element that triggers the hover -->
+      <div>Hover over me</div>
+
+      <!-- Hover absolute element -->
+      <div v-if="hoverElementPosition !== null" :style="hoverElementPosition" class="hover-element">
+        <!-- Content of the hover element -->
+        Hover Content
+      </div>
+    </div>
+
+
     <!-- modals -->
     <Modal v-model:show="patient.confirmModal" class="confirm-modal">
       <h4>Are you sure want to Delete</h4>
@@ -125,12 +138,50 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref, onMounted } from "vue";
 
 const patient = reactive({
   confirmModal: false,
   addModal: false,
   viewModal: false,
+});
+
+
+
+// Reactive variables
+const showTooltip = ref(false);
+const tooltipPosition = reactive({
+  top: 0,
+  left: 0,
+});
+
+const handleHover = (event) => {
+  const hoverElement = event.target.nextElementSibling;
+
+  // Calculate the position relative to the mouse cursor
+  const xPos = event.clientX + 10;
+  const yPos = event.clientY + 10;
+
+  // Get the dimensions of the hover element
+  const hoverWidth = hoverElement.offsetWidth;
+  const hoverHeight = hoverElement.offsetHeight;
+
+  // Get the dimensions of the screen
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  // Ensure the hover element doesn't go beyond the screen boundaries
+  const left = xPos + hoverWidth > screenWidth ? screenWidth - hoverWidth : xPos;
+  const top = yPos + hoverHeight > screenHeight ? screenHeight - hoverHeight : yPos;
+
+  // Update the position of the hover element
+  hoverElementPosition.value = { left: `${left}px`, top: `${top}px` };
+};
+
+onMounted(() => {
+  // Add event listeners for mouseover and mouseout events
+  document.addEventListener('mouseover', handleHover);
+  document.addEventListener('mouseout', () => hoverElementPosition.value = null);
 });
 
 const specialityData = reactive([
@@ -156,5 +207,20 @@ const handleSelectedOption = (option) => {
 //search select end//
 </script>
 
-<style>
+<style lang="css">
+/* .a{
+  position: relative;
+} */
+.a{
+  display: flex;
+  justify-content: flex-end;
+}
+.tooltip {
+  position: absolute;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  max-width: 200px; /* Adjust this to your desired width */
+}
 </style>

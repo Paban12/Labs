@@ -9,7 +9,6 @@ const Loader = defineAsyncComponent(() => import('../components/Loader.vue'))
 const Modal = defineAsyncComponent(() => import('../components/Modal.vue'))
 const Alert = defineAsyncComponent(() => import('../components/Alert.vue'))
 const EventCalender = defineAsyncComponent(() => import('../components/EventCalender.vue'))
-const Popup = defineAsyncComponent(() => import('../components/Popup.vue'))
 // const  = defineAsyncComponent(() => import('../components/.vue'))
 
 //Lab Test
@@ -63,7 +62,6 @@ const GlobalComponents = {
     app.component('Modal', Modal)
     app.component('Alert', Alert)
     app.component('EventCalender', EventCalender)
-    app.component('Popup', Popup)
     // app.component('', )
 
     //Lab Test
