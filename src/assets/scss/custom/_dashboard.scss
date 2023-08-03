@@ -37,42 +37,7 @@
         .title{
           font-weight: 700;
           font-size: 16px;
-        }
-        .tooltip{
-          position: absolute;
-          z-index: 10;
-          bottom: -43px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: max-content;
-          max-width: 100%;
-          background: var(--primary);
-          border-radius: 5px;
-          min-height: 30px;
-          font-size: 0.75rem;
-          color: var(--white);
-          display: none;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.4s linear;
-          padding: 5px 8px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           text-align: center;
-          &::before {
-            position: absolute;
-            top: -10px;
-            left:50%;
-            margin-left: -10px;
-            content:"";
-            display:block;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid var(--primary); 
-            
-          }
-          strong{
-            margin-left: 4px;
-          }
         }
       }
       .mob-view-card{
@@ -225,6 +190,12 @@
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         .card{
           padding: 1rem;
+          .val{
+
+          }
+          .title{
+            font-size: 0.9rem;
+          }
         }
       }
       .services{

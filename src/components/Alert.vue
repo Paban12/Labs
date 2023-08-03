@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="alert alert-danger">
+    <div class="alert alert-success">
       <!-- <img src="" alt=""> -->
       <h3 class="heading">
         Congratulations !

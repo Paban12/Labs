@@ -14,7 +14,6 @@
         @keyup="tabChange(3)" maxlength="1" />
         <input class="otp-input" v-model="formVar.input4" type="text" v-on:keypress="isNumber($event)" 
         @keyup="tabChange(4)" maxlength="1" />
-
       </div>
       <div class="err-msg" v-if="formVar.submit && otpValid">{{ otpValid }}</div>
       <div class="send-again">

@@ -51,6 +51,10 @@ const NotificationMessage = defineAsyncComponent(() => import('../components/Not
 const spinner = defineAsyncComponent(() => import('../components/Spinner.vue'));
 const MobileIcon = defineAsyncComponent(() => import('../components/icons/mobile-svg.vue'))
 const LeftArrowIcon = defineAsyncComponent(() => import('../components/icons/left-arrow-svg.vue'))
+const NoteIcon = defineAsyncComponent(() => import('../components/icons/note-svg.vue'))
+const AddIcon = defineAsyncComponent(() => import('../components/icons/add-svg.vue'))
+const DeleteIcon = defineAsyncComponent(() => import('../components/icons/delete-svg.vue'))
+const EditIcon = defineAsyncComponent(() => import('../components/icons/edit-svg.vue'))
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
@@ -105,6 +109,10 @@ const GlobalComponents = {
     app.component('base-spinner', spinner);
     app.component('icon-mobile', MobileIcon)
     app.component('icon-left-arrow', LeftArrowIcon)
+    app.component('icon-note', NoteIcon)
+    app.component('icon-add', AddIcon)
+    app.component('icon-delete', DeleteIcon)
+    app.component('icon-edit', EditIcon)
     // app.component('icon-', Icon)
   }
 }

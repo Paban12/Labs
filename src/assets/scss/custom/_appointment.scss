@@ -4,7 +4,8 @@
     align-items: flex-start;
     gap: 1rem;
     .apt-table{
-      width: calc(100% - 550px);
+      // width: calc(100% - 550px);
+      width: 100%;
       .table-header{
         padding: 0.5rem 1rem;
         font-weight: 700;

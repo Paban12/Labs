@@ -63,48 +63,6 @@
           </div>
         </div>
       </div>
-      <div class="card apt-form">
-        <form action="" class="form" @submit.prevent="onSubmitAppointment">
-          <h3>Book Appointment</h3>
-          <span class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, expedita!
-          </span>
-          <div class="form-item mb-16">
-            <SingleSelect v-model="formVar.doctor" :options="doctorOptions" @selected="handleSelectedOption"
-              placeholder="Select Doctor"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && doctorValid">{{ doctorValid }}</div>
-          </div>
-          <div class="form-item mb-16">
-            <SingleSelect v-model="formVar.service" :options="serviceOptions" @selected="handleSelectedOption"
-              placeholder="Select Service"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && serviceValid">{{ serviceValid }}</div>
-          </div>
-          <div class="form-item mb-16">
-            <div class="date-input">
-              <input type="date" v-model="formVar.dob">
-              <div class="icon">
-                <img src="/src/assets/images/icons/calender.svg" alt="">
-              </div>
-            </div>
-            <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
-          </div>
-          <div class="row two-inputs">
-            <div class="form-item col-5 mb-16">
-              <SingleSelect v-model="formVar.time" :options="timeOptions" @selected="handleSelectedOption"
-                placeholder="Select Time"></SingleSelect>
-                <div class="err-msg" v-if="formVar.submit && timeValid">{{ timeValid }}</div>
-            </div>
-            <div class="form-item col-5 mb-16">
-              <SingleSelect v-model="formVar.duration" :options="durationOptions" @selected="handleSelectedOption"
-                placeholder="Select Duration"></SingleSelect>
-                <div class="err-msg" v-if="formVar.submit && durationValid">{{ durationValid }}</div>
-            </div>
-          </div>
-          <div class="book-btn form-item flex justify-center">
-            <button class="btn black-btn">Book</button>
-          </div>
-        </form>
-      </div>
     </div>
   </section>
 </template>

@@ -35,20 +35,9 @@
             </div>
             
           </div>
-          <div class="noti-card">
-            <div class="list-item success">
-              <div class="icon">
-                <icon-success></icon-success>
-              </div>
-              <div class="info">
-                <div class="title">Success</div>
-                <div class="sub-title2">The developer has kept the source code structure adaptable enough for   developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for</div>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- for mobile view -->
-        <div class="noti-card-row mob-view">
+        <!-- <div class="noti-card-row mob-view">
           <div class="noti-card">
             <router-link to="/notification/detail" class="list-item success">
               <div class="icon">
@@ -79,7 +68,7 @@
             </router-link>
             
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

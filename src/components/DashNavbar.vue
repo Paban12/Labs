@@ -73,13 +73,46 @@
           <router-link to="/notification" class="bell-icon">
             <img src="/src/assets/images/png/bell.png" alt="" />
             <div class="no"></div>
+            <div class="tooltip">Notification</div>
           </router-link>
           <router-link to="/" class="bell-icon desk-icon">
             <img src="/src/assets/images/png/add.png" alt="" />
+            <div class="tooltip">Add</div>
           </router-link>
-          <router-link to="/" class="bell-icon desk-icon">
-            <img src="/src/assets/images/png/note.png" alt="" />
-          </router-link>
+          <div class="" v-click-outside="hideNoteSidebar">
+            <div class="bell-icon desk-icon" @click.prevent="showNoteSidebar()">
+              <img src="/src/assets/images/png/note.png" alt="" />
+              <div class="tooltip">Notes</div>
+            </div>
+            <!-- sticky notes -->
+            <div class="notes-section" v-if="nav.noteSidebar" >
+              <div class="card">
+                <div class="heading">
+                  <h3 class="">Notes</h3>
+                  <div class="icon" @click.prevent="nav.addModal = true">
+                    <icon-add></icon-add>
+                  </div>
+                </div>
+                <div class="notes-list">
+                  <div class="list-item">
+                    <div class="icon">
+                      <icon-note></icon-note>
+                    </div>
+                    <div class="data">
+                      <div class="title">At 4 O Clock meeting</div>
+                      <div class="text">03-08-2023 11:38 AM</div>
+                    </div>
+                    <div class="icon-edit icon-i black-btn" @click.prevent="nav.addModal = true">
+                      <icon-edit></icon-edit>
+                    </div>
+                    <div class="icon-delete icon-i black-btn" @click.prevent="nav.confirmModal = true">
+                      <icon-delete></icon-delete>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="account" v-click-outside="closeAccMenu">
             <div class="account-card grade-btn btn" @click.prevent="nav.accMenu = true">
               <img
@@ -127,6 +160,7 @@
           </div>
         </div>
       </div>
+      <!-- sidebar -->
       <div class="sidebar" v-if="nav.sidebar">
         <div class="sidebar-card">
           <div class="close-icon" @click.prevent="nav.sidebar = false">
@@ -233,72 +267,33 @@
         </div>
       </div>
     </div>
-    <!-- <div class="menubar">
-      <div class="menu-list vertical-list">
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/eye.png" alt="image" />
-          </div>
-          <div class="text">Visit</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/edit.png" alt="image" />
-          </div>
-          <div class="text">Edit</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/microscope.png" alt="image" />
-          </div>
-          <div class="text">Lab</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/bill.png" alt="image" />
-          </div>
-          <div class="text">Bills</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/time.png" alt="image" />
-          </div>
-          <div class="text">Appointment</div>
-        </router-link>
-      </div>
-      <div class="menu-list horizontal-list">
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/eye.png" alt="image" />
-          </div>
-          <div class="text">Visit</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/edit.png" alt="image" />
-          </div>
-          <div class="text">Edit</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/microscope.png" alt="image" />
-          </div>
-          <div class="text">Lab</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/bill.png" alt="image" />
-          </div>
-          <div class="text">Bills</div>
-        </router-link>
-        <router-link to="/" class="list">
-          <div class="img grade-btn">
-            <img src="/src/assets/images/png/time.png" alt="image" />
-          </div>
-          <div class="text">Appointment</div>
-        </router-link>
-      </div>
-    </div> -->
+    <!-- modals -->
+    <Modal v-model:show="nav.confirmModal" class="confirm-modal">
+      <h4>
+        Are you sure want to Delete
+      </h4>
+      <div class="btns">
+        <button class="btn grey-btn cancel-btn" @click.prevent="nav.confirmModal = false">Cancel</button>
+        <button class="btn confirm-btn">Confirm</button>
+      </div>      
+    </Modal>
+    <Modal v-model:show="nav.addModal" class="" headerClasses="header-bg">
+      <template v-slot:header>
+        <div class="title" showHeader="true">Add Note</div>
+        <div class="close-btn" @click.prevent="nav.addModal = false">
+          <icon-cross></icon-cross>
+        </div>
+      </template>
+      <form action="" class="form">
+        <div class="form-item mb-16">
+          <textarea name="" id="" placeholder="Enter Note"></textarea>
+          <div class="err-msg">Enter note</div>
+        </div>
+        <div class="save-btn form-item">
+          <button class="btn black-btn">Add</button>
+        </div>
+      </form>
+    </Modal>
   </section>
 </template>
 
@@ -312,6 +307,9 @@ const nav = reactive({
   isVisible: false,
   sidebar: false,
   searchModal: false,
+  confirmModal: false,
+  addModal: false,
+  noteSidebar: false,
 });
 
 const matches = [
@@ -350,6 +348,12 @@ function closeAccMenu() {
 }
 function closeSidebar() {
   nav.sidebar = false;
+}
+function hideNoteSidebar() {
+  nav.noteSidebar = false;
+}
+function showNoteSidebar() {
+  nav.noteSidebar = true;
 }
 </script>
 

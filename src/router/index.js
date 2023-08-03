@@ -64,6 +64,11 @@ const routes = [
                 component: () => import( /* webpackChunkName: "account layout" */ '../views/AccountLayout/AccountLayout.vue'),
                 children: [
                     {
+                        path: '/account/profile',
+                        name: 'account profile',
+                        component: () => import( /* webpackChunkName: "account profile" */ '../views/AccountLayout/Profile.vue')
+                    },
+                    {
                         path: '/account/edit',
                         name: 'account edit',
                         component: () => import( /* webpackChunkName: "account edit" */ '../views/AccountLayout/Edit.vue')
@@ -110,7 +115,7 @@ const routes = [
             {
                 path: '/patients',
                 name: 'patients',
-                component: () => import( /* webpackChunkName: "patients" */ '../views/Patients.vue')
+                component: () => import( /* webpackChunkName: "patients" */ '../views/Patient/Patients.vue')
             },
             //for doctor
             {

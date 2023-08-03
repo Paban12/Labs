@@ -14,6 +14,12 @@
           </div>
         </div>
         <div class="options">
+          <router-link to="/account/profile" class="option">
+            <div class="img grade-btn">
+              <img src="/src/assets/images/png/man.png" alt="image">
+            </div>
+            <div class="text">Profile</div>
+          </router-link>
           <router-link to="/account/visits" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/eye.png" alt="image">

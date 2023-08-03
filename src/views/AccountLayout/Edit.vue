@@ -39,7 +39,7 @@
                   <img src="/src/assets/images/icons/calender.svg" alt="">
                 </div>
               </div>
-              <span>{{ ageCalculate }}</span>
+              <div>{{ ageCalculate }}</div>
               <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
             </div>
             <div class="col-3 form-item mb-16">

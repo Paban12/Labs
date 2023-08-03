@@ -1,3 +1,4 @@
+
 export default {
   loadMore: false,
   dataLoader: false,

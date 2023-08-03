@@ -41,9 +41,6 @@
                       <div class="" @click.prevent="formVar.viewModal = true">
                         <img src="/src/assets/images/png/eye.png" alt="" />
                       </div>
-                      <div class="" @click.prevent="formVar.addModal = true">
-                        <img src="/src/assets/images/png/edit.png" alt="" />
-                      </div>
                       <div class="" @click.prevent="formVar.confirmModal = true">
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
@@ -89,13 +86,13 @@
         </div>
       </template>
       <form action="" class="form" @submit.prevent="onSubmitDoctor">
-        <div class="row mb-16">
-          <div class="col-25 form-item">
+        <div class="row">
+          <div class="col-25 form-item mb-16">
             <SingleSelect v-model="formVar.prefix" :options="prefixOptions" @selected="handleSelectedOption"
               placeholder="Select Prefix"></SingleSelect>
               <div class="err-msg" v-if="formVar.submit && prefixValid">{{ prefixValid }}</div>
           </div>
-          <div class="col-75 form-item">
+          <div class="col-75 form-item mb-16">
             <input type="text" v-model="formVar.name" placeholder="Doctor Name" />
             <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
           </div>
@@ -113,7 +110,7 @@
                 <img src="/src/assets/images/icons/calender.svg" alt="" />
               </div>
             </div>
-            <span>{{ ageCalculate }}</span>
+            <div>{{ ageCalculate }}</div>
             <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
           </div>
           <div class="col-2 form-item mb-16">
@@ -130,7 +127,7 @@
           <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
         </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.address" placeholder="Enter Address" />
+          <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
           <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
         <div class="col-5 form-item mb-16">
@@ -240,8 +237,7 @@ const doctorData = reactive([
     name: "Prakash Jhaa",
     phone: 8888888888,
     email: "patient@mail.com",
-    appointments: 12,
-    lab_tests: 15,
+    speciality: 12,
   },
 ]);
 

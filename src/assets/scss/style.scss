@@ -22,6 +22,7 @@ body{
 
 .container{
   // max-width: 98%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -897,6 +898,40 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
 }
 
+//tooltip
+.tooltip{
+  position: absolute;
+  z-index: 10;
+  bottom: -43px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: max-content;
+  background: var(--primary);
+  border-radius: 5px;
+  min-height: 30px;
+  font-size: 0.75rem;
+  color: var(--white);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s linear;
+  padding: 5px 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  text-align: center;
+  &::before {
+    position: absolute;
+    top: -10px;
+    left:50%;
+    margin-left: -10px;
+    content:"";
+    display:block;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--primary); 
+    
+  }
+}
 
 
 

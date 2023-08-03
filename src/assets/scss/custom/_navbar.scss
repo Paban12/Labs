@@ -103,6 +103,14 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        cursor: pointer;
+        &:hover{
+          // box-shadow: none;
+          .tooltip{
+            transition: all 0.4s linear;
+            display: flex;
+          }
+        }
         img{
           height: 2.1rem;
           width: 2.1rem;
@@ -115,6 +123,9 @@
           height: 9px;
           width: 9px;
           border-radius: 100%;
+        }
+        .tooltip{
+          font-weight: 700;
         }
       }
       .search-icon{
@@ -202,6 +213,7 @@
     height: calc(100vh - 4.5rem);
     background: var(--black);
     padding: 2rem 0;
+    width: 300px;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -245,6 +257,110 @@
         }
         .mob-view{
           display: none;
+        }
+      }
+    }
+  }
+  .notes-section{
+    position: fixed;
+    top: 4.5rem;
+    right: 0;
+    width: 350px;
+    height: calc(100% - 4.5rem);
+    .card{
+      height: calc(100% - 4.5rem);
+      padding: 0;
+      .heading{
+        background: var(--blue);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 3rem;
+        h3{
+          font-size: 1.2rem;
+        }
+        .icon{
+          display: flex;
+          align-items: center;
+          #icon{
+            height: 1.8rem;
+            width: 1.8rem;
+            cursor: pointer;
+            fill: var(--white);
+          }
+        }
+      }
+      .notes-list{
+        height: calc(100% - 3rem);
+        // background: red;
+        padding: 0.5rem 0;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .list-item{
+          display: flex;
+          align-items: flex-start;
+          padding: 0.7rem 0.5rem;
+          gap: 8px;
+          border-bottom: 1px solid #eee;
+          padding-right: 2rem;
+          position: relative;
+          &:first-child{
+            border-top: 1px solid #eee;
+          }
+          &:hover{
+            background: #eeeeee52;
+          }
+          .icon{
+            #icon{
+              height: 1.7rem;
+              width: 1.7rem;
+              fill: var(--blue);
+            }
+          }
+          .data{
+            .title{
+              font-weight: 700;
+              font-size: 1rem;
+            }
+            .text{
+              opacity: 0.7;
+              font-size: 0.85rem;
+            }
+          }
+          .icon-i{
+            position: absolute;
+            right: 0;
+            width: 1.8rem;
+            height: 1.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: var(--blue);
+            border: 1x solid #fff;
+            #icon{
+              height: 1.1rem;
+              width: 1.1rem;
+              fill: var(--white);
+              #icon-inner{
+                fill: var(--white);
+              }
+            }
+          }
+          .icon-edit{
+            top: 0;
+            border-radius: 0 0 0 10px;
+          }
+          .icon-delete{
+            bottom: 0;
+            border-radius: 10px 0 0 0;
+          }
         }
       }
     }
