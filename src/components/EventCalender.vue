@@ -113,8 +113,8 @@
                   </div>
                 </div>
                 <div class="message">
-                  <span>Prescription</span>
-                  <span>Lab</span>
+                  <router-link to="/new-prescription" class="span">Prescription</router-link>
+                  <router-link to="/patient/profile" class="span">Profile</router-link>
                 </div>
               </div>
             </li>
@@ -213,8 +213,8 @@
                     </div>
                   </div>
                   <div class="message">
-                    <span>Prescription</span>
-                    <span>Lab</span>
+                    <router-link to="/new-prescription" class="span">Prescription</router-link>
+                    <router-link to="/patient/profile" class="span">Profile</router-link>
                   </div>
                 </div>
               </div>
@@ -315,8 +315,8 @@
                     </div>
                   </div>
                   <div class="message">
-                    <span>Prescription</span>
-                    <span>Lab</span>
+                    <router-link to="/new-prescription" class="span">Prescription</router-link>
+                    <router-link to="/patient/profile" class="span">Profile</router-link>
                   </div>
                 </div>
               </div>

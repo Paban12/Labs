@@ -1,47 +1,71 @@
 <template>
   <section class="patient-profile-page">
-    <!-- <div class="container">
-      <div class="tabs">
-        <div class="tab" @click.prevent="profile.tab = 1" :class="profile.tab === 1 ? 'active' : ''">
-          <div class="text">Profile</div>
+    <div class="card">
+      <div class="top-details">
+        <div class="img">
+          <img src="/src/assets/images/png/man.png" alt="">
         </div>
-        <div class="tab" @click.prevent="profile.tab = 2" :class="profile.tab === 2 ? 'active' : ''">
-          <div class="text">Lab</div>
-        </div>
-        <div class="tab" @click.prevent="profile.tab = 3" :class="profile.tab === 3 ? 'active' : ''">
-          <div class="text">Billing</div>
+        <div class="info">
+          <div class="name">Mrs Aravindhan</div>
+          <div class="about">
+            <span>Female</span>-
+            <span>49 Years</span>-
+            <span>A+</span>
+          </div>
+          <div class="p-id">PID : 189</div>
+          <div class="amt">Language Prefer : Hindi</div>
         </div>
       </div>
-      <div class="tab-content profile-content" v-if="profile.tab === 1">
-        <div class="top-details">
-          <div class="img">
-            <img src="/src/assets/images/png/man.png" alt="">
+      <div class="other-details">
+        <div class="data-row">
+          <div class="data">
+            <div class="title">Phone :</div>
+            <div class="val">+91 8888888888</div>
           </div>
-          <div class="info">
-            <div class="name">Mrs Aravindhan</div>
-            <div class="about">
-              <span>Female</span>-
-              <span>49 Years</span>-
-              <span>A+</span>
-            </div>
-            <div class="p-id">PID : 189</div>
-            <div class="amt">Language Prefer : Hindi</div>
+          <div class="data">
+            <div class="title">Email :</div>
+            <div class="val">arvindham@gmail.com</div>
           </div>
-          <div class="edit-btn btn grade-btn">
-            <img src="/src/assets/images/png/edit.png" alt="">
+        </div>
+        <div class="data-row">
+          <div class="data">
+            <div class="title">DOB :</div>
+            <div class="val">25/11/1995</div>
+          </div>
+          <div class="data">
+            <div class="title">Blood Group :</div>
+            <div class="val">A+</div>
+          </div>
+        </div>
+        <div class="data-row">
+          <div class="data">
+            <div class="title">City :</div>
+            <div class="val">Nashik</div>
+          </div>
+          <div class="data">
+            <div class="title">State :</div>
+            <div class="val">Maharashtra</div>
+          </div>
+        </div>
+        <div class="data-row">
+          <div class="data">
+            <div class="title">Doctor :</div>
+            <div class="val">Dr. Manish Shah</div>
+          </div>
+          <div class="data">
+            <div class="title">Doctor's Speciality :</div>
+            <div class="val">Gynac</div>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </section>
 </template>
 
-<script setup>
-// import { reactive } from 'vue';
+<script>
+export default {
 
-// const profile = reactive({
-//   tab: 1,
-// })
+}
 </script>
 
 <style>

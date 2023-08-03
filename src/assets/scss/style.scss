@@ -22,8 +22,8 @@ body{
 
 .container{
   // max-width: 98%;
-  max-width: 1200px;
-  margin: 0 auto;
+  // max-width: 1240px;
+  margin: 0 5%;
   padding: 1rem;
 }
 
@@ -862,7 +862,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     align-items: center;
     gap: 5px;
     margin-bottom: 0.5rem;
-    span{
+    span, .span{
       padding: 3px 5px;
       width: 50%;
       cursor: pointer;
@@ -967,6 +967,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
   .container{
     padding: 0.5rem;
+    margin: 0;
   }
   .stat-card{
     .search-section{

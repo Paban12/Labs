@@ -43,10 +43,10 @@
                       <div class="" @click.prevent="formVar.viewModal = true">
                         <img src="/src/assets/images/png/eye.png" alt="" />
                       </div>
-                      <router-link to="/account/visits" class="">
+                      <router-link to="/patient/visits" class="">
                         <img src="/src/assets/images/png/man.png" alt="" />
                       </router-link>
-                      <router-link to="/account/edit" class="">
+                      <router-link to="/patient/edit" class="">
                         <img src="/src/assets/images/png/edit.png" alt="" />
                       </router-link>
                       <div class="" @click.prevent="formVar.confirmModal = true">

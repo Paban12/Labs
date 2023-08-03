@@ -70,11 +70,62 @@
               </div>
             </div>
           </div>
-          <router-link to="/notification" class="bell-icon">
-            <img src="/src/assets/images/png/bell.png" alt="" />
-            <div class="no"></div>
-            <div class="tooltip">Notification</div>
-          </router-link>
+          <div class="" v-click-outside="hideNotificationSidebar">
+            <div class="bell-icon" @click.prevent="showNotificationSidebar()">
+              <img src="/src/assets/images/png/bell.png" alt="" />
+              <div class="no"></div>
+              <div class="tooltip">Notification</div>
+            </div>
+            <!-- notifications -->
+            <div class="notes-section notification-section" v-if="nav.notificationSidebar" >
+              <div class="card">
+                <div class="heading">
+                  <h3 class="">Notifications</h3>
+                </div>
+                <div class="notes-list">
+                  <div class="list-item success">
+                    <div class="icon">
+                      <icon-success></icon-success>
+                    </div>
+                    <div class="info">
+                      <div class="title">Success</div>
+                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </div>
+                  <div class="list-item warning">
+                    <div class="icon">
+                      <icon-warning></icon-warning>
+                    </div>
+                    <div class="info">
+                      <div class="title">Warning !</div>
+                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </div>
+                  <div class="list-item error">
+                    <div class="icon">
+                      <icon-warning></icon-warning>
+                    </div>
+                    <div class="info">
+                      <div class="title">Error !</div>
+                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </div>
+                  <div class="list-item success">
+                    <div class="icon">
+                      <icon-success></icon-success>
+                    </div>
+                    <div class="info">
+                      <div class="title">Success</div>
+                      <div class="sub-title2">The developer has kept the source code structure adaptable enough for   developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </div>
+                  <div class="back-btn">
+                    <div class="btn blue-btn">⇐ Back to Notifications</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <router-link to="/" class="bell-icon desk-icon">
             <img src="/src/assets/images/png/add.png" alt="" />
             <div class="tooltip">Add</div>
@@ -310,6 +361,7 @@ const nav = reactive({
   confirmModal: false,
   addModal: false,
   noteSidebar: false,
+  notificationSidebar: false,
 });
 
 const matches = [
@@ -354,6 +406,12 @@ function hideNoteSidebar() {
 }
 function showNoteSidebar() {
   nav.noteSidebar = true;
+}
+function hideNotificationSidebar() {
+  nav.notificationSidebar = false;
+}
+function showNotificationSidebar() {
+  nav.notificationSidebar = true;
 }
 </script>
 

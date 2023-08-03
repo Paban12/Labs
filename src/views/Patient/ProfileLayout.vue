@@ -14,37 +14,37 @@
           </div>
         </div>
         <div class="options">
-          <router-link to="/account/profile" class="option">
+          <router-link to="/patient/profile" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/man.png" alt="image">
             </div>
             <div class="text">Profile</div>
           </router-link>
-          <router-link to="/account/visits" class="option">
+          <router-link to="/patient/visits" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/eye.png" alt="image">
             </div>
             <div class="text">Visit</div>
           </router-link>
-          <router-link to="/account/edit" class="option">
+          <router-link to="/patient/edit" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/edit.png" alt="image">
             </div>
             <div class="text">Edit</div>
           </router-link>
-          <router-link to="/account/lab-report" class="option">
+          <router-link to="/patient/lab-report" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/microscope.png" alt="image">
             </div>
             <div class="text">Lab</div>
           </router-link>
-          <router-link to="/account/bills" class="option">
+          <router-link to="/patient/bills" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/bill.png" alt="image">
             </div>
             <div class="text">Bills</div>
           </router-link>
-          <router-link to="/account/appointment" class="option">
+          <router-link to="/patient/appointment" class="option">
             <div class="img grade-btn">
               <img src="/src/assets/images/png/time.png" alt="image">
             </div>

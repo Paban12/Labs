@@ -114,8 +114,8 @@
                   </div>
                 </div>
                 <div class="message">
-                  <span>Prescription</span>
-                  <span>Lab</span>
+                  <router-link to="/new-prescription" class="span">Prescription</router-link>
+                  <router-link to="/patient/profile" class="span">Profile</router-link>
                 </div>
               </div>
             </div>
