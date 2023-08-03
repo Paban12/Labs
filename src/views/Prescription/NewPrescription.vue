@@ -1,5 +1,5 @@
 <template>
-  <section class="new-consultation-page">
+  <section class="new-prescription-page">
     <div class="container">
       <div class="visit-section">
         <div class="header-section">
@@ -138,7 +138,7 @@
               </div>
             </div>
 
-            <table class="consultation-cards-table table mb-16" ref="tableRef" @click="handleTableClick">
+            <table class="prescription-cards-table table mb-16" ref="tableRef" @click="handleTableClick">
               <thead class="">
                 <tr>
                   <th>Sr. No.</th>

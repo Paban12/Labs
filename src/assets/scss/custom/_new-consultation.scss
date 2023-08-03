@@ -1,4 +1,4 @@
-.new-consultation-page {
+.new-prescription-page {
   .visit-section {
     .header-section {
       text-align: center;
@@ -71,7 +71,7 @@
             }
           }
         }
-        .consultation-cards-table{
+        .prescription-cards-table{
           tbody{
             tr{
               td{
@@ -91,7 +91,7 @@
 //media queries
 
 @media (max-width: 850px) {
-  .consultation-cards-table {
+  .prescription-cards-table {
     box-shadow: none !important;
     border: none !important;
     thead {
@@ -145,7 +145,7 @@
 
 
 @media (max-width: 768px){
-  .new-consultation-page{
+  .new-prescription-page{
     .visit-section{
       .card{
         .card-header{
@@ -181,7 +181,7 @@
 }
 
 @media (max-width: 560px){
-  .new-consultation-page{
+  .new-prescription-page{
     .visit-section{
       .card{
         .card-header{
