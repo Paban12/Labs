@@ -224,30 +224,6 @@
               </div>
               <div class="text">Home</div>
             </router-link>
-            <router-link to="/medicine-search" class="list mob-view" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/edit.png" alt="image" />
-              </div>
-              <div class="text">Medicines</div>
-            </router-link>
-            <router-link to="/medicine-list" class="list desk-view" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/edit.png" alt="image" />
-              </div>
-              <div class="text">Medicines</div>
-            </router-link>
-            <router-link to="/rx/list" class="list mob-view" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/edit.png" alt="image" />
-              </div>
-              <div class="text">RX Medicines</div>
-            </router-link>
-            <router-link to="/rx/medicine" class="list desk-view" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/edit.png" alt="image" />
-              </div>
-              <div class="text">RX Medicines</div>
-            </router-link>
             <router-link to="/staff/details" class="list desk-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
@@ -272,24 +248,6 @@
               </div>
               <div class="text">Visits</div>
             </router-link>
-            <router-link to="/notes" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Notes</div>
-            </router-link>
-            <router-link to="/complaints" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Complaints</div>
-            </router-link>
-            <router-link to="/diagnosis" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Diagnosis</div>
-            </router-link>
             <router-link to="/account" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
@@ -301,12 +259,6 @@
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Appoinments</div>
-            </router-link>
-            <router-link to="/appointment/doctor" class="list mob-view" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Doctor Appoinments</div>
             </router-link>
             <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">

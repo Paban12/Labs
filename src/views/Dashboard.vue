@@ -8,12 +8,6 @@
           <div class="title">Appointments</div>
           <div class="tooltip">You can book <strong>Appointment</strong></div>
         </router-link>
-        <router-link to="/doctor-appointment" class="card card1">
-          <img src="/src/assets/images/png/mobile.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Doctor Appointments</div>
-          <div class="tooltip">You can book <strong>Doctor Appointment</strong></div>
-        </router-link>
         <router-link to="/lab-appointment" class="card card1">
           <img src="/src/assets/images/png/mobile.png" alt="image" />
           <div class="val">254</div>
@@ -26,35 +20,11 @@
           <div class="title">Patients</div>
           <div class="tooltip">You can manage <strong>Patients</strong></div>
         </router-link>
-        <router-link to="/doctors" class="card card3">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Doctors</div>
-          <div class="tooltip">You can manage <strong>Doctors</strong></div>
-        </router-link>
         <router-link to="/pathologist" class="card card3">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Patholigist</div>
           <div class="tooltip">You can manage <strong>Patholigist</strong></div>
-        </router-link>
-        <router-link to="/laboratory" class="card card4">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Laboratory</div>
-          <div class="tooltip">You can manage <strong>Laboratory</strong></div>
-        </router-link>
-        <router-link to="/hospitals" class="card card4">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Hospitals</div>
-          <div class="tooltip">You can manage <strong>Hospitals</strong></div>
-        </router-link>
-        <router-link to="/specialization" class="card card4">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Specialization</div>
-          <div class="tooltip">You can manage <strong>Specialization</strong></div>
         </router-link>
         <router-link to="/payment-history" class="card card5">
           <img src="/src/assets/images/png/lab.png" alt="image" />
@@ -68,12 +38,6 @@
           <div class="title">Lab Test</div>
           <div class="tooltip">You can do <strong>Lab Test</strong></div>
         </router-link>
-        <router-link to="" class="card card7">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Labtest Reports</div>
-          <div class="tooltip">You can do <strong>Labtest Reports</strong></div>
-        </router-link>
         <router-link to="/staff/details" class="card card8 desk-view-card">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
@@ -86,24 +50,6 @@
           <div class="title">Staff</div>
           <div class="tooltip">You can do <strong>Staff</strong></div>
         </router-link>
-        <router-link to="/medicine" class="card card1">
-          <img src="/src/assets/images/png/medicine.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Medicine</div>
-          <div class="tooltip">You can order <strong>Medicines</strong></div>
-        </router-link>
-        <router-link to="/rx/medicine" class="card card1">
-          <img src="/src/assets/images/png/medicine.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">RX Group</div>
-          <div class="tooltip">You can manage <strong>RX Group</strong></div>
-        </router-link>
-        <!-- <router-link to="/prescription" class="card card2">
-          <img src="/src/assets/images/png/report.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Prescription</div>
-          <div class="tooltip">Your <strong>Prescriptions</strong></div>
-        </router-link> -->
       </div>
       <div class="other-cards cards-carousel">
         <h3>Our Achivements</h3>
