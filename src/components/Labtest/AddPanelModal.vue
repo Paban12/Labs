@@ -1,8 +1,8 @@
 <template>
-  <Modal v-model:show="storeVar.addTestModal" class="add-test-modal" headerClasses="header-bg">
+  <Modal v-model:show="storeVar.addPanelModal" class="add-test-modal" headerClasses="header-bg">
     <template v-slot:header>
-      <div class="title" showHeader="true">Lab Test Master</div>
-      <div class="close-btn" @click.prevent="storeVar.addTestModal = false">
+      <div class="title" showHeader="true">Tests Panel</div>
+      <div class="close-btn" @click.prevent="storeVar.addPanelModal = false">
         <icon-cross></icon-cross>
       </div>
     </template>
@@ -10,7 +10,7 @@
       <table class="table">
         <thead>
           <th>Sr. No.</th>
-          <th>Test Name</th>
+          <th>Panel Name</th>
           <th>Category</th>
           <th>Department</th>
           <th>Test Code</th>

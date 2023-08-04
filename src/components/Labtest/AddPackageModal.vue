@@ -1,11 +1,44 @@
 <template>
-  <Modal v-model:show="storeVar.addTestModal" class="add-test-modal" headerClasses="header-bg">
+  <Modal v-model:show="storeVar.addPackageModal" class="add-test-modal" headerClasses="header-bg">
     <template v-slot:header>
-      <div class="title" showHeader="true">Lab Test Master</div>
-      <div class="close-btn" @click.prevent="storeVar.addTestModal = false">
+      <div class="title" showHeader="true">Tests Package</div>
+      <div class="close-btn" @click.prevent="storeVar.addPackageModal = false">
         <icon-cross></icon-cross>
       </div>
     </template>
+    <div class="form">
+      <div class="package-row row">
+        <div class="form-item col-2 mb-16">
+          <div class="title">Package Name</div>
+          <input type="text" placeholder="Package Name">
+        </div>
+        <div class="form-item col-2 mb-16">
+          <div class="title">Package Price</div>
+          <input type="number" placeholder="00">
+        </div>
+        <div class="form-item col-2 mb-16">
+          <div class="title">Report Within</div>
+          <input type="number" placeholder="0">
+        </div>
+        <div class="form-item col-2 mb-16">
+          <div class="title">.</div>
+          <div class="select-dropdown">
+            <select name="" id="">
+              <option value="">Hrs</option>
+              <option value="">Days</option>
+              <option value="">Weeks</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-item col-2 mb-16">
+          <div class="title">Home Collection</div>
+          <label class="toggle-control mt-10">
+            <input type="checkbox" checked="checked" />
+            <span class="control"></span>
+          </label>
+        </div>
+      </div>
+    </div>
     <div class="test-table mb-16">
       <table class="table">
         <thead>

@@ -39,6 +39,26 @@
         </div>
         <div class="data-row">
           <div class="data">
+            <div class="title">Marital Status :</div>
+            <div class="val">Unmarried</div>
+          </div>
+          <div class="data">
+            <div class="title">Activity Level :</div>
+            <div class="val">Regular</div>
+          </div>
+        </div>
+        <div class="data-row">
+          <div class="data">
+            <div class="title">Alcohol Conumption :</div>
+            <div class="val">Yes</div>
+          </div>
+          <div class="data">
+            <div class="title">Smoking Habit :</div>
+            <div class="val">Yes</div>
+          </div>
+        </div>
+        <div class="data-row">
+          <div class="data">
             <div class="title">City :</div>
             <div class="val">Nashik</div>
           </div>

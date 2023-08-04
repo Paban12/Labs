@@ -1,0 +1,47 @@
+.add-test-modal{
+  // display: none;
+  .modal{
+    .modal-dialog{
+      width: 100%;
+      margin: 0;
+      .modal-content{
+        .modal-body{
+          padding: 1rem;
+          .table{
+            td{
+              .sample-input{
+                display: flex;
+                gap: 5px;
+                .select-dropdown{
+                  width: 50%;
+                }
+                input{
+                  width: 50%;
+                  min-width: 50%;
+                }
+              }
+              .single-select{
+                .dropdown-options{
+                  min-width: 100%;
+                  width: max-content;
+                }
+              }
+            }
+          }
+          .add-ref{
+            color: var(--blue);
+            cursor: pointer;
+          }
+          .save-btn{
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+            .btn{
+              width: 10rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,64 +1,60 @@
 <template>
-  <section class="appointment-page">
-    <div class="card p-10 mb-16">
-      <div class="title-header p-0 border-none">
-        <div class="title">Appointments</div>
-        <div class="search">
-          <div class="date-input">
-            <input type="date">
-            <div class="icon">
-              <img src="/src/assets/images/icons/calender.svg" alt="">
+  <section class="apt-page bills-page">
+    <div class="card">
+      <div class="card-body">
+        <div class="bill-table">
+          <div class="title-header">
+            <div class="title">Appointments</div>
+            <div class="search">
+              <div class="date-input">
+                <input type="date">
+                <div class="icon">
+                  <img src="/src/assets/images/icons/calender.svg" alt="">
+                </div>
+              </div>
+              <button class="btn yellow-btn">All APT</button>
+              <button class="btn black-btn">Search</button>
             </div>
           </div>
-          <button class="btn yellow-btn">All APT</button>
-          <button class="btn black-btn">Search</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="table-form row">
-      <div class="card apt-table">
-        <!-- <div class="table-header">
-          <div class="title">All Appointments</div>
-        </div> -->
-        <div class="table-body p-0">
-          <div class="table-outer">
-            <table class="table">
-              <thead>
-                <th>Sr. No.</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Doctor Name</th>
-                <th>Status</th>
-                <th>Services</th>
-              </thead>
-              <tbody>
-                <tr v-for="(item, index) in billData" :key="item">
-                  <td>{{ index + 1 }}</td>
-                  <td>{{ item.date }}</td>
-                  <td>{{ item.time }}</td>
-                  <td>{{ item.doctor_name }}</td>
-                  <td>
-                    <div class="tag green-tag">Booked</div>
-                  </td>
-                  <td>{{ item.service }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="table-no-data">
-            <div >No records Found!</div>
-          </div>
-          <div class="table-footer">
-            <div class="entries">
-              Showing <span>0</span> to <span>0</span> of <span>0</span> entries
+          <div class="table-body p-0">
+            <div class="table-outer">
+              <table class="table">
+                <thead>
+                  <th>Sr. No.</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Doctor Name</th>
+                  <th>Status</th>
+                  <th>Services</th>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in billData" :key="item">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.time }}</td>
+                    <td>{{ item.doctor_name }}</td>
+                    <td>
+                      <div class="tag green-tag">Booked</div>
+                    </td>
+                    <td>{{ item.service }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="pagination">
-              <span>First</span>
-              <span>Previous</span>
-              <div class="page">1</div>
-              <span>Next</span>
-              <span>Last</span>
+            <div class="table-no-data">
+              <div >No records Found!</div>
+            </div>
+            <div class="table-footer">
+              <div class="entries">
+                Showing <span>0</span> to <span>0</span> of <span>0</span> entries
+              </div>
+              <div class="pagination">
+                <span>First</span>
+                <span>Previous</span>
+                <div class="page">1</div>
+                <span>Next</span>
+                <span>Last</span>
+              </div>
             </div>
           </div>
         </div>

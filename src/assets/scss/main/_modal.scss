@@ -66,14 +66,15 @@
         }
       }
       .header-bg{
-        background: var(--card-header-bg);
+        // background: var(--card-header-bg);
+        background: var(--blue);
         .title{
           color: var(--white);
         }
         .close-btn{
           background: var(--white);
           #icon{
-            fill: var(--black);
+            fill: var(--blue);
           }
         }
       }

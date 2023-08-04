@@ -1,12 +1,12 @@
 <template>
-  <section class="patients-page common-list-page">
+  <section class="doctors-page common-list-page">
     <div class="container">
       <div class="card">
         <div class="heading">
-          <div class="title">All Patients</div>
+          <div class="title">All Doctors</div>
           <div class="right">
             <div class="searchbar">
-              <input type="text" placeholder="Search Patients" />
+              <input type="text" placeholder="Search Doctors" />
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
             <div class="add-btn">
@@ -25,27 +25,22 @@
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Appointments</th>
-                <th>Lab tests</th>
+                <th>Speciality</th>
                 <th class="text-center">View</th>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in patientData" :key="item">
+                <tr v-for="(item, index) in doctorData" :key="item">
                   <td>{{ index + 1 }}</td>
                   <td>{{ item.id }}</td>
                   <td>{{ item.name }}</td>
                   <td>{{ item.phone }}</td>
                   <td>{{ item.email }}</td>
-                  <td>{{ item.appointments }}</td>
-                  <td>{{ item.lab_tests }}</td>
+                  <td>{{ item.speciality }}</td>
                   <td class="text-center">
                     <div class="option-btns">
-                      <router-link to="/patient/profile" class="">
-                        <img src="/src/assets/images/png/man.png" alt="" />
-                      </router-link>
-                      <router-link to="/patient/edit" class="">
-                        <img src="/src/assets/images/png/edit.png" alt="" />
-                      </router-link>
+                      <div class="" @click.prevent="formVar.viewModal = true">
+                        <img src="/src/assets/images/png/eye.png" alt="" />
+                      </div>
                       <div class="" @click.prevent="formVar.confirmModal = true">
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
@@ -83,14 +78,14 @@
         <button class="btn confirm-btn">Confirm</button>
       </div>
     </Modal>
-    <Modal v-model:show="formVar.addModal" class="book-apt-modal" headerClasses="header-bg">
+    <Modal v-model:show="formVar.addModal" class="" headerClasses="header-bg">
       <template v-slot:header>
-        <div class="title" showHeader="true">Add Patient</div>
+        <div class="title" showHeader="true">Add Doctor</div>
         <div class="close-btn" @click.prevent="formVar.addModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
-      <form action="" class="form" @submit.prevent="onSubmitPatient">
+      <form action="" class="form" @submit.prevent="onSubmitDoctor">
         <div class="row">
           <div class="col-25 form-item mb-16">
             <SingleSelect v-model="formVar.prefix" :options="prefixOptions" @selected="handleSelectedOption"
@@ -98,7 +93,7 @@
               <div class="err-msg" v-if="formVar.submit && prefixValid">{{ prefixValid }}</div>
           </div>
           <div class="col-75 form-item mb-16">
-            <input type="text" v-model="formVar.name" placeholder="Patient Name" />
+            <input type="text" v-model="formVar.name" placeholder="Doctor Name" />
             <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
           </div>
         </div>
@@ -122,41 +117,9 @@
             <input type="text" v-model="formVar.age" class="bg-blue" disabled />
           </div>
         </div>
-        <div class="row">
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.blood" :options="bloodOptions" @selected="handleSelectedOption"
-              placeholder="Select Blood Group"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && bloodValid">{{ bloodValid }}</div>
-          </div>
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.language" :options="langOptions" @selected="handleSelectedOption"
-              placeholder="Select Language"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && languageValid">{{ languageValid }}</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.maritalStatus" :options="maritalStatusOptions" @selected="handleSelectedOption"
-              placeholder="Marital Status"></SingleSelect>
-          </div>
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.activityLevel" :options="activityLevelOptions" @selected="handleSelectedOption"
-              placeholder="Activity Level"></SingleSelect>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.smoking" :options="smokingOptions" @selected="handleSelectedOption"
-              placeholder="Smoking Habit"></SingleSelect>
-          </div>
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.alcohol" :options="alcoholOptions" @selected="handleSelectedOption"
-              placeholder="Alcohol Consumption"></SingleSelect>
-          </div>
-        </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.phone" placeholder="Enter Phone no"
-          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
+          <input type="text" v-model="formVar.phone" placeholder="Enter Phone no" 
+          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)"/>
           <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
         </div>
         <div class="form-item mb-16">
@@ -164,8 +127,13 @@
           <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
         </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.address" placeholder="Enter Address" />
+          <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
           <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
+        </div>
+        <div class="col-5 form-item mb-16">
+          <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
+            placeholder="Select Speciality"></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
         </div>
         <div class="two-inputs">
           <div class="col-5 form-item mb-16">
@@ -179,29 +147,65 @@
               <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
           </div>
         </div>
-        <div class="two-inputs">
-          <div class="col-5 form-item mb-16">
-            <div class="dr-input">
-              <div class="dr-tag">Dr</div>
-              <input type="text" v-model="formVar.doctor" placeholder="Refered by" />
-            </div>
-            <div class="err-msg" v-if="formVar.submit && doctorValid">{{ doctorValid }}</div>
-          </div>
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
-              placeholder="Select Speciality"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
-          </div>
-        </div>
         <div class="save-btn form-item">
           <button class="btn black-btn">Add</button>
         </div>
       </form>
     </Modal>
+    <Modal v-model:show="formVar.viewModal" class="view-modal" headerClasses="header-bg">
+      <template v-slot:header>
+        <div class="title" showHeader="true">Patient Details</div>
+        <div class="close-btn" @click.prevent="formVar.viewModal = false">
+          <icon-cross></icon-cross>
+        </div>
+      </template>
+      <div class="data">
+        <div class="title">Doctor Name : </div>
+        <div class="val">Mrs. Rani Thakur</div>
+      </div>
+      <div class="data">
+        <div class="title">Phone Number : </div>
+        <div class="val">+91 8888888888</div>
+      </div>
+      <div class="data">
+        <div class="title">Email : </div>
+        <div class="val">patient@mai.com</div>
+      </div>
+      <div class="data">
+        <div class="title">Speciality : </div>
+        <div class="val">ENT</div>
+      </div>
+      <div class="data">
+        <div class="title">Address : </div>
+        <div class="val">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quod perferendis</div>
+      </div>
+      <div class="two-data">
+        <div class="data">
+          <div class="title">Gender : </div>
+          <div class="val">Female</div>
+        </div>
+        <div class="data">
+          <div class="title">DOB : </div>
+          <div class="val">25/11/2000 23 Years</div>
+        </div>
+      </div>
+      <div class="two-data">
+        <div class="data">
+          <div class="title">State : </div>
+          <div class="val">Maharashtra</div>
+        </div>
+        <div class="data">
+          <div class="title">City : </div>
+          <div class="val">Nashik</div>
+        </div>
+      </div>
+
+    </Modal>
   </section>
 </template>
 
 <script setup>
+import moment from "moment";
 import { reactive, computed } from 'vue';
 import { useStore } from 'vuex'
 
@@ -213,33 +217,27 @@ const formVar = reactive({
   submit: false,
   confirmModal: false,
   addModal: false,
+  viewModal: false,
   prefix: "",
   gender: "",
-  blood: "",
   state: "",
   city: "",
   speciality: "",
-  language: "",
   name:null,
   dob:null,
   phone:null,
   email:null,
   address:null,
-  doctor:null,
-  maritalStatus:null,
-  activityLevel:null,
-  smoking:null,
-  alcohol:null,
 })
 
-const patientData = reactive([
+
+const doctorData = reactive([
   {
     id: 125,
     name: "Prakash Jhaa",
     phone: 8888888888,
     email: "patient@mail.com",
-    appointments: 12,
-    lab_tests: 15,
+    speciality: 12,
   },
 ]);
 
@@ -252,10 +250,7 @@ const cityOptions = [
   { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
 ];
-const langOptions = [
-  { id: 1, name: "Option1" },
-  { id: 2, name: "Option2" },
-];
+
 const specialityOptions = [
   { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
@@ -269,32 +264,6 @@ const prefixOptions = [
   { name: "Mr.", id: "mr" },
   { name: "Mrs.", id: "mrs" },
 ];
-const bloodOptions = [
-  { name: "A+", id: "a+" },
-  { name: "B+", id: "b+" },
-  { name: "O+", id: "o+" },
-  { name: "AB+", id: "ab+" },
-  { name: "A-", id: "a-" },
-  { name: "B-", id: "b-" },
-  { name: "O-", id: "o-" },
-  { name: "AB-", id: "ab-" },
-];
-const maritalStatusOptions = [
-  { name: "Married", id: "1" },
-  { name: "Unmarried", id: "2" },
-];
-const activityLevelOptions = [
-  { name: "regular", id: "1" },
-  { name: "never", id: "2" },
-];
-const alcoholOptions = [
-  { name: "Yes", id: "1" },
-  { name: "No", id: "2" },
-];
-const smokingOptions = [
-  { name: "Yes", id: "1" },
-  { name: "No", id: "2" },
-];
 
 //search select end//
 
@@ -305,21 +274,18 @@ const smokingOptions = [
 
 /* Functions/Methods */
 
-const onSubmitPatient = () => {
+const onSubmitDoctor = () => {
   if (
     nameValid.value || 
     prefixValid.value || 
     genderValid.value || 
-    dobValid.value || 
-    bloodValid.value || 
+    dobValid.value ||  
     phoneValid.value || 
     emailValid.value || 
     addressValid.value || 
     stateValid.value || 
-    cityValid.value || 
-    doctorValid.value || 
-    specialityValid.value || 
-    languageValid.value 
+    cityValid.value ||
+    specialityValid.value 
   ) {
     formVar.submit = true;
     return;
@@ -370,7 +336,7 @@ const ageCalculate = computed(() => {
 /* Validation */
 const nameValid = computed(() => {
   if (!formVar.name) {
-    return "Enter patient name!";
+    return "Enter doctor name!";
   }
 });
 
@@ -384,11 +350,6 @@ const prefixValid = computed(() => {
     return "Select prefix!";
   }
 });
-const bloodValid = computed(() => {
-  if (!formVar.blood) {
-    return "Select blood group!";
-  }
-});
 const phoneValid = computed(() => {
   let phoneValid = /^[6-9][0-9]{9}$/
   if (!formVar.phone) {
@@ -400,16 +361,12 @@ const phoneValid = computed(() => {
 const emailValid = computed(() => {
   let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
   if (!formVar.email) {
-    return "Please enter your email!";
+    return "Please enter email!";
   } else if (!emailValid.test(formVar.email)) {
     return "Please enter valid email!";
   }
 });
-const doctorValid = computed(() => {
-  if (!formVar.doctor) {
-    return "Please enter doctor!";
-  }
-});
+
 const genderValid = computed(() => {
   if (!formVar.gender) {
     return "Please select gender!";
@@ -420,11 +377,7 @@ const specialityValid = computed(() => {
     return "Please select speciality!";
   }
 });
-const languageValid = computed(() => {
-  if (!formVar.language) {
-    return "Please select language!";
-  }
-});
+
 const addressValid = computed(() => {
   if (!formVar.address) {
     return "Please enter address!";

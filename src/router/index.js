@@ -108,11 +108,27 @@ const routes = [
             //     name: 'patients',
             //     component: () => import( /* webpackChunkName: "patients" */ '../views/Patient/Patients.vue')
             // },
+            //for doctor
+            {
+                path: '/doctor-appointment',
+                name: 'doctor appointment',
+                component: () => import( /* webpackChunkName: "doctor appointment" */ '../views/Doctor/Appointments.vue')
+            },
+            {
+                path: '/doctors',
+                name: 'doctors',
+                component: () => import( /* webpackChunkName: "doctors" */ '../views/Doctor/Doctors.vue')
+            },
             //for pathologist
             {
                 path: '/pathologist',
                 name: 'pathologist',
                 component: () => import( /* webpackChunkName: "pathologist" */ '../views/Lab/Pathologist.vue')
+            },
+            {
+                path: '/laboratory',
+                name: 'laboratory',
+                component: () => import( /* webpackChunkName: "laboratory" */ '../views/Lab/Laboratory.vue')
             },
             {
                 path: '/lab-appointment',

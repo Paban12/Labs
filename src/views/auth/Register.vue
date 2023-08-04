@@ -3,7 +3,7 @@
     <form class="form">
       <h2>Welcome to Parchi</h2>
       <span>
-        Enter details for Register
+        Enter details for Register 
       </span> 
       <div class="form-item mb-16">
         <input type="text" v-model="formVar.name" class="" placeholder="Enter your name">

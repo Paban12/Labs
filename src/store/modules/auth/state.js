@@ -6,6 +6,8 @@ export default {
   loaderButton: false,
 
   addTestModal: false,
+  addPanelModal: false,
+  addPackageModal: false,
   aptSuccessModal: false,
 
   user: {

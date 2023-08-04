@@ -1,73 +1,105 @@
 <template>
-  <section class="bills-page">
-    <div class="card">
-      <div class="card-body">
-        <div class="bill-table">
-          <div class="title-header">
-            <div class="title">Lab Test Report</div>
-            <div class="search">
-              <div class="date-input">
-                <input type="date">
-                <div class="icon">
-                  <img src="/src/assets/images/icons/calender.svg" alt="">
-                </div>
+  <section class="lab-report-page">
+    <div class="cards">
+      <div class="card">
+        <div class="date">04 Aung 23</div>
+        <div class="card-data">
+          <div class="card-header">
+            <div class="left">
+              <div class="time">
+                <div class="">03:52 PM</div>
+                <div class="">5 Minuts</div>
               </div>
-              <button class="btn black-btn">Search</button>
+              <div class="info">
+                <div class="">Self</div>
+                <div class="">9 Test (DEXTOR LABS - Lab Address)</div>
+              </div>
+            </div>
+            <div class="right">
+              <div class="img">
+                <img src="/src/assets/images/png/print.png" alt="" />
+              </div>
+              <div class="img">
+                <img src="/src/assets/images/png/share.png" alt="" />
+              </div>
             </div>
           </div>
-          <div class="table-body">
-            <div class="table-outer">
+          <div class="card-body">
+            <div class="test-table mb-16">
               <table class="table">
                 <thead>
                   <th>Sr. No.</th>
-                  <th>Token No</th>
-                  <th>Doctor Name</th>
-                  <th>Patient Name</th>
-                  <th>Test Name</th>
+                  <th>Test</th>
+                  <th>Sample</th>
+                  <th>Label</th>
+                  <th>Collection</th>
+                  <th>Process</th>
+                  <th>Pay</th>
                   <th>Result</th>
-                  <th>Date</th>
-                  <th class="text-center">Options</th>
+                  <th class="text-center">Option</th>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, index) in billData" :key="item">
+                  <tr v-for="(item, index) in testTableData" :key="item">
                     <td>{{ index + 1 }}</td>
-                    <td>{{ item.token }}</td>
-                    <td>{{ item.doctor_name }}</td>
-                    <td>{{ item.patient_name }}</td>
                     <td>{{ item.test_name }}</td>
-                    <td>{{ item.result }}</td>
-                    <td>{{ item.date }}</td>
+                    <td>
+                      <div class="sample-input">
+                        <input type="text" placeholder="Urin" />
+                        <input type="number" placeholder="Size" />
+                        <div class="select-dropdown">
+                          <select name="" id="">
+                            <option value="">Select Unit</option>
+                            <option value="">ml</option>
+                            <option value="">Test amount</option>
+                            <option value="">g</option>
+                            <option value="">swab</option>
+                            <option value="">gauze</option>
+                            <option value="">Cotton swab</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td><input type="text" placeholder="Label" /></td>
+                    <td>
+                      <input type="text" placeholder="Collection" />
+                    </td>
+                    <td>
+                      <div class="time-input">
+                        <input type="number" placeholder="start">
+                        <input type="number" placeholder="end">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="pay">
+                        <div class="text-red">{{ item.paid_status }}</div>
+                        <div class="amt">640</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-green f-w-bolc">View Result</div>
+                    </td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <router-link to="/" class="">
-                          <img src="/src/assets/images/png/printer.png" alt="">
-                        </router-link>
-                        <router-link to="/" class="">
-                          <img src="/src/assets/images/icons/mail.svg" alt="">
-                        </router-link>
-                        <router-link to="/" class="">
-                          <img src="/src/assets/images/png/eye.png" alt="">
-                        </router-link>
+                        <div class="icon">
+                          <icon-vert-dots></icon-vert-dots>
+                        </div>
+                        <div class="hover-list card">
+                          <div class="list-item">Print</div>
+                          <div class="list-item">Share</div>
+                        </div>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="table-no-data">
-              <div >No records Found!</div>
-            </div>
-            <div class="table-footer">
-              <div class="entries">
-                Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
-              </div>
-              <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
-                <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
-              </div>
+            <div class="form-item mb-16 test-drop">
+              <SingleSelect
+                v-model="formVar.tableTest"
+                :options="tableTestOptions"
+                @selected="handleSelectedOption"
+                placeholder="Search Test"
+              ></SingleSelect>
             </div>
           </div>
         </div>
@@ -77,21 +109,28 @@
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { reactive } from "vue";
 
-  const billData = reactive([
-    {
-      token: 25478,
-      doctor_name: 'Harish Verma',
-      patient_name: 'Ravish Kumar',
-      test_name: 'Blood',
-      result: 'Hemoglobin 50, rbc 45000',
-      date: '15-05-2023'
-    },
-  ])
+const formVar = reactive({
+  tableTest: null,
+})
 
+const testTableData = reactive([
+  {
+    test_name: "CBC",
+    total: 2000,
+  },
+]);
+
+//for table data
+const tableTestOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const handleSelectedOption = (option) => {
+  console.log("Selected option:", option);
+};
 </script>
 
 <style>
-
 </style>

@@ -83,7 +83,7 @@
                   <h3 class="">Notifications</h3>
                 </div>
                 <div class="notes-list">
-                  <div class="list-item success">
+                  <router-link to="/" class="list-item success">
                     <div class="icon">
                       <icon-success></icon-success>
                     </div>
@@ -91,8 +91,8 @@
                       <div class="title">Success</div>
                       <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
                     </div>
-                  </div>
-                  <div class="list-item warning">
+                  </router-link>
+                  <router-link to="/" class="list-item warning">
                     <div class="icon">
                       <icon-warning></icon-warning>
                     </div>
@@ -100,8 +100,8 @@
                       <div class="title">Warning !</div>
                       <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
                     </div>
-                  </div>
-                  <div class="list-item error">
+                  </router-link>
+                  <router-link to="/" class="list-item error">
                     <div class="icon">
                       <icon-warning></icon-warning>
                     </div>
@@ -109,19 +109,7 @@
                       <div class="title">Error !</div>
                       <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
                     </div>
-                  </div>
-                  <div class="list-item success">
-                    <div class="icon">
-                      <icon-success></icon-success>
-                    </div>
-                    <div class="info">
-                      <div class="title">Success</div>
-                      <div class="sub-title2">The developer has kept the source code structure adaptable enough for   developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </div>
-                  <div class="back-btn">
-                    <div class="btn blue-btn">⇐ Back to Notifications</div>
-                  </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -224,7 +212,7 @@
               </div>
               <div class="text">Calender</div>
             </router-link>
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/dashboard" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/eye.png" alt="image" />
               </div>
