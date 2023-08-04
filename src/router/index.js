@@ -28,7 +28,7 @@ const routes = [
 
     {
         path: '/',
-        redirect: '/dashboard',
+        redirect: '/appointment/calender',
         name: 'dashboard layout',
         component: () => import( /* webpackChunkName: "dashboard layout" */ '../views/DashboardLayout.vue'),
         children: [

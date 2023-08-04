@@ -77,7 +77,7 @@
               <div class="tooltip">Notification</div>
             </div>
             <!-- notifications -->
-            <div class="notes-section notification-section" v-if="nav.notificationSidebar" >
+            <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
               <div class="card">
                 <div class="heading">
                   <h3 class="">Notifications</h3>
@@ -222,7 +222,13 @@
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/eye.png" alt="image" />
               </div>
-              <div class="text">Home</div>
+              <div class="text">Calender</div>
+            </router-link>
+            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/eye.png" alt="image" />
+              </div>
+              <div class="text">Dashboard</div>
             </router-link>
             <router-link to="/staff/details" class="list desk-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
