@@ -9,7 +9,7 @@
           </div>
           <div class="tabs">
             <div
-              class="tab"
+              class="tab" 
               @click.prevent="labTest.tab = 1"
               :class="labTest.tab === 1 ? 'active' : ''"
             >
@@ -102,15 +102,12 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="patient.viewModal = true">
-                          <img src="/src/assets/images/png/eye.png" alt="" />
-                        </div>
-                        <div class="" @click.prevent="patient.addModal = true">
+                        <div class="" @click.prevent="storeVar.addTestModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
                           class=""
-                          @click.prevent="patient.confirmModal = true"
+                          @click.prevent="labTest.confirmModal = true"
                         >
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
@@ -200,15 +197,12 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="patient.viewModal = true">
-                          <img src="/src/assets/images/png/eye.png" alt="" />
-                        </div>
-                        <div class="" @click.prevent="patient.addModal = true">
+                        <div class="" @click.prevent="storeVar.addPanelModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
                           class=""
-                          @click.prevent="patient.confirmModal = true"
+                          @click.prevent="labTest.confirmModal = true"
                         >
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
@@ -274,15 +268,12 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="patient.viewModal = true">
-                          <img src="/src/assets/images/png/eye.png" alt="" />
-                        </div>
-                        <div class="" @click.prevent="patient.addModal = true">
+                        <div class="" @click.prevent="storeVar.addPackageModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
                           class=""
-                          @click.prevent="patient.confirmModal = true"
+                          @click.prevent="labTest.confirmModal = true"
                         >
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
@@ -340,15 +331,12 @@
                     <td>{{ item.date }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="patient.viewModal = true">
-                          <img src="/src/assets/images/png/eye.png" alt="" />
-                        </div>
-                        <div class="" @click.prevent="patient.addModal = true">
+                        <div class="" @click.prevent="storeVar.addTemplateModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
                           class=""
-                          @click.prevent="patient.confirmModal = true"
+                          @click.prevent="labTest.confirmModal = true"
                         >
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
@@ -379,9 +367,20 @@
       </div>
     </div>
     <!-- modals -->
-
+    <Modal v-model:show="labTest.confirmModal" class="confirm-modal">
+      <h4>
+        Are you sure want to Delete
+      </h4>
+      <div class="btns">
+        <button class="btn grey-btn cancel-btn" @click.prevent="labTest.confirmModal = false">Cancel</button>
+        <button class="btn confirm-btn">Confirm</button>
+      </div>      
+    </Modal>
     <!-- components -->
     <AddTestModal />
+    <AddPanelModal />
+    <AddPackageModal />
+    <AddTemplateModal />
   </section>
 </template>
 
@@ -396,6 +395,7 @@ const labTest = reactive({
   tab: 1,
   tests: null,
   panel: null,
+  confirmModal: false,
 });
 
 const testData = reactive([

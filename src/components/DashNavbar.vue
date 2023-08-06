@@ -224,6 +224,18 @@
               </div>
               <div class="text">Staff</div>
             </router-link>
+            <router-link to="/patients" class="list desk-view" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Patients</div>
+            </router-link>
+            <router-link to="/doctors" class="list desk-view" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Doctors</div>
+            </router-link>
             <router-link to="/staff" class="list mob-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />

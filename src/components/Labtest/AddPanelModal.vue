@@ -20,7 +20,6 @@
           <th>Price(₹)</th>
           <th>Home Collection</th>
           <th>Report Within</th>
-          <th>Reference Value</th>
           <th>print Note</th>
           <th class="text-center">Option</th>
         </thead>
@@ -107,10 +106,7 @@
               </div>
             </td>
             <td>
-              <input type="number" placeholder="Reference" @click.prevent="formVar.referenceModal = true" />
-            </td>
-            <td>
-              <input type="number" placeholder="Print Note" />
+              <input type="number" placeholder="Print Note" @click.prevent="formVar.noteModal = true" />
             </td>
             <td class="text-center">
               <div class="option-btns">
@@ -127,81 +123,14 @@
       <button class="btn black-btn">Save</button>
     </div>
   </Modal>
-  <Modal v-model:show="formVar.referenceModal" class="add-test-modal" headerClasses="header-bg">
+  <Modal v-model:show="formVar.noteModal" class="add-test-modal" headerClasses="header-bg">
     <template v-slot:header>
-      <div class="title" showHeader="true">Add Lab Test</div>
-      <div class="close-btn" @click.prevent="formVar.referenceModal = false">
+      <div class="title" showHeader="true">Note</div>
+      <div class="close-btn" @click.prevent="formVar.noteModal = false">
         <icon-cross></icon-cross>
       </div>
     </template>
-    <div class="test-table mb-16">
-      <table class="table">
-        <thead>
-          <th>Sr. No.</th>
-          <th>Gender</th>
-          <th>Min. Age</th>
-          <th>max. Age</th>
-          <th>Age</th>
-          <th>Lower Value</th>
-          <th>Upper Value</th>
-          <th>Unit</th>
-          <th>Reference Note</th>
-          <th class="text-center">Option</th>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in testTableData" :key="item">
-            <td>{{ index + 1 }}</td>
-            <td>
-              <div class="select-dropdown">
-                <select name="" id="">
-                  <option value="">Male</option>
-                  <option value="">Female</option>
-                  <option value="">Other</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <input type="number" placeholder="Min. Age" />
-            </td>
-            <td>
-              <input type="number" placeholder="Max Age" />
-            </td>
-            <td>
-              <div class="select-dropdown">
-                <select name="" id="">
-                  <option value="">Years</option>
-                  <option value="">Months</option>
-                  <option value="">Weeks</option>
-                  <option value="">Days</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <input type="number" placeholder="Lower Value" />
-            </td>
-            <td>
-              <input type="number" placeholder="Upper Value" />
-            </td>
-            <td>
-              <input type="number" placeholder="Unit" />
-            </td>
-            <td>
-              <input type="text" placeholder="Note" />
-            </td>
-            <td class="text-center">
-              <div class="option-btns">
-                <div class="">
-                  <img src="/src/assets/images/png/delete.png" alt="" />
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="add-ref mb-16">
-      + Add New Reference
-    </div>
+    <vue-editor :editor-toolbar="customToolbar"></vue-editor>
     <div class="save-btn">
       <button class="btn black-btn">Save</button>
     </div>
@@ -211,6 +140,7 @@
 <script setup>
 import { reactive, computed } from "vue";
 import { useStore } from "vuex";
+import { VueEditor } from "vue3-editor";
 
 const store = useStore();
 const storeVar = computed(() => store.state.Auth);
@@ -220,8 +150,25 @@ const formVar = reactive({
   dept: null,
   sample: null,
   container: null,
-  referenceModal: false,
+  noteModal: false,
 })
+
+const customToolbar = [
+  [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+  ["bold", "italic", "underline", "strike"], // toggled buttons
+  [
+    { align: "" },
+    { align: "center" },
+    { align: "right" },
+    { align: "justify" }
+  ],
+  ["blockquote", "code-block"],
+  [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+  [{ indent: "-1" }, { indent: "+1" }],
+  [{ color: [] }, { background: [] }],
+  // ["link", "image", "video"],
+  ["clean"],
+]
 
 const testTableData = reactive([
   {

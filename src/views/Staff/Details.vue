@@ -50,7 +50,7 @@
           <div class="title">Upload Sign (PNG Format only)</div>
           <div class="pic-upload">
             <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic" alt="" />
-            <img v-else src="/src/assets/images/png/img.png" class="dummy-img pic" alt="" />
+            <img v-else src="/src/assets/images/png/sign.png" class="dummy-img pic" alt="" />
             <label for="imgUpload" class="upload-file-block">
               Upload Sign
             </label>

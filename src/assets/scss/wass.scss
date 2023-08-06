@@ -43,6 +43,7 @@
 @import "custom/labtest";
 @import "custom/patient-profile";
 @import "custom/lab-report";
+@import "custom/doctor-profile-layout";
 
 
 //main
@@ -59,3 +60,11 @@
 @import "main/view-modal";
 @import "main/apt-success-modal";
 @import "main/add-test-modal";
+
+
+//doctor
+@import "custom/doctor-profile/education.scss";
+@import "custom/doctor-profile/lang.scss";
+@import "custom/doctor-profile/sign.scss";
+@import "custom/doctor-profile/block.scss";
+@import "custom/doctor-profile/schedule.scss";

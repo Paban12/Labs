@@ -40,7 +40,7 @@
       }
       .main-content-right{
         width: 450px;
-        // height: calc(100vh - 11rem);
+        height: calc(100vh - 11rem);
         .patient-list-card{
           // width: 22%;
           height: 100%;
@@ -105,7 +105,7 @@
             }
           }
           .patient-list{
-            // height: calc(100% - 6.4rem);
+            height: calc(100% - 6.4rem);
             // padding: 0.5rem 0;
             overflow-y: scroll;
             -ms-overflow-style: none;

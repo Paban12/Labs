@@ -32,7 +32,7 @@
         <event-time :date="formVar.date" :eventList="data" @update:changeDate="onDateChange($event)"></event-time>
         <div class="patient-list-card card">
           <div class="add-btns">
-            <div class="icon">
+            <div class="icon" @click.prevent="formVar.aptModal = true">
               <icon-add></icon-add>
               <div class="tooltip">Book Appointment</div>
             </div>
@@ -469,7 +469,7 @@ const formVar = reactive({
   fromDate: moment().format("YYYY-MM-DD"),
   toDate: moment().format("YYYY-MM-DD"),
   tab: 1,
-  aptModal: true,
+  aptModal: false,
   name: null,
   email: null,
   phone: null,

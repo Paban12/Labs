@@ -38,9 +38,9 @@
                   <td>{{ item.speciality }}</td>
                   <td class="text-center">
                     <div class="option-btns">
-                      <div class="" @click.prevent="formVar.viewModal = true">
+                      <router-link to="/doctor/profile" class="">
                         <img src="/src/assets/images/png/eye.png" alt="" />
-                      </div>
+                      </router-link>
                       <div class="" @click.prevent="formVar.confirmModal = true">
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
@@ -87,23 +87,19 @@
       </template>
       <form action="" class="form" @submit.prevent="onSubmitDoctor">
         <div class="row">
-          <div class="col-25 form-item mb-16">
-            <SingleSelect v-model="formVar.prefix" :options="prefixOptions" @selected="handleSelectedOption"
-              placeholder="Select Prefix"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && prefixValid">{{ prefixValid }}</div>
-          </div>
-          <div class="col-75 form-item mb-16">
+          <div class="form-item mb-16">
             <input type="text" v-model="formVar.name" placeholder="Doctor Name" />
             <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
           </div>
         </div>
+        <div class="form-item mb-16">
+          <SingleSelect v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
+            placeholder="Select Gender"></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
+        </div>
         <div class="row">
-          <div class="col-25 form-item mb-16">
-            <SingleSelect v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
-              placeholder="Select Gender"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
-          </div>
-          <div class="col-5 form-item mb-16">
+          
+          <div class="col-75 form-item mb-16">
             <div class="date-input">
               <input type="date" v-model="formVar.dob" :max="today()" />
               <div class="icon">
@@ -123,17 +119,40 @@
           <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
         </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.email" placeholder="Enter Email" />
-          <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
+          <input type="text" placeholder="Enter Alternate Phone no" />
         </div>
         <div class="form-item mb-16">
-          <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
-          <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
+          <input type="text" v-model="formVar.email" placeholder="Enter Email" />
+          <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
         </div>
         <div class="col-5 form-item mb-16">
           <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
             placeholder="Select Speciality"></SingleSelect>
             <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
+        </div>
+        <div class="form-item mb-16">
+          <input type="text" placeholder="Enter Registration Council & No" />
+          <div class="err-msg">Please enter registration council & no</div>
+        </div>
+        <div class="form-item mb-16">
+          <input type="text" placeholder="Enter Registration Year" />
+          <div class="err-msg">Please enter registration year</div>
+        </div>
+        <div class="form-item mb-16">
+          <input type="text" placeholder="Enter Experience (Years)" />
+        </div>
+        <div class="form-item mb-16">
+          <div class="select-dropdown">
+            <select name="" id="">
+              <option value="">Registration Type</option>
+              <option value="">Country</option>
+              <option value="">State</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-item mb-16">
+          <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
+          <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
         <div class="two-inputs">
           <div class="col-5 form-item mb-16">
@@ -152,55 +171,6 @@
         </div>
       </form>
     </Modal>
-    <Modal v-model:show="formVar.viewModal" class="view-modal" headerClasses="header-bg">
-      <template v-slot:header>
-        <div class="title" showHeader="true">Patient Details</div>
-        <div class="close-btn" @click.prevent="formVar.viewModal = false">
-          <icon-cross></icon-cross>
-        </div>
-      </template>
-      <div class="data">
-        <div class="title">Doctor Name : </div>
-        <div class="val">Mrs. Rani Thakur</div>
-      </div>
-      <div class="data">
-        <div class="title">Phone Number : </div>
-        <div class="val">+91 8888888888</div>
-      </div>
-      <div class="data">
-        <div class="title">Email : </div>
-        <div class="val">patient@mai.com</div>
-      </div>
-      <div class="data">
-        <div class="title">Speciality : </div>
-        <div class="val">ENT</div>
-      </div>
-      <div class="data">
-        <div class="title">Address : </div>
-        <div class="val">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quod perferendis</div>
-      </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">Gender : </div>
-          <div class="val">Female</div>
-        </div>
-        <div class="data">
-          <div class="title">DOB : </div>
-          <div class="val">25/11/2000 23 Years</div>
-        </div>
-      </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">State : </div>
-          <div class="val">Maharashtra</div>
-        </div>
-        <div class="data">
-          <div class="title">City : </div>
-          <div class="val">Nashik</div>
-        </div>
-      </div>
-
-    </Modal>
   </section>
 </template>
 
@@ -217,8 +187,6 @@ const formVar = reactive({
   submit: false,
   confirmModal: false,
   addModal: false,
-  viewModal: false,
-  prefix: "",
   gender: "",
   state: "",
   city: "",
@@ -237,7 +205,7 @@ const doctorData = reactive([
     name: "Prakash Jhaa",
     phone: 8888888888,
     email: "patient@mail.com",
-    speciality: 12,
+    speciality: 'Cardiologist',
   },
 ]);
 
@@ -260,10 +228,6 @@ const genderOptions = [
   { name: "Female", id: "female" },
   { name: "Other", id: "other" },
 ];
-const prefixOptions = [
-  { name: "Mr.", id: "mr" },
-  { name: "Mrs.", id: "mrs" },
-];
 
 //search select end//
 
@@ -277,7 +241,6 @@ const prefixOptions = [
 const onSubmitDoctor = () => {
   if (
     nameValid.value || 
-    prefixValid.value || 
     genderValid.value || 
     dobValid.value ||  
     phoneValid.value || 
@@ -343,11 +306,6 @@ const nameValid = computed(() => {
 const dobValid = computed(() => {
   if (!formVar.dob) {
     return "Select dob!";
-  }
-});
-const prefixValid = computed(() => {
-  if (!formVar.prefix) {
-    return "Select prefix!";
   }
 });
 const phoneValid = computed(() => {

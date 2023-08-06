@@ -1,0 +1,22 @@
+.dr-language{
+  .lang-row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    .title{
+      font-weight: 700;
+      width: 12rem;
+    }
+    .inputs{
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      .input{
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+  }
+}

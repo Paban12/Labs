@@ -110,7 +110,7 @@
               <input type="number" placeholder="Reference" @click.prevent="formVar.referenceModal = true" />
             </td>
             <td>
-              <input type="number" placeholder="Print Note" />
+              <input type="number" placeholder="Print Note" @click.prevent="formVar.noteModal = true" />
             </td>
             <td class="text-center">
               <div class="option-btns">
@@ -206,14 +206,44 @@
       <button class="btn black-btn">Save</button>
     </div>
   </Modal>
+  <Modal v-model:show="formVar.noteModal" class="add-test-modal" headerClasses="header-bg">
+    <template v-slot:header>
+      <div class="title" showHeader="true">Note</div>
+      <div class="close-btn" @click.prevent="formVar.noteModal = false">
+        <icon-cross></icon-cross>
+      </div>
+    </template>
+    <vue-editor :editor-toolbar="customToolbar"></vue-editor>
+    <div class="save-btn">
+      <button class="btn black-btn">Save</button>
+    </div>
+  </Modal>
 </template> 
 
 <script setup>
 import { reactive, computed } from "vue";
 import { useStore } from "vuex";
+import { VueEditor } from "vue3-editor";
 
 const store = useStore();
 const storeVar = computed(() => store.state.Auth);
+
+const customToolbar = [
+  [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+  ["bold", "italic", "underline", "strike"], // toggled buttons
+  [
+    { align: "" },
+    { align: "center" },
+    { align: "right" },
+    { align: "justify" }
+  ],
+  ["blockquote", "code-block"],
+  [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+  [{ indent: "-1" }, { indent: "+1" }],
+  [{ color: [] }, { background: [] }],
+  // ["link", "image", "video"],
+  ["clean"],
+]
 
 const formVar = reactive({
   test: null,
@@ -221,6 +251,7 @@ const formVar = reactive({
   sample: null,
   container: null,
   referenceModal: false,
+  noteModal: false,
 })
 
 const testTableData = reactive([

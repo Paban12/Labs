@@ -119,6 +119,11 @@ const routes = [
                 name: 'doctors',
                 component: () => import( /* webpackChunkName: "doctors" */ '../views/Doctor/Doctors.vue')
             },
+            {
+                path: '/doctor/profile',
+                name: 'doctor profile',
+                component: () => import( /* webpackChunkName: "doctor profile" */ '../views/Doctor/Profile.vue')
+            },
             //for pathologist
             {
                 path: '/pathologist',
