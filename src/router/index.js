@@ -14,9 +14,9 @@ const routes = [
                 component: () => import( /* webpackChunkName: "login" */ '../views/auth/Login.vue')
             },
             {
-                path: '/otp',
-                name: 'otp',
-                component: () => import( /* webpackChunkName: "otp" */ '../views/auth/OTP.vue')
+                path: '/forgot',
+                name: 'forgot',
+                component: () => import( /* webpackChunkName: "forgot" */ '../views/auth/Forgot.vue')
             },
             {
                 path: '/register',

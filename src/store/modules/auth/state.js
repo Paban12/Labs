@@ -9,6 +9,7 @@ export default {
   addPanelModal: false,
   addPackageModal: false,
   addTemplateModal: false,
+  
   aptSuccessModal: false,
 
   user: {

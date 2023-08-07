@@ -209,7 +209,7 @@
   .sidebar{
     position: fixed;
     top: 4.5rem;
-    left: 0;
+    left: -300px;
     height: calc(100vh - 4.5rem);
     background: var(--black);
     padding: 2rem 0;
@@ -260,6 +260,14 @@
         }
       }
     }
+  }
+  .sidebar.open {
+    left: 0;
+    transition: all 0.4s;
+  }
+  .sidebar.closing {
+    left: -300px;
+    transition: all 0.4s;
   }
   .notes-section{
     position: fixed;

@@ -16,7 +16,7 @@
           <img src="/src/assets/images/jpg/about1.jpg" alt="image">
         </div>
         <div class="data">
-          <h5>WELCOME TO PARCHI</h5>
+          <h5>WELCOME TO THYROMAX LAB</h5>
           <h2>Clinic with Innovative Approach to Treatment</h2>
           <p>
             An enim nullam tempor sapien gravida donec pretium ipsum porta justo integer at odio velna vitae auctor integer congue magna purus pretium ligula rutrum luctus ultrice aliquam a augue suscipit

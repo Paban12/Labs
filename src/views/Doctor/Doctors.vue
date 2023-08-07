@@ -39,7 +39,7 @@
                   <td class="text-center">
                     <div class="option-btns">
                       <router-link to="/doctor/profile" class="">
-                        <img src="/src/assets/images/png/eye.png" alt="" />
+                        <img src="/src/assets/images/png/man.png" alt="" />
                       </router-link>
                       <div class="" @click.prevent="formVar.confirmModal = true">
                         <img src="/src/assets/images/png/delete.png" alt="" />

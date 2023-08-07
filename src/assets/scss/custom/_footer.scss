@@ -67,6 +67,13 @@
 
 
 //media queroies
+
+@media (min-width: 769px){
+  .footer {
+    height: 4.5rem;
+  }
+}
+
 @media (max-width: 768px){
   .footer .footer-container .logo .links .link{
     font-size: 0.85rem;

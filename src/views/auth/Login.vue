@@ -1,29 +1,41 @@
 <template>
   <section class="login-form-inner">
     <form action="" class="form">
-      <h2>Welcome to Parchi</h2>
+      <h2>Welcome to Thyromax</h2>
       <div class="text">Login to continue</div>
       <div class="form-item mb-16">
-        <div class="title">Phone Number</div>
+        <div class="title">Email</div>
         <div class="input">
-          <input type="number" v-model="formVar.loginId" placeholder="+91 8888888888" v-on:keyup="phnum($event.target.value)">
+          <input type="email" placeholder="user@gmail.com">
         </div>
-        <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
+        <div class="err-msg"></div>
       </div>
-      <div class="login-btn form-item">
-        <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
+      <div class="form-item mb-16">
+        <div class="title">Password</div>
+        <div class="input">
+          <input type="password" placeholder="*******">
+        </div>
+        <div class="err-msg"></div>
+      </div>
+      <div class="forgot">
+        <router-link to="/forgot">Forgot Password?</router-link>
+      </div>
+      <div class="login-btn">
+        <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow> </button>
+        <!-- <button type="button" class="btn black-btn load-btn">
           <icon-login-loader></icon-login-loader>
-        </button>
-        <button type="button" class="btn black-btn" v-else @click="onSubmitLogin">Get OTP <icon-right-arrow></icon-right-arrow> </button>
+        </button> -->
       </div>
-      <!-- <div class="login-btn">
-        <button type="button" class="btn black-btn" @click="onSubmitLogin"> <icon-right-arrow></icon-right-arrow> </button>
-      </div> -->
       <div class="reg">
-        New On Parchi
+        New On Thyromax
         <icon-right-arrow></icon-right-arrow> 
         <router-link to="/register">Register Here</router-link> 
       </div>
+      <!-- <div class="reg">
+        Rorgot Password
+        <icon-right-arrow></icon-right-arrow> 
+        <router-link to="/forgot">Forgot Password?</router-link>
+      </div> -->
     </form>
   </section>
 </template>

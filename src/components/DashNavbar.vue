@@ -3,15 +3,15 @@
     <div class="navbar">
       <div class="nav-container container">
         <div class="left">
-          <div class="menu-icon" v-if="!nav.sidebar" @click.prevent="nav.sidebar = true">
+          <div class="menu-icon" v-if="!isSidebarOpen" @click="toggleSidebar">
             <icon-menu></icon-menu>
           </div>
-          <div class="menu-icon cross-icon" v-if="nav.sidebar" @click.prevent="nav.sidebar = false">
+          <div v-else class="menu-icon cross-icon" @click="toggleSidebar">
             <icon-cross></icon-cross>
           </div>
           <router-link to="/" class="logo">
             <!-- <img src="" alt=""> -->
-            <div class="text grade-text">PARCHI</div>
+            <div class="text grade-text">Thyromax Labs</div>
           </router-link>
         </div>
         <div class="right"> 
@@ -200,73 +200,67 @@
         </div>
       </div>
       <!-- sidebar -->
-      <div class="sidebar" v-if="nav.sidebar">
+      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }">
         <div class="sidebar-card">
           <div class="close-icon" @click.prevent="nav.sidebar = false">
             <icon-cross></icon-cross>
           </div>
           <div class="menu-icons">
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/eye.png" alt="image" />
               </div>
               <div class="text">Calender</div>
             </router-link>
-            <router-link to="/dashboard" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/dashboard" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/eye.png" alt="image" />
               </div>
               <div class="text">Dashboard</div>
             </router-link>
-            <router-link to="/staff/details" class="list desk-view" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/microscope.png" alt="image" />
-              </div>
-              <div class="text">Staff</div>
-            </router-link>
-            <router-link to="/patients" class="list desk-view" @click.prevent="closeSidebar()">
+            <router-link to="/patients" class="list desk-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
               <div class="text">Patients</div>
             </router-link>
-            <router-link to="/doctors" class="list desk-view" @click.prevent="closeSidebar()">
+            <router-link to="/doctors" class="list desk-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
               <div class="text">Doctors</div>
             </router-link>
-            <router-link to="/staff" class="list mob-view" @click.prevent="closeSidebar()">
+            <router-link to="/pathologist" class="list desk-view" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Pathologist</div>
+            </router-link>
+            <router-link to="/staff/details" class="list desk-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
               <div class="text">Staff</div>
             </router-link>
-            <router-link to="/labtest" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/staff" class="list mob-view" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Staff</div>
+            </router-link>
+            <router-link to="/labtest" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Tests</div>
             </router-link>
-            <router-link to="/visits" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/visits" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Visits</div>
             </router-link>
-            <router-link to="/account" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Account</div>
-            </router-link>
-            <router-link to="/appointment/calender" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Appoinments</div>
-            </router-link>
-            <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()">
+            <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
@@ -307,9 +301,24 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { computed } from "@vue/reactivity";
 
+
+const isSidebarOpen = ref(false);
+const isClosing = ref(false);
+
+const toggleSidebar = () => {
+  if (isSidebarOpen.value) {
+    isClosing.value = true;
+    setTimeout(() => {
+      isSidebarOpen.value = false;
+      isClosing.value = false;
+    }, 300); // Change the delay (in milliseconds) based on your desired animation time
+  } else {
+    isSidebarOpen.value = true;
+  }
+};
 const nav = reactive({
   accMenu: false,
   searchValue: "",

@@ -65,7 +65,7 @@
             </div> -->
           </div>
         </div>
-        <div class="staff-card-outer col-6">
+        <div class="staff-card-outer col-6" >
           <div class="card staff-info-card">
             <div class="card-header">
               <div class="top-info">
@@ -73,7 +73,7 @@
                   <img src="/src/assets/images/png/dr2.png" alt="image">
                 </div>
                 <div class="staff-name">Dr. Anurag Malohatra Strhya</div>
-                <div class="post admin">Admin</div>
+                <div class="post Admin">Admin</div>
                 <div class="delete-btn" @click.prevent="formVar.confirmModal = true">
                   <img src="/src/assets/images/png/delete.png" alt="image">
                 </div>
@@ -160,6 +160,7 @@ const formVar = reactive({
   email:null,
   address:null,
   post: "",
+  tab: 1,
 })
 
 const postOptions = [

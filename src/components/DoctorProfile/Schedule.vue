@@ -35,7 +35,7 @@
                   <input type="time">
                 </div>
                 <div class="form-item col-5 mb-16">
-                  <div class="title">Start Time</div>
+                  <div class="title">End Time</div>
                   <input type="time">
                 </div>
               </div>
@@ -46,7 +46,7 @@
               placeholder="Search"></SingleSelect>
               <div class="checkbox">
                 <div class="input">
-                  <div class="text">Morning</div>
+                  <div class="text">Afternoon</div>
                   <label class="toggle-control">
                     <input type="checkbox" checked="checked" />
                     <span class="control"></span>
@@ -66,7 +66,7 @@
                   <input type="time">
                 </div>
                 <div class="form-item col-5 mb-16">
-                  <div class="title">Start Time</div>
+                  <div class="title">End Time</div>
                   <input type="time">
                 </div>
               </div>
@@ -77,7 +77,7 @@
               placeholder="Search"></SingleSelect>
               <div class="checkbox">
                 <div class="input">
-                  <div class="text">Morning</div>
+                  <div class="text">Evening</div>
                   <label class="toggle-control">
                     <input type="checkbox" checked="checked" />
                     <span class="control"></span>
@@ -97,7 +97,7 @@
                   <input type="time">
                 </div>
                 <div class="form-item col-5 mb-16">
-                  <div class="title">Start Time</div>
+                  <div class="title">End Time</div>
                   <input type="time">
                 </div>
               </div>

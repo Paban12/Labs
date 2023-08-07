@@ -1,7 +1,7 @@
 <template>
   <section class="login-form-inner register-form">
     <form class="form">
-      <h2>Welcome to Parchi</h2>
+      <h2>Welcome to Thyromax</h2>
       <span>
         Enter details for Register 
       </span> 

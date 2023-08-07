@@ -2,8 +2,8 @@
   <section class="login-page">
     <div class="img-section">
       <div class="logo">
-        <!-- <img src="" alt=""> -->
-        <div class="text grade-text">PARCHI</div>
+        <img src="/src/assets/images/logo/logo.png" alt="logo">
+        <!-- <div class="text grade-text">PARCHI</div> -->
       </div>
       <div class="login-icon">
         <icon-login></icon-login>
