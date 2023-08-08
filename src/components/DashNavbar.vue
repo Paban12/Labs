@@ -260,6 +260,12 @@
               </div>
               <div class="text">Visits</div>
             </router-link>
+            <router-link to="/site-setting" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Site Settings</div>
+            </router-link>
             <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />

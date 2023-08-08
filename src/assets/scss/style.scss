@@ -397,6 +397,10 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   font-weight: 700;
 }
 
+.f-s-1{
+  font-size: 1rem;
+}
+
 .form{
   h1{
     font-size: 30px;
@@ -423,7 +427,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
   .form-item{
     width: 100%;
-    input[type=text], input[type=number], input[type=password]{
+    input[type=text], input[type=number], input[type=email], input[type=password]{
       width: 100%;
       height: 2.5rem;
     }

@@ -90,13 +90,6 @@
           >
             <div class="text">Block</div>
           </div>
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 10"
-            :class="formVar.tab === 10 ? 'active' : ''"
-          >
-            <div class="text">Special OPD</div>
-          </div>
         </div>
         <div class="tabs-content">
           <div class="content" v-if="formVar.tab === 1">
@@ -122,9 +115,6 @@
           </div>
           <div class="content" v-if="formVar.tab === 9">
             <DoctorBlock />
-          </div>
-          <div class="content" v-if="formVar.tab === 10">
-            <DoctorOPD />
           </div>
         </div>
       </div>

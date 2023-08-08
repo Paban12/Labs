@@ -26,7 +26,6 @@ const DoctorLanguage = defineAsyncComponent(() => import('../components/DoctorPr
 const DoctorFees = defineAsyncComponent(() => import('../components/DoctorProfile/Fees.vue'))
 const DoctorSign = defineAsyncComponent(() => import('../components/DoctorProfile/Sign.vue'))
 const DoctorBlock = defineAsyncComponent(() => import('../components/DoctorProfile/Block.vue'))
-const DoctorOPD = defineAsyncComponent(() => import('../components/DoctorProfile/OPD.vue'))
 const DoctorSchedule = defineAsyncComponent(() => import('../components/DoctorProfile/Schedule.vue'))
 
 //icons
@@ -100,7 +99,6 @@ const GlobalComponents = {
     app.component('DoctorFees', DoctorFees)
     app.component('DoctorSign', DoctorSign)
     app.component('DoctorBlock', DoctorBlock)
-    app.component('DoctorOPD', DoctorOPD)
     app.component('DoctorSchedule', DoctorSchedule)
     
     // icons

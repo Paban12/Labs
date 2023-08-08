@@ -1,0 +1,23 @@
+.staff-add-page{
+  margin: 1rem;
+  margin-left: 0;
+  .card{
+    padding: 0;
+    .card-header{
+      background: var(--blue);
+      padding: 0.5rem ;
+      border-radius: 5px 5px 0 0;
+      color: var(--white);
+    }
+    .card-body{
+      padding: 1rem;
+      .form{
+        .submit-btn{
+          .btn{
+            width: 10rem;
+          }
+        }
+      }
+    }
+  }
+}

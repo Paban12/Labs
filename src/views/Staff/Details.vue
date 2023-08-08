@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="save-btn flex justify-center">
-        <button type="submit" class="btn black-btn w-50">Save</button>
+        <button type="submit" class="btn black-btn w-50">Update</button>
       </div>
     </form>
   </section>

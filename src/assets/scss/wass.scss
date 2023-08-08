@@ -44,6 +44,7 @@
 @import "custom/patient-profile";
 @import "custom/lab-report";
 @import "custom/doctor-profile-layout";
+@import "custom/staff-add";
 
 
 //main
@@ -63,8 +64,8 @@
 
 
 //doctor
-@import "custom/doctor-profile/education.scss";
-@import "custom/doctor-profile/lang.scss";
-@import "custom/doctor-profile/sign.scss";
-@import "custom/doctor-profile/block.scss";
-@import "custom/doctor-profile/schedule.scss";
+@import "custom/doctor-profile/education";
+@import "custom/doctor-profile/lang";
+@import "custom/doctor-profile/sign";
+@import "custom/doctor-profile/block";
+@import "custom/doctor-profile/schedule";
