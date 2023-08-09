@@ -1,0 +1,30 @@
+.billing-page{
+  .container{
+    .card{
+      padding: 0;
+      .card-header{
+        .tabs{
+          display: flex;
+          align-items: center;
+          background: var(--blue);
+          gap: 1rem;
+          padding: 0 0.5rem;
+          border-radius: 5px 5px 0 0;
+          border-bottom: 1px solid #eee;
+          .tab{
+            padding: 10px 15px;
+            color: var(--white);
+            cursor: pointer;
+          }
+          .active{
+            border-bottom: 3px solid #fff;
+            font-weight: 700;
+          }
+        }
+      }
+      .card-body{
+        padding: 1rem;
+      }
+    }
+  }
+}

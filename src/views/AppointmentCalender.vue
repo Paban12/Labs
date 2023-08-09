@@ -134,8 +134,6 @@
       </div>
     </div>
     <!-- modals -->
-    <AptSuccessModal />
-    <AptBookModal />
   </section>
 </template>
 

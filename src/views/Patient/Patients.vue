@@ -83,7 +83,7 @@
         <button class="btn confirm-btn">Confirm</button>
       </div>
     </Modal>
-    <Modal v-model:show="formVar.addModal" class="book-apt-modal" headerClasses="header-bg">
+    <Modal v-model:show="formVar.addModal" class="" headerClasses="header-bg">
       <template v-slot:header>
         <div class="title" showHeader="true">Add Patient</div>
         <div class="close-btn" @click.prevent="formVar.addModal = false">

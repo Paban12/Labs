@@ -30,6 +30,9 @@ const DoctorSign = defineAsyncComponent(() => import('../components/DoctorProfil
 const DoctorBlock = defineAsyncComponent(() => import('../components/DoctorProfile/Block.vue'))
 const DoctorSchedule = defineAsyncComponent(() => import('../components/DoctorProfile/Schedule.vue'))
 
+//Billing
+const BillingTax = defineAsyncComponent(() => import('../components/Billing/Tax.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -104,6 +107,9 @@ const GlobalComponents = {
     app.component('DoctorSign', DoctorSign)
     app.component('DoctorBlock', DoctorBlock)
     app.component('DoctorSchedule', DoctorSchedule)
+
+    //Billing
+    app.component('BillingTax', BillingTax)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

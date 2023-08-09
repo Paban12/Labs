@@ -222,6 +222,12 @@ const routes = [
                 name: 'not found',
                 component: () => import( /* webpackChunkName: "not found" */ '../views/NotFound.vue')
             },
+            //Billing
+            {
+                path: '/billing',
+                name: 'billing',
+                component: () => import( /* webpackChunkName: "billing" */ '../views/Billing.vue')
+            },
             //Settings
             {
                 path: '/site-setting',
