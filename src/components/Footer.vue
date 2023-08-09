@@ -2,8 +2,8 @@
   <section class="footer">
     <div class="footer-container">
       <div class="logo">
-        <!-- <img src="" alt=""> -->
-        <div class="text grade-text">Thyromax Labs</div>
+        <img src="/src/assets/images/logo/logo-white.png" alt="">
+        <!-- <div class="text grade-text">Thyromax Labs</div> -->
         <div class="links">
           <router-link to="/privacy-policy" class="link">Privacy Policy</router-link>
           <router-link to="/terms" class="link">Terms & Conditions</router-link>

@@ -10,6 +10,7 @@ const Modal = defineAsyncComponent(() => import('../components/Modal.vue'))
 const Alert = defineAsyncComponent(() => import('../components/Alert.vue'))
 const EventCalender = defineAsyncComponent(() => import('../components/EventCalender.vue'))
 const AptSuccessModal = defineAsyncComponent(() => import('../components/Modals/AptSuccessModal.vue'))
+const AptBookModal = defineAsyncComponent(() => import('../components/Modals/AptBookModal.vue'))
 // const  = defineAsyncComponent(() => import('../components/.vue'))
 
 //Lab Test
@@ -83,6 +84,7 @@ const GlobalComponents = {
     app.component('Alert', Alert)
     app.component('EventCalender', EventCalender)
     app.component('AptSuccessModal', AptSuccessModal)
+    app.component('AptBookModal', AptBookModal)
     // app.component('', )
 
     //Lab Test

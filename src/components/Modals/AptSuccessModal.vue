@@ -11,7 +11,7 @@
       </div>
       <div class="btns">
         <div class="btn black-btn" @click.prevent="storeVar.aptSuccessModal = false">Close</div>
-        <router-link to="/appointment-overview" class="btn make-btn">Appointment Overview</router-link>
+        <router-link to="/appointment/overview" class="btn make-btn">Appointment Overview</router-link>
       </div>
     </div>
   </Modal>

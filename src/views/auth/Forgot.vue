@@ -1,7 +1,7 @@
 <template>
   <form class="form">
     <!-- <h2>Welcome to Thyromax</h2> -->
-    <img src="/src/assets/images/logo/logo.png" class="logo" alt="">
+    <img src="/src/assets/images/logo/logo-black.png" class="logo" alt="">
     <!-- for email -->
     <div class="">
       <div class="text">Enter your mail</div>

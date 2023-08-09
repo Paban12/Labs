@@ -10,8 +10,8 @@
             <icon-cross></icon-cross>
           </div>
           <router-link to="/" class="logo">
-            <!-- <img src="" alt=""> -->
-            <div class="text grade-text">Thyromax Labs</div>
+            <img src="/src/assets/images/logo/logo-white.png" alt="">
+            <!-- <div class="text grade-text">Thyromax Labs</div> -->
           </router-link>
         </div>
         <div class="right"> 
@@ -114,10 +114,10 @@
               </div>
             </div>
           </div>
-          <router-link to="/" class="bell-icon desk-icon">
+          <div @click.prevent="storeVar.aptBookModal = true" class="bell-icon desk-icon">
             <img src="/src/assets/images/png/add.png" alt="" />
             <div class="tooltip">Add</div>
-          </router-link>
+          </div>
           <div class="" v-click-outside="hideNoteSidebar">
             <div class="bell-icon desk-icon" @click.prevent="showNoteSidebar()">
               <img src="/src/assets/images/png/note.png" alt="" />
@@ -303,13 +303,19 @@
         </div>
       </form>
     </Modal>
+    <AptSuccessModal />
+    <AptBookModal />
   </section>
 </template>
 
 <script setup>
 import { reactive, ref } from "vue";
 import { computed } from "@vue/reactivity";
+import { useStore } from 'vuex'
 
+/* constatnt */
+const store = useStore();
+const storeVar = computed(() => store.state.Auth);
 
 const isSidebarOpen = ref(false);
 const isClosing = ref(false);
@@ -359,6 +365,8 @@ const matchList = computed(() => {
     );
   }
 });
+
+/* Constant */
 
 function visible() {
   nav.isVisible = true;

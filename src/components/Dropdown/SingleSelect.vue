@@ -28,6 +28,7 @@ defineEmits(["update:modelValue", "selected"]);
 const props = defineProps({
   modelValue: {
     type: String,
+    defaukt: null,
     required: true,
   },
   placeholder: {

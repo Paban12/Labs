@@ -83,11 +83,6 @@ const routes = [
             },
             //prescription
             {
-                path: '/new-prescription',
-                name: 'new prescription',
-                component: () => import( /* webpackChunkName: "new prescription" */ '../views/Prescription/NewPrescription.vue')
-            },
-            {
                 path: '/prescription',
                 name: 'prescription',
                 component: () => import( /* webpackChunkName: "prescription" */ '../views/Prescription/Prescription.vue')
