@@ -7,7 +7,10 @@ export const verifyUser = async ({ commit, dispatch }, { loginId, password }) =>
 	commit("SET_LOADER_BUTTON", true);
 	await apiServices.verifyId(loginId, password).then(
 		(response) => {
+			console.log(response.data);
+			successHandler(response.data.message)
 			commit("SET_LOADER_BUTTON", false);
+			router.push({path:'/forgot',query:{id:loginId}})
 		},
 		(error) => {
 			commit("SET_LOADER_BUTTON", false);
@@ -15,10 +18,13 @@ export const verifyUser = async ({ commit, dispatch }, { loginId, password }) =>
 		}
 	);
 };
-export const otpVerifyUser = async ({ commit, dispatch }, { userId, otp }) => {
+export const otpVerifyUser = async ({ commit, dispatch }, { loginId, otp }) => {
 	commit("SET_LOADER_BUTTON", true);
-	await apiServices.verifyOtp(userId, otp).then(
+	await apiServices.verifyOtp(loginId, otp).then(
 		(response) => {
+			console.log(response.data);
+			localStorage.setItem('accessToken', response.data.token);
+			localStorage.setItem('roles', response.data.user?.roles);
 			commit("SET_LOADER_BUTTON", false);
 		},
 		(error) => {

@@ -3,7 +3,7 @@
     <!-- <h2>Welcome to Thyromax</h2> -->
     <img src="/src/assets/images/logo/logo.png" class="logo" alt="">
     <!-- for email -->
-    <div class="">
+    <!-- <div class="">
       <div class="text">Enter your mail</div>
       <div class="form-item mb-16">
         <div class="title">Email</div>
@@ -13,12 +13,12 @@
         <div class="err-msg"></div>
       </div>
       <div class="login-btn form-item">
-        <!-- <button class="btn black-btn load-btn" >
+        <button class="btn black-btn load-btn" >
           <icon-login-loader></icon-login-loader>
-        </button> -->
+        </button>
         <button type="button" class="btn black-btn">Get OTP <icon-right-arrow></icon-right-arrow> </button>
       </div>
-    </div>
+    </div> -->
     <!-- for otp -->
     <div class="">
       <div class="text">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <!-- for new password -->
-    <div class="">
+    <!-- <div class="">
       <div class="text">Enter new & confirm passwords</div>
       <div class="form-item mb-16">
         <div class="title">New Password</div>
@@ -64,12 +64,12 @@
         <div class="err-msg"></div>
       </div>
       <div class="login-btn form-item">
-        <!-- <button class="btn black-btn load-btn" >
+        <button class="btn black-btn load-btn" >
           <icon-login-loader></icon-login-loader>
-        </button> -->
+        </button>
         <button type="button" class="btn black-btn">Save <icon-right-arrow></icon-right-arrow> </button>
       </div>
-    </div>
+    </div> -->
     <div class="reg">
       Remeber Password?
       <icon-right-arrow></icon-right-arrow>
@@ -79,10 +79,14 @@
 </template>
 
 <script setup>
-import { reactive, computed } from 'vue';
+import { reactive, computed,onBeforeMount } from 'vue';
 import { useStore } from 'vuex'
+import { useRoute } from "vue-router";
+import router from '../../router';
+
 
 /* Constants */
+const route = useRoute();
 const store = useStore();
 const storeVar = computed(() => store.state.Auth);
 const formVar = reactive({
@@ -91,11 +95,19 @@ const formVar = reactive({
   input2: null,
   input3: null,
   input4: null,
+  loginId:null,
 });
 
 /* Constants */
 
 /* Lifecycle/Hooks */
+onBeforeMount(() => {
+  if (route.query.id) {
+    formVar.loginId = route.query.id
+  }else{
+    router.push('/login')
+  }
+})
 /* Lifecycle/Hooks */
 
 /* Functions/Methods */
@@ -108,9 +120,9 @@ const onSubmitOtp = () => {
       return;
     }
     formVar.submit = false;
-  store.dispatch("Auth/otpVerifyUser", {     
-    userId: 10563543453,
-    otp: formVar.input1 + formVar.input2 + formVar.input3 + formVar.input4,});
+  store.dispatch("Auth/otpVerifyUser", {   
+    loginId: formVar.loginId,
+    otp: formVar.input1 + formVar.input2 + formVar.input3 + formVar.input4});
   };
 
 function tabChange(val) {

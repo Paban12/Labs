@@ -13,6 +13,36 @@
               </div>
             </div>
             <div class="form-item mb-16">
+              <div class="title">Email</div>
+              <input type="text" v-model="formVar.email" placeholder="Enter Email" />
+              <div class="err-msg" v-if="formVar.submit && emailValid">
+                {{ emailValid }}
+              </div>
+            </div>
+          </div>
+          <div class="two-inputs">
+            <div class="form-item mb-16">
+              <div class="title">Select Gender</div>
+              <SingleSelect
+                v-model="formVar.gender"
+                :options="genderOptions"
+                @selected="handleSelectedOption"
+                placeholder="Select Gender"
+              ></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && genderValid">
+                {{ genderValid }}
+              </div>
+            </div>
+            <div class="form-item mb-16">
+              <div class="title">DOB</div>
+              <input type="date" v-model="formVar.dob" placeholder="Enter dob" />
+              <div class="err-msg" v-if="formVar.submit && dobValid">
+                {{ dobValid }}
+              </div>
+            </div>
+          </div>
+          <div class="two-inputs">
+            <div class="form-item mb-16">
               <div class="title">Phone No</div>
               <input
                 type="number"
@@ -23,15 +53,6 @@
               />
               <div class="err-msg" v-if="formVar.submit && phoneValid">
                 {{ phoneValid }}
-              </div>
-            </div>
-          </div>
-          <div class="two-inputs">
-            <div class="form-item mb-16">
-              <div class="title">Email</div>
-              <input type="text" v-model="formVar.email" placeholder="Enter Email" />
-              <div class="err-msg" v-if="formVar.submit && emailValid">
-                {{ emailValid }}
               </div>
             </div>
             <div class="form-item mb-16">
@@ -48,12 +69,25 @@
             </div>
           </div>
           <div class="form-item mb-16">
+            <div class="title">Password</div>
+            <input
+                type="number"
+                v-model="formVar.phone"
+                placeholder="Enter Phone No"
+                v-on:keypress="isNumber($event)"
+                v-on:keyup="phnum($event.target.value)"
+              />
+            <div class="err-msg" v-if="formVar.submit && addressValid">
+              {{ addressValid }}
+            </div>
+          </div>
+          <!-- <div class="form-item mb-16">
             <div class="title">Address</div>
             <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
             <div class="err-msg" v-if="formVar.submit && addressValid">
               {{ addressValid }}
             </div>
-          </div>
+          </div> -->
           <div class="submit-btn">
             <button type="submit" class="btn black-btn w-100 mt-16">Add</button>
           </div>
@@ -77,11 +111,24 @@ const formVar = reactive({
   email:null,
   address:null,
   post: "",
+  dob:null,
+  gender:null,
+
 })
 
 const postOptions = [
-  { id: 1, name: "Doctor" },
-  { id: 2, name: "Nurse" },
+  { id: 'EMPLOYEE', name: "Employee" },
+  { id: 'DOCTOR', name: "Doctor" },
+  { id: 'STAFF', name: "Staff" },
+  { id: 'FRONT DESK', name: "Front Desk" },
+  { id: 'BACK DESK', name: "Back Desk" },
+  { id: 'PATHOLOGIEST', name: "Pathologiest" },
+];
+const genderOptions = [
+  { id: 'MALE', name: "Male" },
+  { id: 'FEMAIL', name: "Femail" },
+  { id: 'UNISEX', name: "Unisex" },
+  { id: 'OTHER', name: "Other" },
 ];
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);

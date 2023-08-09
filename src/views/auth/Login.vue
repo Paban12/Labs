@@ -1,28 +1,23 @@
 <template>
   <section class="login-form-inner">
     <form action="" class="form">
-      <h2>Welcome to Parchi</h2>
+      <h2>Welcome to Thyromax</h2>
       <div class="text">Login to continue</div>
       <div class="form-item mb-16">
-        <div class="title">Phone Number</div>
+        <div class="title">Email</div>
         <div class="input">
-          <input type="text" v-model="formVar.loginId" placeholder="+91 8888888888" v-on:keypress="isNumber($event)"
+          <input type="text" v-model="formVar.loginId" placeholder="@gmail.com" v-on:keypress="isNumber($event)"
             v-on:keyup="phnum($event.target.value)">
         </div>
         <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
-        <div class="title">Password</div>
-        <div class="input">
-          <input type="text" v-model="formVar.password" placeholder="Password">
-        </div>
-        <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
       </div>
       <div class="err-msg"></div>
       <div class="form-item mb-16">
         <div class="title">Password</div>
         <div class="input">
-          <input type="password" placeholder="*******">
+          <input type="text" v-model="formVar.password" placeholder="Password">
         </div>
-        <div class="err-msg"></div>
+        <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
       </div>
       <div class="forgot">
         <router-link to="/forgot">Forgot Password?</router-link>
