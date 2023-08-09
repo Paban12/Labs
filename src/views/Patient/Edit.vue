@@ -46,7 +46,6 @@
               <div class="title">Age</div>
               <input type="text" v-model="formVar.age" class="bg-blue" disabled>
             </div>
-
           </div>
         </div>
         <div class="row row2">
@@ -116,6 +115,28 @@
             </div>
           </div>
         </div>
+        <div class="row row4">
+          <div class="col-25 form-item mb-16">
+            <div class="title">Marital Status</div>
+            <SingleSelect v-model="formVar.maritalStatus" :options="maritalStatusOptions" @selected="handleSelectedOption"
+              placeholder="Marital Status"></SingleSelect>
+          </div>
+          <div class="col-25 form-item mb-16">
+            <div class="title">Activity Level</div>
+            <SingleSelect v-model="formVar.activityLevel" :options="activityLevelOptions" @selected="handleSelectedOption"
+              placeholder="Activity Level"></SingleSelect>
+          </div>
+          <div class="col-25 form-item mb-16">
+            <div class="title">Smoking Habit</div>
+            <SingleSelect v-model="formVar.smoking" :options="smokingOptions" @selected="handleSelectedOption"
+              placeholder="Smoking Habit"></SingleSelect>
+          </div>
+          <div class="col-25 form-item mb-16">
+            <div class="title">Alcohol Consumption</div>
+            <SingleSelect v-model="formVar.alcohol" :options="alcoholOptions" @selected="handleSelectedOption"
+              placeholder="Alcohol Consumption"></SingleSelect>
+          </div>
+        </div>
         <div class="save-btn row flex justify-center">
           <button type="submit" class="btn col-25 black-btn">Save</button>
         </div>
@@ -147,6 +168,10 @@ const formVar = reactive({
   address:null,
   pincode:null,
   doctor:null,
+  maritalStatus:null,
+  activityLevel:null,
+  smoking:null,
+  alcohol:null,
 })
 
 //search select start//
@@ -185,6 +210,22 @@ const bloodOptions = [
   { name: 'O-', id: 'o-' },
   { name: 'AB-', id: 'ab-' },
 ]
+const maritalStatusOptions = [
+  { name: "Married", id: "1" },
+  { name: "Unmarried", id: "2" },
+];
+const activityLevelOptions = [
+  { name: "regular", id: "1" },
+  { name: "never", id: "2" },
+];
+const alcoholOptions = [
+  { name: "Yes", id: "1" },
+  { name: "No", id: "2" },
+];
+const smokingOptions = [
+  { name: "Yes", id: "1" },
+  { name: "No", id: "2" },
+];
 
 //search select end//
 /* Constants */

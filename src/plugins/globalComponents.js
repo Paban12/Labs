@@ -15,6 +15,19 @@ const AptSuccessModal = defineAsyncComponent(() => import('../components/Modals/
 
 //Lab Test
 const AddTestModal = defineAsyncComponent(() => import('../components/Labtest/AddTestModal.vue'))
+const AddPanelModal = defineAsyncComponent(() => import('../components/Labtest/AddPanelModal.vue'))
+const AddPackageModal = defineAsyncComponent(() => import('../components/Labtest/AddPackageModal.vue'))
+const AddTemplateModal = defineAsyncComponent(() => import('../components/Labtest/AddTemplateModal.vue'))
+
+//Doctor Profile
+const DoctorProfile = defineAsyncComponent(() => import('../components/DoctorProfile/Profile.vue'))
+const DoctorEducation = defineAsyncComponent(() => import('../components/DoctorProfile/Education.vue'))
+const DoctorExpertise = defineAsyncComponent(() => import('../components/DoctorProfile/Expertise.vue'))
+const DoctorLanguage = defineAsyncComponent(() => import('../components/DoctorProfile/Language.vue'))
+const DoctorFees = defineAsyncComponent(() => import('../components/DoctorProfile/Fees.vue'))
+const DoctorSign = defineAsyncComponent(() => import('../components/DoctorProfile/Sign.vue'))
+const DoctorBlock = defineAsyncComponent(() => import('../components/DoctorProfile/Block.vue'))
+const DoctorSchedule = defineAsyncComponent(() => import('../components/DoctorProfile/Schedule.vue'))
 
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
@@ -56,6 +69,8 @@ const NoteIcon = defineAsyncComponent(() => import('../components/icons/note-svg
 const AddIcon = defineAsyncComponent(() => import('../components/icons/add-svg.vue'))
 const DeleteIcon = defineAsyncComponent(() => import('../components/icons/delete-svg.vue'))
 const EditIcon = defineAsyncComponent(() => import('../components/icons/edit-svg.vue'))
+const VertDotsIcon = defineAsyncComponent(() => import('../components/icons/vert-dots-svg.vue'))
+const AddUserIcon = defineAsyncComponent(() => import('../components/icons/add-user-svg.vue'))
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
@@ -74,6 +89,19 @@ const GlobalComponents = {
 
     //Lab Test
     app.component('AddTestModal', AddTestModal)
+    app.component('AddPanelModal', AddPanelModal)
+    app.component('AddPackageModal', AddPackageModal)
+    app.component('AddTemplateModal', AddTemplateModal)
+
+    //Doctor Profile
+    app.component('DoctorProfile', DoctorProfile)
+    app.component('DoctorEducation', DoctorEducation)
+    app.component('DoctorExpertise', DoctorExpertise)
+    app.component('DoctorLanguage', DoctorLanguage)
+    app.component('DoctorFees', DoctorFees)
+    app.component('DoctorSign', DoctorSign)
+    app.component('DoctorBlock', DoctorBlock)
+    app.component('DoctorSchedule', DoctorSchedule)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)
@@ -115,6 +143,8 @@ const GlobalComponents = {
     app.component('icon-add', AddIcon)
     app.component('icon-delete', DeleteIcon)
     app.component('icon-edit', EditIcon)
+    app.component('icon-vert-dots', VertDotsIcon)
+    app.component('icon-add-user', AddUserIcon)
     // app.component('icon-', Icon)
   }
 }

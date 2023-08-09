@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="logo">
         <!-- <img src="" alt=""> -->
-        <div class="text grade-text">PARCHI</div>
+        <div class="text grade-text">Thyromax Labs</div>
         <div class="links">
           <router-link to="/privacy-policy" class="link">Privacy Policy</router-link>
           <router-link to="/terms" class="link">Terms & Conditions</router-link>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="rights">
-        <div class="left">© {{ getYear(new Date()) }} All Rights Reserved By Parchi</div>
+        <div class="left">© {{ getYear(new Date()) }} All Rights Reserved By Thyromax Labs</div>
         <div class="right">Design and Developed By 
           <a href="https://webappssoft.com/" class="developed" target="_blank" rel="noopener noreferrer">WASS</a>
         </div>

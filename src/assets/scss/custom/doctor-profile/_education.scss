@@ -1,0 +1,28 @@
+.doctor-education-details{
+  .edu-row{
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    .input{
+      width: 20rem;
+      .title{
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+      }
+    }
+    .doc-upload{
+      .title{
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+      }
+    }
+    .icon{
+      cursor: pointer;
+      #icon{
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+}

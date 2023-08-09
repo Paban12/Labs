@@ -65,6 +65,7 @@
               }
               .dr-name{
                 width: calc(100% - 3rem);
+                font-size: 0.85rem;
               }
             }
             .val{
@@ -98,6 +99,30 @@
       .patient-list-card{
         width: 22%;
         padding: 0;
+        .add-btns{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.5rem;
+          height: 3rem;
+          .icon{
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            &:hover{
+              .tooltip{
+                transition: all 0.4s linear;
+                display: flex;
+              }
+            }
+            #icon{
+              height: 2rem;
+              width: 2rem;
+              fill: var(--blue);
+            }
+          }
+        }
         .tabs{
           display: flex;
           // padding-top: 0.5rem;
@@ -182,6 +207,7 @@
             }
             .time{
               width: 2rem;
+              font-size: 0.7rem;
             }
             .info{
               width: calc(100% - 4rem);
@@ -216,7 +242,37 @@
   .book-apt-modal{
     .modal{
       .modal-dialog{
-        width: 550px;
+        width: 900px;
+        margin: 0; 
+        .modal-body{
+          .form{
+            .p-id{
+              font-size: 0.85rem;
+              .id{
+                display: flex;
+                align-items: center;
+                .tag{
+                  margin-left: 10px;
+                  padding: 1px 6px;
+                }
+              }
+              .time{
+                opacity: 0.6;
+              }
+            }
+            .charges-row{
+              gap: 1.5rem;
+              .data{
+                gap: 6px;
+                font-size: 0.85rem;
+                input{
+                  width: max-content;
+                  margin-top: 4px;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

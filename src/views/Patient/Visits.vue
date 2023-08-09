@@ -34,7 +34,7 @@
                     <td>{{ item.doctor_name }}</td>
                     <td>{{ item.patient_name }}</td>
                     <td>
-                      <input type="text" placeholder="Remark">
+                      {{ item.remark }}
                     </td>
                     <td>{{ item.date }}</td>
                     <td class="text-center">
@@ -84,7 +84,8 @@
       token: 25478,
       doctor_name: 'Harish Verma',
       patient_name: 'Ravish Kumar',
-      date: '15-05-2023'
+      date: '15-05-2023',
+      remark: 'Take care',
     },
   ])
 

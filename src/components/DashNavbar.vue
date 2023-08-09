@@ -3,15 +3,15 @@
     <div class="navbar">
       <div class="nav-container container">
         <div class="left">
-          <div class="menu-icon" v-if="!nav.sidebar" @click.prevent="nav.sidebar = true">
+          <div class="menu-icon" v-if="!isSidebarOpen" @click="toggleSidebar">
             <icon-menu></icon-menu>
           </div>
-          <div class="menu-icon cross-icon" v-if="nav.sidebar" @click.prevent="nav.sidebar = false">
+          <div v-else class="menu-icon cross-icon" @click="toggleSidebar">
             <icon-cross></icon-cross>
           </div>
           <router-link to="/" class="logo">
             <!-- <img src="" alt=""> -->
-            <div class="text grade-text">PARCHI</div>
+            <div class="text grade-text">Thyromax Labs</div>
           </router-link>
         </div>
         <div class="right"> 
@@ -77,13 +77,13 @@
               <div class="tooltip">Notification</div>
             </div>
             <!-- notifications -->
-            <div class="notes-section notification-section" v-if="nav.notificationSidebar" >
+            <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
               <div class="card">
                 <div class="heading">
                   <h3 class="">Notifications</h3>
                 </div>
                 <div class="notes-list">
-                  <div class="list-item success">
+                  <router-link to="/" class="list-item success">
                     <div class="icon">
                       <icon-success></icon-success>
                     </div>
@@ -91,8 +91,8 @@
                       <div class="title">Success</div>
                       <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
                     </div>
-                  </div>
-                  <div class="list-item warning">
+                  </router-link>
+                  <router-link to="/" class="list-item warning">
                     <div class="icon">
                       <icon-warning></icon-warning>
                     </div>
@@ -100,8 +100,8 @@
                       <div class="title">Warning !</div>
                       <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
                     </div>
-                  </div>
-                  <div class="list-item error">
+                  </router-link>
+                  <router-link to="/" class="list-item error">
                     <div class="icon">
                       <icon-warning></icon-warning>
                     </div>
@@ -109,19 +109,7 @@
                       <div class="title">Error !</div>
                       <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
                     </div>
-                  </div>
-                  <div class="list-item success">
-                    <div class="icon">
-                      <icon-success></icon-success>
-                    </div>
-                    <div class="info">
-                      <div class="title">Success</div>
-                      <div class="sub-title2">The developer has kept the source code structure adaptable enough for   developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </div>
-                  <div class="back-btn">
-                    <div class="btn blue-btn">⇐ Back to Notifications</div>
-                  </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -212,48 +200,73 @@
         </div>
       </div>
       <!-- sidebar -->
-      <div class="sidebar" v-if="nav.sidebar">
+      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }">
         <div class="sidebar-card">
           <div class="close-icon" @click.prevent="nav.sidebar = false">
             <icon-cross></icon-cross>
           </div>
           <div class="menu-icons">
-            <router-link to="/" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/eye.png" alt="image" />
               </div>
-              <div class="text">Home</div>
+              <div class="text">Calender</div>
             </router-link>
-            <router-link to="/staff/details" class="list desk-view" @click.prevent="closeSidebar()">
+            <router-link to="/dashboard" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/eye.png" alt="image" />
+              </div>
+              <div class="text">Dashboard</div>
+            </router-link>
+            <router-link to="/patients" class="list desk-view" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Patients</div>
+            </router-link>
+            <router-link to="/doctors" class="list desk-view" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Doctors</div>
+            </router-link>
+            <router-link to="/pathologist" class="list desk-view" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/microscope.png" alt="image" />
+              </div>
+              <div class="text">Pathologist</div>
+            </router-link>
+            <router-link to="/staff/details" class="list desk-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
               <div class="text">Staff</div>
             </router-link>
-            <router-link to="/staff" class="list mob-view" @click.prevent="closeSidebar()">
+            <router-link to="/staff" class="list mob-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/microscope.png" alt="image" />
               </div>
               <div class="text">Staff</div>
             </router-link>
-            <router-link to="/labtest" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/labtest" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Tests</div>
             </router-link>
-            <router-link to="/visits" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/visits" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Visits</div>
             </router-link>
-            <router-link to="/account" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/site-setting" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
-              <div class="text">Account</div>
+              <div class="text">Site Settings</div>
             </router-link>
+<<<<<<< HEAD
             <router-link to="/appointment/calender" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
@@ -267,6 +280,9 @@
               <div class="text">Prescription</div>
             </router-link>
             <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()">
+=======
+            <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
+>>>>>>> df488f9b47bbdcd8a7548adf8fcf931ff45f3aa2
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
@@ -307,9 +323,24 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { computed } from "@vue/reactivity";
 
+
+const isSidebarOpen = ref(false);
+const isClosing = ref(false);
+
+const toggleSidebar = () => {
+  if (isSidebarOpen.value) {
+    isClosing.value = true;
+    setTimeout(() => {
+      isSidebarOpen.value = false;
+      isClosing.value = false;
+    }, 300); // Change the delay (in milliseconds) based on your desired animation time
+  } else {
+    isSidebarOpen.value = true;
+  }
+};
 const nav = reactive({
   accMenu: false,
   searchValue: "",

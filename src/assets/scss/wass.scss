@@ -42,6 +42,9 @@
 @import "custom/common-list";
 @import "custom/labtest";
 @import "custom/patient-profile";
+@import "custom/lab-report";
+@import "custom/doctor-profile-layout";
+@import "custom/staff-add";
 
 
 //main
@@ -57,3 +60,12 @@
 @import "main/notification";
 @import "main/view-modal";
 @import "main/apt-success-modal";
+@import "main/add-test-modal";
+
+
+//doctor
+@import "custom/doctor-profile/education";
+@import "custom/doctor-profile/lang";
+@import "custom/doctor-profile/sign";
+@import "custom/doctor-profile/block";
+@import "custom/doctor-profile/schedule";

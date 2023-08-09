@@ -1,0 +1,87 @@
+.dr-schedule{
+  .heading{
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .schedule-item{
+    padding: 0.5rem;
+    box-shadow: 0 0 6px var(--light-blue);
+    // border: 1px solid var(--light-blue);
+    border-radius: 5px;
+    border-collapse: collapse;
+    &:not(:last-child){
+      margin-bottom: 0.7rem;
+    }
+    .schedule-question{
+      font-size: 16px;
+      font-weight: bold;
+      // margin-bottom: 8px;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      color: var(--dark-blue);
+      font-weight: normal;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      #icon{
+        height: 1.5rem;
+        width: 1.5rem;
+        fill: white;
+      }
+    }
+    .schedule-answer{
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      border-top: 1px solid #eee;
+      padding: 0.5rem;
+      .cards{
+        display: flex;
+        gap: 1rem;
+        .single-card{
+          width: calc(100% / 3);
+          border: 1px solid #eee;
+          padding: 1rem;
+          box-shadow: var(--box-shadow);
+          .main-title{
+            font-weight: 700;
+            margin-bottom: 1rem;
+          }
+          .single-select{
+            margin-bottom: 1rem;
+          }
+          .checkbox{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            .input{
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            }
+          }
+          .time-row{
+            .form-item{
+              .title{
+                font-size: 0.85rem;
+                margin-bottom: 4px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}

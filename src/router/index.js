@@ -14,21 +14,16 @@ const routes = [
                 component: () => import( /* webpackChunkName: "login" */ '../views/auth/Login.vue')
             },
             {
-                path: '/otp',
-                name: 'otp',
-                component: () => import( /* webpackChunkName: "otp" */ '../views/auth/OTP.vue')
-            },
-            {
-                path: '/register',
-                name: 'register',
-                component: () => import( /* webpackChunkName: "register" */ '../views/auth/Register.vue')
+                path: '/forgot',
+                name: 'forgot',
+                component: () => import( /* webpackChunkName: "forgot" */ '../views/auth/Forgot.vue')
             },
         ]
     },
 
     {
         path: '/',
-        redirect: '/dashboard',
+        redirect: '/appointment/calender',
         name: 'dashboard layout',
         component: () => import( /* webpackChunkName: "dashboard layout" */ '../views/DashboardLayout.vue'),
         children: [
@@ -124,11 +119,32 @@ const routes = [
             //     name: 'patients',
             //     component: () => import( /* webpackChunkName: "patients" */ '../views/Patient/Patients.vue')
             // },
+            //for doctor
+            {
+                path: '/doctor-appointment',
+                name: 'doctor appointment',
+                component: () => import( /* webpackChunkName: "doctor appointment" */ '../views/Doctor/Appointments.vue')
+            },
+            {
+                path: '/doctors',
+                name: 'doctors',
+                component: () => import( /* webpackChunkName: "doctors" */ '../views/Doctor/Doctors.vue')
+            },
+            {
+                path: '/doctor/profile',
+                name: 'doctor profile',
+                component: () => import( /* webpackChunkName: "doctor profile" */ '../views/Doctor/Profile.vue')
+            },
             //for pathologist
             {
                 path: '/pathologist',
                 name: 'pathologist',
                 component: () => import( /* webpackChunkName: "pathologist" */ '../views/Lab/Pathologist.vue')
+            },
+            {
+                path: '/laboratory',
+                name: 'laboratory',
+                component: () => import( /* webpackChunkName: "laboratory" */ '../views/Lab/Laboratory.vue')
             },
             {
                 path: '/lab-appointment',
@@ -166,24 +182,37 @@ const routes = [
             //Staff
             {
                 path: '/staff-layout',
-                redirect: '/staff/details',
+                redirect: '/staff-details',
                 name: 'staff layout',
                 component: () => import( /* webpackChunkName: "staff layout" */ '../views/Staff/StaffLayout.vue'),
                 children: [
                     {
-                        path: '/staff/details',
-                        name: 'staff details',
-                        component: () => import( /* webpackChunkName: "staff details" */ '../views/Staff/Details.vue')
+                        path: '/staff-details',
+                        redirect: '/staff/details',
+                        name: 'staff details layout',
+                        component: () => import( /* webpackChunkName: "staff details layout" */ '../views/Staff/StaffDetailsLayout.vue'),
+                        children: [
+                            {
+                                path: '/staff/details',
+                                name: 'staff details',
+                                component: () => import( /* webpackChunkName: "staff details" */ '../views/Staff/Details.vue')
+                            },
+                            {
+                                path: '/staff/permission',
+                                name: 'staff permission',
+                                component: () => import( /* webpackChunkName: "staff permission" */ '../views/Staff/Permission.vue')
+                            },
+                            {
+                                path: '/staff/slot',
+                                name: 'staff slot',
+                                component: () => import( /* webpackChunkName: "staff slot" */ '../views/Staff/Slot.vue')
+                            },
+                        ]
                     },
                     {
-                        path: '/staff/permission',
-                        name: 'staff permission',
-                        component: () => import( /* webpackChunkName: "staff permission" */ '../views/Staff/Permission.vue')
-                    },
-                    {
-                        path: '/staff/slot',
-                        name: 'staff slot',
-                        component: () => import( /* webpackChunkName: "staff slot" */ '../views/Staff/Slot.vue')
+                        path: '/staff-add',
+                        name: 'staff add',
+                        component: () => import( /* webpackChunkName: "staff add" */ '../views/Staff/StaffAdd.vue')
                     },
                 ]
             },
@@ -197,6 +226,12 @@ const routes = [
                 path: '/not-found',
                 name: 'not found',
                 component: () => import( /* webpackChunkName: "not found" */ '../views/NotFound.vue')
+            },
+            //Settings
+            {
+                path: '/site-setting',
+                name: 'site setting',
+                component: () => import( /* webpackChunkName: "site setting" */ '../views/Settings/SiteSetting.vue')
             },
             //mobile-view
             {

@@ -20,17 +20,17 @@
           <div class="title">Patients</div>
           <div class="tooltip">You can manage <strong>Patients</strong></div>
         </router-link>
+        <router-link to="/doctors" class="card card3">
+          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <div class="val">254</div>
+          <div class="title">Doctors</div>
+          <div class="tooltip">You can manage <strong>Doctors</strong></div>
+        </router-link>
         <router-link to="/pathologist" class="card card3">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Patholigist</div>
           <div class="tooltip">You can manage <strong>Patholigist</strong></div>
-        </router-link>
-        <router-link to="/payment-history" class="card card5">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
-          <div class="val">254</div>
-          <div class="title">Payment History</div>
-          <div class="tooltip">You can manage <strong>Payment History</strong></div>
         </router-link>
         <router-link to="/labtest" class="card card6">
           <img src="/src/assets/images/png/lab.png" alt="image" />
@@ -49,6 +49,12 @@
           <div class="val">254</div>
           <div class="title">Staff</div>
           <div class="tooltip">You can do <strong>Staff</strong></div>
+        </router-link>
+        <router-link to="/payment-history" class="card card5">
+          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <div class="val">254</div>
+          <div class="title">Payment History</div>
+          <div class="tooltip">You can manage <strong>Payment History</strong></div>
         </router-link>
       </div>
       <div class="other-cards cards-carousel">

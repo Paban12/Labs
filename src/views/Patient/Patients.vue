@@ -40,10 +40,7 @@
                   <td>{{ item.lab_tests }}</td>
                   <td class="text-center">
                     <div class="option-btns">
-                      <div class="" @click.prevent="formVar.viewModal = true">
-                        <img src="/src/assets/images/png/eye.png" alt="" />
-                      </div>
-                      <router-link to="/patient/visits" class="">
+                      <router-link to="/patient/profile" class="">
                         <img src="/src/assets/images/png/man.png" alt="" />
                       </router-link>
                       <router-link to="/patient/edit" class="">
@@ -137,6 +134,26 @@
               <div class="err-msg" v-if="formVar.submit && languageValid">{{ languageValid }}</div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-5 form-item mb-16">
+            <SingleSelect v-model="formVar.maritalStatus" :options="maritalStatusOptions" @selected="handleSelectedOption"
+              placeholder="Marital Status"></SingleSelect>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <SingleSelect v-model="formVar.activityLevel" :options="activityLevelOptions" @selected="handleSelectedOption"
+              placeholder="Activity Level"></SingleSelect>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5 form-item mb-16">
+            <SingleSelect v-model="formVar.smoking" :options="smokingOptions" @selected="handleSelectedOption"
+              placeholder="Smoking Habit"></SingleSelect>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <SingleSelect v-model="formVar.alcohol" :options="alcoholOptions" @selected="handleSelectedOption"
+              placeholder="Alcohol Consumption"></SingleSelect>
+          </div>
+        </div>
         <div class="form-item mb-16">
           <input type="text" v-model="formVar.phone" placeholder="Enter Phone no"
           v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
@@ -181,68 +198,6 @@
         </div>
       </form>
     </Modal>
-    <Modal v-model:show="formVar.viewModal" class="view-modal" headerClasses="header-bg">
-      <template v-slot:header>
-        <div class="title" showHeader="true">Patient Details</div>
-        <div class="close-btn" @click.prevent="formVar.viewModal = false">
-          <icon-cross></icon-cross>
-        </div>
-      </template>
-      <div class="data">
-        <div class="title">Patient Name : </div>
-        <div class="val">Mrs. Rani Thakur</div>
-      </div>
-      <div class="data">
-        <div class="title">Phone Number : </div>
-        <div class="val">+91 8888888888</div>
-      </div>
-      <div class="data">
-        <div class="title">Email : </div>
-        <div class="val">patient@mai.com</div>
-      </div>
-      <div class="data">
-        <div class="title">Address : </div>
-        <div class="val">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quod perferendis</div>
-      </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">Gender : </div>
-          <div class="val">Female</div>
-        </div>
-        <div class="data">
-          <div class="title">DOB : </div>
-          <div class="val">25/11/2000 23 Years</div>
-        </div>
-      </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">Blood Group : </div>
-          <div class="val">A+</div>
-        </div>
-        <div class="data">
-          <div class="title">Language : </div>
-          <div class="val">Marathi</div>
-        </div>
-      </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">State : </div>
-          <div class="val">Maharashtra</div>
-        </div>
-        <div class="data">
-          <div class="title">City : </div>
-          <div class="val">Nashik</div>
-        </div>
-      </div>
-      <div class="data">
-        <div class="title">Referred Dr : </div>
-        <div class="val">Dr Bhawani Singh</div>
-      </div>
-      <div class="data">
-        <div class="title">Speciality : </div>
-        <div class="val">ENT</div>
-      </div>
-    </Modal>
   </section>
 </template>
 
@@ -258,7 +213,6 @@ const formVar = reactive({
   submit: false,
   confirmModal: false,
   addModal: false,
-  viewModal: false,
   prefix: "",
   gender: "",
   blood: "",
@@ -272,8 +226,11 @@ const formVar = reactive({
   email:null,
   address:null,
   doctor:null,
+  maritalStatus:null,
+  activityLevel:null,
+  smoking:null,
+  alcohol:null,
 })
-
 
 const patientData = reactive([
   {
@@ -322,6 +279,23 @@ const bloodOptions = [
   { name: "O-", id: "o-" },
   { name: "AB-", id: "ab-" },
 ];
+const maritalStatusOptions = [
+  { name: "Married", id: "1" },
+  { name: "Unmarried", id: "2" },
+];
+const activityLevelOptions = [
+  { name: "regular", id: "1" },
+  { name: "never", id: "2" },
+];
+const alcoholOptions = [
+  { name: "Yes", id: "1" },
+  { name: "No", id: "2" },
+];
+const smokingOptions = [
+  { name: "Yes", id: "1" },
+  { name: "No", id: "2" },
+];
+
 //search select end//
 
 /* Constants */

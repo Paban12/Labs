@@ -1,12 +1,22 @@
 .staff-slot-page{
   .form{
     .form-item{
-      .day{
-        border: 1px solid var(--light-blue);
-        background: var(--light-blue);
-        height: 2.5rem;
-        border-radius: 5px;
-        padding: 0.5rem 1rem;
+      
+    }
+    .day{
+      border: 1px solid var(--light-blue);
+      background: var(--light-blue);
+      height: 2.5rem;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      .toggle-control{
+        .control{
+          margin-bottom: 0;
+        }
       }
     }
     .save-btn{

@@ -1,114 +1,15 @@
 <template>
   <section class="staff-slot-page">
     <form action="" class="form">
-      <div class="mb-16">
-        <div class="col-4 two-inputs top-inputs">
-          <div class="form-item col-5">
-            <div class="title">Slot Duration</div>
-            <input type="number" v-model="formVar.slot_duration" placeholder="Enter Slot Duration">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">Minit</div>
-            <input type="number" v-model="formVar.minit" placeholder="Enter Minit">
-          </div>
+      <div class="row" v-for="item in dayData" :key="item">
+        <div class="form-item day col-4 mb-16">
+          <div class="title">{{ item.day }}</div>
+          <label class="toggle-control">
+            <input type="checkbox" @change="toggleTime" checked="checked" />
+            <span class="control"></span>
+          </label>
         </div>
-        <div class="err-msg">Enter Duration</div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Monday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
-          <div class="form-item col-5">
-            <div class="title">From</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">To</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-        </div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Tuesday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
-          <div class="form-item col-5">
-            <div class="title">From</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">To</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-        </div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Wednesday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
-          <div class="form-item col-5">
-            <div class="title">From</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">To</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-        </div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Thursday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
-          <div class="form-item col-5">
-            <div class="title">From</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">To</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-        </div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Friday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
-          <div class="form-item col-5">
-            <div class="title">From</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">To</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-        </div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Saturday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
-          <div class="form-item col-5">
-            <div class="title">From</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-          <div class="form-item col-5">
-            <div class="title">To</div>
-            <input type="time" placeholder="Enter Time">
-          </div>
-        </div>
-      </div>
-      <div class="row align-end">
-        <div class="form-item col-4 mb-16">
-          <div class="day">Sunday</div>
-        </div>
-        <div class="col-6 two-inputs mb-16">
+        <div class="col-6 two-inputs mb-16" v-if="formVar.showTime">
           <div class="form-item col-5">
             <div class="title">From</div>
             <input type="time" placeholder="Enter Time">
@@ -136,7 +37,32 @@ const storeVar = computed(() => store.state.Auth);
 const formVar = reactive({
   submit: false,
   loginId: null,
+  showTime: true,
 });
+
+const dayData = reactive([
+  {
+    day: 'Monday'
+  },
+  {
+    day: 'Tuesday'
+  },
+  {
+    day: 'Wednesday'
+  },
+  {
+    day: 'Thursday'
+  },
+  {
+    day: 'Friday'
+  },
+  {
+    day: 'Saturday'
+  },
+  {
+    day: 'Sunday'
+  },
+])
 
 /* Constants */
 
@@ -144,6 +70,10 @@ const formVar = reactive({
 /* Lifecycle/Hooks */
 
 /* Functions/Methods */
+
+function toggleTime() {
+  formVar.showTime = !formVar.showTime
+}
 
 const onSubmitLogin = () => {
   if (

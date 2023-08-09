@@ -21,7 +21,7 @@ body{
 }
 
 .container{
-  // max-width: 98%;
+  // max-width: 95%;
   // max-width: 1240px;
   margin: 0 5%;
   padding: 1rem;
@@ -371,7 +371,8 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     font-weight: normal;
     width: 100%;
     height: 100%;
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.5rem;
+    padding-right: 1.2rem;
     border-radius: 0.25rem;
     border: 1px solid var(--border-color);
     background: var(--white);
@@ -394,6 +395,10 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
 }
 .f-w-bold{
   font-weight: 700;
+}
+
+.f-s-1{
+  font-size: 1rem;
 }
 
 .form{
@@ -422,7 +427,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
   .form-item{
     width: 100%;
-    input[type=text], input[type=number], input[type=password]{
+    input[type=text], input[type=number], input[type=email], input[type=password]{
       width: 100%;
       height: 2.5rem;
     }
@@ -477,6 +482,61 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
 }
 
+//toggle-btn start
+.toggle-control {
+  display: block;
+  position: relative;
+  // padding-left: 10px;
+  margin-bottom: 0;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+  height: 1.2rem;
+  width: 2.5rem;
+
+  // background: red;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked~.control {
+    background-color: var(--primary);
+
+    &:after {
+      left: 24px;
+    }
+  }
+
+  .control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    background-color: darkgray;
+    transition: background-color 0.15s ease-in;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 3px;
+      width: 12px;
+      height: calc(100% - 6px);
+      border-radius: 5px;
+      background: var(--white);
+      transition: left 0.15s ease-in;
+    }
+  }
+}
+//toggle-btn end
+
 .bg-blue{
   background: var(--light-blue);
   color: inherit;
@@ -504,6 +564,10 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     color: inherit;
     // font-weight: 700;
     font-size: 0.9rem;
+    z-index: 10;
+  }
+  .single-select{
+    width: 100%;
   }
   input{
     padding-left: 2.5rem;
@@ -570,6 +634,9 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
       width: 100%;
     }
   }
+}
+.w-10-r{
+  width: 10rem;
 }
 
 .name-card-header{
