@@ -6,10 +6,10 @@ export function errorHandler(res,type) {
 		setAlert({ type: "danger", message: res.data.message });
 		localStorage.clear();
 		if(type==='User'){
-			router.push('/home');
+			router.push('/login');
 			loginModal(true)
 		}else{
-			router.push('/vendor/login');
+			router.push('/login');
 			loginModal(false)
 		}
 		return;

@@ -16,7 +16,7 @@ export function authHeader(type) {
 				return { Authorization: 'Bearer ' + vendortoken };
 			}
 	}else{
-		router.push('/home');
+		router.push('/');
 		localStorage.clear();
 	}
 }

@@ -88,6 +88,22 @@ const routes = [
                 component: () => import( /* webpackChunkName: "prescription" */ '../views/Prescription/Prescription.vue')
             },
             {
+                path: '/lab-prescription',
+                name: 'Lab prescription',
+                component: () => import( /* webpackChunkName: "prescription" */ '../views/Prescription/LabPrescription.vue')
+            },
+            {
+                path: '/doctor-prescription',
+                name: 'Doctor prescription',
+                component: () => import( /* webpackChunkName: "prescription" */ '../views/Prescription/DoctorPrescription.vue')
+            },
+            {
+                path: '/hospital-prescription',
+                name: 'Hospital prescription',
+                component: () => import( /* webpackChunkName: "prescription" */ '../views/Prescription/HospitalPrescription.vue')
+            },
+            
+            {
                 path: '/add-text',
                 name: 'add text',
                 component: () => import( /* webpackChunkName: "add text" */ '../views/AddText.vue')

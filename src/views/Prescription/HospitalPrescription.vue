@@ -4,64 +4,6 @@
       <div class="wrapper">
         <div class="invoice_wrapper">
           <div class="header">
-            <!-- <div class="logo_invoice_wrap">
-              <div class="logo_sec">
-                <img src="/src/assets/images/png/logo.png" alt="code logo" />
-                <div class="title_wrap">
-                  <p class="title bold">Coding Boss</p>
-                  <p class="sub_title">Privite Limited</p>
-                </div>
-              </div>
-              <div class="invoice_sec">
-                <p class="invoice bold">INVOICE</p>
-                <p class="invoice_no">
-                  <span class="bold">Invoice</span>
-                  <span>#3488</span>
-                </p>
-                <p class="date">
-                  <span class="bold">Date</span>
-                  <span>08/Jan/2022</span>
-                </p>
-              </div>
-            </div> -->
-            <div class="bill_total_wrap">
-              <div class="bill_sec">
-                <span class="name">Name :</span>
-                <span class="val">Mrs. Devika Pandaye</span>
-              </div>
-              <div class="bill_sec">
-                <span class="name">Phone :</span>
-                <span class="val">+91 8888888888</span>
-              </div>
-              <div class="bill_sec">
-                <span class="name">Age/Gender :</span>
-                <span class="val">29Y / Female</span>
-              </div>
-            </div>
-            <div class="bill_total_wrap">
-              <div class="bill_sec">
-                <span class="name">Weight :</span>
-                <span class="val">52 kg</span>
-              </div>
-              <div class="bill_sec">
-                <span class="name">Height :</span>
-                <span class="val">175 cm</span>
-              </div>
-              <div class="bill_sec">
-                <span class="name">Date :</span>
-                <span class="val">23 June 2023 8:45 PM</span>
-              </div>
-              
-              
-              <!-- <div class="total_wrap">
-                <span>Total Due</span>
-                <span class="bold price">USD: $1200</span>
-              </div>
-              <div class="total_wrap">
-                <span>Total Due</span>
-                <span class="bold price">USD: $1200</span>
-              </div> -->
-            </div>
             <div class="bill_total_wrap">
               <div class="bill_sec">
                 <span class="name">Diagnostic :</span>
@@ -77,7 +19,6 @@
               </div>
             </div>
             <div class="bill_total_wrap">
-              
               <div class="bill_sec_note">
                 <span class="name">Note :</span>
                 <span class="val">DIABETES . CT CORONARY ANGIO - 3 DAYS PROLOMET XL 12.5 ONCE</span>
@@ -230,6 +171,7 @@
         <div class="text">Download</div>
       </div>
       <!-- <download-button dom="#content-to-print" name="PdfSample" /> -->
+
       <div class="btn grade-btn" @click="navigate('/hospital-prescription')">
         <img src="/src/assets/images/png/share.png" alt="image" />
         <div class="text">Hospital</div>
@@ -256,14 +198,7 @@ import { useRouter } from "vue-router";
 import html2pdf from "html2pdf.js";
 
 const router = useRouter();
-const medData = reactive([
-  {
-    med_name: "Crocine",
-    when: "1-0-1",
-    frequency: "15 Days",
-    note: "Please take care",
-  },
-]);
+
 async function share() {
   // Get HTML to print from element
   var prtHtml = document.querySelector('#content-to-print');
@@ -297,6 +232,7 @@ async function pdfDownload() {
 function printContent() {
   // Get HTML to print from element
   const prtHtml = document.getElementById('content-to-print').innerHTML;
+  var prtHtml2 = document.querySelector('#content-to-print');
 
   // Get all stylesheets HTML
   let stylesHtml = '';
@@ -329,7 +265,7 @@ function navigate(link, id) {
 <style lang="scss">
 // @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap");
 
-$primary: #0000ff;
+$primary: #ff914d;
 $secondary: #3d3d3d;
 $white: #fff;
 
@@ -360,18 +296,19 @@ $white: #fff;
 }
 
 .wrapper {
-  background-image: url(/src/assets/images/png/Clinic-image.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-  // background: $white;
+  background-image: url(/src/assets/images/png/hospital-image.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
   height: 100%;
-  padding: 50px;
+  padding: 85px;
 }
-#content-to-print{
-    width: 45%;
-    height: 107vh;
+
+#content-to-print {
+  width: 45%;
+  height: 107vh;
 }
+
 .invoice_wrapper {
   // border: 2px solid $primary;
   height: 100%;
@@ -379,7 +316,9 @@ $white: #fff;
   max-width: 100%;
 
   .header {
-    margin-top: 17%;
+    padding-top: 2rem;
+    margin-top: 40%;
+
     .logo_invoice_wrap,
     .bill_total_wrap {
       // border: 2px solid $primary;
@@ -437,47 +376,55 @@ $white: #fff;
 
     .bill_total_wrap {
       width: 100%;
-      .bill_sec_note{
+
+      .bill_sec_note {
         width: 100%;
         padding-bottom: 10px;
+
         .name {
           // color: $primary;
           font-weight: 700;
           font-size: 12px;
         }
-        .val{
+
+        .val {
           font-size: 12px;
         }
       }
-      .bill_sec{
-          width: 33%;
+
+      .bill_sec {
+        width: 33%;
+
         .name {
           // color: $primary;
           font-weight: 700;
           font-size: 12px;
         }
-        .val{
+
+        .val {
           font-size: 12px;
         }
       }
+
       .total_wrap {
 
         .price,
-        .bill_sec{
+        .bill_sec {
           width: 33%;
-        .name {
-          color: $primary;
-          font-size: 20px;
+
+          .name {
+            color: $primary;
+            font-size: 20px;
+          }
         }
-      }
       }
     }
   }
 
   .body {
-
-    height: 35.8rem;
+    height: 25rem;
     margin-bottom: 6rem;
+
     .main_table {
       .table_header {
         background: $primary;
@@ -499,18 +446,21 @@ $white: #fff;
 
         .col {
           padding: 3px;
-          .name{
+
+          .name {
             font-weight: 900;
             font-size: 12px;
           }
-          .desc{
+
+          .desc {
             font-size: 12px;
           }
         }
 
         .col_no {
           width: 5%;
-          .bold{
+
+          .bold {
             font-size: 12px;
           }
         }
@@ -551,7 +501,8 @@ $white: #fff;
 
       .grandtotal_sec {
         width: 40%;
-        .total{
+
+        .total {
           font-weight: 900;
           font-size: 16px;
         }

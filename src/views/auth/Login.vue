@@ -9,29 +9,30 @@
         <input type="email" placeholder="user@gmail.com">
       </div>
       <div class="err-msg"></div>
-    </div>
-    <div class="form-item mb-16">
-      <div class="title">Password</div>
-      <div class="input">
-        <input type="password" placeholder="*******">
+      <div class="form-item mb-16">
+        <div class="title">Password</div>
+        <div class="input">
+          <input type="password" placeholder="*******">
+        </div>
+        <div class="err-msg"></div>
       </div>
-      <div class="err-msg"></div>
-    </div>
-    <div class="forgot">
-      <router-link to="/forgot">Forgot Password?</router-link>
-    </div>
-    <div class="login-btn">
-      <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow> </button>
-      <!-- <button type="button" class="btn black-btn load-btn">
+      <div class="forgot">
+        <router-link to="/forgot">Forgot Password?</router-link>
+      </div>
+      <div class="login-btn">
+        <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow>
+        </button>
+        <!-- <button type="button" class="btn black-btn load-btn">
         <icon-login-loader></icon-login-loader>
       </button> -->
-    </div>
-    <!-- <div class="reg">
+      </div>
+      <!-- <div class="reg">
       Rorgot Password
       <icon-right-arrow></icon-right-arrow> 
       <router-link to="/forgot">Forgot Password?</router-link>
     </div> -->
-  </form>
+    </form>
+  </section>
 </template>
  
 <script setup>
@@ -44,6 +45,7 @@ const storeVar = computed(() => store.state.Auth);
 const formVar = reactive({
   submit: false,
   loginId: null,
+  password: null,
 });
 
 /* Constants */
@@ -55,15 +57,17 @@ const formVar = reactive({
 
 const onSubmitLogin = () => {
   if (
-    loginIdValid.value
+    loginIdValid.value ||
+    passwordValid.value
   ) {
     formVar.submit = true;
     return;
   }
   formVar.submit = false;
-  store.dispatch("Auth/verifyUser", {     
-    userId: 10563543453,
-    password: 4532453, });
+  store.dispatch("Auth/verifyUser", {
+    loginId: formVar.loginId,
+    password: formVar.password,
+  });
 };
 /* Functions/Methods */
 
@@ -73,6 +77,16 @@ const loginIdValid = computed(() => {
     return "Please enter your phone number!";
   }
 });
+const passwordValid = computed(() => {
+  if (!formVar.password) {
+    return "Please enter your password!";
+  }
+});
+function isNumber(e) {
+  let char = String.fromCharCode(e.keyCode);
+  if (/^[0-9]+$/.test(char)) return true;
+  else e.preventDefault();
+}
 function phnum(e) {
   formVar.loginId = e.slice(0, 10)
 }
@@ -80,6 +94,4 @@ function phnum(e) {
 </script>
 
 
-<style>
-
-</style>
+<style></style>

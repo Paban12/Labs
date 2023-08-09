@@ -4,26 +4,6 @@
       <div class="wrapper">
         <div class="invoice_wrapper">
           <div class="header">
-            <!-- <div class="logo_invoice_wrap">
-              <div class="logo_sec">
-                <img src="/src/assets/images/png/logo.png" alt="code logo" />
-                <div class="title_wrap">
-                  <p class="title bold">Coding Boss</p>
-                  <p class="sub_title">Privite Limited</p>
-                </div>
-              </div>
-              <div class="invoice_sec">
-                <p class="invoice bold">INVOICE</p>
-                <p class="invoice_no">
-                  <span class="bold">Invoice</span>
-                  <span>#3488</span>
-                </p>
-                <p class="date">
-                  <span class="bold">Date</span>
-                  <span>08/Jan/2022</span>
-                </p>
-              </div>
-            </div> -->
             <div class="bill_total_wrap">
               <div class="bill_sec">
                 <span class="name">Name :</span>
@@ -51,8 +31,8 @@
                 <span class="name">Date :</span>
                 <span class="val">23 June 2023 8:45 PM</span>
               </div>
-              
-              
+
+
               <!-- <div class="total_wrap">
                 <span>Total Due</span>
                 <span class="bold price">USD: $1200</span>
@@ -77,7 +57,6 @@
               </div>
             </div>
             <div class="bill_total_wrap">
-              
               <div class="bill_sec_note">
                 <span class="name">Note :</span>
                 <span class="val">DIABETES . CT CORONARY ANGIO - 3 DAYS PROLOMET XL 12.5 ONCE</span>
@@ -90,9 +69,10 @@
                 <div class="table_row">
                   <div class="col col_no bold">NO.</div>
                   <div class="col col_des bold">ITEM DESCRIPTION</div>
-                  <div class="col col_price bold">PRICE</div>
+                  <div class="col col_price bold">AGE</div>
+                  <div class="col col_price bold">DOSE</div>
                   <div class="col col_qty bold">QTY</div>
-                  <div class="col col_total bold">TOTAL</div>
+                  <div class="col col_total bold">DAY</div>
                 </div>
               </div>
               <div class="table_body">
@@ -105,13 +85,16 @@
                     <p class="desc">Lorem ipsum dolor sit.</p>
                   </div>
                   <div class="col col_price">
-                    <p>₹350</p>
+                    <p>25Y</p>
+                  </div>
+                  <div class="col col_price">
+                    <p>1-0-1</p>
                   </div>
                   <div class="col col_qty">
                     <p>2</p>
                   </div>
                   <div class="col col_total">
-                    <p>₹700.00</p>
+                    <p>2 Day</p>
                   </div>
                 </div>
                 <div class="table_row">
@@ -123,13 +106,16 @@
                     <p class="desc">Lorem ipsum dolor sit.</p>
                   </div>
                   <div class="col col_price">
-                    <p>₹350</p>
+                    <p>20Y</p>
+                  </div>
+                  <div class="col col_price">
+                    <p>0-1-0</p>
                   </div>
                   <div class="col col_qty">
                     <p>2</p>
                   </div>
                   <div class="col col_total">
-                    <p>₹700.00</p>
+                    <p>3 Day</p>
                   </div>
                 </div>
                 <div class="table_row">
@@ -141,13 +127,16 @@
                     <p class="desc">Lorem ipsum dolor sit.</p>
                   </div>
                   <div class="col col_price">
-                    <p>₹120</p>
+                    <p>35Y</p>
+                  </div>
+                  <div class="col col_price">
+                    <p>1-1-0</p>
                   </div>
                   <div class="col col_qty">
                     <p>1</p>
                   </div>
                   <div class="col col_total">
-                    <p>₹700.00</p>
+                    <p>0</p>
                   </div>
                 </div>
                 <div class="table_row">
@@ -159,13 +148,16 @@
                     <p class="desc">Lorem ipsum dolor sit.</p>
                   </div>
                   <div class="col col_price">
-                    <p>₹350</p>
+                    <p>21Y</p>
+                  </div>
+                  <div class="col col_price">
+                    <p>0-1-1</p>
                   </div>
                   <div class="col col_qty">
                     <p>2</p>
                   </div>
                   <div class="col col_total">
-                    <p>₹700.00</p>
+                    <p>7 Day</p>
                   </div>
                 </div>
                 <div class="table_row">
@@ -177,39 +169,18 @@
                     <p class="desc">Lorem ipsum dolor sit.</p>
                   </div>
                   <div class="col col_price">
-                    <p>₹150</p>
+                    <p>28Y</p>
+                  </div>
+                  <div class="col col_price">
+                    <p>1-1-1</p>
                   </div>
                   <div class="col col_qty">
                     <p>1</p>
                   </div>
                   <div class="col col_total">
-                    <p>₹700.00</p>
+                    <p>30 Day</p>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="paymethod_grandtotal_wrap">
-              <div class="paymethod_sec">
-                <p class="bold">Payment Method</p>
-                <p>Visa, master Card and We accept Cheque</p>
-              </div>
-              <div class="grandtotal_sec">
-                <p class="bold">
-                  <span>SUB TOTAL</span>
-                  <span>₹7500</span>
-                </p>
-                <p>
-                  <span>Tax Vat 18%</span>
-                  <span>₹200</span>
-                </p>
-                <p>
-                  <span>Discount 10%</span>
-                  <span>-₹700</span>
-                </p>
-                <p class="total">
-                  <span>Grand Total</span>
-                  <span>₹7000.0</span>
-                </p>
               </div>
             </div>
           </div>
@@ -297,39 +268,36 @@ async function pdfDownload() {
 function printContent() {
   // Get HTML to print from element
   const prtHtml = document.getElementById('content-to-print').innerHTML;
-
   // Get all stylesheets HTML
   let stylesHtml = '';
   for (const node of [...document.querySelectorAll('link[rel="stylesheet"], style')]) {
     stylesHtml += node.outerHTML;
   }
-
   // Open the print window
-  const WinPrint = window.open('', '', 'left=0,width=1800,height=1900,top=0,toolbar=0,scrollbars=0,status=0');
-
+  const WinPrint = window.open('', '', 'left=0,width=1800,height=1800,top=0,toolbar=0,scrollbars=0,status=0');
   WinPrint.document.write(`<!DOCTYPE html>
-<html>
-  <head>
+  <html>
+    <head>
     ${stylesHtml}
-  </head>
-  <body>
+    </head>
+   <body>
     ${prtHtml}
   </body>
-</html>`);
-
-  WinPrint.document.close();
-  WinPrint.focus();
-  WinPrint.print();
-  // WinPrint.close();
+ </html>`);
+ WinPrint.document.close();
+ WinPrint.focus();
+ WinPrint.print();
+//  WinPrint.close();
 }
 function navigate(link, id) {
   router.push({ path: link, query: { id } })
 }
 </script>
+
 <style lang="scss">
 // @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap");
 
-$primary: #0000ff;
+$primary: #b2c8e6;
 $secondary: #3d3d3d;
 $white: #fff;
 
@@ -360,18 +328,21 @@ $white: #fff;
 }
 
 .wrapper {
-  background-image: url(/src/assets/images/png/Clinic-image.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+  background-image: url(/src/assets/images/png/doctor-image.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
   // background: $white;
   height: 100%;
   padding: 50px;
 }
-#content-to-print{
-    width: 45%;
-    height: 107vh;
+
+#content-to-print {
+  
+  width: 45%;
+  height: 107vh;
 }
+
 .invoice_wrapper {
   // border: 2px solid $primary;
   height: 100%;
@@ -379,7 +350,8 @@ $white: #fff;
   max-width: 100%;
 
   .header {
-    margin-top: 17%;
+    margin-top: 10%;
+
     .logo_invoice_wrap,
     .bill_total_wrap {
       // border: 2px solid $primary;
@@ -437,53 +409,60 @@ $white: #fff;
 
     .bill_total_wrap {
       width: 100%;
-      .bill_sec_note{
+
+      .bill_sec_note {
         width: 100%;
         padding-bottom: 10px;
+
         .name {
           // color: $primary;
           font-weight: 700;
           font-size: 12px;
         }
-        .val{
+
+        .val {
           font-size: 12px;
         }
       }
-      .bill_sec{
-          width: 33%;
+
+      .bill_sec {
+        width: 33%;
+
         .name {
           // color: $primary;
           font-weight: 700;
           font-size: 12px;
         }
-        .val{
+
+        .val {
           font-size: 12px;
         }
       }
+
       .total_wrap {
 
         .price,
-        .bill_sec{
+        .bill_sec {
           width: 33%;
-        .name {
-          color: $primary;
-          font-size: 20px;
+
+          .name {
+            color: $primary;
+            font-size: 20px;
+          }
         }
-      }
       }
     }
   }
 
   .body {
-
-    height: 35.8rem;
+    height: 39rem;
     margin-bottom: 6rem;
     .main_table {
       .table_header {
         background: $primary;
 
         .table_row {
-          color: $white;
+          color: $secondary;
           font-size: 12px;
           font-weight: bold;
           border-bottom: none;
@@ -499,18 +478,21 @@ $white: #fff;
 
         .col {
           padding: 3px;
-          .name{
+
+          .name {
             font-weight: 900;
             font-size: 12px;
           }
-          .desc{
+
+          .desc {
             font-size: 12px;
           }
         }
 
         .col_no {
           width: 5%;
-          .bold{
+
+          .bold {
             font-size: 12px;
           }
         }
@@ -551,7 +533,8 @@ $white: #fff;
 
       .grandtotal_sec {
         width: 40%;
-        .total{
+
+        .total {
           font-weight: 900;
           font-size: 16px;
         }
@@ -578,7 +561,7 @@ $white: #fff;
           &:last-child span {
             background: $primary;
             padding: 10px;
-            color: #fff;
+            color: $secondary;
           }
         }
       }
