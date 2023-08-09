@@ -2,10 +2,10 @@ import { apiServices } from '../../../services/api.service';
 import { successHandler, errorHandler } from '../../../services/_helper';
 import router from '../../../router';
 
-export const verifyUser = async ({ commit, dispatch }, { userId, password }) => {
+export const verifyUser = async ({ commit, dispatch }, { loginId, password }) => {
 	// commit("SET_LOADER", true, { root: true });
 	commit("SET_LOADER_BUTTON", true);
-	await apiServices.verifyId(userId, password).then(
+	await apiServices.verifyId(loginId, password).then(
 		(response) => {
 			commit("SET_LOADER_BUTTON", false);
 		},
@@ -64,9 +64,6 @@ export const updateUserProfile = async ({ commit }, {
 	emailId,
 	gender,
 	dob,
-	bussinessName,
-	bussinessAddress,
-	gstNumber,
 	id
 }) => {
 	commit("SET_LOADER", true, { root: true });
@@ -81,9 +78,7 @@ export const updateUserProfile = async ({ commit }, {
 		address,
 		emailId,
 		gender,
-		dob, bussinessName,
-		bussinessAddress,
-		gstNumber,
+		dob,
 		id
 	).then(
 		async (response) => {

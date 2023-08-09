@@ -1,16 +1,21 @@
 
 
 .visit-prescription{
+  height: 107vh;
+  display: flex;
+  justify-content: center;
   .preview-card{
     padding: 0.5rem;
-    background-image: url(/src/assets/images/png/logo2.png);
+    background-image: url(/src/assets/images/png/Clinic-image.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 50% 50%;
+    background-size: 100% 100%;
     position: relative;
     
     .card-content{
-      border: 1px solid var(--border-color);
+      // border: 1px solid var(--border-color);
+      position: relative;
+      top: 18%;
       border-radius: 10px;
       padding: 0.8rem;
       padding-bottom: 12rem;
@@ -166,16 +171,20 @@
 }
 
 @media print {
-  body #app{
-    display: none !important;
+  // body #app{
+  //   display: none !important; 
+  // }
+  // .preview-card,
+  // .preview-card * {
+  //   display: none !important;
+  //   // position: absolute;
+  //   // top: 0;
+  //   // left: 0;
+  // }
+  @page {
+    size: A4;
   }
-  .preview-card,
-  .preview-card * {
-    display: none !important;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-  }
+  
 }
 
 // media queries

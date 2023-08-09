@@ -172,7 +172,7 @@
                       placeholder=""></SingleSelect>
                   </td>
                   <td data-label="Action">
-                    <div class="option-btns pointer" @click.prevent="formVar.confirmModal = true">
+                    <div class="option-btns pointer" @click="deleteMadicine(index)">
                       <img src="/src/assets/images/png/delete.png" alt="">
                     </div>
                   </td>
@@ -259,7 +259,7 @@
       </h4>
       <div class="btns">
         <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">Cancel</button>
-        <button class="btn confirm-btn">Confirm</button>
+        <button type="button" class="btn confirm-btn" @click="confirmDelete">Confirm</button>
       </div>
     </Modal>
   </section>
@@ -291,6 +291,7 @@ const formVar = reactive({
       },
     },
   ],
+  madicinIndex:null,
   outside: false,
   confirmModal: false,
   submit:false,
@@ -328,6 +329,33 @@ const addNewRow = (index) => {
     });
   }
 };
+const confirmDelete = computed(() => {
+  if (formVar.consultData.length>1) {
+    formVar.consultData.splice(formVar.madicinIndex,1)
+  }else {
+    formVar.consultData= [
+    {
+      medicine_description: "",
+      medicine_name: "",
+      tab: {
+        duration: "",
+        durationType: "",
+        frequency: "",
+        instruction: "",
+      },
+    },
+    ]
+  }
+})
+function deleteMadicine(index){
+  formVar.madicinIndex=index
+  formVar.confirmModal=true
+  console.log({data:formVar.consultData,index});
+}
+function confirmDelete2(){
+  formVar.consultData.splice(formVar.madicinIndex,1)
+  formVar.confirmModal=false
+}
 const onSubmit = () => {
   if (
     bpValid.value ||

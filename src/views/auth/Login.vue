@@ -6,9 +6,15 @@
       <div class="form-item mb-16">
         <div class="title">Phone Number</div>
         <div class="input">
-          <input type="number" v-model="formVar.loginId" placeholder="+91 8888888888" v-on:keyup="phnum($event.target.value)">
+          <input type="text" v-model="formVar.loginId" placeholder="+91 8888888888"
+          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)">
         </div>
         <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
+        <div class="title">Password</div>
+        <div class="input">
+          <input type="text" v-model="formVar.password" placeholder="Password">
+        </div>
+        <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
       </div>
       <div class="login-btn form-item">
         <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
@@ -38,6 +44,7 @@ const storeVar = computed(() => store.state.Auth);
 const formVar = reactive({
   submit: false,
   loginId: null,
+  password:null,
 });
 
 /* Constants */
@@ -49,15 +56,16 @@ const formVar = reactive({
 
 const onSubmitLogin = () => {
   if (
-    loginIdValid.value
+    loginIdValid.value ||
+    passwordValid.value
   ) {
     formVar.submit = true;
     return;
   }
   formVar.submit = false;
   store.dispatch("Auth/verifyUser", {     
-    userId: 10563543453,
-    password: 4532453, });
+    loginId: formVar.loginId,
+    password: formVar.password, });
 };
 /* Functions/Methods */
 
@@ -67,6 +75,16 @@ const loginIdValid = computed(() => {
     return "Please enter your phone number!";
   }
 });
+const passwordValid = computed(() => {
+  if (!formVar.password) {
+    return "Please enter your password!";
+  }
+});
+function isNumber(e) {
+  let char = String.fromCharCode(e.keyCode);
+  if (/^[0-9]+$/.test(char)) return true;
+  else e.preventDefault();
+}
 function phnum(e) {
   formVar.loginId = e.slice(0, 10)
 }

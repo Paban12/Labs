@@ -264,6 +264,7 @@ const medData = reactive([
     note: "Please take care",
   },
 ]);
+
 async function share() {
   // Get HTML to print from element
   var prtHtml = document.querySelector('#content-to-print');
@@ -329,7 +330,7 @@ function navigate(link, id) {
 <style lang="scss">
 // @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap");
 
-$primary: #0000ff;
+$primary: #002e6b;
 $secondary: #3d3d3d;
 $white: #fff;
 
@@ -360,15 +361,16 @@ $white: #fff;
 }
 
 .wrapper {
-  background-image: url(/src/assets/images/png/Clinic-image.png);
+  background-image: url(/src/assets/images/png/lab-image.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    height: 100%;
   // background: $white;
-  height: 100%;
   padding: 50px;
 }
 #content-to-print{
+    
     width: 45%;
     height: 107vh;
 }
@@ -379,7 +381,7 @@ $white: #fff;
   max-width: 100%;
 
   .header {
-    margin-top: 17%;
+    margin-top: 15%;
     .logo_invoice_wrap,
     .bill_total_wrap {
       // border: 2px solid $primary;
@@ -475,8 +477,7 @@ $white: #fff;
   }
 
   .body {
-
-    height: 35.8rem;
+    height: 35rem;
     margin-bottom: 6rem;
     .main_table {
       .table_header {

@@ -92,17 +92,17 @@ export default {
   color: #2b542c;
 }
 
-.alert-danger {
+.notiAlert-danger {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
 }
 
-.alert-danger hr {
+.notiAlert-danger hr {
   border-top-color: #e4b9c0;
 }
 
-.alert-danger .alert-link {
+.notiAlert-danger .alert-link {
   color: #843534;
 }
 
@@ -155,8 +155,8 @@ export default {
   top: 50%;
 }
 
-.alert-white.alert-danger .icon,
-.alert-white.alert-danger .icon:after {
+.alert-white.notiAlert-danger .icon,
+.alert-white.notiAlert-danger .icon:after {
   border-color: #ca452e;
   background: #da4932;
 }

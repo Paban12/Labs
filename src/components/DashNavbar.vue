@@ -260,6 +260,12 @@
               </div>
               <div class="text">Appoinments</div>
             </router-link>
+            <router-link to="/prescription" class="list" @click.prevent="closeSidebar()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Prescription</div>
+            </router-link>
             <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
