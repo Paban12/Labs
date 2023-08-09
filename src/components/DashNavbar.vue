@@ -266,7 +266,6 @@
               </div>
               <div class="text">Site Settings</div>
             </router-link>
-<<<<<<< HEAD
             <router-link to="/appointment/calender" class="list" @click.prevent="closeSidebar()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
@@ -279,10 +278,8 @@
               </div>
               <div class="text">Prescription</div>
             </router-link>
-            <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()">
-=======
+            <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()"></router-link>
             <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
->>>>>>> df488f9b47bbdcd8a7548adf8fcf931ff45f3aa2
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>

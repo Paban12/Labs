@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <section class="login-form-inner">
     <form action="" class="form">
       <h2>Welcome to Parchi</h2>
@@ -7,8 +6,8 @@
       <div class="form-item mb-16">
         <div class="title">Phone Number</div>
         <div class="input">
-          <input type="text" v-model="formVar.loginId" placeholder="+91 8888888888"
-          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)">
+          <input type="text" v-model="formVar.loginId" placeholder="+91 8888888888" v-on:keypress="isNumber($event)"
+            v-on:keyup="phnum($event.target.value)">
         </div>
         <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
         <div class="title">Password</div>
@@ -16,41 +15,32 @@
           <input type="text" v-model="formVar.password" placeholder="Password">
         </div>
         <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
-=======
-  <form action="" class="form">
-    <!-- <h2>Welcome to Thyromax</h2> -->
-    <img src="/src/assets/images/logo/logo.png" class="logo" alt="">
-    <div class="text">Login to continue</div>
-    <div class="form-item mb-16">
-      <div class="title">Email</div>
-      <div class="input">
-        <input type="email" placeholder="user@gmail.com">
->>>>>>> df488f9b47bbdcd8a7548adf8fcf931ff45f3aa2
       </div>
       <div class="err-msg"></div>
-    </div>
-    <div class="form-item mb-16">
-      <div class="title">Password</div>
-      <div class="input">
-        <input type="password" placeholder="*******">
+      <div class="form-item mb-16">
+        <div class="title">Password</div>
+        <div class="input">
+          <input type="password" placeholder="*******">
+        </div>
+        <div class="err-msg"></div>
       </div>
-      <div class="err-msg"></div>
-    </div>
-    <div class="forgot">
-      <router-link to="/forgot">Forgot Password?</router-link>
-    </div>
-    <div class="login-btn">
-      <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow> </button>
-      <!-- <button type="button" class="btn black-btn load-btn">
+      <div class="forgot">
+        <router-link to="/forgot">Forgot Password?</router-link>
+      </div>
+      <div class="login-btn">
+        <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow>
+        </button>
+        <!-- <button type="button" class="btn black-btn load-btn">
         <icon-login-loader></icon-login-loader>
       </button> -->
-    </div>
-    <!-- <div class="reg">
+      </div>
+      <!-- <div class="reg">
       Rorgot Password
       <icon-right-arrow></icon-right-arrow> 
       <router-link to="/forgot">Forgot Password?</router-link>
     </div> -->
-  </form>
+    </form>
+  </section>
 </template>
  
 <script setup>
@@ -63,7 +53,7 @@ const storeVar = computed(() => store.state.Auth);
 const formVar = reactive({
   submit: false,
   loginId: null,
-  password:null,
+  password: null,
 });
 
 /* Constants */
@@ -82,9 +72,10 @@ const onSubmitLogin = () => {
     return;
   }
   formVar.submit = false;
-  store.dispatch("Auth/verifyUser", {     
+  store.dispatch("Auth/verifyUser", {
     loginId: formVar.loginId,
-    password: formVar.password, });
+    password: formVar.password,
+  });
 };
 /* Functions/Methods */
 
@@ -111,6 +102,4 @@ function phnum(e) {
 </script>
 
 
-<style>
-
-</style>
+<style></style>
