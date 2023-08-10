@@ -234,6 +234,11 @@ const routes = [
                 name: 'site setting',
                 component: () => import( /* webpackChunkName: "site setting" */ '../views/Settings/SiteSetting.vue')
             },
+            {
+                path: '/expense',
+                name: 'expense',
+                component: () => import( /* webpackChunkName: "expense" */ '../views/Expense.vue')
+            },
             //mobile-view
             {
                 path: '/rating',

@@ -1,10 +1,13 @@
 <template>
   <section class="bill-tax">
     <div class="row">
-      <div class="form-item mb-16 col-5">
-        <input type="text" placeholder="Search By Tax Name/Value">
+      <div class="form-item col-5">
+          <div class="searchbar mb-16">
+            <input type="text" placeholder="Search By Pay Mode" />
+            <img src="/src/assets/images/png/search.png" alt="" />
+          </div>
+        </div>
       </div>
-    </div>
     <div class="table-outer">
       <table class="table">
         <thead>

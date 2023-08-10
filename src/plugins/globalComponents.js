@@ -32,6 +32,10 @@ const DoctorSchedule = defineAsyncComponent(() => import('../components/DoctorPr
 
 //Billing
 const BillingTax = defineAsyncComponent(() => import('../components/Billing/Tax.vue'))
+const BillingPayMode = defineAsyncComponent(() => import('../components/Billing/PayModes.vue'))
+const BillingExpense = defineAsyncComponent(() => import('../components/Billing/Expense.vue'))
+const BillingIntegration = defineAsyncComponent(() => import('../components/Billing/Integration.vue'))
+const BillingSetting = defineAsyncComponent(() => import('../components/Billing/Setting.vue'))
 
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
@@ -110,6 +114,10 @@ const GlobalComponents = {
 
     //Billing
     app.component('BillingTax', BillingTax)
+    app.component('BillingPayMode', BillingPayMode)
+    app.component('BillingExpense', BillingExpense)
+    app.component('BillingIntegration', BillingIntegration)
+    app.component('BillingSetting', BillingSetting)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

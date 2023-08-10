@@ -45,6 +45,18 @@
           <div class="tab-content" v-if="formVar.tab === 1">
             <BillingTax />
           </div>
+          <div class="tab-content" v-if="formVar.tab === 2">
+            <BillingPayMode />
+          </div>
+          <div class="tab-content" v-if="formVar.tab === 3">
+            <BillingExpense />
+          </div>
+          <div class="tab-content" v-if="formVar.tab === 4">
+            <BillingIntegration />
+          </div>
+          <div class="tab-content" v-if="formVar.tab === 5">
+            <BillingSetting />
+          </div>
         </div>
       </div>
     </div>

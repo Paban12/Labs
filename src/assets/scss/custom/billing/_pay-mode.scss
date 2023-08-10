@@ -1,0 +1,24 @@
+.billing-pay-mode{
+  .main-title{
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+  }
+  .sub-title{
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+  .row{
+    .toggle-btn{
+      gap: 10px;
+      .text{
+        font-size: 0.85rem;
+      }
+    }
+  }
+  .search-row{
+    .searchbar{
+      width: 50%;
+    }
+  }
+}
