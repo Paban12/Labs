@@ -200,7 +200,7 @@
         </div>
       </div>
       <!-- sidebar -->
-      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }" v-click-outside="closeSidebar">
+      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }">
         <div class="sidebar-card">
           <div class="close-icon" @click.prevent="nav.sidebar = false">
             <icon-cross></icon-cross>
@@ -271,6 +271,12 @@
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Expense</div>
+            </router-link>
+            <router-link to="/ref-share-layout" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Reference & Sharing</div>
             </router-link>
             <router-link to="/site-setting" class="list" @click="toggleSidebar">
               <div class="img grade-btn">

@@ -38,6 +38,12 @@ const BillingExpense = defineAsyncComponent(() => import('../components/Billing/
 const BillingIntegration = defineAsyncComponent(() => import('../components/Billing/Integration.vue'))
 const BillingSetting = defineAsyncComponent(() => import('../components/Billing/Setting.vue'))
 
+//Reference Sharing
+//Ref Lab Doctor
+const RefLabDoctorBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Billing.vue'))
+const RefLabDoctorTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Test.vue'))
+const RefLabDoctorSharing = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Sharing.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -120,6 +126,12 @@ const GlobalComponents = {
     app.component('BillingExpense', BillingExpense)
     app.component('BillingIntegration', BillingIntegration)
     app.component('BillingSetting', BillingSetting)
+
+    //Reference Sharing
+    //Ref Lab Doctor
+    app.component('RefLabDoctorBilling', RefLabDoctorBilling)
+    app.component('RefLabDoctorTest', RefLabDoctorTest)
+    app.component('RefLabDoctorSharing', RefLabDoctorSharing)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

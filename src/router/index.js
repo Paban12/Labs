@@ -239,6 +239,20 @@ const routes = [
                 name: 'expense',
                 component: () => import( /* webpackChunkName: "expense" */ '../views/Expense.vue')
             },
+            //Reference Share Layout
+            {
+                path: '/ref-share-layout',
+                redirect: '/reference-lab-doctor',
+                name: 'ref share layout',
+                component: () => import( /* webpackChunkName: "ref share layout" */ '../views/ReferenceSharing/RefShareLayout.vue'),
+                children: [
+                    {
+                        path: '/reference-lab-doctor',
+                        name: 'reference lab doctor',
+                        component: () => import( /* webpackChunkName: "reference lab doctor" */ '../views/ReferenceSharing/RefLabDoctor.vue')
+                    },
+                ]
+            },
             //mobile-view
             {
                 path: '/rating',

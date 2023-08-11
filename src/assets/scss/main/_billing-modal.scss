@@ -1,0 +1,61 @@
+.billing-modal{
+  .modal{
+    .modal-dialog{
+      width: 1100px;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      .modal-content{
+        height: 100%;
+        // position: relative;
+
+        .modal-body{
+          padding: 0.5rem;
+          height: calc(100% - 2.5rem);
+          // background: red;
+          padding-bottom: 5rem;
+          .date-row{
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            .select-dr{
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              .id{
+                font-size: 0.8rem;
+                
+              }
+            }
+            .right{
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              .date-input{
+                width: 10rem;
+              }
+            }
+          }
+          .main-table-outer{
+            height: calc(100% - 15.5rem);
+            // background: green;
+            overflow-y: scroll;
+          }
+          .total-table{
+
+          }
+
+          .btn-row{
+            display: flex;
+            justify-content: flex-end;
+            .btn{
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

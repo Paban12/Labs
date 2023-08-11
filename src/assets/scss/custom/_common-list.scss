@@ -1,58 +1,56 @@
 .common-list-page{
-  .container{
-    .card{
-      padding: 0;
-      .heading{
+  .card{
+    padding: 0;
+    .heading{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      .title{
+        font-size: 20px;
+      }
+      .right{
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        border-bottom: 1px solid #eee;
-        .title{
-          font-size: 20px;
-        }
-        .right{
+        gap: 1rem;
+        .searchbar {
+          position: relative;
           display: flex;
-          align-items: center;
-          gap: 1rem;
-          .searchbar {
-            position: relative;
-            display: flex;
-            input {
-              width: 100%;
-              background: rgba(222, 251, 255, 0.4);
-              padding-right: 3rem;
-              height: 2.5rem;
-            }
-            img {
-              position: absolute;
-              top: 50%;
-              right: 0px;
-              transform: translateY(-50%);
-              height: 2rem;
-              width: 2.7rem;
-              cursor: pointer;
-            }
+          input {
+            width: 100%;
+            background: rgba(222, 251, 255, 0.4);
+            padding-right: 3rem;
+            height: 2.5rem;
+          }
+          img {
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            height: 2rem;
+            width: 2.7rem;
+            cursor: pointer;
           }
         }
       }
-      .card-body{
-        padding: 1rem;
+    }
+    .card-body{
+      padding: 1rem;
 
-      }
-      .table{
-        tr{
-          td{
-            .doc-pics{
-              display: flex;
-              flex-wrap: wrap;
-              gap: 5px;
-              img{
-                height: 3rem;
-                width: 3rem;
-                border-radius: 3px;
-                border: 1px solid var(--blue);
-              }
+    }
+    .table{
+      tr{
+        td{
+          .doc-pics{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            img{
+              height: 3rem;
+              width: 3rem;
+              border-radius: 3px;
+              border: 1px solid var(--blue);
             }
           }
         }
@@ -64,7 +62,7 @@
 
 //media queries
 @media (max-width: 560px){
-  .common-list-page .container .card .heading{
+  .common-list-page .card .heading{
     flex-direction: column;
     .title{
       margin-bottom: 0.5rem;
