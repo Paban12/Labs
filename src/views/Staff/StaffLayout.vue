@@ -14,32 +14,38 @@
             <div class="top">
               <div class="head">
                 <h4>Staff Management</h4>
-                <div class="btn yellow-btn">12</div>
+                <div class="btn yellow-btn">{{ storeVar.totalStaff }}</div>
               </div>
               <router-link to="/staff-add" class="btn black-btn">+ Add Staff</router-link>
             </div>
             <div class="searchbar">
-              <input type="text" placeholder="Search for Medicine">
-              <img src="/src/assets/images/png/search.png" alt="">
+              <div class="search">
+                <input type="text" placeholder="Search for Staff" @keyup="search($event.target.value)">
+                <img src="/src/assets/images/png/search.png" alt="">
+              </div>
+              <div class="drop">
+                <Select v-model="formVar.changeRole" :options="postOptions" @change.prevent="onChange" />
+              </div>
             </div>
+
           </div>
           <div class="card-body">
-            <router-link to="/staff/details" class="list-item card1" v-for="(item, index) in ManagementList" :key="index">
-              <div class="img">
-                <img src="/src/assets/images/png/dr2.png" alt="image">
-              </div>
-              <div class="info">
-                <div class="staff-name">{{ item.name }}</div>
-                <div class="contact-info">
-                  <div class="mail">{{ item.email }}</div>
-                  <div class="phone">{{ item.phone }}</div>
+            <div class="list-item card1" v-for="(item, index) in storeVar.staffData" :key="index">
+                <div class="img">
+                  <img src="/src/assets/images/png/dr2.png" alt="image">
                 </div>
-              </div>
-              <div class="post" :class="item.roles">{{ item.roles }}</div>
-            </router-link>
+                <div class="info" @click="getInfo(item.id)">
+                  <div class="staff-name">{{ item.staffDetail.name }}</div>
+                  <div class="contact-info">
+                    <div class="mail">{{ item.staffDetail.emailId }}</div>
+                    <div class="phone">{{ item.phoneNumber }}</div>
+                  </div>
+                </div>
+                <div class="post" :class="item.roles">{{ item.roles }}</div>
+            </div>
           </div>
         </div>
-        <div class="staff-card-outer col-6" >
+        <div class="staff-card-outer col-6">
           <router-view></router-view>
         </div>
       </div>
@@ -58,84 +64,59 @@
 </template>
 
 <script setup>
-import { computed, reactive } from "vue";
+import { computed, reactive, onBeforeMount } from "vue";
 import { useStore } from "vuex";
+import router from "../../router";
 
 /* Constants */
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
+const storeVar = computed(() => store.state.Staff);
+const postOptions = [
+  { id: 'STAFF', name: "STAFF" },
+  { id: 'EMPLOYEE', name: "EMPLOYEE" },
+  { id: 'FRONT DESK', name: "FRONT DESK" },
+  { id: 'BACK DESK', name: "BACK DESK" },
+  { id: 'PATHOLOGIEST', name: "PATHOLOGIEST" },
+];
+
 const formVar = reactive({
   confirmModal: false,
   tab: 1,
+  limit: 10,
+  offset: 0,
+  keyword: "",
+  status: 'ACTIVE',
+  role: postOptions[0],
+  changeRole: postOptions[0]
 })
 
-
-const ManagementList=[
-  {
-    id:1,
-    name:'Dr. Anurag Malohatra Strhya',
-    email:'ramaswami28989@gmail.com',
-    phone:'+919765300921',
-    roles:'Doctor',
-  },
-  {
-    id:2,
-    name:'Mukesh Raju Rastogi',
-    email:'ramaswami28989@gmail.com',
-    phone:'+918945214896',
-    roles:'Front Desk',
-  },
-  {
-    id:3,
-    name:'Surakha Ajita Kumar',
-    email:'surakha.kumar@gmail.com',
-    phone:'+919745236985',
-    roles:'Admin',
-  },
-  {
-    id:4,
-    name:'Mukesh Raju Rastogi',
-    email:'ramaswami28989@gmail.com',
-    phone:'+918945214896',
-    roles:'Manager',
-  },
-  {
-    id:5,
-    name:'Surakha Ajita Kumar',
-    email:'surakha.kumar@gmail.com',
-    phone:'+919745236985',
-    roles:'Admin',
-  },
-  {
-    id:6,
-    name:'Dr. Anurag Malohatra Strhya',
-    email:'ramaswami28989@gmail.com',
-    phone:'+919765300921',
-    roles:'Doctor',
-  },
-  {
-    id:7,
-    name:'Mukesh Raju Rastogi',
-    email:'ramaswami28989@gmail.com',
-    phone:'+918945214896',
-    roles:'Front Desk',
-  },
-  {
-    id:8,
-    name:'Mukesh Raju Rastogi',
-    email:'ramaswami28989@gmail.com',
-    phone:'+918945214896',
-    roles:'Manager',
-  },
-]
 
 /* Constants */
 
 /* Lifecycle/Hooks */
+onBeforeMount(() => {
+  getStaff(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role?.id)
+})
 /* Lifecycle/Hooks */
 
 /* Functions/Methods */
-
+function getStaff(limit, offset, keyword, status, role) {
+  store.dispatch("Staff/getStaff", { limit, offset, keyword, status, role });
+}
+function onChange(){
+  getStaff(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.changeRole?.id)
+}
+function getInfo(id){
+  store.dispatch("Staff/getOneStaff", { id });
+  router.push('/staff/details')
+}
+function search(text){
+  if(text.length>3){
+    getStaff(formVar.limit, formVar.offset, text, formVar.status, formVar.role?.id)
+  } else if(text===''){
+    getStaff(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role?.id)
+  }
+}
 /* Functions/Methods */
 
 /* Validation */

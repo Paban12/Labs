@@ -4,12 +4,12 @@
       <div class="row">
         <div class="form-item col-5 mb-16">
           <div class="title">Name</div>
-          <input type="text" v-model="formVar.name" placeholder="Enter Name" >
+          <input type="text" v-model="storeVar.name" placeholder="Enter Name" >
           <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
         </div>
         <div class="form-item col-5 mb-16">
           <div class="title">Phone No</div>
-          <input type="number" v-model="formVar.phone" placeholder="Enter phone no"
+          <input type="number" v-model="storeVar.mobile" placeholder="Enter phone no"
           v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)">
           <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
         </div>
@@ -17,27 +17,27 @@
       <div class="row">
         <div class="form-item col-5 mb-16">
           <div class="title">Email</div>
-          <input type="text" v-model="formVar.email" placeholder="Enter Email">
+          <input type="text" v-model="storeVar.emailId" placeholder="Enter Email">
           <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
         </div>
         <div class="form-item col-5 mb-16">
-          <div class="title">Password</div>
-          <input type="password" v-model="formVar.password" placeholder="Enter Password">
+          <div class="title">Gender</div>
+          <Select v-model="storeVar.gender" :options="genderOptions" @selected="handleSelectedOption"
+            placeholder="Select"></Select>
           <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
         </div>
       </div>
       <div class="row">
         <div class="form-item col-5 mb-16">
-          <div class="title">Designation / Role</div>
-          <SingleSelect v-model="formVar.des" :options="desOptions" @selected="handleSelectedOption" placeholder="Select">
-          </SingleSelect>
+          <div class="title">Role</div>
+          <Select v-model="storeVar.roles" :options="desOptions" @selected="handleSelectedOption" placeholder="Select">
+          </Select>
           <div class="err-msg" v-if="formVar.submit && roleValid">{{ roleValid }}</div>
         </div>
         <div class="form-item col-5 mb-16">
-          <div class="title">Speciality</div>
-          <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
-            placeholder="Select"></SingleSelect>
-            <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
+          <div class="title">Designation</div>
+          <input type="text" v-model="storeVar.designation" placeholder="Enter Designation">
+            <div class="err-msg" v-if="formVar.submit && designationValid">{{ designationValid }}</div>
         </div>
       </div>
       <div class="row">
@@ -73,7 +73,7 @@ import { useStore } from "vuex";
 
 /* Constants */
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
+const storeVar = computed(() => store.state.Staff);
 const formVar = reactive({
   submit:false,
   des: "",
@@ -82,17 +82,28 @@ const formVar = reactive({
   name:null,
   email:null,
   phone:null,
+  gender:null,
   password:null,
   signature:null,
 })
 
-const desOptions = [
-  { id: 1, name: "Designation1" },
-  { id: 2, name: "Designation2" },
-];
 const specialityOptions = [
   { id: 1, name: "Speciality1" },
   { id: 2, name: "Speciality2" },
+];
+const desOptions = [
+  { id: 'EMPLOYEE', name: "EMPLOYEE" },
+  { id: 'DOCTOR', name: "DOCTOR" },
+  { id: 'STAFF', name: "STAFF" },
+  { id: 'FRONT DESK', name: "FRONT DESK" },
+  { id: 'BACK DESK', name: "BACK DESK" },
+  { id: 'PATHOLOGIEST', name: "PATHOLOGIEST" },
+];
+const genderOptions = [
+  { id: 'MALE', name: "MALE" },
+  { id: 'FEMALE', name: "FEMALE" },
+  { id: 'UNISEX', name: "UNISEX" },
+  { id: 'OTHER', name: "OTHER" },
 ];
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);
@@ -135,9 +146,8 @@ const onSubmitStaff = () => {
     nameValid.value ||
     emailValid.value ||
     phoneValid.value ||
-    passwordValid.value ||
     roleValid.value ||
-    specialityValid.value ||
+    designationValid.value ||
     signatureValid.value ||
     fileValid.value 
   ) {
@@ -153,43 +163,38 @@ const onSubmitStaff = () => {
 
 /* Validation */
 const nameValid = computed(() => {
-  if (!formVar.name) {
+  if (!storeVar.value.name) {
     return "Please enter your name!";
   }
 });
 const phoneValid = computed(() => {
   let phoneValid = /^[6-9][0-9]{9}$/
-  if (!formVar.phone) {
+  if (!storeVar.value.mobile) {
     return "Please enter your phone no!";
-  }else if (!phoneValid.test(formVar.phone)) {
+  }else if (!phoneValid.test(storeVar.value.mobile)) {
     return "Please enter valid phone no!";
   }
 });
 const emailValid = computed(() => {
   let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
-  if (!formVar.email) {
+  if (!storeVar.value.emailId) {
     return "Please enter your email!";
-  }else if (!emailValid.test(formVar.email)) {
+  }else if (!emailValid.test(storeVar.value.emailId)) {
     return "Please enter valid email!";
   }
 });
 const roleValid = computed(() => {
-  if (!formVar.des) {
-    return "Please select designation!";
+  if (!storeVar.value.roles) {
+    return "Please select roles!";
   }
 });
-const specialityValid = computed(() => {
-  if (!formVar.speciality) {
-    return "Please select speciality!";
-  }
-});
-const passwordValid = computed(() => {
-  if (!formVar.password) {
-    return "Please enter password!";
+const designationValid = computed(() => {
+  if (!storeVar.value.designation) {
+    return "Please enter designation!";
   }
 });
 const signatureValid = computed(() => {
-  if (!formVar.signature) {
+  if (!storeVar.value.signature) {
     return "Please enter text signature!";
   }
 });

@@ -28,23 +28,31 @@
               width: max-content;
             }
           }
-          .searchbar{
-            position: relative;
+          .searchbar {
             display: flex;
-            input{
-              width: 100%;
-              background: rgba(222, 251, 255, 0.40);
-              padding-right: 3rem;
-              height: 2.5rem;
+            justify-content: space-between;
+            gap: 5px;
+            .search {
+              width: 50%;
+              position: relative;
+              input {
+                width: 100%;
+                background: rgba(222, 251, 255, 0.4);
+                padding-right: 3rem;
+                height: 2.5rem;
+              }
+              img {
+                position: absolute;
+                top: 50%;
+                right: 0px;
+                transform: translateY(-50%);
+                height: 2rem;
+                width: 2.7rem;
+                cursor: pointer;
+              }
             }
-            img{
-              position: absolute;
-              top: 50%;
-              right: 0px;
-              transform: translateY(-50%);
-              height: 2rem;
-              width: 2.7rem;
-              cursor: pointer;
+            .drop {
+              width: 50%;
             }
           }
         }

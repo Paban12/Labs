@@ -1,20 +1,10 @@
 <template>
-  <div class="single-select" >
-    <input
-      type="text"
-      ref="inputField"
-      v-model="searchQuery"
-      :placeholder="placeholder" 
-      @keydown.enter="selectSearch"
-      @click="handleKeyDown"
-    />
+  <div class="single-select">
+    <input type="text" ref="inputField" v-model="searchQuery" :placeholder="placeholder" @keydown.enter="selectSearch"
+      @click="handleKeyDown" />
     <ul class="dropdown-options">
-      <li
-        v-for="option in filteredOptions"
-        :key="option.id"
-        @click="selectOption(option)"
-      >
-        {{ option.name }}
+      <li v-for="option in filteredOptions" :key="option.id" @click="selectOption(option)">
+        {{ option.name }} {{ selectOption2 }}
       </li>
     </ul>
   </div>
@@ -28,6 +18,7 @@ defineEmits(["update:modelValue", "selected"]);
 const props = defineProps({
   modelValue: {
     type: String,
+    defaukt: null,
     required: true,
   },
   placeholder: {
@@ -41,6 +32,10 @@ const props = defineProps({
   outside: {
     type: Boolean,
     default: true
+  },
+  selectData: {
+    type: Object,
+    default: {}
   }
 });
 
@@ -54,7 +49,17 @@ const filteredOptions = computed(() => {
     option.name.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
 });
-
+const computedValue = computed({
+  get: () => props.modelValue,
+  set: (value) => {
+    emit("update:modelValue", value);
+  },
+});
+const selectOption2 = computed(() => {
+  if (props.selectData.name) {
+    selectOption(props.selectData)
+  }
+});
 const selectOption = (option) => {
   searchQuery.value = option.name;
   instance.emit("update:modelValue", option.name);
@@ -66,12 +71,14 @@ const selectSearch = () => {
   focusNextInput();
 };
 const focusNextInput = () => {
-  const inputs = document.querySelector("body").querySelectorAll("input");
-  const currentIndex = Array.from(inputs).indexOf(inputField.value);
-  inputs[currentIndex].parentNode.classList.remove("show-drop");
-  if (currentIndex < inputs.length - 1) {
-    inputs[currentIndex + 1].focus();
-    inputs[currentIndex + 1].parentNode.classList.add("show-drop");
+  if (!props.selectData.name) {
+    const inputs = document.querySelector("body").querySelectorAll("input");
+    const currentIndex = Array.from(inputs).indexOf(inputField.value);
+    inputs[currentIndex].parentNode.classList.remove("show-drop");
+    if (currentIndex < inputs.length - 1) {
+      inputs[currentIndex + 1].focus();
+      inputs[currentIndex + 1].parentNode.classList.add("show-drop");
+    }
   }
 };
 const handleKeyDown = () => {
@@ -84,14 +91,15 @@ const handleKeyDown = () => {
 
 // this is if required click outside to display none dropdown-options
 onBeforeMount(() => {
+
   // searchQuery.value = props.modelValue;
-  if(props.outside){
+  if (props.outside) {
     window.addEventListener("click", handleClickOutside);
   }
 });
 
 onBeforeUnmount(() => {
-  if(props.outside){
+  if (props.outside) {
     window.removeEventListener("click", handleClickOutside);
   }
 });

@@ -1,9 +1,9 @@
 <template>
   <form class="form">
     <!-- <h2>Welcome to Thyromax</h2> -->
-    <img src="/src/assets/images/logo/logo.png" class="logo" alt="">
+    <img src="/src/assets/images/logo/logo-black.png" class="logo" alt="">
     <!-- for email -->
-    <!-- <div class="">
+    <div class="">
       <div class="text">Enter your mail</div>
       <div class="form-item mb-16">
         <div class="title">Email</div>
@@ -13,14 +13,14 @@
         <div class="err-msg"></div>
       </div>
       <div class="login-btn form-item">
-        <button class="btn black-btn load-btn" >
+        <button class="btn black-btn load-btn" v-if="storeVar.loaderButton">
           <icon-login-loader></icon-login-loader>
         </button>
         <button type="button" class="btn black-btn">Get OTP <icon-right-arrow></icon-right-arrow> </button>
       </div>
-    </div> -->
+    </div>
     <!-- for otp -->
-    <div class="">
+    <!-- <div class="">
       <div class="text">
         Enter OTP
       </div>
@@ -45,7 +45,7 @@
         </button>
         <button type="button" class="btn black-btn" v-else @click="onSubmitOtp">Verify <icon-right-arrow></icon-right-arrow> </button>
       </div>
-    </div>
+    </div> -->
     <!-- for new password -->
     <!-- <div class="">
       <div class="text">Enter new & confirm passwords</div>

@@ -23,12 +23,12 @@
           <div class="two-inputs">
             <div class="form-item mb-16">
               <div class="title">Select Gender</div>
-              <SingleSelect
+              <Select
                 v-model="formVar.gender"
                 :options="genderOptions"
                 @selected="handleSelectedOption"
                 placeholder="Select Gender"
-              ></SingleSelect>
+              ></Select>
               <div class="err-msg" v-if="formVar.submit && genderValid">
                 {{ genderValid }}
               </div>
@@ -56,13 +56,13 @@
               </div>
             </div>
             <div class="form-item mb-16">
-              <div class="title">Select Post</div>
-              <SingleSelect
+              <div class="title">Select Roles</div>
+              <Select
                 v-model="formVar.post"
                 :options="postOptions"
                 @selected="handleSelectedOption"
                 placeholder="Select Post"
-              ></SingleSelect>
+              ></Select>
               <div class="err-msg" v-if="formVar.submit && postValid">
                 {{ postValid }}
               </div>
@@ -71,14 +71,12 @@
           <div class="form-item mb-16">
             <div class="title">Password</div>
             <input
-                type="number"
-                v-model="formVar.phone"
-                placeholder="Enter Phone No"
-                v-on:keypress="isNumber($event)"
-                v-on:keyup="phnum($event.target.value)"
+                type="text"
+                v-model="formVar.password"
+                placeholder="Enter Password"
               />
-            <div class="err-msg" v-if="formVar.submit && addressValid">
-              {{ addressValid }}
+            <div class="err-msg" v-if="formVar.submit && passwordValid">
+              {{ passwordValid }}
             </div>
           </div>
           <!-- <div class="form-item mb-16">
@@ -103,33 +101,37 @@ import { useStore } from "vuex";
 
 /* Constants */
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
+const storeVar = computed(() => store.state.Staff);
+const postOptions = [
+  { id: null, name: "Select Roles" },
+  { id: 'EMPLOYEE', name: "EMPLOYEE" },
+  { id: 'DOCTOR', name: "DOCTOR" },
+  { id: 'STAFF', name: "STAFF" },
+  { id: 'FRONT DESK', name: "FRONT DESK" },
+  { id: 'BACK DESK', name: "BACK DESK" },
+  { id: 'PATHOLOGIEST', name: "PATHOLOGIEST" },
+];
+const genderOptions = [
+  { id: null, name: "Select Gender" },
+  { id: 'MALE', name: "MALE" },
+  { id: 'FEMALE', name: "FEMALE" },
+  { id: 'UNISEX', name: "UNISEX" },
+  { id: 'OTHER', name: "OTHER" },
+];
 const formVar = reactive({
   submit: false,
   name:null,
   phone:null,
   email:null,
   address:null,
-  post: "",
+  post: postOptions[0],
   dob:null,
-  gender:null,
+  gender:genderOptions[0],
+  password:null,
 
 })
 
-const postOptions = [
-  { id: 'EMPLOYEE', name: "Employee" },
-  { id: 'DOCTOR', name: "Doctor" },
-  { id: 'STAFF', name: "Staff" },
-  { id: 'FRONT DESK', name: "Front Desk" },
-  { id: 'BACK DESK', name: "Back Desk" },
-  { id: 'PATHOLOGIEST', name: "Pathologiest" },
-];
-const genderOptions = [
-  { id: 'MALE', name: "Male" },
-  { id: 'FEMAIL', name: "Femail" },
-  { id: 'UNISEX', name: "Unisex" },
-  { id: 'OTHER', name: "Other" },
-];
+
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);
 };
@@ -142,16 +144,23 @@ const onSubmitStaffDetails = () => {
     nameValid.value ||
     emailValid.value ||
     phoneValid.value ||
-    addressValid.value ||
+    passwordValid.value ||
+    genderValid.value ||
+    dobValid.value ||
     postValid.value 
   ) {
     formVar.submit = true;
     return;
   }
   formVar.submit = false;
-  store.dispatch("Auth/verifyUser", {
-    userId: 10563543453,
-    password: 4532453,
+  store.dispatch("Staff/addStaff", {
+    loginId:formVar.phone,
+    name:formVar.name,
+    emailId:formVar.email,
+    gender:formVar.gender?.id,
+    dob:formVar.dob,
+    roles:formVar.post?.id,
+    password:formVar.password
   });
 };
 /* Functions/Methods */
@@ -160,6 +169,11 @@ const onSubmitStaffDetails = () => {
 const nameValid = computed(() => {
   if (!formVar.name) {
     return "Please enter your name!";
+  }
+});
+const dobValid = computed(() => {
+  if (!formVar.dob) {
+    return "Please enter your dob!";
   }
 });
 const phoneValid = computed(() => {
@@ -179,15 +193,20 @@ const emailValid = computed(() => {
   }
 });
 const postValid = computed(() => {
-  if (!formVar.post) {
+  if (!formVar.post?.id) {
     return "Please select post!";
   }
 });
-const addressValid = computed(() => {
-  if (!formVar.address) {
-    return "Please enter your address !";
+const passwordValid = computed(() => {
+  if (!formVar.password) {
+    return "Please enter your password !";
   }
 });
+const genderValid = computed(() => {
+  if (!formVar.gender?.id) {
+    return "Select gender !";
+  }
+})
 function isNumber(e) {
   let char = String.fromCharCode(e.keyCode);
   if (/^[0-9]+$/.test(char)) return true;

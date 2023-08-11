@@ -6,8 +6,8 @@
           <div class="img">
             <img src="/src/assets/images/png/dr2.png" alt="image">
           </div>
-          <div class="staff-name">Dr. Anurag Malohatra Strhya</div>
-          <div class="post Admin">Admin</div>
+          <div class="staff-name">{{storeVar.name}}</div>
+          <div class="post Admin">{{ storeVar.roles2 }}</div>
           <div class="delete-btn" @click.prevent="formVar.confirmModal = true">
             <img src="/src/assets/images/png/delete.png" alt="image">
           </div>
@@ -25,10 +25,13 @@
   </section>
 </template>
 
-<script>
-export default {
+<script setup>
+import { computed, reactive } from "vue";
+import { useStore } from "vuex";
 
-}
+/* Constants */
+const store = useStore();
+const storeVar = computed(() => store.state.Staff);
 </script>
 
 <style>

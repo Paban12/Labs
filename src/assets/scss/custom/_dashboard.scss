@@ -39,6 +39,11 @@
           font-size: 16px;
           text-align: center;
         }
+        .tooltip{
+          strong{
+            margin-left: 3px;
+          }
+        }
       }
       .mob-view-card{
         display: none;

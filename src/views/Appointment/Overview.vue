@@ -126,7 +126,6 @@
         <div class="btns">
           <router-link to="/" class="btn yellow-btn">Edit</router-link>
           <router-link to="/" class="btn green-btn">Change</router-link>
-          <router-link to="/new-prescription" class="btn black-btn">Prescribe</router-link>
         </div>
       </div>
     </div>

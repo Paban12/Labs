@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="list-item">
+      <div class="list-item" >
         <div class="left">
           <input type="checkbox">
           <div class="details">
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="list-item">
+      <!-- <div class="list-item">
         <div class="left">
           <input type="checkbox">
           <div class="details">
@@ -70,7 +70,7 @@
         <div class="left">
           <input type="checkbox">
           <div class="details">
-            <div class="title">Lab Test  </div>
+            <div class="title">Lab Test </div>
             <div class="text">This permission allows the user to create and modify bills for lab tests.</div>
           </div>
         </div>
@@ -93,8 +93,9 @@
         <div class="left">
           <input type="checkbox">
           <div class="details">
-            <div class="title">Front desk Admin  </div>
-            <div class="text">This permission allows the user to manage appointments and billing along with access to billing and operations reports</div>
+            <div class="title">Front desk Admin </div>
+            <div class="text">This permission allows the user to manage appointments and billing along with access to
+              billing and operations reports</div>
           </div>
         </div>
         <div class="right">
@@ -162,7 +163,7 @@
         <div class="left">
           <input type="checkbox">
           <div class="details">
-            <div class="title">Branch Admin  </div>
+            <div class="title">Branch Admin </div>
             <div class="text">This permission allows the user to access lab module to record test values</div>
           </div>
         </div>
@@ -180,20 +181,42 @@
             <input type="checkbox">
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="save-btn flex justify-center">
-        <button class="btn black-btn w-50">Save</button>
+        <button type="button" class="btn black-btn w-50" @click="submit">Save</button>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
+<script setup>
+import { computed, onBeforeMount, reactive } from 'vue';
+import { useStore } from 'vuex';
+import { useRoute, useRouter } from "vue-router"
 
+const store = useStore()
+const route = useRoute()
+const router = useRouter();
+const storeVar = computed(() => store.state.Staff);
+
+const formVar = reactive({
+	id: null,
+	permissionid: null,
+	permission: [],
+	menu: [],
+});
+
+onBeforeMount(() => {
+	loadIdFromUrl()
+})
+
+function loadIdFromUrl() {
+		store.dispatch('Staff/getPermission', { id: storeVar.value.staffId })
 }
+function submit() {
+	store.dispatch('Staff/savePermission', { id:formVar.id,menu: storeVar.value.permissiondata })
+}
+
 </script>
 
-<style>
-
-</style>
+<style></style>

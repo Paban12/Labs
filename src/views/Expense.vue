@@ -1,12 +1,12 @@
 <template>
-  <section class="payment-page common-list-page">
+  <section class="expense-page common-list-page">
     <div class="container">
       <div class="card">
         <div class="heading">
-          <div class="title">Payment History</div>
+          <div class="title">Expenses</div>
           <div class="right">
             <div class="searchbar">
-              <input type="text" placeholder="Search Payment History" />
+              <input type="text" placeholder="Search Expense By Title/Type" />
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
           </div>
@@ -22,6 +22,7 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Speciality</th>
+                <th class="text-center">View</th>
               </thead>
               <tbody>
                 <tr v-for="(item, index) in doctorData" :key="item">
@@ -32,6 +33,19 @@
                   <td>{{ item.phone }}</td>
                   <td>{{ item.email }}</td>
                   <td>{{ item.speciality }}</td>
+                  <td class="text-center">
+                    <div class="option-btns">
+                      <div class="" @click.prevent="patient.addModal = true">
+                        <img src="/src/assets/images/png/edit.png" alt="" />
+                      </div>
+                      <div
+                        class=""
+                        @click.prevent="patient.confirmModal = true"
+                      >
+                        <img src="/src/assets/images/png/delete.png" alt="" />
+                      </div>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>

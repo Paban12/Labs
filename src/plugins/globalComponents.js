@@ -4,6 +4,7 @@ import { defineAsyncComponent } from 'vue'
 const DashNavbar = defineAsyncComponent(() => import('../components/DashNavbar.vue'))
 const Footer = defineAsyncComponent(() => import('../components/Footer.vue'))
 const SingleSelect = defineAsyncComponent(() => import('../components/Dropdown/SingleSelect.vue'))
+const Select = defineAsyncComponent(() => import('../components/Dropdown/Select.vue'))
 const MultiSelect = defineAsyncComponent(() => import('../components/Dropdown/MultiSelect.vue'))
 const Loader = defineAsyncComponent(() => import('../components/Loader.vue'))
 const Modal = defineAsyncComponent(() => import('../components/Modal.vue'))
@@ -11,6 +12,7 @@ const Alert = defineAsyncComponent(() => import('../components/Alert.vue'))
 const PdfDownload = defineAsyncComponent(() => import('../components/PdfDownload.vue'))
 const EventCalender = defineAsyncComponent(() => import('../components/EventCalender.vue'))
 const AptSuccessModal = defineAsyncComponent(() => import('../components/Modals/AptSuccessModal.vue'))
+const AptBookModal = defineAsyncComponent(() => import('../components/Modals/AptBookModal.vue'))
 // const  = defineAsyncComponent(() => import('../components/.vue'))
 
 //Lab Test
@@ -78,6 +80,7 @@ const GlobalComponents = {
     app.component('DashNavbar', DashNavbar)
     app.component('Footer', Footer)
     app.component('SingleSelect', SingleSelect)
+    app.component('Select', Select)
     app.component('MultiSelect', MultiSelect)
     app.component('Loader', Loader)
     app.component('Modal', Modal)
@@ -85,6 +88,7 @@ const GlobalComponents = {
     app.component('download-button', PdfDownload)
     app.component('EventCalender', EventCalender)
     app.component('AptSuccessModal', AptSuccessModal)
+    app.component('AptBookModal', AptBookModal)
     // app.component('', )
 
     //Lab Test

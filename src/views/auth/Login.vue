@@ -1,15 +1,14 @@
 <template>
-  <section class="login-form-inner">
-    <form action="" class="form">
-      <h2>Welcome to Thyromax</h2>
-      <div class="text">Login to continue</div>
-      <div class="form-item mb-16">
-        <div class="title">Email</div>
-        <div class="input">
-          <input type="text" v-model="formVar.loginId" placeholder="@gmail.com" v-on:keypress="isNumber($event)"
-            v-on:keyup="phnum($event.target.value)">
-        </div>
-        <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
+  <section>
+  <form action="" class="form">
+    <!-- <h2>Welcome to Thyromax</h2> -->
+    <img src="/src/assets/images/logo/logo-black.png" class="logo" alt="">
+    <div class="text">Login to continue</div>
+    <div class="form-item mb-16">
+      <div class="title">Email</div>
+      <div class="input">
+        <input type="email" placeholder="user@gmail.com">
+      </div>
       </div>
       <div class="err-msg"></div>
       <div class="form-item mb-16">

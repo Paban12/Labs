@@ -9,6 +9,7 @@ import { Auth } from './modules/auth'
 import { Alert } from "./modules/error-success";
 import { Page } from './modules/page'
 import { Notify } from './modules/notify'
+import { Staff } from './modules/staff'
 
 export default createStore({
   state,
@@ -21,5 +22,6 @@ export default createStore({
     Alert,
     Page,
     Notify,
+    Staff,
   }
 })

@@ -11,6 +11,7 @@ export default {
   addTemplateModal: false,
   
   aptSuccessModal: false,
+  aptBookModal: false,
 
   user: {
     profile: "src/assets/img/image.svg",

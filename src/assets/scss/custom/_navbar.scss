@@ -34,8 +34,10 @@
       }
       .logo{
         text-decoration: none;
+        display: flex;
+        align-items: center;
         img{
-
+          width: 13rem;
         }
         .text{
           font-weight: 900;

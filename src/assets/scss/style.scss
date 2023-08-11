@@ -170,16 +170,16 @@ a{
   text-decoration: none;
 }
 
-.post.Doctor{
+.post.DOCTOR{
   background: var(--red);
 }
-.post.Front{
+.post.DESK{
   background: #818181;
 }
-.post.Manager{
+.post.STAFF{
   background: #FF7F56;
 }
-.post.Admin{
+.post.PATHOLOGIEST{
   background: #A7038D;
 }
 
@@ -427,7 +427,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
   .form-item{
     width: 100%;
-    input[type=text], input[type=number], input[type=email], input[type=password]{
+    input[type=text], input[type=number], input[type=email], input[type=password],input[type=select]{
       width: 100%;
       height: 2.5rem;
     }
@@ -451,6 +451,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   }
   .two-inputs{
     display: flex;
+    justify-content: space-between;
     gap: 1rem;
   }
   .err-msg{

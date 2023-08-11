@@ -26,9 +26,6 @@
             </div>
             <div class="text">Attachment</div>
           </router-link>
-          <router-link to="/new-prescription">
-            <button class="btn grade-btn">New Prescription</button>
-          </router-link>
           <div class="visit-btn btn">
             <h5>3 Visits</h5>
             <span>Since 2022-11-25</span>

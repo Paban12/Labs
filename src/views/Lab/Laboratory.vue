@@ -9,6 +9,12 @@
               <input type="text" placeholder="Search Laboratory" />
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
+            <div class="select-dropdown">
+              <select name="" id="">
+                <option value="">Active Collection Center</option>
+                <option value="">Deleted Collection Center</option>
+              </select>
+            </div>
             <div class="add-btn">
               <button class="btn black-btn" @click.prevent="formVar.addModal = true">
                 Add New
@@ -21,28 +27,17 @@
             <table class="table">
               <thead>
                 <th>Sr. No.</th>
-                <th>ID</th>
-                <th>Name</th>
                 <th>Lab Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Speciality</th>
+                <th>Address</th>
                 <th class="text-center">View</th>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in doctorData" :key="item">
+                <tr v-for="(item, index) in labData" :key="item">
                   <td>{{ index + 1 }}</td>
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.name }}</td>
                   <td>{{ item.lab_name }}</td>
-                  <td>{{ item.phone }}</td>
-                  <td>{{ item.email }}</td>
-                  <td>{{ item.speciality }}</td>
+                  <td>{{ item.address }}</td>
                   <td class="text-center">
                     <div class="option-btns">
-                      <div class="" @click.prevent="formVar.viewModal = true">
-                        <img src="/src/assets/images/png/eye.png" alt="" />
-                      </div>
                       <div class="" @click.prevent="formVar.addModal = true">
                         <img src="/src/assets/images/png/edit.png" alt="" />
                       </div>
@@ -96,10 +91,6 @@
           <div class="err-msg" v-if="formVar.submit && labValid">{{ labValid }}</div>
         </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.licence_number" placeholder="Enter Lab Licence Number" />
-          <div class="err-msg" v-if="formVar.submit && licenceValid">{{ licenceValid }}</div>
-        </div>
-        <div class="form-item mb-16">
           <input type="text" v-model="formVar.phone" placeholder="Enter Phone no" 
           v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
           <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
@@ -109,69 +100,26 @@
           <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
         </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.address" placeholder="Enter Address" />
+          <textarea name="" id="" rows="4" v-model="formVar.address" placeholder="Enter Address"></textarea>
           <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
-        <div class="col-5 form-item mb-16">
-          <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
-            placeholder="Select Lab Speciality"></SingleSelect>
-            <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
+        <div class="form-item mb-16">
+          <SingleSelect v-model="formVar.city" :options="cityOptions" @selected="handleSelectedOption"
+            placeholder="Select City"></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
         </div>
-        <div class="two-inputs">
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
-              placeholder="Select State"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && stateValid">{{ stateValid }}</div>
-          </div>
-          <div class="col-5 form-item mb-16">
-            <SingleSelect v-model="formVar.city" :options="cityOptions" @selected="handleSelectedOption"
-              placeholder="Select City"></SingleSelect>
-              <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
-          </div>
+        <div class="form-item mb-16">
+          <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
+            placeholder="Select State"></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && stateValid">{{ stateValid }}</div>
+        </div>
+        <div class="form-item mb-16">
+          <input type="number" v-model="formVar.address" placeholder="Enter Pincode" />
         </div>
         <div class="save-btn form-item">
           <button class="btn black-btn">Add</button>
         </div>
       </form>
-    </Modal>
-    <Modal v-model:show="formVar.viewModal" class="view-modal" headerClasses="header-bg">
-      <template v-slot:header>
-        <div class="title" showHeader="true">Laboratory Details</div>
-        <div class="close-btn" @click.prevent="formVar.viewModal = false">
-          <icon-cross></icon-cross>
-        </div>
-      </template>
-      <div class="data">
-        <div class="title">Lab Name : </div>
-        <div class="val">Sai Tech Lab</div>
-      </div>
-      <div class="data">
-        <div class="title">Phone Number : </div>
-        <div class="val">+91 8888888888</div>
-      </div>
-      <div class="data">
-        <div class="title">Email : </div>
-        <div class="val">patient@mai.com</div>
-      </div>
-      <div class="data">
-        <div class="title">Lab Speciality : </div>
-        <div class="val">ENT</div>
-      </div>
-      <div class="data">
-        <div class="title">Address : </div>
-        <div class="val">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quod perferendis</div>
-      </div>
-      <div class="two-data">
-        <div class="data">
-          <div class="title">State : </div>
-          <div class="val">Maharashtra</div>
-        </div>
-        <div class="data">
-          <div class="title">City : </div>
-          <div class="val">Nashik</div>
-        </div>
-      </div>
-
     </Modal>
   </section>
 </template>
@@ -188,11 +136,8 @@ const formVar = reactive({
   submit: false,
   confirmModal: false,
   addModal: false,
-  viewModal: false,
   state: "",
   city: "",
-  speciality: "",
-  licence_number:null,
   phone: null,
   email: null,
   address: null,
@@ -200,14 +145,10 @@ const formVar = reactive({
 })
 
 
-const doctorData = reactive([
+const labData = reactive([
   {
-    id: 125,
-    name: "Prakash Jhaa",
-    phone: 8888888888,
-    email: "patient@mail.com",
-    appointments: 12,
-    lab_tests: 15,
+    lab_name: 'DEXTOR LABS',
+    address: 'Gangai amman kovil street, vadakupattu',
   },
 ]);
 
@@ -221,10 +162,6 @@ const cityOptions = [
   { id: 2, name: "Option2" },
 ];
 
-const specialityOptions = [
-  { id: 1, name: "Option1" },
-  { id: 2, name: "Option2" },
-];
 
 
 //search select end//
@@ -243,9 +180,7 @@ const onSubmitLab = () => {
     addressValid.value ||
     stateValid.value ||
     cityValid.value ||
-    specialityValid.value ||
-    labValid.value ||
-    licenceValid.value
+    labValid.value
   ) {
     formVar.submit = true;
     return;
@@ -281,11 +216,6 @@ const emailValid = computed(() => {
   }
 });
 
-const specialityValid = computed(() => {
-  if (!formVar.speciality) {
-    return "Please select lab speciality!";
-  }
-});
 
 const addressValid = computed(() => {
   if (!formVar.address) {
@@ -306,11 +236,6 @@ const cityValid = computed(() => {
 const labValid = computed(() => {
   if (!formVar.lab_name) {
     return "Enter lab name!";
-  }
-});
-const licenceValid = computed(() => {
-  if (!formVar.licence_number) {
-    return "Enter lab licence number";
   }
 });
 function isNumber(e) {
