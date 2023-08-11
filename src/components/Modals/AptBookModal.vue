@@ -276,19 +276,32 @@
           <tbody>
             <tr v-for="(item, index) in testTableData" :key="item">
               <td>{{ index + 1 }}</td>
-              <td>{{ item.test_name }}</td>
+              <td>
+                <SingleSelect
+                  v-model="formVar.tableTest"
+                  :options="tableTestOptions"
+                  @selected="handleSelectedOption"
+                  placeholder="Search Test"
+                ></SingleSelect>
+              </td>
               <td><input type="number" placeholder="1" /></td>
               <td><input type="number" placeholder="00" /></td>
               <td>
                 <input type="number" placeholder="In %" />
               </td>
               <td>
-                <SingleSelect
+                <!-- <SingleSelect
                   v-model="formVar.tableTax"
                   :options="tableTaxOptions"
                   @selected="handleSelectedOption"
                   placeholder="Select Tax"
-                ></SingleSelect>
+                ></SingleSelect> -->
+                <MultiSelect
+                  :options="tableTaxOptions"
+                  :tabs="tab"
+                  @selected="handleSelectedOption"
+                  placeholder="Select Tax"
+                />
               </td>
               <td>{{ item.total }}</td>
               <td class="text-center">
@@ -302,14 +315,6 @@
           </tbody>
         </table>
       </div>
-      <div class="form-item mb-16">
-        <SingleSelect
-          v-model="formVar.tableTest"
-          :options="tableTestOptions"
-          @selected="handleSelectedOption"
-          placeholder="Search Test"
-        ></SingleSelect>
-      </div>
       <div class="charges-row flex align-start mb-16">
         <div class="data flex align-start">
           <input type="checkbox" />
@@ -322,6 +327,60 @@
         <div class="data flex align-start">
           <input type="checkbox" />
           <div class="text">Home Collection Charge</div>
+        </div>
+      </div>
+      <div class="total-tests">
+        <h4 class="mb-10">Total : 1 Tests</h4>
+        <div class="bill-table mb-16">
+          <table class="table">
+            <thead>
+              <th>Sr. No.</th>
+              <th>Billing</th>
+              <th>Pay Mode</th>
+              <th>Payable(₹)</th>
+              <th>From Advance(₹)</th>
+              <th>Pay Now(₹)</th>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in billTableData" :key="item">
+                <td>{{ index + 1 }}</td>
+                <td>
+                  <div class="select-dropdown">
+                    <select name="" id="">
+                      <option value="">Payment</option>
+                      <option value="">Invoice</option>
+                      <option value="">Appointment</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-dropdown">
+                    <select name="" id="">
+                      <option value="">Cash</option>
+                      <option value="">Card</option>
+                      <option value="">Check</option>
+                      <option value="">Net Banking</option>
+                      <option value="">Google Pay</option>
+                      <option value="">Paytm</option>
+                      <option value="">PhonePe</option>
+                      <option value="">Credit Card</option>
+                      <option value="">Debit Card</option>
+                      <option value="">UPI</option>
+                      <option value="">Amazon Pay</option>
+                    </select>
+                  </div>
+                </td> 
+                <td>{{ item.payable }}</td>
+                <td>{{ item.advance }}</td>
+                <td>
+                  <input type="number" placeholder="00" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-item mb-16">
+          <input type="text" placeholder="Note">
         </div>
       </div>
       <div class="save-btn form-item">
@@ -444,13 +503,35 @@ const tableTestOptions = [
   { id: 2, name: "Option2" },
 ];
 const tableTaxOptions = [
-  { id: 1, name: "Option1" },
-  { id: 2, name: "Option2" },
+  { id: 1, name: "28% IGST" },
+  { id: 2, name: "18% IGST" },
+  { id: 3, name: "12% IGST" },
+  { id: 4, name: "5% IGST" },
+  { id: 5, name: "14% SGST" },
+  { id: 6, name: "9% SGST" },
+  { id: 7, name: "6% SGST" },
+  { id: 8, name: "3% SGST" },
+  { id: 9, name: "14% CGST" },
+  { id: 10, name: "9% CGST" },
+  { id: 11, name: "6% CGST" },
+  { id: 12, name: "3% CGST" },
+  { id: 13, name: "28% GST" },
+  { id: 14, name: "18% GST" },
+  { id: 15, name: "12% GST" },
+  { id: 16, name: "5% GST" },
 ];
+const tab = [];
+
 const testTableData = reactive([
   {
-    test_name: 'CBC',
     total: 2000
+  }
+])
+
+const billTableData = reactive([
+  {
+    payable: 2000,
+    advance: 4000,
   }
 ])
 

@@ -401,6 +401,27 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   font-size: 1rem;
 }
 
+.searchbar{
+  position: relative;
+  display: flex;
+  width: 100%;
+  input{
+    width: 100%;
+    background: rgba(222, 251, 255, 0.40);
+    padding-right: 3rem;
+    height: 2.5rem;
+  }
+  img{
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    height: 2rem;
+    width: 2.7rem;
+    cursor: pointer;
+  }
+}
+
 .form{
   h1{
     font-size: 30px;

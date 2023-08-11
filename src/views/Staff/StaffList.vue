@@ -17,7 +17,7 @@
             </button>
           </div>
           <div class="searchbar">
-            <input type="text" placeholder="Search for Medicine" />
+            <input type="text" placeholder="Search for Staff" />
             <img src="/src/assets/images/png/search.png" alt="" />
           </div>
         </div>

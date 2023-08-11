@@ -222,11 +222,22 @@ const routes = [
                 name: 'not found',
                 component: () => import( /* webpackChunkName: "not found" */ '../views/NotFound.vue')
             },
+            //Billing
+            {
+                path: '/billing',
+                name: 'billing',
+                component: () => import( /* webpackChunkName: "billing" */ '../views/Billing.vue')
+            },
             //Settings
             {
                 path: '/site-setting',
                 name: 'site setting',
                 component: () => import( /* webpackChunkName: "site setting" */ '../views/Settings/SiteSetting.vue')
+            },
+            {
+                path: '/expense',
+                name: 'expense',
+                component: () => import( /* webpackChunkName: "expense" */ '../views/Expense.vue')
             },
             //mobile-view
             {

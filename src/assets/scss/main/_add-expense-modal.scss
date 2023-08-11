@@ -1,0 +1,48 @@
+.add-expense-modal{
+  // display: none;
+  .modal{
+    .modal-dialog{
+      width: 100%;
+      margin: 0;
+      .modal-content{
+        .modal-body{
+          padding: 1rem;
+          .table{
+            td{
+              .single-select{
+                .dropdown-options{
+                  min-width: 100%;
+                  width: max-content;
+                }
+              }
+              .doc-row{
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                .pic-upload{
+                  height: 2rem;
+                  width: 2rem;
+                  overflow: visible;
+                  img{
+
+                  }
+                  .delete-icon{
+                    position: absolute;
+                    right: -1.8rem;
+                    top: 0;
+                    z-index: 10;
+                    #icon{
+                      height: 1rem;
+                      width: 1rem;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

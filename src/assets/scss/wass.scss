@@ -44,6 +44,7 @@
 @import "custom/lab-report";
 @import "custom/doctor-profile-layout";
 @import "custom/staff-add";
+@import "custom/billing";
 
 
 //main
@@ -60,6 +61,7 @@
 @import "main/view-modal";
 @import "main/apt-success-modal";
 @import "main/add-test-modal";
+@import "main/add-expense-modal";
 
 
 //doctor
@@ -68,3 +70,7 @@
 @import "custom/doctor-profile/sign";
 @import "custom/doctor-profile/block";
 @import "custom/doctor-profile/schedule";
+
+//Billing
+@import "custom/billing/pay-mode";
+@import "custom/billing/expense";

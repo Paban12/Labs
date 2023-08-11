@@ -31,6 +31,13 @@ const DoctorSign = defineAsyncComponent(() => import('../components/DoctorProfil
 const DoctorBlock = defineAsyncComponent(() => import('../components/DoctorProfile/Block.vue'))
 const DoctorSchedule = defineAsyncComponent(() => import('../components/DoctorProfile/Schedule.vue'))
 
+//Billing
+const BillingTax = defineAsyncComponent(() => import('../components/Billing/Tax.vue'))
+const BillingPayMode = defineAsyncComponent(() => import('../components/Billing/PayModes.vue'))
+const BillingExpense = defineAsyncComponent(() => import('../components/Billing/Expense.vue'))
+const BillingIntegration = defineAsyncComponent(() => import('../components/Billing/Integration.vue'))
+const BillingSetting = defineAsyncComponent(() => import('../components/Billing/Setting.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -106,6 +113,13 @@ const GlobalComponents = {
     app.component('DoctorSign', DoctorSign)
     app.component('DoctorBlock', DoctorBlock)
     app.component('DoctorSchedule', DoctorSchedule)
+
+    //Billing
+    app.component('BillingTax', BillingTax)
+    app.component('BillingPayMode', BillingPayMode)
+    app.component('BillingExpense', BillingExpense)
+    app.component('BillingIntegration', BillingIntegration)
+    app.component('BillingSetting', BillingSetting)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

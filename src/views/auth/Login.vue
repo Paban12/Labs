@@ -8,33 +8,33 @@
       <div class="title">Email</div>
       <div class="input">
         <input type="email" placeholder="user@gmail.com">
+        <div class="err-msg"></div>
       </div>
+    </div>
+    <div class="form-item mb-16">
+      <div class="title">Password</div>
+      <div class="input">
+        <input type="password" placeholder="*******">
       </div>
       <div class="err-msg"></div>
-      <div class="form-item mb-16">
-        <div class="title">Password</div>
-        <div class="input">
-          <input type="text" v-model="formVar.password" placeholder="Password">
-        </div>
-        <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
-      </div>
-      <div class="forgot">
-        <router-link to="/forgot">Forgot Password?</router-link>
-      </div>
-      <div class="login-btn">
-        <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow>
-        </button>
-        <!-- <button type="button" class="btn black-btn load-btn">
-        <icon-login-loader></icon-login-loader>
-      </button> -->
-      </div>
+    </div>
+    <div class="forgot">
+      <router-link to="/forgot">Forgot Password?</router-link>
+    </div>
+    <div class="login-btn">
+      <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow>
+      </button>
+      <!-- <button type="button" class="btn black-btn load-btn">
+      <icon-login-loader></icon-login-loader>
+    </button> -->
+    </div>
       <!-- <div class="reg">
       Rorgot Password
       <icon-right-arrow></icon-right-arrow> 
       <router-link to="/forgot">Forgot Password?</router-link>
     </div> -->
     </form>
-  </section>
+    </section>
 </template>
  
 <script setup>

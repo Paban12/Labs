@@ -200,7 +200,7 @@
         </div>
       </div>
       <!-- sidebar -->
-      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }">
+      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }" v-click-outside="closeSidebar">
         <div class="sidebar-card">
           <div class="close-icon" @click.prevent="nav.sidebar = false">
             <icon-cross></icon-cross>
@@ -260,30 +260,36 @@
               </div>
               <div class="text">Visits</div>
             </router-link>
+            <router-link to="/billing" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Billing</div>
+            </router-link>
+            <router-link to="/expense" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Expense</div>
+            </router-link>
             <router-link to="/site-setting" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Site Settings</div>
             </router-link>
-            <router-link to="/appointment/calender" class="list" @click.prevent="closeSidebar()">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Appoinments</div>
-            </router-link>
-            <router-link to="/prescription" class="list" @click.prevent="closeSidebar()">
+            <router-link to="/prescription" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Prescription</div>
             </router-link>
-            <router-link to="/appointment/patient" class="list mob-view" @click.prevent="closeSidebar()"></router-link>
+            <!-- <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar"></router-link> -->
             <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
-              <div class="text">Patients Appoinments</div>
+              <div class="text">Patient Appoinments</div>
             </router-link>
           </div>
         </div>
@@ -339,11 +345,19 @@ const toggleSidebar = () => {
     setTimeout(() => {
       isSidebarOpen.value = false;
       isClosing.value = false;
-    }, 300); // Change the delay (in milliseconds) based on your desired animation time
+    }, 300); 
   } else {
     isSidebarOpen.value = true;
   }
 };
+// function closeSidebar () {
+//   if (!isSidebarOpen.value) {
+    
+//     setTimeout(() => {
+//       isClosing.value = false;
+//     }, 300); 
+//   }
+// };
 const nav = reactive({
   accMenu: false,
   searchValue: "",
@@ -391,9 +405,6 @@ function closeSearch() {
 
 function closeAccMenu() {
   nav.accMenu = false;
-}
-function closeSidebar() {
-  nav.sidebar = false;
 }
 function hideNoteSidebar() {
   nav.noteSidebar = false;
