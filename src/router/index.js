@@ -251,6 +251,26 @@ const routes = [
                         name: 'reference lab doctor',
                         component: () => import( /* webpackChunkName: "reference lab doctor" */ '../views/ReferenceSharing/RefLabDoctor.vue')
                     },
+                    {
+                        path: '/reference-lab-to',
+                        name: 'reference lab to',
+                        component: () => import( /* webpackChunkName: "reference lab to" */ '../views/ReferenceSharing/RefLabTo.vue')
+                    },
+                    {
+                        path: '/reference-lab-by',
+                        name: 'reference lab by',
+                        component: () => import( /* webpackChunkName: "reference lab by" */ '../views/ReferenceSharing/RefLabBy.vue')
+                    },
+                    {
+                        path: '/reference-lab-master',
+                        name: 'reference lab master',
+                        component: () => import( /* webpackChunkName: "reference lab master" */ '../views/ReferenceSharing/RefLabMaster.vue')
+                    },
+                    {
+                        path: '/phlebo-sharing',
+                        name: 'phlebo sharing',
+                        component: () => import( /* webpackChunkName: "pheblo sharing" */ '../views/ReferenceSharing/PhleboSharing.vue')
+                    },
                 ]
             },
             //mobile-view

@@ -32,7 +32,7 @@
                 <td>{{ item.sharing_access }}</td>
                 <td class="text-center">
                   <div class="option-btns">
-                    <div class="" @click.prevent="formVar.addModal = true">
+                    <div class="" @click.prevent="formVar.editModal = true">
                       <img src="/src/assets/images/png/edit.png" alt="" />
                     </div>
                   </div>
@@ -60,13 +60,13 @@
     </div>
     <!-- Modals -->
     <Modal
-      v-model:show="formVar.addModal"
+      v-model:show="formVar.editModal"
       class="big-modall"
       headerClasses="header-bg"
     >
       <template v-slot:header>
         <div class="title" showHeader="true">Doctor Detail</div>
-        <div class="close-btn" @click.prevent="formVar.addModal = false">
+        <div class="close-btn" @click.prevent="formVar.editModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
@@ -154,7 +154,126 @@
           <textarea name="" id="" rows="4" placeholder="Address"></textarea>
         </div>
         <div class="permissions">
-
+          <div class="data">
+            <input type="checkbox">
+            <span>Permanently Lab/Diagnostic Not Sharing</span>
+          </div>
+          <div class="data">
+            <input type="checkbox" checked v-model="isVisible1">
+            <span class="f-w-bold">Permanently Lab/Diagnostic Not Sharing</span>
+          </div>
+          <div class="" v-if="isVisible1">
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <span>Sample Name</span>
+              </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Sample Collection Status</span>
+              </div>
+            </div>
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <span>Test/sample Process status</span>
+              </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Test Price/Amount</span>
+              </div>
+            </div>
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <div class="select-dropdown">
+                  <select name="" id="">
+                    <option value="">View Report</option>
+                    <option value="">Report Status</option>
+                  </select>
+                </div>
+              </div>
+              <div class="data">
+                <div class="select-dropdown">
+                  <select name="" id="">
+                    <option value="">View Report</option>
+                    <option value="">Report Status</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="data">
+              <input type="checkbox">
+              <span>Latterhead On</span>
+            </div>
+          </div>
+          <div class="data">
+            <input type="checkbox" checked v-model="isVisible2">
+            <span class="f-w-bold">SHaring Reports</span>
+          </div>
+          <div class="" v-if="isVisible2">
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <span>Test Amount</span>
+              </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Doctor Discount</span>
+              </div>
+            </div>
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <span>Lab Discount</span>
+              </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Doctor Due</span>
+              </div>
+            </div>
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <span>RCPT No.</span>
+              </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Paid Date</span>
+              </div>
+            </div>
+            <div class="select-dropdown mb-16">
+              <select name="" id="">
+                <option value="">All Records Seen in Sharing Report</option>
+                <option value="">Only Paid Records Seen in Sharing Report</option>
+              </select>
+            </div>
+          </div>
+          <div class="data">
+            <input type="checkbox" checked v-model="isVisible3">
+            <span class="f-w-bold">Patient Appointment creat Acess</span>
+          </div>
+          <div class="" v-if="isVisible3">
+            <div class="data-row">
+              <div class="data">
+                <input type="checkbox">
+                <span>Creat patient Appointment</span>
+              </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Create Invoice</span>
+              </div>
+            </div>
+            <div class="select-dropdown mb-16">
+              <select name="" id="">
+                <option value="">Only Ref. Dr. Added Patient View in Suggestion</option>
+                <option value="">All Patients View in Suggestion</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="save-btn flex justify-end">
+          <button class="btn black-btn w-10-r">Save</button>
         </div>
       </form>
     </Modal>
@@ -162,15 +281,19 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 const formVar = reactive({
-  addModal: false,
+  editModal: false,
   speciality: null,
   state: null,
   city: null,
   imagePreview: "",
 })
+
+const isVisible1 = ref(true);
+const isVisible2 = ref(true);
+const isVisible3 = ref(true);
 
 const testData = reactive([
   {

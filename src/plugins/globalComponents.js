@@ -43,6 +43,17 @@ const BillingSetting = defineAsyncComponent(() => import('../components/Billing/
 const RefLabDoctorBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Billing.vue'))
 const RefLabDoctorTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Test.vue'))
 const RefLabDoctorSharing = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Sharing.vue'))
+const RefLabDoctorSetting = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Setting.vue'))
+//Ref Lab To
+const RefLabToBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabTo/Billing.vue'))
+const RefLabToTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabTo/Test.vue'))
+//Ref Lab To
+const RefLabByBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabBy/Billing.vue'))
+const RefLabByTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabBy/Test.vue'))
+//Pheblo Sharing
+const PhleboBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Billing.vue'))
+const PhleboSharing = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Sharing.vue'))
+const PhleboSetting = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Setting.vue'))
 
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
@@ -132,6 +143,17 @@ const GlobalComponents = {
     app.component('RefLabDoctorBilling', RefLabDoctorBilling)
     app.component('RefLabDoctorTest', RefLabDoctorTest)
     app.component('RefLabDoctorSharing', RefLabDoctorSharing)
+    app.component('RefLabDoctorSetting', RefLabDoctorSetting)
+    //Ref Lab To
+    app.component('RefLabToBilling', RefLabToBilling)
+    app.component('RefLabToTest', RefLabToTest)
+    //Ref Lab By
+    app.component('RefLabByBilling', RefLabByBilling)
+    app.component('RefLabByTest', RefLabByTest)
+    //Pheblo Sharing
+    app.component('PhleboBilling', PhleboBilling)
+    app.component('PhleboSharing', PhleboSharing)
+    app.component('PhleboSetting', PhleboSetting)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

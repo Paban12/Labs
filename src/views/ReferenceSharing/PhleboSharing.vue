@@ -13,34 +13,24 @@
         @click.prevent="reference.tab = 2"
         :class="reference.tab === 2 ? 'active' : ''"
       >
-        <div class="title">Test</div>
+        <div class="title">Default Sharing</div>
       </div>
       <div
         class="sub-tab"
         @click.prevent="reference.tab = 3"
         :class="reference.tab === 3 ? 'active' : ''"
       >
-        <div class="title">Default Sharing</div>
-      </div>
-      <div
-        class="sub-tab"
-        @click.prevent="reference.tab = 4"
-        :class="reference.tab === 4 ? 'active' : ''"
-      >
         <div class="title">Default Setting</div>
       </div>
     </div>
     <div class="sub-tabs-content aaa" v-if="reference.tab === 1">
-      <RefLabDoctorBilling />
+      <PhleboBilling />
     </div>
     <div class="sub-tabs-content" v-if="reference.tab === 2">
-      <RefLabDoctorTest />
+      <PhleboSharing />
     </div>
     <div class="sub-tabs-content" v-if="reference.tab === 3">
-      <RefLabDoctorSharing />
-    </div>
-    <div class="sub-tabs-content" v-if="reference.tab === 4">
-      <RefLabDoctorSetting />
+      <PhleboSetting />
     </div>
   </section>
 </template>

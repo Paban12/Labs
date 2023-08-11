@@ -28,11 +28,9 @@
               <th>Date</th>
               <th>Patient</th>
               <th>Test</th>
-              <th>Reference Doctor</th>
+              <th>Phlebo</th>
               <th>Price(₹)</th>
               <th>Share(%)</th>
-              <th>Discount(₹)</th>
-              <th>Final Share(%)</th>
               <th>Paid(₹)</th>
               <th>Paid Date(₹)</th>
               <th>Due(₹)</th>
@@ -43,11 +41,9 @@
                 <td>{{ item.date }}</td>
                 <td>{{ item.patient_name }}</td>
                 <td>{{ item.test }}</td>
-                <td>{{ item.ref_doctor }}</td>
+                <td>{{ item.phlebo }}</td>
                 <td>{{ item.price }}</td>
                 <td>{{ item.share }}</td>
-                <td>{{ item.discount }} %</td>
-                <td>{{ item.final_share }}</td>
                 <td>{{ item.paid }}</td>
                 <td>{{ item.paid_date }}</td>
                 <td>{{ item.due }}</td>
@@ -116,12 +112,11 @@
           <thead>
             <th>Sr. No.</th>
             <th>Date</th>
-            <th>Doctor</th>
             <th>Patient</th>
+            <th>Phlebo</th>
             <th>Investigation</th>
             <th>Price(₹)</th>
             <th>Sharing(%)</th>
-            <th>Discount(₹)</th>
             <th>Paid(₹)</th>
             <th>Due(₹)</th>
             <th class="text-center">Option</th>
@@ -130,14 +125,13 @@
             <tr v-for="(item, index) in billingData" :key="item">
               <td>{{ index + 1 }}</td>
               <td>{{ item.date }}</td>
-              <td>{{ item.doctor }}</td>
               <td>{{ item.patient_name }}</td>
+              <td>{{ item.phlebo }}</td>
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
                 <input type="text" placeholder="00 %">
               </td>
-              <td>{{ item.discount }} %</td>
               <td>{{ item.paid }}</td>
               <td>{{ item.due }}</td>
               <td class="text-center">
@@ -155,11 +149,10 @@
         <div class="table-outer">
           <table class="table">
             <thead>
-              <th>No. of Doctors</th>
-              <th>No. of Investigation</th>
+              <th>No. of Phlebo</th>
+              <th>No. of Appointment</th>
               <th>Total Price(₹)</th>
               <th>Total Sharing(₹)</th>
-              <th>Total Discount(₹)</th>
               <th>Total Paid(₹)</th>
               <th>Total Due(₹)</th>
             </thead>
@@ -168,7 +161,6 @@
                 <td>2</td>
                 <td>Post Prandial Blood Glucose	</td>
                 <td>2000</td>
-                <td>10</td>
                 <td>10</td>
                 <td>1000</td>
                 <td>1500</td>
@@ -232,7 +224,7 @@
             v-model="formVar.doctor"
             :options="doctorOptions"
             @selected="handleSelectedOption"
-            placeholder="Select Reference Doctor"
+            placeholder="Select Doctor & Staff"
           ></SingleSelect>
           <div class="id">RDID : 5</div>
         </div>
@@ -267,12 +259,10 @@
           <thead>
             <th>Sr. No.</th>
             <th>Date</th>
-            <th>Doctor</th>
             <th>Patient</th>
             <th>Investigation</th>
             <th>Price(₹)</th>
             <th>Sharing(%)</th>
-            <th>Discount(₹)</th>
             <th>Paid(₹)</th>
             <th>Due(₹)</th>
             <th class="text-center">Option</th>
@@ -281,14 +271,12 @@
             <tr v-for="(item, index) in doctorBillingData" :key="item">
               <td>{{ index + 1 }}</td>
               <td>{{ item.date }}</td>
-              <td>{{ item.doctor }}</td>
               <td>{{ item.patient_name }}</td>
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
                 <input type="text" placeholder="00 %">
               </td>
-              <td>{{ item.discount }} %</td>
               <td>{{ item.paid }}</td>
               <td>{{ item.due }}</td>
               <td class="text-center">
@@ -306,20 +294,16 @@
         <div class="table-outer">
           <table class="table">
             <thead>
-              <th>No. of Doctors</th>
-              <th>No. of Investigation</th>
+              <th>No. of Appointment</th>
               <th>Total Price(₹)</th>
               <th>Total Sharing(₹)</th>
-              <th>Total Discount(₹)</th>
               <th>Total Paid(₹)</th>
               <th>Total Due(₹)</th>
             </thead>
             <tbody>
               <tr>
                 <td>2</td>
-                <td>Post Prandial Blood Glucose	</td>
                 <td>2000</td>
-                <td>10</td>
                 <td>10</td>
                 <td>1000</td>
                 <td>1500</td>
@@ -373,7 +357,7 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn black-btn">Pay</button>
+        <button class="btn black-btn w-10-r">Pay</button>
       </div>
     </Modal>
   </section>
@@ -393,11 +377,9 @@ const billData = reactive([
     date: '12/10/2022',
     patient_name: 'Ravi Kumar',
     test: 'Dr. Kumar',
-    ref_doctor: 'Dr. Kumar',
+    phlebo: 'Dextor Labs',
     price: 2000,
     share: 10,
-    discount: 10,
-    final_share: 1000,
     paid: 1000,
     paid_date: '12-10-2022',
     due: 1500,
@@ -408,10 +390,9 @@ const billingData = reactive([
   {
     date: '12/10/2022',
     patient_name: 'Ravi Kumar',
-    doctor: 'Dr. Kumar',
+    phlebo: 'Dextor Labs',
     investigation: 'Post Prandial Blood Glucose',
     price: 2000,
-    discount: 10,
     paid: 1000,
     due: 1500,
   },
@@ -423,10 +404,8 @@ const doctorBillingData = reactive([
   {
     date: '12/10/2022',
     patient_name: 'Ravi Kumar',
-    doctor: 'Dr. Kumar',
     investigation: 'Post Prandial Blood Glucose',
     price: 2000,
-    discount: 10,
     paid: 1000,
     due: 1500,
   },
