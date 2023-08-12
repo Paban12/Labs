@@ -235,6 +235,7 @@
           align-items: center;
           gap: 10px;
           padding: 0.7rem 1rem;
+          cursor: pointer;
           &:hover{
             background: #cccccc2a;
           }
@@ -256,6 +257,26 @@
             font-size: 0.85rem;
             color: var(--white);
           }
+        }
+        .setting-title{
+          position: relative;
+          padding-right: 2.5rem;
+          .icon{
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            #icon{
+              height: 1.5rem;
+              width: 1.5rem;
+              fill: var(--white);
+            }
+          }
+        }
+        .setting-list{
+          margin-left: 2.5rem;
         }
         .mob-view{
           display: none;

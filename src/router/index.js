@@ -235,9 +235,34 @@ const routes = [
                 component: () => import( /* webpackChunkName: "site setting" */ '../views/Settings/SiteSetting.vue')
             },
             {
+                path: '/practice-details',
+                name: 'practice details',
+                component: () => import( /* webpackChunkName: "practice details" */ '../views/Settings/PracticeDetails.vue')
+            },
+            {
+                path: '/thyromax-plan',
+                name: 'thyromax plan',
+                component: () => import( /* webpackChunkName: "thyromax plan" */ '../views/Settings/ThyromaxPlan.vue')
+            },
+            {
+                path: '/department',
+                name: 'department',
+                component: () => import( /* webpackChunkName: "department" */ '../views/Settings/Department.vue')
+            },
+            {
                 path: '/expense',
                 name: 'expense',
                 component: () => import( /* webpackChunkName: "expense" */ '../views/Expense.vue')
+            },
+            {
+                path: '/faq-create',
+                name: 'faq create',
+                component: () => import( /* webpackChunkName: "faq create" */ '../views/PolicyPages/FAQCreate.vue')
+            },
+            {
+                path: '/feedback',
+                name: 'feedback',
+                component: () => import( /* webpackChunkName: "feedback" */ '../views/Feedback.vue')
             },
             //Reference Share Layout
             {

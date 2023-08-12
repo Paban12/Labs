@@ -61,7 +61,7 @@
     <!-- Modals -->
     <Modal
       v-model:show="formVar.editModal"
-      class="big-modall"
+      class="big-modal"
       headerClasses="header-bg"
     >
       <template v-slot:header>
@@ -82,50 +82,39 @@
               @change="previewProfile($event, profilePic)" style="display: none" />
           </div>
         </div>
-        <div class="form-item mb-16">
-          <div class="title">Doctor Name</div>
-          <input type="text" placeholder="Doctor Name">
-        </div>
-        <div class="two-inputs">
+        <div class="row">
           <div class="form-item mb-16">
-            <div class="title">Specialization</div>
+            <input type="text" placeholder="Doctor Name">
+          </div>
+          <div class="form-item mb-16">
             <SingleSelect
               v-model="formVar.speciality"
               :options="specialityOptions"
               @selected="handleSelectedOption"
-              placeholder="Select Speciality"
+              placeholder="Select Specialization"
             ></SingleSelect>
           </div>
           <div class="form-item mb-16">
-            <div class="title">Registration Number</div>
-            <input type="number" placeholder="Reg No">
+            <input type="number" placeholder="Registration No">
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Clinic/Hospital Name">
+          </div>
+          <div class="form-item mb-16">
+            <input type="number" placeholder="Lab/Diagnostic Sharing (%)">
           </div>
         </div>
-        <div class="form-item mb-16">
-          <div class="title">Clinic/Hospital Name</div>
-          <input type="text" placeholder="Clinic/Hospital Name">
-        </div>
-        <div class="form-item mb-16">
-          <div class="title">Lab/Diagnostic Sharing</div>
-          <input type="number" placeholder="00 %">
-        </div>
-        <div class="two-inputs">
+        <div class="row">
           <div class="form-item mb-16">
-            <div class="title">Phone No</div>
             <input type="number" placeholder="Phone No">
           </div>
           <div class="form-item mb-16">
-            <div class="title">Landline No</div>
             <input type="number" placeholder="Landline No">
           </div>
-        </div>
-        <div class="two-inputs">
           <div class="form-item mb-16">
-            <div class="title">Email</div>
             <input type="number" placeholder="Email">
           </div>
           <div class="form-item mb-16">
-            <div class="title">State</div>
             <SingleSelect
               v-model="formVar.state"
               :options="stateOptions"
@@ -133,10 +122,7 @@
               placeholder="Select state"
             ></SingleSelect>
           </div>
-        </div>
-        <div class="two-inputs">
           <div class="form-item mb-16">
-            <div class="title">State</div>
             <SingleSelect
               v-model="formVar.city"
               :options="cityOptions"
@@ -144,15 +130,17 @@
               placeholder="Select city"
             ></SingleSelect>
           </div>
+        </div>
+
+        <div class="row">
           <div class="form-item mb-16">
-            <div class="title">Pincode</div>
             <input type="number" placeholder="Pincode">
           </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Address">
+          </div>
         </div>
-        <div class="form-item mb-16">
-          <div class="title">Address</div>
-          <textarea name="" id="" rows="4" placeholder="Address"></textarea>
-        </div>
+  
         <div class="permissions">
           <div class="data">
             <input type="checkbox">
@@ -162,6 +150,7 @@
             <input type="checkbox" checked v-model="isVisible1">
             <span class="f-w-bold">Permanently Lab/Diagnostic Not Sharing</span>
           </div>
+
           <div class="" v-if="isVisible1">
             <div class="data-row">
               <div class="data">
@@ -172,8 +161,6 @@
                 <input type="checkbox">
                 <span>Sample Collection Status</span>
               </div>
-            </div>
-            <div class="data-row">
               <div class="data">
                 <input type="checkbox">
                 <span>Test/sample Process status</span>
@@ -182,6 +169,10 @@
                 <input type="checkbox">
                 <span>Test Price/Amount</span>
               </div>
+              <div class="data">
+                <input type="checkbox">
+                <span>Latterhead On</span>
+              </div>
             </div>
             <div class="data-row">
               <div class="data">
@@ -201,10 +192,6 @@
                   </select>
                 </div>
               </div>
-            </div>
-            <div class="data">
-              <input type="checkbox">
-              <span>Latterhead On</span>
             </div>
           </div>
           <div class="data">
@@ -221,8 +208,6 @@
                 <input type="checkbox">
                 <span>Doctor Discount</span>
               </div>
-            </div>
-            <div class="data-row">
               <div class="data">
                 <input type="checkbox">
                 <span>Lab Discount</span>
@@ -231,8 +216,6 @@
                 <input type="checkbox">
                 <span>Doctor Due</span>
               </div>
-            </div>
-            <div class="data-row">
               <div class="data">
                 <input type="checkbox">
                 <span>RCPT No.</span>
@@ -263,12 +246,14 @@
                 <input type="checkbox">
                 <span>Create Invoice</span>
               </div>
-            </div>
-            <div class="select-dropdown mb-16">
-              <select name="" id="">
-                <option value="">Only Ref. Dr. Added Patient View in Suggestion</option>
-                <option value="">All Patients View in Suggestion</option>
-              </select>
+              <div class="data">
+                <div class="select-dropdown mb-16">
+                  <select name="" id="">
+                    <option value="">Only Ref. Dr. Added Patient View in Suggestion</option>
+                    <option value="">All Patients View in Suggestion</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>

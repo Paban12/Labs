@@ -21,31 +21,15 @@
         }
       }
       .route-tab-content{
-        // padding: 1rem;
         .sub-tabs-row{
           display: flex;
-          // border: 1px solid var(--blue);
-          // border-bottom: 0;
           width: max-content;
-          // padding: 0 0.5rem;
           border-radius: 5px;
           margin: 0.5rem;
           .sub-tab{
             padding: 0.5rem 1rem;
-            // background: var(--blue);
-            // color: var(--white);
             font-size: 0.85rem;
-            // font-weight: 700;
             cursor: pointer;
-            &:first-child{
-              // border-radius: 5px 0 0 5px;
-            }
-            &:last-child{
-              // border-radius: 0 5px 5px 0;
-            }
-            &:not(:last-child){
-              // border-right: 1px solid #eeeeee5c;
-            }
           }
           .active{
             background: var(--white);

@@ -211,6 +211,14 @@ a{
   background-size: cover;
 }
 
+.card-header-bg{
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 5px 5px 0 0;
+  font-weight: 700;
+}
+
 .tag{
   padding: 3px 5px;
   border-radius: 4px;

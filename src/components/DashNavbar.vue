@@ -179,16 +179,6 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link
-                    to="/"
-                    class="link"
-                    @click.prevent="nav.accMenu = false"
-                  >
-                    <img src="/src/assets/images/png/setting.png" alt="image" />
-                    <div class="text">Settings</div>
-                  </router-link>
-                </li>
-                <li>
                   <div class="link" @click.prevent="closeAccMenu()">
                     <img src="/src/assets/images/png/door.png" alt="image" />
                     <div class="text">Logout Now</div>
@@ -248,23 +238,11 @@
               </div>
               <div class="text">Staff</div>
             </router-link>
-            <router-link to="/labtest" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Tests</div>
-            </router-link>
             <router-link to="/visits" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
               <div class="text">Visits</div>
-            </router-link>
-            <router-link to="/billing" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Billing</div>
             </router-link>
             <router-link to="/expense" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
@@ -278,11 +256,53 @@
               </div>
               <div class="text">Reference & Sharing</div>
             </router-link>
-            <router-link to="/site-setting" class="list" @click="toggleSidebar">
+            <div class="list setting-title" @click.prevent="toggleSetting()">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/setting.png" alt="image" />
+              </div>
+              <div class="text">Settings</div>
+              <div class="icon" v-if="!nav.settingList" @click.prevent="toggleSetting()">
+                <icon-right-arrow-round></icon-right-arrow-round>
+              </div>
+              <div class="icon" v-if="nav.settingList" @click.prevent="toggleSetting()">
+                <icon-down-arrow-round></icon-down-arrow-round>
+              </div>
+            </div>
+            <!-- //Setting List -->
+            <div class="setting-list" v-if="nav.settingList">
+              <router-link to="/practice-details" class="list" @click="toggleSidebar">
+                <div class="text">Practice Details</div>
+              </router-link>
+              <router-link to="/thyromax-plan" class="list" @click="toggleSidebar">
+                <div class="text">Thyromax Plan</div>
+              </router-link>
+              <router-link to="/labtest" class="list" @click="toggleSidebar">
+                <div class="text">Tests</div>
+              </router-link>
+              <router-link to="/department" class="list" @click="toggleSidebar">
+                <div class="text">Department</div>
+              </router-link>
+              <router-link to="/site-setting" class="list" @click="toggleSidebar">
+                <div class="text">Site Settings</div>
+              </router-link>
+              <router-link to="/billing" class="list" @click="toggleSidebar">
+                <div class="text">Billing</div>
+              </router-link>
+              <router-link to="/laboratory" class="list" @click="toggleSidebar">
+                <div class="text">Laboratory</div>
+              </router-link>
+            </div>
+            <router-link to="/faq-create" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
               </div>
-              <div class="text">Site Settings</div>
+              <div class="text">FAQ's</div>
+            </router-link>
+            <router-link to="/feedback" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Feedback</div>
             </router-link>
             <router-link to="/prescription" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
@@ -290,7 +310,6 @@
               </div>
               <div class="text">Prescription</div>
             </router-link>
-            <!-- <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar"></router-link> -->
             <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/bill.png" alt="image" />
@@ -374,6 +393,7 @@ const nav = reactive({
   addModal: false,
   noteSidebar: false,
   notificationSidebar: false,
+  settingList: false,
 });
 
 const matches = [
@@ -423,6 +443,9 @@ function hideNotificationSidebar() {
 }
 function showNotificationSidebar() {
   nav.notificationSidebar = true;
+}
+function toggleSetting() {
+  nav.settingList = !nav.settingList
 }
 </script>
 

@@ -2,7 +2,7 @@
   <section class="ref-lab-master common-list-page">
     <div class="card">
       <div class="heading">
-        <!-- <div class="title">Test</div> -->
+        <div class="title">Reference Lab Master</div>
         <div class="right">
           <div class="searchbar">
             <input type="text" placeholder="Search By Test/Ref Doc" />
@@ -79,20 +79,21 @@
               @change="previewProfile($event, profilePic)" style="display: none" />
           </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="text" placeholder="Reference Lab Name">
-        </div>
+        
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Reference Lab Name">
+          </div>
+          <div class="form-item col-255 mb-16">
             <input type="number" placeholder="PAN Card No.">
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-255 mb-16">
             <input type="number" placeholder="GSTIN No.">
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-255 mb-16">
             <input type="number" placeholder="TIN No.">
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-255 mb-16">
             <input type="number" placeholder="CST No.">
           </div>
         </div>
