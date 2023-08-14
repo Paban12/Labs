@@ -1,0 +1,75 @@
+.practice-details-page{
+  .container{
+    .card{
+      padding: 0;
+      .card-body{
+        padding: 1rem;
+        .form{
+          .self-details{
+            .self-details-row{
+              display: flex;
+              gap: 2rem;
+              .logo-section{
+                width: 6rem;
+                .title{
+
+                }
+              }
+              .right{
+                width: calc(100% - 6rem);
+                .row{
+                  .form-item{
+                    .p-id{
+                      font-weight: 700;
+                      color: var(--primary);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .address-details{
+            .map-section{
+              .mapouter{
+                iframe{
+                  height: 300px;
+                  border-radius: 5px;
+                }
+              }
+            }
+          }
+          .bank-details{
+            .bank-row{
+              .delete-icon{
+                cursor: pointer;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                img{
+                  height: 1.2rem;
+                  width: 1.2rem;
+                }
+              } 
+            }
+            .doc-row{
+              display: flex;
+              gap: 5rem;
+            }
+          }
+          .pic-upload{
+            height: 90px;
+            width: 90px;
+          }
+          .single-section{
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+          }
+          .main-title{
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

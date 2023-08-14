@@ -52,6 +52,11 @@
 @import "custom/feedback";
 @import "custom/thyromax-plan";
 @import "custom/dept-page";
+@import "custom/practice-detail";
+@import "custom/login-access";
+@import "custom/calender-setting";
+@import "custom/patient-record";
+@import "custom/patient-group-share";
 
 
 //main
@@ -70,6 +75,7 @@
 @import "main/add-test-modal";
 @import "main/add-expense-modal";
 @import "main/billing-modal";
+@import "main/prefix-modal";
 
 
 //doctor

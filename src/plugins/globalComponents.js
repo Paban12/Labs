@@ -55,6 +55,10 @@ const PhleboBilling = defineAsyncComponent(() => import('../components/Reference
 const PhleboSharing = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Sharing.vue'))
 const PhleboSetting = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Setting.vue'))
 
+//Patient Groups
+const PatientGroup = defineAsyncComponent(() => import('../components/PatientGroup/PatientGroup.vue'))
+const PatientMaster = defineAsyncComponent(() => import('../components/PatientGroup/PatientMaster.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -154,6 +158,10 @@ const GlobalComponents = {
     app.component('PhleboBilling', PhleboBilling)
     app.component('PhleboSharing', PhleboSharing)
     app.component('PhleboSetting', PhleboSetting)
+
+    //Patient Group
+    app.component('PatientGroup', PatientGroup)
+    app.component('PatientMaster', PatientMaster)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

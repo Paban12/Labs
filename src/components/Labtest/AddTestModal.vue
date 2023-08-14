@@ -262,7 +262,7 @@ const testTableData = reactive([
 
 //for table data
 const testOptions = [
-  { id: 1, name: "Option111111111111" },
+  { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
 ];
 const deptOptions = [

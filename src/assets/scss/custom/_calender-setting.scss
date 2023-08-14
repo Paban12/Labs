@@ -1,0 +1,150 @@
+.calender-setting-page{
+  .container{
+    .card{
+      .card-body{
+        padding: 1rem;
+        padding-top: 0.5rem;
+        .tab-content{
+
+        }
+        .practice-timing{
+          h4{
+
+          }
+          .select-row{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .text{
+              font-size: 0.85rem;
+            }
+            .select-dropdown{
+              width: 12rem;
+            }
+          }
+          .list{
+            border: 1px solid var(--border-color);
+            // padding: 0.5rem;
+            border-radius: 5px;
+            .list-header{
+              padding: 0.5rem;
+              margin-bottom: 0.5rem;
+              border-bottom: 1px solid var(--border-color);
+              font-weight: 700;
+              font-size: 1rem;
+            }
+            .list-data{
+              padding: 0.5rem;
+              .day{
+                font-size: 0.85rem;
+              }
+            }
+          }
+        }
+        .default-setting{
+          .row{
+            .form-item{
+              .title{
+                font-weight: 700;
+                margin-bottom: 5px;
+              }
+              .check-inputs{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                height: 2.5rem;
+                font-size: 0.85rem;
+                .input{
+                  display: flex;
+                  align-items: center;
+                  gap: 6px;
+                }
+                .text{
+                  white-space: nowrap;
+                }
+              }
+            }
+            .toggle-item{
+              .toggle-btn{
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+              }
+            }
+          }
+          .toggle-row{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+          }
+          .patient-prefix{
+            .btn{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            #icon{
+              height: 1rem;
+              width: 1rem;
+              #icon-inner{
+                fill: var(--white);
+              }
+            }
+            }
+          }
+          .doctor-sign-section{
+            .table{
+              .pic-upload{
+                height: 2.5rem;
+                // width: 100%;
+              }
+            }
+          }
+        }
+        .lab-category{
+          .search-select{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            .left{
+              width: 50%;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              .single-select{
+                width: 100%;
+              }
+            }
+            .searchbar{
+              width: 50%;
+            }
+          }
+          .dept-list{
+            .list-item{
+              display: flex;
+              align-items: flex-start;
+              width: max-content;
+              background: var(--primary);
+              color: var(--white);
+              padding: 0.5rem 1rem;
+              border-radius: 5px;
+              font-size: 0.85rem;
+              &:not(:last-child){
+                margin-bottom: 0.5rem;
+              }
+              #icon{
+                height: 1.2rem;
+                width: 1.2rem;
+                cursor: pointer;
+                fill: var(--white);
+                margin-left: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

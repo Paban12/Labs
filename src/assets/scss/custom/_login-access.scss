@@ -1,0 +1,44 @@
+.login-access-page{
+  .container{
+    .card{
+      padding: 0;
+      .card-body{
+        padding: 1rem;
+        padding-top: 0.5rem;
+        .tabs{
+          display: flex;
+          width: 100%;
+          border-radius: 5px;
+          padding-bottom: 0.5rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px solid #eee;
+          .tab{
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+          }
+          .active{
+            background: var(--white);
+            color: var(--blue);
+            border-bottom: 2px solid var(--blue);
+            font-weight: 700;
+          }
+        }
+        .tab-content{
+          .search-select{
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .searchbar{
+              width: 50%;
+            }
+            .select-dropdown{
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

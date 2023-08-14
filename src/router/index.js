@@ -250,6 +250,26 @@ const routes = [
                 component: () => import( /* webpackChunkName: "department" */ '../views/Settings/Department.vue')
             },
             {
+                path: '/login-access',
+                name: 'login access',
+                component: () => import( /* webpackChunkName: "login access" */ '../views/Settings/LoginAccess.vue')
+            },
+            {
+                path: '/calender-setting',
+                name: 'calender setting',
+                component: () => import( /* webpackChunkName: "calender setting" */ '../views/Settings/Calender.vue')
+            },
+            {
+                path: '/patient-record',
+                name: 'patient-record',
+                component: () => import( /* webpackChunkName: "patient record" */ '../views/Settings/PatientRecord.vue')
+            },
+            {
+                path: '/patient-group',
+                name: 'patient-group',
+                component: () => import( /* webpackChunkName: "patient group" */ '../views/Settings/PatientGroups.vue')
+            },
+            {
                 path: '/expense',
                 name: 'expense',
                 component: () => import( /* webpackChunkName: "expense" */ '../views/Expense.vue')

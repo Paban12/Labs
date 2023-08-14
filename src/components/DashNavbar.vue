@@ -291,6 +291,18 @@
               <router-link to="/laboratory" class="list" @click="toggleSidebar">
                 <div class="text">Laboratory</div>
               </router-link>
+              <router-link to="/login-access" class="list" @click="toggleSidebar">
+                <div class="text">Login Access</div>
+              </router-link>
+              <router-link to="/calender-setting" class="list" @click="toggleSidebar">
+                <div class="text">Calender Setting</div>
+              </router-link>
+              <router-link to="/patient-record" class="list" @click="toggleSidebar">
+                <div class="text">Patient Record Share</div>
+              </router-link>
+              <router-link to="/patient-group" class="list" @click="toggleSidebar">
+                <div class="text">Patient Groups & Master</div>
+              </router-link>
             </div>
             <router-link to="/faq-create" class="list" @click="toggleSidebar">
               <div class="img grade-btn">
