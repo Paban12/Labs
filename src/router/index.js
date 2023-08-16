@@ -228,6 +228,12 @@ const routes = [
                 name: 'billing',
                 component: () => import( /* webpackChunkName: "billing" */ '../views/Billing.vue')
             },
+            //Reports
+            {
+                path: '/reports',
+                name: 'reports',
+                component: () => import( /* webpackChunkName: "reports" */ '../views/Reports/ReportsLayout.vue')
+            },
             //Settings
             {
                 path: '/site-setting',
@@ -268,6 +274,11 @@ const routes = [
                 path: '/patient-group',
                 name: 'patient-group',
                 component: () => import( /* webpackChunkName: "patient group" */ '../views/Settings/PatientGroups.vue')
+            },
+            {
+                path: '/reference-doctor',
+                name: 'reference-doctor',
+                component: () => import( /* webpackChunkName: "reference doctor" */ '../views/Settings/ReferenceDoctor.vue')
             },
             {
                 path: '/expense',

@@ -59,6 +59,9 @@ const PhleboSetting = defineAsyncComponent(() => import('../components/Reference
 const PatientGroup = defineAsyncComponent(() => import('../components/PatientGroup/PatientGroup.vue'))
 const PatientMaster = defineAsyncComponent(() => import('../components/PatientGroup/PatientMaster.vue'))
 
+//Reports
+const PatientReport = defineAsyncComponent(() => import('../components/Reports/Patients.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -162,6 +165,9 @@ const GlobalComponents = {
     //Patient Group
     app.component('PatientGroup', PatientGroup)
     app.component('PatientMaster', PatientMaster)
+
+    //Reports
+    app.component('PatientReport', PatientReport)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)

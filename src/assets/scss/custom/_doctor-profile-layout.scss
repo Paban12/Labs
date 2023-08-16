@@ -11,10 +11,13 @@
         border-radius: 100%;
         height: 6.3rem;
         width: 6.3rem;
-        img{
+        .pic-upload{
           height: 6rem;
           width: 6rem;
           border-radius: 100%;
+          img{
+            border-radius: 100%;
+          }
         }
       }
       .about{

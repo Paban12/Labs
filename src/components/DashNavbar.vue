@@ -256,6 +256,12 @@
               </div>
               <div class="text">Reference & Sharing</div>
             </router-link>
+            <router-link to="/reports" class="list" @click="toggleSidebar">
+              <div class="img grade-btn">
+                <img src="/src/assets/images/png/bill.png" alt="image" />
+              </div>
+              <div class="text">Reports</div>
+            </router-link>
             <div class="list setting-title" @click.prevent="toggleSetting()">
               <div class="img grade-btn">
                 <img src="/src/assets/images/png/setting.png" alt="image" />
@@ -302,6 +308,9 @@
               </router-link>
               <router-link to="/patient-group" class="list" @click="toggleSidebar">
                 <div class="text">Patient Groups & Master</div>
+              </router-link>
+              <router-link to="/reference-doctor" class="list" @click="toggleSidebar">
+                <div class="text">Reference Doctor</div>
               </router-link>
             </div>
             <router-link to="/faq-create" class="list" @click="toggleSidebar">

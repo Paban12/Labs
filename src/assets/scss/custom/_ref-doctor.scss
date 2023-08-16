@@ -1,0 +1,37 @@
+.reference-doctor-page{
+  .container{
+    .card{
+      .card-header{
+
+      }
+      .card-body{
+        padding: 1rem;
+        .top-row{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+          .search-select{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .searchbar{
+              width: 15rem;
+            }
+            .select-dropdown{
+              width: 15rem;
+            }
+          }
+
+        }
+      }
+    }
+  }
+  .modal{
+    .pic-upload{
+      img{
+        border-radius: 100%;
+      }
+    }
+  }
+}

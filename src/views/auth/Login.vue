@@ -1,20 +1,19 @@
 <template>
-  <section>
   <form action="" class="form">
     <!-- <h2>Welcome to Thyromax</h2> -->
-    <img src="/src/assets/images/logo/logo-black.png" class="logo" alt="">
+    <img src="/src/assets/images/logo/logo-black.png" class="logo" alt="" />
     <div class="text">Login to continue</div>
     <div class="form-item mb-16">
       <div class="title">Email</div>
       <div class="input">
-        <input type="email" placeholder="user@gmail.com">
+        <input type="email" placeholder="user@gmail.com" />
         <div class="err-msg"></div>
       </div>
     </div>
     <div class="form-item mb-16">
       <div class="title">Password</div>
       <div class="input">
-        <input type="password" placeholder="*******">
+        <input type="password" placeholder="*******" />
       </div>
       <div class="err-msg"></div>
     </div>
@@ -22,19 +21,19 @@
       <router-link to="/forgot">Forgot Password?</router-link>
     </div>
     <div class="login-btn">
-      <button type="button" class="btn black-btn" @click="onSubmitLogin">Login <icon-right-arrow></icon-right-arrow>
+      <button type="button" class="btn black-btn" @click="onSubmitLogin">
+        Login <icon-right-arrow></icon-right-arrow>
       </button>
       <!-- <button type="button" class="btn black-btn load-btn">
       <icon-login-loader></icon-login-loader>
     </button> -->
     </div>
-      <!-- <div class="reg">
+    <!-- <div class="reg">
       Rorgot Password
       <icon-right-arrow></icon-right-arrow> 
       <router-link to="/forgot">Forgot Password?</router-link>
     </div> -->
-    </form>
-    </section>
+  </form>
 </template>
  
 <script setup>
@@ -58,10 +57,7 @@ const formVar = reactive({
 /* Functions/Methods */
 
 const onSubmitLogin = () => {
-  if (
-    loginIdValid.value ||
-    passwordValid.value
-  ) {
+  if (loginIdValid.value || passwordValid.value) {
     formVar.submit = true;
     return;
   }
@@ -90,7 +86,7 @@ function isNumber(e) {
   else e.preventDefault();
 }
 function phnum(e) {
-  formVar.loginId = e.slice(0, 10)
+  formVar.loginId = e.slice(0, 10);
 }
 /* Validation */
 </script>
