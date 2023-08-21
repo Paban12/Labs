@@ -33,7 +33,7 @@
       </div>
       <div class="search-select">
         <div class="searchbar">
-          <input type="text" placeholder="Search By FAQ" />
+          <input type="text" placeholder="Search By Patients" />
           <img src="/src/assets/images/png/search.png" alt="" />
         </div>
         <div class="select-dropdown">

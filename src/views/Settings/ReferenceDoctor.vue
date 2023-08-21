@@ -7,7 +7,7 @@
           <div class="top-row">
             <div class="search-select">
               <div class="searchbar">
-                <input type="text" placeholder="Search By FAQ" />
+                <input type="text" placeholder="Search By Doctor" />
                 <img src="/src/assets/images/png/search.png" alt="" />
               </div>
               <div class="select-dropdown">

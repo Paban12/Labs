@@ -8,25 +8,25 @@
           <div class="title">Appointments</div>
           <div class="tooltip">You can book <strong>Appointment</strong></div>
         </router-link>
-        <router-link to="/lab-appointment" class="card card1">
+        <router-link to="/lab-appointment" class="card card2">
           <img src="/src/assets/images/png/mobile.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Appointments</div>
           <div class="tooltip">You can manage <strong>Lab Appointment</strong></div>
         </router-link>
-        <router-link to="/patients" class="card card2">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+        <router-link to="/patients" class="card card3">
+          <img src="/src/assets/images/png/dr.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Patients</div>
           <div class="tooltip">You can manage <strong>Patients</strong></div>
         </router-link>
-        <router-link to="/doctors" class="card card3">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+        <router-link to="/doctors" class="card card4">
+          <img src="/src/assets/images/png/dr.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Doctors</div>
           <div class="tooltip">You can manage <strong>Doctors</strong></div>
         </router-link>
-        <router-link to="/pathologist" class="card card3">
+        <router-link to="/pathologist" class="card card5">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Patholigist</div>
@@ -38,7 +38,7 @@
           <div class="title">Laboratory</div>
           <div class="tooltip">You can manage <strong>Laboratories</strong></div>
         </router-link>
-        <router-link to="/labtest" class="card card6">
+        <router-link to="/labtest" class="card card7">
           <img src="/src/assets/images/png/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Test</div>
