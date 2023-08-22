@@ -582,6 +582,10 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
 .w-max{
   width: max-content !important;
 }
+.min-w-max{
+  min-width: max-content !important;
+}
+
 
 .dr-input{
   position: relative;

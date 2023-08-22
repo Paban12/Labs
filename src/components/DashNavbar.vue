@@ -20,75 +20,75 @@
                 <icon-cross></icon-cross>
               </div>
               <div class="menu-icons">
-                <router-link to="/" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/eye.png" alt="image" />
+                <router-link to="/appointment/calender" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-calender></icon-calender>
                   </div>
                   <div class="text">Calender</div>
                 </router-link>
                 <router-link to="/dashboard" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/eye.png" alt="image" />
+                  <div class="icon">
+                    <icon-dashboard></icon-dashboard>
                   </div>
                   <div class="text">Dashboard</div>
                 </router-link>
                 <router-link to="/patients" class="list desk-view" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/microscope.png" alt="image" />
+                  <div class="icon">
+                    <icon-patient></icon-patient>
                   </div>
                   <div class="text">Patients</div>
                 </router-link>
                 <router-link to="/doctors" class="list desk-view" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/microscope.png" alt="image" />
+                  <div class="icon">
+                    <icon-doctor2></icon-doctor2>
                   </div>
                   <div class="text">Doctors</div>
                 </router-link>
                 <router-link to="/pathologist" class="list desk-view" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/microscope.png" alt="image" />
+                  <div class="icon">
+                    <icon-lab></icon-lab>
                   </div>
                   <div class="text">Pathologist</div>
                 </router-link>
                 <router-link to="/staff/details" class="list desk-view" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/microscope.png" alt="image" />
+                  <div class="icon">
+                    <icon-staff></icon-staff>
                   </div>
                   <div class="text">Staff</div>
                 </router-link>
                 <router-link to="/staff" class="list mob-view" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/microscope.png" alt="image" />
+                  <div class="icon">
+                    <icon-staff></icon-staff>
                   </div>
                   <div class="text">Staff</div>
                 </router-link>
                 <router-link to="/visits" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-visit></icon-visit>
                   </div>
                   <div class="text">Visits</div>
                 </router-link>
                 <router-link to="/expense" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-money></icon-money>
                   </div>
                   <div class="text">Expense</div>
                 </router-link>
                 <router-link to="/ref-share-layout" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-share></icon-share>
                   </div>
                   <div class="text">Reference & Sharing</div>
                 </router-link>
                 <router-link to="/reports" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-report></icon-report>
                   </div>
                   <div class="text">Reports</div>
                 </router-link>
                 <div class="list setting-title" @click.prevent="toggleSetting()">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/setting.png" alt="image" />
+                  <div class="main-icon">
+                    <icon-setting></icon-setting>
                   </div>
                   <div class="text">Settings</div>
                   <div class="icon" v-if="!nav.settingList" @click.prevent="toggleSetting()">
@@ -138,26 +138,26 @@
                   </router-link>
                 </div>
                 <router-link to="/faq-create" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-help></icon-help>
                   </div>
                   <div class="text">FAQ's</div>
                 </router-link>
                 <router-link to="/feedback" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-feedback></icon-feedback>
                   </div>
                   <div class="text">Feedback</div>
                 </router-link>
                 <router-link to="/prescription" class="list" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-prescription></icon-prescription>
                   </div>
                   <div class="text">Prescription</div>
                 </router-link>
                 <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
-                  <div class="img grade-btn">
-                    <img src="/src/assets/images/png/bill.png" alt="image" />
+                  <div class="icon">
+                    <icon-dashboard></icon-dashboard>
                   </div>
                   <div class="text">Patient Appoinments</div>
                 </router-link>

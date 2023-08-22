@@ -113,6 +113,17 @@
 .mid-modal{
   .modal-dialog{
     width: 1140px;
+    .save-btn{
+      .checks{
+        gap: 1.5rem;
+        .data{
+          .text{
+            font-size: 0.85rem;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
   }
 }
 

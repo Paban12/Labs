@@ -216,6 +216,7 @@
     background: var(--black);
     padding: 2rem 0;
     width: 300px;
+    box-shadow: var(--box-shadow);
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -233,24 +234,25 @@
         .list{
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 0.7rem 1rem;
+          gap: 13px;
+          padding: 0.9rem 1rem;
           cursor: pointer;
           &:hover{
             background: #cccccc2a;
           }
-          .img{ 
-            height: 2rem;
-            width: 2rem;
+          .icon{
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 6px;
+            // margin-bottom: 6px;
             border-radius: 100%;
-            img{
-              height: 70%;
-              width: 70%;
-              border-radius: 100%;
+            #icon{
+              height: 1.5rem;
+              width: 1.5rem;
+              fill: var(--white);
+              #icon-inner{
+                fill: var(--white);
+              }
             }
           }
           .text{
@@ -258,9 +260,34 @@
             color: var(--white);
           }
         }
+        .router-link-active{
+          background: #fff;
+          &:hover{
+            background: #fff !important;
+          }
+          .icon{
+            #icon{
+              fill: var(--black);
+              #icon-inner{
+                fill: var(--black);
+              }
+            }
+          }
+          .text{
+            color: var(--black);
+            font-weight: 700;
+          }
+        }
         .setting-title{
           position: relative;
           padding-right: 2.5rem;
+          .main-icon{
+            #icon{
+              height: 1.7rem;
+              width: 1.7rem;
+              fill: var(--white);
+            }
+          }
           .icon{
             position: absolute;
             right: 12px;
