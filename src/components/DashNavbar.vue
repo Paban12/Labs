@@ -2,7 +2,7 @@
   <section>
     <div class="navbar">
       <div class="nav-container container">
-        <div class="left" >
+        <div class="left" v-click-outside="closeSideMenu">
           <div class="menu-icon" v-if="!isSidebarOpen" @click="toggleSidebar">
             <icon-menu></icon-menu>
           </div>
@@ -397,7 +397,7 @@ const toggleSidebar = () => {
     isSidebarOpen.value = true;
   }
 };
-// function closeSideMenu () {
+// const closeSideMenu = () => {
 //   if (isSidebarOpen.value) {
 //     isClosing.value = true;
 //     setTimeout(() => {
@@ -455,9 +455,9 @@ function closeSearch() {
   nav.isVisible = false;
 }
 
-// function closeSideMenu() {
-//   nav.sidebar = false;
-// }
+function closeSideMenu() {
+  nav.sidebar = false;
+}
 function closeAccMenu() {
   nav.accMenu = false;
 }

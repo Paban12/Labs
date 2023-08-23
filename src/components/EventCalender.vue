@@ -113,7 +113,7 @@
                   </div>
                 </div>
                 <div class="message">
-                  <router-link to="/labtest" class="span">Lab</router-link>
+                  <router-link to="/patient/lab-report" class="span">Lab</router-link>
                   <router-link to="/patient/profile" class="span">Profile</router-link>
                 </div>
               </div>
@@ -213,7 +213,7 @@
                     </div>
                   </div>
                   <div class="message">
-                    <router-link to="/labtest" class="span">Lab</router-link>
+                    <router-link to="/patient/lab-report" class="span">Lab</router-link>
                     <router-link to="/patient/profile" class="span">Profile</router-link>
                   </div>
                 </div>
@@ -315,7 +315,7 @@
                     </div>
                   </div>
                   <div class="message">
-                    <router-link to="/labtest" class="span">Lab</router-link>
+                    <router-link to="/patient/lab-report" class="span">Lab</router-link>
                     <router-link to="/patient/profile" class="span">Profile</router-link>
                   </div>
                 </div>

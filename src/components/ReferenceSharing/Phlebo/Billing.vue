@@ -67,7 +67,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
     <!-- Modals -->
     <Modal
       v-model:show="formVar.billModal"
@@ -130,7 +130,7 @@
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <input type="text" placeholder="00 %">
+                <input type="number" placeholder="00 %">
               </td>
               <td>{{ item.paid }}</td>
               <td>{{ item.due }}</td>
@@ -275,7 +275,7 @@
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <input type="text" placeholder="00 %">
+                <input type="number" placeholder="00 %">
               </td>
               <td>{{ item.paid }}</td>
               <td>{{ item.due }}</td>

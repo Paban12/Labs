@@ -130,7 +130,7 @@
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <input type="text" placeholder="00 %">
+                <input type="number" placeholder="00 %">
               </td>
               <td>{{ item.paid }}</td>
               <td>{{ item.due }}</td>
@@ -210,7 +210,7 @@
         </div>
       </div>
       <div class="btn-row">
-        <button class="btn black-btn">Pay</button>
+        <button class="btn black-btn w-10-r">Pay</button>
       </div>
     </Modal>
   </section>

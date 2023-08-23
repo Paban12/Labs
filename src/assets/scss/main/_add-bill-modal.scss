@@ -1,0 +1,111 @@
+.add-bill-modal{
+  .modal{
+    .modal-dialog{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      .modal-content{
+        height: 100%;
+        // position: relative;
+
+        .modal-body{
+          padding: 0.5rem;
+          height: calc(100% - 2.5rem);
+          // background: red;
+          padding-bottom: 5rem;
+          .patient-details{
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            .left{
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              .img{
+                img{
+                  height: 2.5rem;
+                  width: 2.5rem;
+                }
+              }
+              .info{
+                .name{
+                  font-size: 0.85rem;
+                }
+                .other{
+                  font-size: 0.8rem;
+                }
+              }
+            }
+            .middle{
+              .data{
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.8rem;
+                &:first-child{
+                  margin-bottom: 6px;
+                }
+                #icon{
+                  height: 1rem;
+                  width: 1rem;
+                }
+              }
+            }
+            .right{
+              font-size: 0.8rem;
+              .date-time{
+                margin-bottom: 6px;
+              }
+            }
+          }
+          .main-table-outer{
+            height: calc(100% - 24rem);
+            // background: green;
+            overflow-y: scroll;
+            tr{
+              td{
+                .select-input{
+                  input{
+                    // width: 50% !important;
+                    min-width: 50%;
+                  }
+                  .select-dropdown{
+                    width: 50%;
+                  }
+                }
+              }
+            }
+          }
+          .charges-row{
+            gap: 1.5rem;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+            .data{
+              gap: 6px;
+              font-size: 0.8rem;
+              input{
+                width: max-content;
+                margin-top: 4px;
+              }
+            }
+          }
+          .total-table{
+
+          }
+
+          .btn-row{
+            display: flex;
+            justify-content: flex-end;
+            .btn{
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

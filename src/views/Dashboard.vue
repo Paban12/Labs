@@ -3,55 +3,55 @@
     <div class="container">
       <div class="dash-cards">
         <router-link to="appointment/calender" class="card card1">
-          <img src="/src/assets/images/png/mobile.png" alt="image" />
+          <img src="/src/assets/images/dashboard/apt.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Appointments</div>
           <div class="tooltip">You can book <strong>Appointment</strong></div>
         </router-link>
         <router-link to="/lab-appointment" class="card card2">
-          <img src="/src/assets/images/png/mobile.png" alt="image" />
+          <img src="/src/assets/images/dashboard/lab_apt.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Appointments</div>
           <div class="tooltip">You can manage <strong>Lab Appointment</strong></div>
         </router-link>
         <router-link to="/patients" class="card card3">
-          <img src="/src/assets/images/png/dr.png" alt="image" />
+          <img src="/src/assets/images/dashboard/patient.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Patients</div>
           <div class="tooltip">You can manage <strong>Patients</strong></div>
         </router-link>
         <router-link to="/doctors" class="card card4">
-          <img src="/src/assets/images/png/dr.png" alt="image" />
+          <img src="/src/assets/images/dashboard/doctor3.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Doctors</div>
           <div class="tooltip">You can manage <strong>Doctors</strong></div>
         </router-link>
         <router-link to="/pathologist" class="card card5">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <img src="/src/assets/images/dashboard/pathology.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Patholigist</div>
           <div class="tooltip">You can manage <strong>Patholigist</strong></div>
         </router-link>
         <router-link to="/laboratory" class="card card6">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <img src="/src/assets/images/dashboard/lab.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Laboratory</div>
           <div class="tooltip">You can manage <strong>Laboratories</strong></div>
         </router-link>
         <router-link to="/labtest" class="card card7">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <img src="/src/assets/images/dashboard/lab_test.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Test</div>
           <div class="tooltip">You can do <strong>Lab Test</strong></div>
         </router-link>
         <router-link to="/staff/details" class="card card8 desk-view-card">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <img src="/src/assets/images/dashboard/staff.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Staff</div>
           <div class="tooltip">You can do <strong>Staff</strong></div>
         </router-link>
         <router-link to="/staff" class="card card8 mob-view-card">
-          <img src="/src/assets/images/png/lab.png" alt="image" />
+          <img src="/src/assets/images/dashboard/staff.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Staff</div>
           <div class="tooltip">You can do <strong>Staff</strong></div>
