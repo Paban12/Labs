@@ -9,7 +9,7 @@
           <div class="tooltip">You can book <strong>Appointment</strong></div>
         </router-link>
         <router-link to="/lab-appointment" class="card card2">
-          <img src="/src/assets/images/dashboard/lab_apt.png" alt="image" />
+          <img src="/src/assets/images/dashboard/lab-apt.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Appointments</div>
           <div class="tooltip">You can manage <strong>Lab Appointment</strong></div>
@@ -21,7 +21,7 @@
           <div class="tooltip">You can manage <strong>Patients</strong></div>
         </router-link>
         <router-link to="/doctors" class="card card4">
-          <img src="/src/assets/images/dashboard/doctor3.png" alt="image" />
+          <img src="/src/assets/images/dashboard/doctor.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Doctors</div>
           <div class="tooltip">You can manage <strong>Doctors</strong></div>
@@ -39,7 +39,7 @@
           <div class="tooltip">You can manage <strong>Laboratories</strong></div>
         </router-link>
         <router-link to="/labtest" class="card card7">
-          <img src="/src/assets/images/dashboard/lab_test.png" alt="image" />
+          <img src="/src/assets/images/dashboard/lab-test.png" alt="image" />
           <div class="val">254</div>
           <div class="title">Lab Test</div>
           <div class="tooltip">You can do <strong>Lab Test</strong></div>
@@ -92,35 +92,35 @@
         <h3>Our Services</h3>
         <div class="service-cards">
           <router-link to="/" class="card card1">
-            <img src="/src/assets/images/png/desk.png" alt="image">
+            <img src="/src/assets/images/dashboard/front-desk.png" alt="image">
             <div class="title">Front Desk</div>
           </router-link>
           <router-link to="/" class="card card2">
-            <img src="/src/assets/images/png/man.png" alt="image">
+            <img src="/src/assets/images/dashboard/admin.png" alt="image">
             <div class="title">Branch Admin</div>
           </router-link>
           <router-link to="/" class="card card3">
-            <img src="/src/assets/images/png/dr2.png" alt="image">
+            <img src="/src/assets/images/dashboard/doctor2.png" alt="image">
             <div class="title">Doctor</div>
           </router-link>
-          <router-link to="/" class="card card1">
-            <img src="/src/assets/images/png/timeline.png" alt="image">
+          <router-link to="/" class="card card4">
+            <img src="/src/assets/images/dashboard/core-plan.png" alt="image">
             <div class="title">Core Plan</div>
           </router-link>
-          <router-link to="/" class="card card2">
-            <img src="/src/assets/images/png/bill.png" alt="image">
+          <router-link to="/" class="card card5">
+            <img src="/src/assets/images/dashboard/form.png" alt="image">
             <div class="title">Form</div>
           </router-link>
-          <router-link to="/" class="card card3">
-            <img src="/src/assets/images/png/stats.png" alt="image">
+          <router-link to="/" class="card card6">
+            <img src="/src/assets/images/dashboard/report.png" alt="image">
             <div class="title">Report</div>
           </router-link>
-          <router-link to="/" class="card card1">
-            <img src="/src/assets/images/png/paper.png" alt="image">
+          <router-link to="/" class="card card7">
+            <img src="/src/assets/images/dashboard/presentation.png" alt="image">
             <div class="title">Prastation</div>
           </router-link>
-          <router-link to="/" class="card card2">
-            <img src="/src/assets/images/png/help.png" alt="image">
+          <router-link to="/" class="card card8">
+            <img src="/src/assets/images/dashboard/help.png" alt="image">
             <div class="title">Help & Support</div>
           </router-link>
         </div>
@@ -164,6 +164,9 @@
             <!-- <Navigation /> -->
           </template>
         </Carousel>
+      </div>
+      <div class="new-el">
+
       </div>
     </div>
   </section>
@@ -287,5 +290,8 @@ const reviewCarousel = [
 ]
 </script>
 
-<style>
+
+<style scoped>
+
+
 </style>

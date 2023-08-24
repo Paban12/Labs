@@ -2,11 +2,11 @@
   <section>
     <div class="navbar">
       <div class="nav-container container">
-        <div class="left" v-click-outside="closeSideMenu">
+        <div class="left">
           <div class="menu-icon" v-if="!isSidebarOpen" @click="toggleSidebar">
             <icon-menu></icon-menu>
           </div>
-          <div v-else class="menu-icon cross-icon" @click="toggleSidebar">
+          <div v-else class="menu-icon cross-icon" @click="closeSideMenu">
             <icon-cross></icon-cross>
           </div>
           <router-link to="/" class="logo">
@@ -164,6 +164,7 @@
               </div>
             </div>
           </div>
+          <div class="sidebar-overlay" :class="{ open: isSidebarOpen, closing: isClosing }" @click="toggleSidebar"></div>
         </div>
         <div class="right"> 
           <div class="searchbar">
@@ -267,7 +268,7 @@
           </div>
           <div @click.prevent="storeVar.aptBookModal = true" class="bell-icon desk-icon">
             <img src="/src/assets/images/png/add.png" alt="" />
-            <div class="tooltip">Add</div>
+            <div class="tooltip">Appointment</div>
           </div>
           <div class="" v-click-outside="hideNoteSidebar">
             <div class="bell-icon desk-icon" @click.prevent="showNoteSidebar()">
@@ -398,17 +399,18 @@ const toggleSidebar = () => {
   }
 };
 // const closeSideMenu = () => {
-//   if (isSidebarOpen.value) {
+//   if (isClosing.value) {
 //     isClosing.value = true;
-//     setTimeout(() => {
-//       isSidebarOpen.value = false;
-//       isClosing.value = false;
-//     }, 300); 
+//     // setTimeout(() => {
+//     //   isSidebarOpen.value = false;
+//     //   isClosing.value = false;
+//     // }, 300); 
 //   } 
 //   // else {
-//   //   isSidebarOpen.value = true;
+//   //   isClosing.value = true;
 //   // }
 // };
+
 const nav = reactive({
   accMenu: false,
   searchValue: "",
@@ -455,9 +457,9 @@ function closeSearch() {
   nav.isVisible = false;
 }
 
-function closeSideMenu() {
-  nav.sidebar = false;
-}
+// function closeSideMenu() {
+//   nav.sidebar = false;
+// }
 function closeAccMenu() {
   nav.accMenu = false;
 }

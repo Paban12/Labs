@@ -101,6 +101,8 @@
         background-size: cover;
         height: 2.5rem;
         width: 2.5rem;
+        min-height: 2.5rem;
+        min-width: 2.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -216,6 +218,7 @@
     background: var(--black);
     padding: 2rem 0;
     width: 300px;
+    z-index: 999;
     box-shadow: var(--box-shadow);
     overflow-y: scroll;
     -ms-overflow-style: none;
@@ -310,6 +313,22 @@
         }
       }
     }
+  }
+  .sidebar-overlay{
+    height: 100vh;
+    width: 100vw;
+    background: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    display: none;
+  }
+  .sidebar-overlay.open{
+    display: block;
+  }
+  .sidebar-overlay.closing{
+    display: none;
   }
   .sidebar.open {
     left: 0;
