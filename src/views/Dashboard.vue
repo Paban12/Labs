@@ -166,7 +166,26 @@
         </Carousel>
       </div>
       <div class="new-el">
-
+        <div class="parent-container">
+          <button
+            class="hover-trigger"
+            @mouseover="showTooltip"
+            @mouseleave="hideTooltip"
+            ref="button"
+          >
+            Hover Me
+          </button>
+          <div
+            class="custom-tooltip"
+            :class="{ active: isTooltipActive }"
+            :style="tooltipStyle"
+            ref="tooltip"
+            @mouseenter="showTooltip"
+            @mouseleave="hideTooltip"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi temporibus sed maxime quos deleniti velit repellat ullam tempora exercitationem dolor non praesentium atque pariatur mollitia dolore, at magni quibusdam deserunt! Laboriosam molestiae voluptate placeat totam odit aperiam harum facilis provident quos accusamus eos sint, non tempore nobis rerum soluta illum?
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -175,6 +194,66 @@
 <script setup>
 import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
+
+/////////////////////////
+
+import { ref } from 'vue';
+
+const isTooltipActive = ref(false);
+
+const showTooltip = () => {
+  isTooltipActive.value = true;
+  updateTooltipPosition();
+};
+
+const hideTooltip = () => {
+  isTooltipActive.value = false;
+};
+
+const updateTooltipPosition = () => {
+  const parentContainer = document.querySelector('.parent-container');
+  const button = $refs.button;
+  const tooltip = $refs.tooltip;
+
+  const parentRect = parentContainer.getBoundingClientRect();
+  const buttonRect = button.getBoundingClientRect();
+  const tooltipRect = tooltip.getBoundingClientRect();
+
+  // Calculate the position of the tooltip based on available space
+  const tooltipStyle = {
+    display: 'block',
+  };
+
+  // Check for available space within the parent container
+  const spaceAbove = buttonRect.top - parentRect.top;
+  const spaceBelow = parentRect.bottom - buttonRect.bottom;
+  const spaceLeft = buttonRect.left - parentRect.left;
+  const spaceRight = parentRect.right - buttonRect.right;
+
+  // Determine the best direction to display the tooltip based on available space
+  if (spaceAbove >= tooltipRect.height && spaceAbove >= spaceBelow) {
+    // Display above the button
+    tooltipStyle.top = `${buttonRect.top - parentRect.top - tooltipRect.height}px`;
+    tooltipStyle.left = `${buttonRect.left - parentRect.left}px`;
+  } else if (spaceBelow >= tooltipRect.height) {
+    // Display below the button
+    tooltipStyle.top = `${buttonRect.bottom - parentRect.top}px`;
+    tooltipStyle.left = `${buttonRect.left - parentRect.left}px`;
+  } else if (spaceLeft >= tooltipRect.width && spaceLeft >= spaceRight) {
+    // Display to the left of the button
+    tooltipStyle.top = `${buttonRect.top - parentRect.top}px`;
+    tooltipStyle.left = `${buttonRect.left - parentRect.left - tooltipRect.width}px`;
+  } else {
+    // Display to the right of the button
+    tooltipStyle.top = `${buttonRect.top - parentRect.top}px`;
+    tooltipStyle.left = `${buttonRect.right - parentRect.left}px`;
+  }
+
+  // Apply the calculated style
+  Object.assign(tooltip.style, tooltipStyle);
+};
+
+/////////////////////////
 
 const settings = {
   itemsToShow: 1,
@@ -293,5 +372,33 @@ const reviewCarousel = [
 
 <style scoped>
 
+.parent-container {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+}
+
+.hover-trigger {
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.custom-tooltip {
+  position: absolute;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-width: 500px;
+  text-align: center;
+  display: none;
+}
+
+.custom-tooltip.active {
+  display: block;
+}
 
 </style>

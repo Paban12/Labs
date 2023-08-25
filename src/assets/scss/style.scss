@@ -885,9 +885,9 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
 .p-info-card{
   position: absolute;
   z-index: 15;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 1.5rem;
+  left: 0;
+  // transform: translateX(-50%);
+  top: 1.4rem;
   padding: 0.5rem;
   width: 290px;
   color: var(--black);
@@ -897,7 +897,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   &::before {
     position: absolute;
     top: -10px;
-    left: 50%;
+    left: 3rem;
     margin-left: -10px;
     content:"";
     display:block;
