@@ -42,3 +42,27 @@
     }
   }
 }
+
+
+
+//media queries
+@media (max-width: 768px){
+  .ref-sharing-layout .container .card{
+     .route-tabs{
+      // padding: 0;
+      gap: 0;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .route-tab{
+        // padding: 5px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+    }
+  }
+
+}

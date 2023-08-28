@@ -99,7 +99,7 @@
         </div>
       </template>
       <form action="" class="form" @submit.prevent="onSubmitDoctor">
-        <div class="row">
+        <div class="two-inputs">
           <div class="form-item mb-16">
             <input
               type="text"
@@ -133,12 +133,12 @@
               {{ dobValid }}
             </div>
           </div>
-          <div class="col-2 form-item mb-16">
+          <div class="mb-16">
             <input type="text" v-model="formVar.age" class="bg-blue" disabled />
           </div>
         </div>
         
-        <div class="row">
+        <div class="two-inputs">
           <div class="form-item mb-16">
             <input
               type="text"
@@ -177,7 +177,7 @@
           </div>
         </div>
         
-        <div class="row">
+        <div class="two-inputs">
           <div class="form-item mb-16">
           <input type="text" placeholder="Enter Registration Council & No" />
             <div class="err-msg">Please enter registration council & no</div>

@@ -344,26 +344,36 @@
     right: 0;
     width: 350px;
     height: calc(100% - 4.5rem);
+    z-index: 110;
     .card{
       height: calc(100% - 4.5rem);
       padding: 0;
       .heading{
         background: var(--blue);
         color: var(--white);
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.7rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 3rem;
-        h3{
-          font-size: 1.2rem;
+        h4{
+          // font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          #icon{
+            height: 1.8rem;
+            width: 1.8rem;
+            fill: var(--white);
+            cursor: pointer;
+          }
         }
         .icon{
           display: flex;
           align-items: center;
           #icon{
-            height: 1.8rem;
-            width: 1.8rem;
+            height: 1.5rem;
+            width: 1.5rem;
             cursor: pointer;
             fill: var(--white);
           }
@@ -441,6 +451,15 @@
         }
       }
     }
+  }
+  .notes-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // background: red;
+    z-index: 100;
   }
   .notification-section{
     .card{
@@ -546,6 +565,15 @@
         }
       }
     }
+  }
+  .notification-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // background: red;
+    z-index: 100;
   }
 }
 
