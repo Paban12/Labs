@@ -2,8 +2,12 @@
   <section class="billing-expense">
     <div class="add-row mb-16">
       <div class="left">
-        <SingleSelect v-model="formVar.expense" :options="expenseOptions" @selected="handleSelectedOption"
-        placeholder="Select State"></SingleSelect>
+        <SingleSelect
+          v-model="formVar.expense"
+          :options="expenseOptions"
+          @selected="handleSelectedOption"
+          placeholder="Select State"
+        ></SingleSelect>
         <div class="add-btn">
           <button class="btn black-btn">+ Add</button>
         </div>
@@ -34,7 +38,7 @@ import { reactive } from "vue";
 const formVar = reactive({
   expense: null,
   city: null,
-})
+});
 
 //search select start//
 const expenseOptions = [
@@ -45,9 +49,7 @@ const expenseOptions = [
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);
 };
-
 </script>
 
 <style>
-
 </style>

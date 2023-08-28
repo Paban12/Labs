@@ -109,3 +109,26 @@
     }
   }
 }
+
+
+
+//media queries
+@media (max-width: 560px){
+  .thyromax-plan-page{
+    .container{
+      .card{
+        .card-body{
+          .tab-content{
+            .plan-section{
+              .plan-table{
+                .table{
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

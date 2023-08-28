@@ -39,7 +39,7 @@
                   </div>
                 </div>
                 <div class="right">
-                  <div class="row">
+                  <div class="two-inputs">
                     <div class="form-item col-5 mb-16">
                       <div class="title">Diagnostic Name</div>
                       <input type="text" placeholder="Diagnostic Name" />
@@ -62,7 +62,7 @@
             </div>
             <div class="address-details single-section">
               <h4 class="main-title">Address Details</h4>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-25 mb-16">
                   <div class="title">Country</div>
                   <input type="text" placeholder="" value="India" disabled />
@@ -90,7 +90,7 @@
                   <input type="text" placeholder="Locality" />
                 </div>
               </div>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-25 mb-16">
                   <div class="title">Landmark</div>
                   <input type="text" placeholder="Landmark" />
@@ -123,7 +123,7 @@
             </div>
             <div class="address-details single-section">
               <h4 class="main-title">Patient Contact</h4>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-33 mb-16">
                   <div class="title">Mobile Primary</div>
                   <input type="number" placeholder=" Mobile Primary">
@@ -137,7 +137,7 @@
                   <input type="email" placeholder="Email Primary">
                 </div>
               </div>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-33 mb-16">
                   <div class="title">Email Secondary</div>
                   <input type="email" placeholder="Email Secondary">
@@ -154,7 +154,7 @@
             </div>
             <div class="bank-details single-section">
               <h4 class="main-title">Bank Details</h4>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-25 mb-16">
                   <div class="title">Pan Card No</div>
                   <input type="number" placeholder="Pan Card No">
@@ -172,14 +172,14 @@
                   <input type="number" placeholder="CST No">
                 </div>
               </div>
-              <div class="row bank-row">
-                <div class="form-item col-33 mb-16">
+              <div class="two-input bank-row">
+                <div class="form-item col-33">
                   <input type="text" placeholder="Bank Name">
                 </div>
-                <div class="form-item col-33 mb-16">
+                <div class="form-item col-33">
                   <input type="number" placeholder="Account No">
                 </div>
-                <div class="form-item col-33 mb-16">
+                <div class="form-item col-33">
                   <input type="text" placeholder="IFSC Code">
                 </div>
                 <div class="delete-icon">
@@ -192,7 +192,7 @@
             </div>
             <div class="licence-details single-section">
               <h4 class="main-title">Licence Details</h4>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-5 mb-16">
                   <div class="title">Drug Licence No</div>
                   <input type="number" placeholder="Drug Licence No">
@@ -236,7 +236,7 @@
             </div>
             <div class="bank-details single-section">
               <h4 class="main-title">Bank Details For Thyromax Lab's Pay</h4>
-              <div class="row">
+              <div class="two-inputs">
                 <div class="form-item col-33 mb-16">
                   <div class="title">Name as per Passbook</div>
                   <input type="text" placeholder="Name as per Passbook">
@@ -255,7 +255,7 @@
                   <input type="number" placeholder="Account No">
                 </div>
               </div>
-              <div class="row bank-row">
+              <div class="two-inputs">
                 <div class="form-item col-33 mb-16">
                   <div class="title">IFSC Code</div>
                   <input type="text" placeholder="IFSC Code">

@@ -16,7 +16,18 @@
           <!-- sidebar -->
           <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }" >
             <div class="sidebar-card">
-              <div class="close-icon" @click.prevent="nav.sidebar = false">
+              <div class="mob-icons mob-view">
+                <div class="bell-icon" @click.prevent="showNotificationSidebar()">
+                  <img src="/src/assets/images/png/bell.png" alt="" />
+                  <div class="no"></div>
+                  <div class="tooltip">Notification</div>
+                </div>
+                <div class="bell-icon" @click.prevent="showNoteSidebar()">
+                  <img src="/src/assets/images/png/note.png" alt="" />
+                  <div class="tooltip">Notes</div>
+                </div>
+              </div>
+              <div class="close-icon mob-view" @click="toggleSidebar">
                 <icon-cross></icon-cross>
               </div>
               <div class="menu-icons">
@@ -222,46 +233,48 @@
               </div>
             </div>
           </div>
-          <div class="" v-click-outside="hideNotificationSidebar">
+          <div class="" >
             <div class="bell-icon" @click.prevent="showNotificationSidebar()">
               <img src="/src/assets/images/png/bell.png" alt="" />
               <div class="no"></div>
               <div class="tooltip">Notification</div>
             </div>
             <!-- notifications -->
-            <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
-              <div class="card">
-                <div class="heading">
-                  <h3 class="">Notifications</h3>
-                </div>
-                <div class="notes-list">
-                  <router-link to="/" class="list-item success">
-                    <div class="icon">
-                      <icon-success></icon-success>
-                    </div>
-                    <div class="info">
-                      <div class="title">Success</div>
-                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </router-link>
-                  <router-link to="/" class="list-item warning">
-                    <div class="icon">
-                      <icon-warning></icon-warning>
-                    </div>
-                    <div class="info">
-                      <div class="title">Warning !</div>
-                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </router-link>
-                  <router-link to="/" class="list-item error">
-                    <div class="icon">
-                      <icon-warning></icon-warning>
-                    </div>
-                    <div class="info">
-                      <div class="title">Error !</div>
-                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </router-link>
+            <div class="" v-click-outside="hideNotificationSidebar">
+              <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
+                <div class="card">
+                  <div class="heading">
+                    <h4 class="">Notifications</h4>
+                  </div>
+                  <div class="notes-list">
+                    <router-link to="/" class="list-item success">
+                      <div class="icon">
+                        <icon-success></icon-success>
+                      </div>
+                      <div class="info">
+                        <div class="title">Success</div>
+                        <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                      </div>
+                    </router-link>
+                    <router-link to="/" class="list-item warning">
+                      <div class="icon">
+                        <icon-warning></icon-warning>
+                      </div>
+                      <div class="info">
+                        <div class="title">Warning !</div>
+                        <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                      </div>
+                    </router-link>
+                    <router-link to="/" class="list-item error">
+                      <div class="icon">
+                        <icon-warning></icon-warning>
+                      </div>
+                      <div class="info">
+                        <div class="title">Error !</div>
+                        <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                      </div>
+                    </router-link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -279,7 +292,7 @@
             <div class="notes-section" v-if="nav.noteSidebar" >
               <div class="card">
                 <div class="heading">
-                  <h3 class="">Notes</h3>
+                  <h4 class="">Notes</h4>
                   <div class="icon" @click.prevent="nav.addModal = true">
                     <icon-add></icon-add>
                   </div>
@@ -469,12 +482,13 @@ function hideNoteSidebar() {
 function showNoteSidebar() {
   nav.noteSidebar = true;
 }
-function hideNotificationSidebar() {
-  nav.notificationSidebar = false;
-}
 function showNotificationSidebar() {
   nav.notificationSidebar = true;
 }
+function hideNotificationSidebar() {
+  nav.notificationSidebar = false;
+}
+
 function toggleSetting() {
   nav.settingList = !nav.settingList
 }

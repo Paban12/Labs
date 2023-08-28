@@ -40,6 +40,10 @@
           }
           .bank-details{
             .bank-row{
+              border: 1px solid var(--light-blue);
+              margin-bottom: 0.5rem;
+              padding: 0.5rem;
+              border-radius: 5px;
               .delete-icon{
                 cursor: pointer;
                 height: 2.5rem;
@@ -69,6 +73,28 @@
             margin-bottom: 0.5rem;
           }
         }
+      }
+    }
+  }
+}
+
+
+//media queries
+@media (max-width: 768px){
+  .practice-details-page .container .card .card-body .form .bank-details .bank-row{
+    .form-item{
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@media (max-width: 560px){
+  .practice-details-page .container .card .card-body .form .self-details{
+    .self-details-row{
+      gap: 1rem;
+      flex-direction: column;
+      .right{
+        width: 100%;
       }
     }
   }

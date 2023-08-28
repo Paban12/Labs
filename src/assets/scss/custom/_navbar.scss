@@ -228,7 +228,7 @@
     }
     .sidebar-card{
       position: relative;
-      .close-icon{
+      .mob-view{
         display: none;
       }
       .menu-icons{
@@ -670,7 +670,54 @@
       }
     }
     .sidebar{
+      padding-top: 4rem;
       .sidebar-card{
+        .mob-icons{
+          display: flex;
+          align-items: center;
+          position: absolute;
+          top: -3rem;
+          left: 1rem;
+          gap: 1rem;
+          .bell-icon{
+            background-image: url(/src/assets/images/png/gradient-circle.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 2.5rem;
+            width: 2.5rem;
+            min-height: 2.5rem;
+            min-width: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            &:hover{
+              // box-shadow: none;
+              .tooltip{
+                transition: all 0.4s linear;
+                display: flex;
+              }
+            }
+            img{
+              height: 2.1rem;
+              width: 2.1rem;
+            }
+            .no{
+              position: absolute;
+              top: 0.5px;
+              right: 0.5px;
+              background: red;
+              height: 9px;
+              width: 9px;
+              border-radius: 100%;
+            }
+            .tooltip{
+              font-weight: 700;
+            }
+          }
+        }
         .menu-icons{
           .mob-view{
             display: flex;
@@ -687,16 +734,23 @@
 @media (max-width: 560px){
   .navbar{
     .sidebar{
-      width: 100%;
+      // width: 100%;
       top: 0;
       height: 100vh;
       .sidebar-card{
         // posi
+        .mob-view{
+          display: block;
+        }
+        .mob-icons{
+          display: flex;
+
+        }
         .close-icon{
           position: absolute;
-          top: -1rem;
+          top: -3rem;
           right: 1rem;
-          display: block;
+          display: flex;
           #icon{
             height: 2rem;
             width: 2rem;
