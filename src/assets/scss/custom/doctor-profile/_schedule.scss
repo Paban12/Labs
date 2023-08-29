@@ -85,3 +85,22 @@
     opacity: 0;
   }
 }
+
+
+
+//media queries
+@media (max-width: 768px){
+  .dr-schedule{
+    .schedule-item{
+      .schedule-answer{
+        .cards{
+          // width: 100%;
+          flex-direction: column;
+          .single-card{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -39,7 +39,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> 
       <div class="profile-main-content card">
         <div class="tab-options">
           <div

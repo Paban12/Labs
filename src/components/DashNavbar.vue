@@ -55,12 +55,35 @@
                   </div>
                   <div class="text">Doctors</div>
                 </router-link>
-                <router-link to="/pathologist" class="list desk-view" @click="toggleSidebar">
+                <router-link to="/pathologist" class="list" @click="toggleSidebar">
                   <div class="icon">
                     <icon-lab></icon-lab>
                   </div>
                   <div class="text">Pathologist</div>
                 </router-link>
+                <div class="list setting-title mob-view" @click.prevent="toggleApt()">
+                  <div class="main-icon">
+                    <icon-setting></icon-setting>
+                  </div>
+                  <div class="text">Appointments</div>
+                  <div class="icon" v-if="!nav.aptList" @click.prevent="toggleApt()">
+                    <icon-right-arrow-round></icon-right-arrow-round>
+                  </div>
+                  <div class="icon" v-if="nav.aptList" @click.prevent="toggleApt()">
+                    <icon-down-arrow-round></icon-down-arrow-round>
+                  </div>
+                </div>
+                <!-- //Appoinment List -->
+                <div class="setting-list mob-view" v-if="nav.aptList">
+                  <router-link to="/appointment/doctor" class="list" @click="toggleSidebar">
+                    <div class="text">Doctor Appointments</div>
+                  </router-link>
+                  <router-link to="/appointment/patient" class="list" @click="toggleSidebar">
+                    <div class="text">Patient Appointments</div>
+                  </router-link>
+                </div>
+
+
                 <router-link to="/staff/details" class="list desk-view" @click="toggleSidebar">
                   <div class="icon">
                     <icon-staff></icon-staff>
@@ -166,12 +189,6 @@
                   </div>
                   <div class="text">Prescription</div>
                 </router-link>
-                <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
-                  <div class="icon">
-                    <icon-dashboard></icon-dashboard>
-                  </div>
-                  <div class="text">Patient Appoinments</div>
-                </router-link>
               </div>
             </div>
           </div>
@@ -233,7 +250,7 @@
               </div>
             </div>
           </div>
-          <div class="bell-icon desk-icon" @click.prevent="nav.notificationSidebar = true">
+          <div class="bell-icon tab-icon" @click.prevent="nav.notificationSidebar = true">
             <img src="/src/assets/images/png/bell.png" alt="" />
             <div class="no"></div>
             <div class="tooltip">Notificationnn</div>
@@ -284,7 +301,7 @@
             <img src="/src/assets/images/png/add.png" alt="" />
             <div class="tooltip">Appointment</div>
           </div>
-          <div class="bell-icon desk-icon" @click.prevent="nav.noteSidebar = true">
+          <div class="bell-icon tab-icon" @click.prevent="nav.noteSidebar = true">
             <img src="/src/assets/images/png/note.png" alt="" />
             <div class="tooltip">Notes</div>
           </div>
@@ -435,6 +452,7 @@ const nav = reactive({
   noteSidebar: false,
   notificationSidebar: false,
   settingList: false,
+  aptList: false,
 });
 
 const matches = [
@@ -491,6 +509,9 @@ function hideNotificationSidebar() {
 
 function toggleSetting() {
   nav.settingList = !nav.settingList
+}
+function toggleApt() {
+  nav.aptList = !nav.aptList
 }
 </script>
 

@@ -374,8 +374,9 @@ const reviewCarousel = [
 
 .parent-container {
   position: relative;
-  width: 1000px;
-  height: 1000px;
+  /* width: 1000px;
+  height: 1000px; */
+  display: none;
 }
 
 .hover-trigger {

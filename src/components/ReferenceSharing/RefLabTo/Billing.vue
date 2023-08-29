@@ -265,6 +265,10 @@ const refLabOptions = [
   { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
 ];
+
+const handleSelectedOption = (option) => {
+  console.log("Selected option:", option);
+};
 </script>
 
 <style>
