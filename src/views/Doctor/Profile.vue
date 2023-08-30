@@ -35,7 +35,7 @@
             </div>
             <div class="data">
               <div class="title">Phone No :</div>
-              <div class="val">+91 8888888888</div>
+              <div class="val">+91 {{ storeVar.mobile }}</div>
             </div>
           </div>
         </div>
@@ -131,8 +131,16 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import moment from "moment";
+import { reactive, computed, onBeforeMount } from 'vue';
+import { useStore } from 'vuex'
+import router from "../../router";
+import { useRoute } from "vue-router";
 
+/* Constants */
+const store = useStore()
+const route = useRoute();
+const storeVar = computed(() => store.state.Doctor);
 const formVar = reactive({
   tab: 1,
   imagePreview: "",

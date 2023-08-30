@@ -29,21 +29,23 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Speciality</th>
+                <th>Status</th>
                 <th class="text-center">View</th>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in doctorData" :key="item">
+                <tr v-for="(item, index) in storeVar.doctorData" :key="index">
                   <td>{{ index + 1 }}</td>
                   <td>{{ item.id }}</td>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.phone }}</td>
-                  <td>{{ item.email }}</td>
+                  <td>{{ item.doctorDetail?.name }}</td>
+                  <td>{{ item.phoneNumber }}</td>
+                  <td>{{ item.doctorDetail?.emailId }}</td>
                   <td>{{ item.speciality }}</td>
+                  <td>{{ item.doctorDetail?.status }}</td>
                   <td class="text-center">
                     <div class="option-btns">
-                      <router-link to="/doctor/profile" class="">
+                      <a class="" @click="navigate('/doctor/profile',item.id)">
                         <img src="/src/assets/images/png/man.png" alt="" />
-                      </router-link>
+                      </a>
                       <div
                         class=""
                         @click.prevent="formVar.confirmModal = true"
@@ -61,7 +63,8 @@
           </div>
           <div class="table-footer">
             <div class="entries">
-              Showing <span>0</span> to <span>0</span> of <span>0</span> entries
+              Showing <span>{{ formVar.offset }}</span> to <span>{{ formVar.limit+formVar.offset }}</span> of <span>{{
+                storeVar.totalDoctor }}</span> entries
             </div>
             <div class="pagination">
               <icon-left-double-arrow></icon-left-double-arrow>
@@ -94,7 +97,7 @@
     >
       <template v-slot:header>
         <div class="title" showHeader="true">Add Doctor</div>
-        <div class="close-btn" @click.prevent="formVar.addModal = false">
+        <div class="close-btn" @click.prevent="storeVar.addDoctorModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
@@ -235,7 +238,10 @@
           </div>
         </div>
         <div class="save-btn flex justify-end">
-          <button class="btn black-btn w-10-r">Add</button>
+          <button type="button" class="btn black-btn w-10-r load-btn" v-if="storeVar.loaderButton">
+            <icon-login-loader></icon-login-loader>
+          </button>
+          <button type="submit" class="btn black-btn w-10-r">Add</button>
         </div>
       </form>
     </Modal>
@@ -250,7 +256,22 @@ import { useStore } from "vuex";
 /* Constants */
 
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
+const storeVar = computed(() => store.state.Doctor);
+
+const rolesOptions = [
+  { id: 'EMPLOYEE', name: "EMPLOYEE" },
+  { id: 'DOCTOR', name: "DOCTOR" },
+  { id: 'STAFF', name: "STAFF" },
+  { id: 'FRONT DESK', name: "FRONT DESK" },
+  { id: 'BACK DESK', name: "BACK DESK" },
+  { id: 'PATHOLOGIEST', name: "PATHOLOGIEST" },
+];
+const genderOptions = [
+  { id: 'MALE', name: "MALE" },
+  { id: 'FEMALE', name: "FEMALE" },
+  { id: 'UNISEX', name: "UNISEX" },
+  { id: 'OTHER', name: "OTHER" },
+];
 const formVar = reactive({
   submit: false,
   confirmModal: false,
@@ -290,21 +311,63 @@ const specialityOptions = [
   { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
 ];
-const genderOptions = [
-  { name: "Male", id: "male" },
-  { name: "Female", id: "female" },
-  { name: "Other", id: "other" },
-];
+
 
 //search select end//
 
 /* Constants */
 
 /* Lifecycle/Hooks */
+onBeforeMount(() => {
+  getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, formVar.cPage)
+})
 /* Lifecycle/Hooks */
 
 /* Functions/Methods */
-
+function getDoctor(limit, offset, keyword, status, role, cPage) {
+  store.dispatch("Doctor/getDoctor", { limit, offset, keyword, status, role, cPage });
+}
+function lowerClick(page) {
+  if (page > 1) {
+    formVar.offset = formVar.offset - formVar.limit
+    getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, page <= 1 ? 1 : page - 1)
+    storeVar.value.lowerPage = page <= 1 ? 1 : page - 1
+  }
+}
+function upperClick(page) {
+  if (storeVar.value.upperStatus) {
+    formVar.offset = formVar.offset + formVar.limit
+    getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, page + 1)
+    storeVar.value.lowerPage = page + 1
+  }
+}
+function clickFirst() {
+  if (storeVar.value.lowerPage > 1) {
+    formVar.offset = 0
+    getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, 1)
+    let pageNumber = storeVar.value.totalDoctor / formVar.limit
+    if (Number.isInteger(pageNumber)) {
+      storeVar.value.lowerPage = pageNumber
+    }
+    else {
+      storeVar.value.lowerPage = Number(pageNumber.toFixed(0)) + 1
+    }
+  }
+}
+function clickLast() {
+  if (storeVar.value.upperStatus) {
+    let remainder = storeVar.value.totalDoctor % formVar.limit
+    formVar.offset = storeVar.value.totalDoctor - remainder
+    getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, 1)
+    let pageNumber = storeVar.value.totalDoctor / formVar.limit
+    if (Number.isInteger(pageNumber)) {
+      storeVar.value.lowerPage = pageNumber
+    }
+    else {
+      storeVar.value.lowerPage = Math.trunc(pageNumber) + 1
+    }
+  }
+}
 const onSubmitDoctor = () => {
   if (
     nameValid.value ||
@@ -321,14 +384,22 @@ const onSubmitDoctor = () => {
     return;
   }
   formVar.submit = false;
-  store.dispatch("Auth/verifyUser", {
-    userId: 10563543453,
-    password: 4532453,
+  store.dispatch("Doctor/addDoctor", {
+    loginId: formVar.phone,
+    name: formVar.name,
+    emailId: formVar.email,
+    gender: formVar.gender,
+    dob: formVar.dob,
+    roles: formVar.role,
+    password: formVar.password
   });
 };
 const handleSelectedOption = (option) => {
   console.log("Selected option:", option);
 };
+function navigate(link,id){
+  router.push({ path: link, query: { id } })
+}
 function today() {
   var fullDate = new Date();
   var tDate = fullDate.getDate();
@@ -397,26 +468,9 @@ const genderValid = computed(() => {
     return "Please select gender!";
   }
 });
-const specialityValid = computed(() => {
-  if (!formVar.speciality) {
-    return "Please select speciality!";
-  }
-});
-
-const addressValid = computed(() => {
-  if (!formVar.address) {
-    return "Please enter address!";
-  }
-});
-
-const stateValid = computed(() => {
-  if (!formVar.state) {
-    return "Please select state!";
-  }
-});
-const cityValid = computed(() => {
-  if (!formVar.city) {
-    return "Please select city!";
+const passwordValid = computed(() => {
+  if (!formVar.password) {
+    return "Please enter password!";
   }
 });
 function isNumber(e) {

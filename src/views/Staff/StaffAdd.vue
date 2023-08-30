@@ -23,12 +23,8 @@
           <div class="two-inputs">
             <div class="form-item mb-16">
               <div class="title">Select Gender</div>
-              <Select
-                v-model="formVar.gender"
-                :options="genderOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Gender"
-              ></Select>
+              <Select v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
+                placeholder="Select Gender"></Select>
               <div class="err-msg" v-if="formVar.submit && genderValid">
                 {{ genderValid }}
               </div>
@@ -44,25 +40,16 @@
           <div class="two-inputs">
             <div class="form-item mb-16">
               <div class="title">Phone No</div>
-              <input
-                type="number"
-                v-model="formVar.phone"
-                placeholder="Enter Phone No"
-                v-on:keypress="isNumber($event)"
-                v-on:keyup="phnum($event.target.value)"
-              />
+              <input type="number" v-model="formVar.phone" placeholder="Enter Phone No" v-on:keypress="isNumber($event)"
+                v-on:keyup="phnum($event.target.value)" />
               <div class="err-msg" v-if="formVar.submit && phoneValid">
                 {{ phoneValid }}
               </div>
             </div>
             <div class="form-item mb-16">
               <div class="title">Select Roles</div>
-              <Select
-                v-model="formVar.post"
-                :options="postOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Post"
-              ></Select>
+              <Select v-model="formVar.post" :options="postOptions" @selected="handleSelectedOption"
+                placeholder="Select Post"></Select>
               <div class="err-msg" v-if="formVar.submit && postValid">
                 {{ postValid }}
               </div>
@@ -70,11 +57,7 @@
           </div>
           <div class="form-item mb-16">
             <div class="title">Password</div>
-            <input
-                type="text"
-                v-model="formVar.password"
-                placeholder="Enter Password"
-              />
+            <input type="text" v-model="formVar.password" placeholder="Enter Password" />
             <div class="err-msg" v-if="formVar.submit && passwordValid">
               {{ passwordValid }}
             </div>
@@ -120,14 +103,14 @@ const genderOptions = [
 ];
 const formVar = reactive({
   submit: false,
-  name:null,
-  phone:null,
-  email:null,
-  address:null,
+  name: null,
+  phone: null,
+  email: null,
+  address: null,
   post: postOptions[0],
-  dob:null,
-  gender:genderOptions[0],
-  password:null,
+  dob: null,
+  gender: genderOptions[0],
+  password: null,
 
 })
 
@@ -147,20 +130,20 @@ const onSubmitStaffDetails = () => {
     passwordValid.value ||
     genderValid.value ||
     dobValid.value ||
-    postValid.value 
+    postValid.value
   ) {
     formVar.submit = true;
     return;
   }
   formVar.submit = false;
   store.dispatch("Staff/addStaff", {
-    loginId:formVar.phone,
-    name:formVar.name,
-    emailId:formVar.email,
-    gender:formVar.gender?.id,
-    dob:formVar.dob,
-    roles:formVar.post?.id,
-    password:formVar.password
+    loginId: formVar.phone,
+    name: formVar.name,
+    emailId: formVar.email,
+    gender: formVar.gender?.id,
+    dob: formVar.dob,
+    roles: formVar.post?.id,
+    password: formVar.password
   });
 };
 /* Functions/Methods */
@@ -180,7 +163,7 @@ const phoneValid = computed(() => {
   let phoneValid = /^[6-9][0-9]{9}$/
   if (!formVar.phone) {
     return "Please enter your phone no!";
-  }else if (!phoneValid.test(formVar.phone)) {
+  } else if (!phoneValid.test(formVar.phone)) {
     return "Please enter valid phone no!";
   }
 });
@@ -188,7 +171,7 @@ const emailValid = computed(() => {
   let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
   if (!formVar.email) {
     return "Please enter your email!";
-  }else if (!emailValid.test(formVar.email)) {
+  } else if (!emailValid.test(formVar.email)) {
     return "Please enter valid email!";
   }
 });
@@ -218,5 +201,4 @@ function phnum(e) {
 /* Validation */
 </script>
 
-<style>
-</style>
+<style></style>

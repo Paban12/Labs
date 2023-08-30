@@ -8,9 +8,11 @@ export const verifyUser = async ({ commit, dispatch }, { loginId, password }) =>
 	await apiServices.verifyId(loginId, password).then(
 		(response) => {
 			console.log(response.data);
+			localStorage.setItem('accessToken', response.data.token);
 			successHandler(response.data.message)
 			commit("SET_LOADER_BUTTON", false);
-			router.push({path:'/forgot',query:{id:loginId}})
+			// router.push({path:'/forgot',query:{id:loginId}})
+			router.push({path:'/forgot'})
 		},
 		(error) => {
 			commit("SET_LOADER_BUTTON", false);

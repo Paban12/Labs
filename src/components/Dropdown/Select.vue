@@ -108,7 +108,7 @@ if (props.ctrlKFocus) {
 </script>
 
 <template>
-  <div class="select-row">
+  <div class="select-dropdown">
     <select
       v-if="computedType === 'select'"
       :id="id"
