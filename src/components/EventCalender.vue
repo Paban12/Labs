@@ -151,7 +151,7 @@
         </li>
       </ul>
       <!-- dummy for week -->
-      <div class="week-time">
+      <!-- <div class="week-time">
         <div class="week-time-row">
           <div class="item">00:00 AM</div>
           <div class="item">
@@ -356,7 +356,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
