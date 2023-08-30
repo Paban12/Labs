@@ -89,6 +89,43 @@
   }
 }
 
+.big-modal{
+  .modal-dialog{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    .bank-row{
+      position: relative;
+      .delete-icon{
+        cursor: pointer;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        img{
+          height: 1.2rem;
+          width: 1.2rem;
+        }
+      }
+    }
+  }
+}
+.mid-modal{
+  .modal-dialog{
+    width: 1140px;
+    .save-btn{
+      .checks{
+        gap: 1.5rem;
+        .data{
+          .text{
+            font-size: 0.85rem;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .4s linear;

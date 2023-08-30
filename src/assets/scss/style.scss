@@ -84,6 +84,10 @@ body{
 .text-grey{
   color: grey;
 }
+.text-blue{
+  color: var(--blue);
+  font-size: 0.85rem;
+}
 .border-none{
   border: none !important;
 }
@@ -113,6 +117,9 @@ body{
 }
 .mb-5{
   margin-bottom: 5px;
+}
+.mb-0{
+  margin-bottom: 0 !important;
 }
 .mt-16{
   margin-top: 16px;
@@ -199,12 +206,21 @@ a{
 .green-btn{
   background: #2E750D;
   border-color: #2E750D;
+  color: var(--white);
 }
 .grade-btn{
   background-image: url(/src/assets/images/png/gradient-rectangle.png);
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
+}
+
+.card-header-bg{
+  background: var(--blue);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 5px 5px 0 0;
+  font-weight: 700;
 }
 
 .tag{
@@ -574,6 +590,10 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
 .w-max{
   width: max-content !important;
 }
+.min-w-max{
+  min-width: max-content !important;
+}
+
 
 .dr-input{
   position: relative;
@@ -873,9 +893,9 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
 .p-info-card{
   position: absolute;
   z-index: 15;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 1.5rem;
+  left: 0;
+  // transform: translateX(-50%);
+  top: 1.4rem;
   padding: 0.5rem;
   width: 290px;
   color: var(--black);
@@ -885,7 +905,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
   &::before {
     position: absolute;
     top: -10px;
-    left: 50%;
+    left: 3rem;
     margin-left: -10px;
     content:"";
     display:block;
@@ -1027,6 +1047,26 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     border-right: 10px solid transparent;
     border-bottom: 10px solid var(--primary); 
     
+  }
+}
+
+.card-sub-tabs{
+  display: flex;
+  width: 100%;
+  border-radius: 5px;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  .tab{
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .active{
+    background: var(--white);
+    color: var(--blue);
+    border-bottom: 2px solid var(--blue);
+    font-weight: 700;
   }
 }
 

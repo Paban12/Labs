@@ -38,6 +38,30 @@ const BillingExpense = defineAsyncComponent(() => import('../components/Billing/
 const BillingIntegration = defineAsyncComponent(() => import('../components/Billing/Integration.vue'))
 const BillingSetting = defineAsyncComponent(() => import('../components/Billing/Setting.vue'))
 
+//Reference Sharing
+//Ref Lab Doctor
+const RefLabDoctorBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Billing.vue'))
+const RefLabDoctorTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Test.vue'))
+const RefLabDoctorSharing = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Sharing.vue'))
+const RefLabDoctorSetting = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabDoctor/Setting.vue'))
+//Ref Lab To
+const RefLabToBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabTo/Billing.vue'))
+const RefLabToTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabTo/Test.vue'))
+//Ref Lab To
+const RefLabByBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabBy/Billing.vue'))
+const RefLabByTest = defineAsyncComponent(() => import('../components/ReferenceSharing/RefLabBy/Test.vue'))
+//Pheblo Sharing
+const PhleboBilling = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Billing.vue'))
+const PhleboSharing = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Sharing.vue'))
+const PhleboSetting = defineAsyncComponent(() => import('../components/ReferenceSharing/Phlebo/Setting.vue'))
+
+//Patient Groups
+const PatientGroup = defineAsyncComponent(() => import('../components/PatientGroup/PatientGroup.vue'))
+const PatientMaster = defineAsyncComponent(() => import('../components/PatientGroup/PatientMaster.vue'))
+
+//Reports
+const PatientReport = defineAsyncComponent(() => import('../components/Reports/Patients.vue'))
+
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
 const LoginLoaderIcon = defineAsyncComponent(() => import('../components/icons/login-loader-svg.vue'))
@@ -52,10 +76,14 @@ const WarningIcon = defineAsyncComponent(() => import('../components/icons/warni
 const MenuIcon = defineAsyncComponent(() => import('../components/icons/menu-svg.vue'))
 const DoubleArrowIcon = defineAsyncComponent(() => import('../components/icons/double-arrow-svg.vue'))
 const PadIcon = defineAsyncComponent(() => import('../components/icons/pad-svg.vue'))
+const DoctorIcon2 = defineAsyncComponent(() => import('../components/icons/doctor2-svg.vue'))
 const DoctorIcon = defineAsyncComponent(() => import('../components/icons/doctor-svg.vue'))
 const NurseIcon = defineAsyncComponent(() => import('../components/icons/nurse-svg.vue'))
 const HospitalIcon = defineAsyncComponent(() => import('../components/icons/hospital-svg.vue'))
+const RightDoubleArrowIcon = defineAsyncComponent(() => import('../components/icons/right-double-arrow-svg.vue'))
+const LeftDoubleArrowIcon = defineAsyncComponent(() => import('../components/icons/left-double-arrow-svg.vue'))
 const RightArrowRoundIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-round-svg.vue'))
+const LeftArrowRoundIcon = defineAsyncComponent(() => import('../components/icons/left-arrow-round-svg.vue'))
 const DownArrowRoundIcon = defineAsyncComponent(() => import('../components/icons/down-arrow-round-svg.vue'))
 const MessageIcon = defineAsyncComponent(() => import('../components/icons/message-svg.vue'))
 const UserIcon = defineAsyncComponent(() => import('../components/icons/user-svg.vue'))
@@ -80,6 +108,18 @@ const DeleteIcon = defineAsyncComponent(() => import('../components/icons/delete
 const EditIcon = defineAsyncComponent(() => import('../components/icons/edit-svg.vue'))
 const VertDotsIcon = defineAsyncComponent(() => import('../components/icons/vert-dots-svg.vue'))
 const AddUserIcon = defineAsyncComponent(() => import('../components/icons/add-user-svg.vue'))
+const DashboardIcon = defineAsyncComponent(() => import('../components/icons/dashboard-svg.vue'))
+const PatientIcon = defineAsyncComponent(() => import('../components/icons/patient-svg.vue'))
+const StaffIcon = defineAsyncComponent(() => import('../components/icons/staff-svg.vue'))
+const LabIcon = defineAsyncComponent(() => import('../components/icons/lab-svg.vue'))
+const HelpIcon = defineAsyncComponent(() => import('../components/icons/help-svg.vue'))
+const FeedbackIcon = defineAsyncComponent(() => import('../components/icons/feedback-svg.vue'))
+const SettingIcon = defineAsyncComponent(() => import('../components/icons/setting-svg.vue'))
+const ReportIcon = defineAsyncComponent(() => import('../components/icons/report-svg.vue'))
+const ShareIcon = defineAsyncComponent(() => import('../components/icons/share-svg.vue'))
+const VisitIcon = defineAsyncComponent(() => import('../components/icons/visit-svg.vue'))
+const PrescriptionIcon = defineAsyncComponent(() => import('../components/icons/prescription-svg.vue'))
+const MoneyIcon = defineAsyncComponent(() => import('../components/icons/money-svg.vue'))
 // const Icon = defineAsyncComponent(() => import('../components/icons/-svg.vue'))
 
 const GlobalComponents = {
@@ -120,6 +160,30 @@ const GlobalComponents = {
     app.component('BillingExpense', BillingExpense)
     app.component('BillingIntegration', BillingIntegration)
     app.component('BillingSetting', BillingSetting)
+
+    //Reference Sharing
+    //Ref Lab Doctor
+    app.component('RefLabDoctorBilling', RefLabDoctorBilling)
+    app.component('RefLabDoctorTest', RefLabDoctorTest)
+    app.component('RefLabDoctorSharing', RefLabDoctorSharing)
+    app.component('RefLabDoctorSetting', RefLabDoctorSetting)
+    //Ref Lab To
+    app.component('RefLabToBilling', RefLabToBilling)
+    app.component('RefLabToTest', RefLabToTest)
+    //Ref Lab By
+    app.component('RefLabByBilling', RefLabByBilling)
+    app.component('RefLabByTest', RefLabByTest)
+    //Pheblo Sharing
+    app.component('PhleboBilling', PhleboBilling)
+    app.component('PhleboSharing', PhleboSharing)
+    app.component('PhleboSetting', PhleboSetting)
+
+    //Patient Group
+    app.component('PatientGroup', PatientGroup)
+    app.component('PatientMaster', PatientMaster)
+
+    //Reports
+    app.component('PatientReport', PatientReport)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)
@@ -136,9 +200,13 @@ const GlobalComponents = {
     app.component('icon-double-arrow', DoubleArrowIcon)
     app.component('icon-pad', PadIcon)
     app.component('icon-doctor', DoctorIcon)
+    app.component('icon-doctor2', DoctorIcon2)
     app.component('icon-nurse', NurseIcon)
     app.component('icon-hospital', HospitalIcon)
+    app.component('icon-right-double-arrow', RightDoubleArrowIcon)
+    app.component('icon-left-double-arrow', LeftDoubleArrowIcon)
     app.component('icon-right-arrow-round', RightArrowRoundIcon)
+    app.component('icon-left-arrow-round', LeftArrowRoundIcon)
     app.component('icon-down-arrow-round', DownArrowRoundIcon)
     app.component('icon-message', MessageIcon)
     app.component('icon-user', UserIcon)
@@ -163,6 +231,20 @@ const GlobalComponents = {
     app.component('icon-edit', EditIcon)
     app.component('icon-vert-dots', VertDotsIcon)
     app.component('icon-add-user', AddUserIcon)
+    app.component('icon-dashboard', DashboardIcon)
+    app.component('icon-patient', PatientIcon)
+    app.component('icon-staff', StaffIcon)
+    app.component('icon-lab', LabIcon)
+    app.component('icon-share', ShareIcon)
+    app.component('icon-feedback', FeedbackIcon)
+    app.component('icon-help', HelpIcon)
+    app.component('icon-prescription', PrescriptionIcon)
+    app.component('icon-setting', SettingIcon)
+    app.component('icon-report', ReportIcon)
+    app.component('icon-visit', VisitIcon)
+    app.component('icon-money', MoneyIcon)
+    // app.component('icon-', Icon)
+    // app.component('icon-', Icon)
     // app.component('icon-', Icon)
   }
 }

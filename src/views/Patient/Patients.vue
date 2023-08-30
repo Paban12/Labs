@@ -83,7 +83,7 @@
         <button class="btn confirm-btn">Confirm</button>
       </div>
     </Modal>
-    <Modal v-model:show="formVar.addModal" class="" headerClasses="header-bg">
+    <Modal v-model:show="formVar.addModal" class="mid-modal" headerClasses="header-bg">
       <template v-slot:header>
         <div class="title" showHeader="true">Add Patient</div>
         <div class="close-btn" @click.prevent="formVar.addModal = false">
@@ -118,7 +118,7 @@
             <div>{{ ageCalculate }}</div>
             <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
           </div>
-          <div class="col-2 form-item mb-16">
+          <div class="col-25 form-item mb-16">
             <input type="text" v-model="formVar.age" class="bg-blue" disabled />
           </div>
         </div>
@@ -154,20 +154,18 @@
               placeholder="Alcohol Consumption"></SingleSelect>
           </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.phone" placeholder="Enter Phone no"
-          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
-          <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
+        <div class="row">
+          <div class="form-item mb-16">
+            <input type="text" v-model="formVar.phone" placeholder="Enter Phone no"
+            v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
+            <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" v-model="formVar.email" placeholder="Enter Email" />
+            <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
+          </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.email" placeholder="Enter Email" />
-          <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.address" placeholder="Enter Address" />
-          <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
-        </div>
-        <div class="two-inputs">
+        <div class="row">
           <div class="col-5 form-item mb-16">
             <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
               placeholder="Select State"></SingleSelect>
@@ -178,6 +176,10 @@
               placeholder="Select City"></SingleSelect>
               <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
           </div>
+        </div>
+        <div class="form-item mb-16">
+          <textarea type="text" v-model="formVar.address" placeholder="Enter Address" />
+          <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
         <div class="two-inputs">
           <div class="col-5 form-item mb-16">

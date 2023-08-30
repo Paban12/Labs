@@ -10,7 +10,10 @@
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
             <div class="add-btn">
-              <button class="btn black-btn" @click.prevent="storeVar.addDoctorModal = true">
+              <button
+                class="btn black-btn"
+                @click.prevent="formVar.addModal = true"
+              >
                 Add New
               </button>
             </div>
@@ -43,7 +46,10 @@
                       <a class="" @click="navigate('/doctor/profile',item.id)">
                         <img src="/src/assets/images/png/man.png" alt="" />
                       </a>
-                      <div class="" @click.prevent="formVar.confirmModal = true">
+                      <div
+                        class=""
+                        @click.prevent="formVar.confirmModal = true"
+                      >
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
                     </div>
@@ -52,7 +58,7 @@
               </tbody>
             </table>
           </div>
-          <div class="table-no-data" v-if="storeVar.doctorData.length <= 0">
+          <div class="table-no-data">
             <div>No records Found!</div>
           </div>
           <div class="table-footer">
@@ -61,12 +67,11 @@
                 storeVar.totalDoctor }}</span> entries
             </div>
             <div class="pagination">
-              <span @click="clickFirst">First</span>
-              <span @click="lowerClick(storeVar.lowerPage)">Previous</span>
-              <div class="page" @click="lowerClick(storeVar.lowerPage)">{{ storeVar.lowerPage }}</div>
-              <!-- <div v-if="storeVar.upperPage" class="page" @click="upperClick(storeVar.upperPage)">{{ storeVar.upperPage }}</div> -->
-              <span @click="upperClick(storeVar.lowerPage)">Next</span>
-              <span @click="clickLast">Last</span>
+              <icon-left-double-arrow></icon-left-double-arrow>
+              <div class="page">1</div>
+              <div class="page active">2</div>
+              <div class="page">3</div>
+              <icon-right-double-arrow></icon-right-double-arrow>
             </div>
           </div>
         </div>
@@ -76,13 +81,20 @@
     <Modal v-model:show="formVar.confirmModal" class="confirm-modal">
       <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">
+        <button
+          class="btn grey-btn cancel-btn"
+          @click.prevent="formVar.confirmModal = false"
+        >
           Cancel
         </button>
         <button class="btn confirm-btn">Confirm</button>
       </div>
     </Modal>
-    <Modal v-model:show="storeVar.addDoctorModal" class="" headerClasses="header-bg">
+    <Modal
+      v-model:show="formVar.addModal"
+      class="mid-modal"
+      headerClasses="header-bg"
+    >
       <template v-slot:header>
         <div class="title" showHeader="true">Add Doctor</div>
         <div class="close-btn" @click.prevent="storeVar.addDoctorModal = false">
@@ -90,28 +102,29 @@
         </div>
       </template>
       <form action="" class="form" @submit.prevent="onSubmitDoctor">
-        <div class="row">
+        <div class="two-inputs">
           <div class="form-item mb-16">
-            <input type="text" v-model="formVar.name" placeholder="Doctor Name" />
-            <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
+            <input
+              type="text"
+              v-model="formVar.name"
+              placeholder="Doctor Name"
+            />
+            <div class="err-msg" v-if="formVar.submit && nameValid">
+              {{ nameValid }}
+            </div>
           </div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.email" placeholder="Enter Email" />
-          <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.phone" placeholder="Enter Phone no" v-on:keypress="isNumber($event)"
-            v-on:keyup="phnum($event.target.value)" />
-          <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
-        </div>
-        <div class="form-item mb-16">
-          <SingleSelect v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
-            placeholder="Select Gender"></SingleSelect>
-          <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
-        </div>
-        <div class="row">
-          <div class="col-75 form-item mb-16">
+          <div class="form-item mb-16">
+            <SingleSelect
+              v-model="formVar.gender"
+              :options="genderOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Gender"
+            ></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && genderValid">
+              {{ genderValid }}
+            </div>
+          </div>
+          <div class="form-item mb-16">
             <div class="date-input">
               <input type="date" v-model="formVar.dob" :max="today()" />
               <div class="icon">
@@ -119,15 +132,110 @@
               </div>
             </div>
             <div>{{ ageCalculate }}</div>
-            <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
+            <div class="err-msg" v-if="formVar.submit && dobValid">
+              {{ dobValid }}
+            </div>
           </div>
-          <div class="col-2 form-item mb-16">
+          <div class="mb-16">
             <input type="text" v-model="formVar.age" class="bg-blue" disabled />
           </div>
         </div>
+        
+        <div class="two-inputs">
+          <div class="form-item mb-16">
+            <input
+              type="text"
+              v-model="formVar.phone"
+              placeholder="Enter Phone no"
+              v-on:keypress="isNumber($event)"
+              v-on:keyup="phnum($event.target.value)"
+            />
+            <div class="err-msg" v-if="formVar.submit && phoneValid">
+              {{ phoneValid }}
+            </div>
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Enter Alternate Phone no" />
+          </div>
+          <div class="form-item mb-16">
+            <input
+              type="text"
+              v-model="formVar.email"
+              placeholder="Enter Email"
+            />
+            <div class="err-msg" v-if="formVar.submit && emailValid">
+              {{ emailValid }}
+            </div>
+          </div>
+          <div class="form-item mb-16">
+            <SingleSelect
+              v-model="formVar.speciality"
+              :options="specialityOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select Speciality"
+            ></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && specialityValid">
+              {{ specialityValid }}
+            </div>
+          </div>
+        </div>
+        
+        <div class="two-inputs">
+          <div class="form-item mb-16">
+          <input type="text" placeholder="Enter Registration Council & No" />
+            <div class="err-msg">Please enter registration council & no</div>
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Enter Registration Year" />
+            <div class="err-msg">Please enter registration year</div>
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Enter Experience (Years)" />
+          </div>
+          <div class="form-item mb-16">
+            <div class="select-dropdown">
+              <select name="" id="">
+                <option value="">Registration Type</option>
+                <option value="">Country</option>
+                <option value="">State</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="two-inputs">
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="formVar.state"
+              :options="stateOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select State"
+            ></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && stateValid">
+              {{ stateValid }}
+            </div>
+          </div>
+          <div class="col-5 form-item mb-16">
+            <SingleSelect
+              v-model="formVar.city"
+              :options="cityOptions"
+              @selected="handleSelectedOption"
+              placeholder="Select City"
+            ></SingleSelect>
+            <div class="err-msg" v-if="formVar.submit && cityValid">
+              {{ cityValid }}
+            </div>
+          </div>
+        </div>
         <div class="form-item mb-16">
-          <input type="text" v-model="formVar.password" placeholder="Enter Password" />
-          <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
+          <textarea
+            name=""
+            id=""
+            v-model="formVar.address"
+            placeholder="Enter Address"
+          ></textarea>
+          <div class="err-msg" v-if="formVar.submit && addressValid">
+            {{ addressValid }}
+          </div>
         </div>
         <div class="save-btn form-item">
           <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
@@ -142,9 +250,9 @@
 
 <script setup>
 import moment from "moment";
-import { reactive, computed, onBeforeMount } from 'vue';
-import { useStore } from 'vuex'
-import router from "../../router";
+import { reactive, computed } from "vue";
+import { useStore } from "vuex";
+
 /* Constants */
 
 const store = useStore();
@@ -168,19 +276,44 @@ const formVar = reactive({
   submit: false,
   confirmModal: false,
   addModal: false,
-  limit: 10,
-  offset: 0,
-  keyword: "",
-  status: 'ACTIVE',
-  role: 'DOCTOR',
+  gender: "",
+  state: "",
+  city: "",
+  speciality: "",
   name: null,
+  dob: null,
   phone: null,
   email: null,
-  gender: null,
-  dob: null,
-  password: null,
-  cPage: 1,
-})
+  address: null,
+});
+
+const doctorData = reactive([
+  {
+    id: 125,
+    name: "Prakash Jhaa",
+    phone: 8888888888,
+    email: "patient@mail.com",
+    speciality: "Cardiologist",
+  },
+]);
+
+//search select start//
+const stateOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+const cityOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+
+const specialityOptions = [
+  { id: 1, name: "Option1" },
+  { id: 2, name: "Option2" },
+];
+
+
+//search select end//
 
 /* Constants */
 
@@ -238,11 +371,14 @@ function clickLast() {
 const onSubmitDoctor = () => {
   if (
     nameValid.value ||
-    emailValid.value ||
-    phoneValid.value ||
     genderValid.value ||
     dobValid.value ||
-    passwordValid.value
+    phoneValid.value ||
+    emailValid.value ||
+    addressValid.value ||
+    stateValid.value ||
+    cityValid.value ||
+    specialityValid.value
   ) {
     formVar.submit = true;
     return;
@@ -265,18 +401,18 @@ function navigate(link,id){
   router.push({ path: link, query: { id } })
 }
 function today() {
-  var fullDate = new Date()
-  var tDate = fullDate.getDate()
-  var tYear = fullDate.getFullYear()
-  var tMonth = fullDate.getMonth() + 1
+  var fullDate = new Date();
+  var tDate = fullDate.getDate();
+  var tYear = fullDate.getFullYear();
+  var tMonth = fullDate.getMonth() + 1;
   if (tMonth < 10) {
-    tMonth = '0' + tMonth
+    tMonth = "0" + tMonth;
   }
   if (tDate < 10) {
-    tDate = '0' + tDate
+    tDate = "0" + tDate;
   }
-  var minDate = tYear + '-' + tMonth + '-' + tDate
-  return minDate
+  var minDate = tYear + "-" + tMonth + "-" + tDate;
+  return minDate;
 }
 function getAge(dateString) {
   var today = new Date();
@@ -285,15 +421,15 @@ function getAge(dateString) {
   var m = today.getMonth() - birthDate.getMonth();
   var d = today.getDay() - birthDate.getDay();
   if (age === 0) {
-    var total_age = `${m} m`
+    var total_age = `${m} m`;
   } else {
-    var total_age = `${age} y`
+    var total_age = `${age} y`;
   }
   formVar.age = total_age;
 }
 const ageCalculate = computed(() => {
   if (formVar.dob) {
-    getAge(formVar.dob)
+    getAge(formVar.dob);
   }
 });
 /* Functions/Methods */
@@ -311,7 +447,7 @@ const dobValid = computed(() => {
   }
 });
 const phoneValid = computed(() => {
-  let phoneValid = /^[6-9][0-9]{9}$/
+  let phoneValid = /^[6-9][0-9]{9}$/;
   if (!formVar.phone) {
     return "Please enter phone no!";
   } else if (!phoneValid.test(formVar.phone)) {
@@ -319,7 +455,7 @@ const phoneValid = computed(() => {
   }
 });
 const emailValid = computed(() => {
-  let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/
+  let emailValid = /^([a-z0-9.-]+)@([a-z]{4,12}).([a-z.]{2,20})$/;
   if (!formVar.email) {
     return "Please enter email!";
   } else if (!emailValid.test(formVar.email)) {
@@ -343,7 +479,7 @@ function isNumber(e) {
   else e.preventDefault();
 }
 function phnum(e) {
-  formVar.phone = e.slice(0, 10)
+  formVar.phone = e.slice(0, 10);
 }
 
 /* Validation */

@@ -80,7 +80,7 @@
         <button class="btn confirm-btn">Confirm</button>
       </div>
     </Modal>
-    <Modal v-model:show="formVar.addModal" class="" headerClasses="header-bg">
+    <Modal v-model:show="formVar.addModal" class="mid-modal" headerClasses="header-bg">
       <template v-slot:header>
         <div class="title" showHeader="true">Add Pathologist</div>
         <div class="close-btn" @click.prevent="formVar.addModal = false">
@@ -93,18 +93,19 @@
             <input type="text" v-model="formVar.name" placeholder="Pathologist Name" />
             <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
           </div>
+          <div class="form-item mb-16">
+            <input type="text" v-model="formVar.lab_name" placeholder="Enter Lab Name" />
+            <div class="err-msg" v-if="formVar.submit && labValid">{{ labValid }}</div>
+          </div>
+          <div class="form-item mb-16">
+            <SingleSelect v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
+              placeholder="Select Gender"></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
+          </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.lab_name" placeholder="Enter Lab Name" />
-          <div class="err-msg" v-if="formVar.submit && labValid">{{ labValid }}</div>
-        </div>
-        <div class="form-item mb-16">
-          <SingleSelect v-model="formVar.gender" :options="genderOptions" @selected="handleSelectedOption"
-            placeholder="Select Gender"></SingleSelect>
-            <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
-        </div>
+        
         <div class="row">
-          <div class="col-75 form-item mb-16">
+          <div class="form-item mb-16">
             <div class="date-input">
               <input type="date" v-model="formVar.dob" :max="today()" />
               <div class="icon">
@@ -117,40 +118,43 @@
           <div class="col-2 form-item mb-16">
             <input type="text" v-model="formVar.age" class="bg-blue" disabled />
           </div>
+          <div class="form-item mb-16">
+            <input type="number" v-model="formVar.phone" placeholder="Enter Phone no" 
+            v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
+            <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
+          </div>
+          <div class="form-item mb-16">
+            <input type="number" placeholder="Enter Alternate Phone no"/>
+            <div class="err-msg"></div>
+          </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="number" v-model="formVar.phone" placeholder="Enter Phone no" 
-          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" />
-          <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
+
+        <div class="row">
+          <div class="form-item mb-16">
+            <input type="text" v-model="formVar.email" placeholder="Enter Email" />
+            <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
+          </div>
+          <div class="form-item mb-16">
+            <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
+              placeholder="Select Lab Speciality"></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Enter Registration Council & No" />
+            <!-- <div class="err-msg">Please enter registration council & no</div> -->
+          </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="number" placeholder="Enter Alternate Phone no"/>
-          <div class="err-msg"></div>
+        
+        <div class="row">
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Enter Registration Year" />
+            <!-- <div class="err-msg">Please enter registration year</div> -->
+          </div>
+          <div class="form-item mb-16">
+            <input type="text" placeholder="Enter Experience (Years)" />
+          </div>
         </div>
-        <div class="form-item mb-16">
-          <input type="text" v-model="formVar.email" placeholder="Enter Email" />
-          <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
-        </div>
-        <div class="form-item mb-16">
-          <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
-          <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
-        </div>
-        <div class="col-5 form-item mb-16">
-          <SingleSelect v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
-            placeholder="Select Lab Speciality"></SingleSelect>
-            <div class="err-msg" v-if="formVar.submit && specialityValid">{{ specialityValid }}</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Registration Council & No" />
-          <div class="err-msg">Please enter registration council & no</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Registration Year" />
-          <div class="err-msg">Please enter registration year</div>
-        </div>
-        <div class="form-item mb-16">
-          <input type="text" placeholder="Enter Experience (Years)" />
-        </div>
+        
         <div class="two-inputs">
           <div class="col-5 form-item mb-16">
             <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
@@ -162,6 +166,10 @@
               placeholder="Select City"></SingleSelect>
               <div class="err-msg" v-if="formVar.submit && stateValid">{{ stateValid }}</div>
           </div>
+        </div>
+        <div class="form-item mb-16">
+          <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
+          <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
         <div class="save-btn form-item">
           <button class="btn black-btn">Add</button>

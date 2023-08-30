@@ -1,80 +1,96 @@
 <template>
   <section class="doctor-profile">
-    <form action="" class="form" @submit.prevent="onSubmitDoctor">
-      <div class="row">
-        <div class="form-item col-25 mb-16">
-          <div class="title">Name</div>
-          <input type="text" v-model="storeVar.name" placeholder="Enter Name">
-          <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
+    <form action="" class="form">
+      <div class="two-inputs">
+        <div class="row">
+          <div class="form-item col-25 mb-16">
+            <div class="title">Name</div>
+            <input type="text" placeholder="Enter Name">
+            <div class="err-msg">Please enter name</div>
+          </div>
+          <div class="form-item col-25 mb-16">
+            <div class="title">Phone No</div>
+            <input type="number" placeholder="Enter Phone No">
+            <div class="err-msg">Please enter phone no</div>
+          </div>
         </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Phone No</div>
-          <input type="text" v-model="storeVar.mobile" placeholder="Enter Phone No">
-          <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
-        </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Alternate Phone No</div>
-          <input type="text" v-model="storeVar.altMobile" placeholder="Enter Alternate Phone No">
-          <div class="err-msg" v-if="formVar.submit && altMobileValid">{{ altMobileValid }}</div>
-        </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Email</div>
-          <input type="text" v-model="storeVar.emailId" placeholder="Enter Email">
-          <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
+        <div class="row">
+          <div class="form-item col-25 mb-16">
+            <div class="title">Alternate Phone No</div>
+            <input type="number" placeholder="Enter Alternate Phone No">
+          </div>
+          <div class="form-item col-25 mb-16">
+            <div class="title">Email</div>
+            <input type="text" placeholder="Enter Email">
+            <div class="err-msg">Please enter email</div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="form-item col-25 mb-16">
-          <div class="title">Gender</div>
-          <Select v-model="storeVar.gender" :options="genderOptions" placeholder="Select Gender"></Select>
-          <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
+      <div class="two-inputs">
+        <div class="row">
+          <div class="form-item col-25 mb-16">
+            <div class="title">Gender</div>
+            <div class="select-dropdown">
+              <select name="" id="">
+                <option value="">Male</option>
+                <option value="">Female</option>
+                <option value="">Other</option>
+              </select>
+            </div>
+            <div class="err-msg">Please select gender</div>
+          </div>
+          <div class="form-item col-25 mb-16">
+            <div class="title">Date Of Birth</div>
+            <div class="date-input">
+              <input type="date" />
+              <div class="icon">
+                <img src="/src/assets/images/icons/calender.svg" alt="">
+              </div>
+            </div>
+            <div class="err-msg">Please select DOB</div>
+          </div>
         </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Date Of Birth</div>
-          <div class="date-input">
-            <input type="date" v-model="storeVar.dob" />
-            <div class="icon">
-              <img src="/src/assets/images/icons/calender.svg" alt="">
+        <div class="row">
+          <div class="form-item col-25 mb-16">
+            <div class="title">Registration Council & No</div>
+            <input type="text" placeholder="Registration Council & No">
+            <div class="err-msg">Please enter registration council & no</div>
+          </div>
+          <div class="form-item col-25 mb-16">
+            <div class="title">Registration Year</div>
+            <input type="text" placeholder="Registration Year">
+            <div class="err-msg">Please enter reg. year</div>
+          </div>
+        </div>
+      </div>
+      <div class="two-inputs">
+        <div class="row">
+          <div class="form-item col-25 mb-16">
+            <div class="title">Experience</div>
+            <input type="text" placeholder="Experience">
+          </div>
+          <div class="form-item col-25 mb-16">
+            <div class="title">Registartion Type</div>
+            <div class="select-dropdown">
+              <select name="" id="">
+                <option value="">Registration Type</option>
+                <option value="">Country</option>
+                <option value="">State</option>
+              </select>
             </div>
           </div>
-          <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
         </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Registration Council & No</div>
-          <input type="text" v-model="storeVar.reg_number" placeholder="Registration Council & No">
-          <div class="err-msg" v-if="formVar.submit && regNumberValid">{{ regNumberValid }}</div>
-        </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Registration Year</div>
-          <input type="text" placeholder="Registration Year">
-          <!-- <div class="err-msg">Please enter reg. year</div> -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-item col-25 mb-16">
-          <div class="title">Experience</div>
-          <input type="text" placeholder="Experience">
-        </div>
-        <!-- <div class="form-item col-25 mb-16">
-          <div class="title">Registartion Type</div>
-          <Select v-model="formVar.regType" :options="registrationOptions" placeholder="Select Gender"></Select>
-        </div> -->
-        <div class="form-item col-25 mb-16">
-          <div class="title">State</div>
-          <SingleSelect v-model="storeVar.state" :options="stateOptions" @selected="handleSelectedOption"
-            placeholder="Select State"></SingleSelect>
-          <div class="err-msg" v-if="formVar.submit && stateValid">{{ stateValid }}</div>
-        </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">City</div>
-          <SingleSelect v-model="storeVar.city" :options="cityOptions" @selected="handleSelectedOption"
-            placeholder="Select State"></SingleSelect>
-          <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
-        </div>
-        <div class="form-item col-25 mb-16">
-          <div class="title">Pincode</div>
-          <input type="text" v-model="storeVar.pincode" placeholder="Pincode">
-          <div class="err-msg" v-if="formVar.submit && pincodeValid">{{ pincodeValid }}</div>
+        <div class="row">
+          <div class="form-item col-25 mb-16">
+            <div class="title">State</div>
+            <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
+              placeholder="Select State"></SingleSelect>
+          </div>
+          <div class="form-item col-25 mb-16">
+            <div class="title">City</div>
+            <SingleSelect v-model="formVar.city" :options="cityOptions" @selected="handleSelectedOption"
+              placeholder="Select State"></SingleSelect>
+          </div>
         </div>
       </div>
       <div class="row">

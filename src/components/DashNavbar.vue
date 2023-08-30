@@ -6,13 +6,193 @@
           <div class="menu-icon" v-if="!isSidebarOpen" @click="toggleSidebar">
             <icon-menu></icon-menu>
           </div>
-          <div v-else class="menu-icon cross-icon" @click="toggleSidebar">
+          <div v-else class="menu-icon cross-icon" @click="closeSideMenu">
             <icon-cross></icon-cross>
           </div>
           <router-link to="/" class="logo">
             <img src="/src/assets/images/logo/logo-white.png" alt="">
             <!-- <div class="text grade-text">Thyromax Labs</div> -->
           </router-link>
+          <!-- sidebar -->
+          <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }" >
+            <div class="sidebar-card">
+              <div class="mob-icons mob-view">
+                <div class="bell-icon" @click="showNotificationSidebar() && toggleSidebar()">
+                  <img src="/src/assets/images/png/bell.png" alt="" />
+                  <div class="no"></div>
+                  <div class="tooltip">Notification</div>
+                </div>
+                <div class="bell-icon" @click.prevent="nav.noteSidebar = true">
+                  <img src="/src/assets/images/png/note.png" alt="" />
+                  <div class="tooltip">Notes</div>
+                </div>
+              </div>
+              <div class="close-icon mob-view" @click="toggleSidebar">
+                <icon-cross></icon-cross>
+              </div>
+              <div class="menu-icons">
+                <router-link to="/appointment/calender" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-calender></icon-calender>
+                  </div>
+                  <div class="text">Calender</div>
+                </router-link>
+                <router-link to="/dashboard" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-dashboard></icon-dashboard>
+                  </div>
+                  <div class="text">Dashboard</div>
+                </router-link>
+                <router-link to="/patients" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-patient></icon-patient>
+                  </div>
+                  <div class="text">Patients</div>
+                </router-link>
+                <router-link to="/doctors" class="list " @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-doctor2></icon-doctor2>
+                  </div>
+                  <div class="text">Doctors</div>
+                </router-link>
+                <router-link to="/pathologist" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-lab></icon-lab>
+                  </div>
+                  <div class="text">Pathologist</div>
+                </router-link>
+                <div class="list setting-title mob-view" @click.prevent="toggleApt()">
+                  <div class="main-icon">
+                    <icon-setting></icon-setting>
+                  </div>
+                  <div class="text">Appointments</div>
+                  <div class="icon" v-if="!nav.aptList" @click.prevent="toggleApt()">
+                    <icon-right-arrow-round></icon-right-arrow-round>
+                  </div>
+                  <div class="icon" v-if="nav.aptList" @click.prevent="toggleApt()">
+                    <icon-down-arrow-round></icon-down-arrow-round>
+                  </div>
+                </div>
+                <!-- //Appoinment List -->
+                <div class="setting-list mob-view" v-if="nav.aptList">
+                  <router-link to="/appointment/doctor" class="list" @click="toggleSidebar">
+                    <div class="text">Doctor Appointments</div>
+                  </router-link>
+                  <router-link to="/appointment/patient" class="list" @click="toggleSidebar">
+                    <div class="text">Patient Appointments</div>
+                  </router-link>
+                </div>
+
+
+                <router-link to="/staff/details" class="list desk-view" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-staff></icon-staff>
+                  </div>
+                  <div class="text">Staff</div>
+                </router-link>
+                <router-link to="/staff" class="list mob-view" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-staff></icon-staff>
+                  </div>
+                  <div class="text">Staff</div>
+                </router-link>
+                <router-link to="/visits" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-visit></icon-visit>
+                  </div>
+                  <div class="text">Visits</div>
+                </router-link>
+                <router-link to="/expense" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-money></icon-money>
+                  </div>
+                  <div class="text">Expense</div>
+                </router-link>
+                <router-link to="/ref-share-layout" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-share></icon-share>
+                  </div>
+                  <div class="text">Reference & Sharing</div>
+                </router-link>
+                <router-link to="/reports" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-report></icon-report>
+                  </div>
+                  <div class="text">Reports</div>
+                </router-link>
+                <div class="list setting-title" @click.prevent="toggleSetting()">
+                  <div class="main-icon">
+                    <icon-setting></icon-setting>
+                  </div>
+                  <div class="text">Settings</div>
+                  <div class="icon" v-if="!nav.settingList" @click.prevent="toggleSetting()">
+                    <icon-right-arrow-round></icon-right-arrow-round>
+                  </div>
+                  <div class="icon" v-if="nav.settingList" @click.prevent="toggleSetting()">
+                    <icon-down-arrow-round></icon-down-arrow-round>
+                  </div>
+                </div>
+                <!-- //Setting List -->
+                <div class="setting-list" v-if="nav.settingList">
+                  <router-link to="/practice-details" class="list" @click="toggleSidebar">
+                    <div class="text">Practice Details</div>
+                  </router-link>
+                  <router-link to="/thyromax-plan" class="list" @click="toggleSidebar">
+                    <div class="text">Thyromax Plan</div>
+                  </router-link>
+                  <router-link to="/labtest" class="list" @click="toggleSidebar">
+                    <div class="text">Tests</div>
+                  </router-link>
+                  <router-link to="/department" class="list" @click="toggleSidebar">
+                    <div class="text">Department</div>
+                  </router-link>
+                  <router-link to="/site-setting" class="list" @click="toggleSidebar">
+                    <div class="text">Site Settings</div>
+                  </router-link>
+                  <router-link to="/billing" class="list" @click="toggleSidebar">
+                    <div class="text">Billing</div>
+                  </router-link>
+                  <router-link to="/laboratory" class="list" @click="toggleSidebar">
+                    <div class="text">Laboratory</div>
+                  </router-link>
+                  <router-link to="/login-access" class="list" @click="toggleSidebar">
+                    <div class="text">Login Access</div>
+                  </router-link>
+                  <router-link to="/calender-setting" class="list" @click="toggleSidebar">
+                    <div class="text">Calender Setting</div>
+                  </router-link>
+                  <router-link to="/patient-record" class="list" @click="toggleSidebar">
+                    <div class="text">Patient Record Share</div>
+                  </router-link>
+                  <router-link to="/patient-group" class="list" @click="toggleSidebar">
+                    <div class="text">Patient Groups & Master</div>
+                  </router-link>
+                  <router-link to="/reference-doctor" class="list" @click="toggleSidebar">
+                    <div class="text">Reference Doctor</div>
+                  </router-link>
+                </div>
+                <router-link to="/faq-create" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-help></icon-help>
+                  </div>
+                  <div class="text">FAQ's</div>
+                </router-link>
+                <router-link to="/feedback" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-feedback></icon-feedback>
+                  </div>
+                  <div class="text">Feedback</div>
+                </router-link>
+                <router-link to="/prescription" class="list" @click="toggleSidebar">
+                  <div class="icon">
+                    <icon-prescription></icon-prescription>
+                  </div>
+                  <div class="text">Prescription</div>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-overlay" :class="{ open: isSidebarOpen, closing: isClosing }" @click="toggleSidebar"></div>
         </div>
         <div class="right"> 
           <div class="searchbar">
@@ -70,88 +250,90 @@
               </div>
             </div>
           </div>
-          <div class="" v-click-outside="hideNotificationSidebar">
-            <div class="bell-icon" @click.prevent="showNotificationSidebar()">
-              <img src="/src/assets/images/png/bell.png" alt="" />
-              <div class="no"></div>
-              <div class="tooltip">Notification</div>
-            </div>
-            <!-- notifications -->
-            <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
-              <div class="card">
-                <div class="heading">
-                  <h3 class="">Notifications</h3>
+          <div class="bell-icon tab-icon" @click.prevent="nav.notificationSidebar = true">
+            <img src="/src/assets/images/png/bell.png" alt="" />
+            <div class="no"></div>
+            <div class="tooltip">Notificationnn</div>
+          </div>
+          <!-- notifications -->
+          <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
+            <div class="card">
+              <div class="heading">
+                <h4 class="">Notifications</h4>
+                <div class="icon" @click.prevent="nav.notificationSidebar = false">
+                  <icon-cross></icon-cross>
                 </div>
-                <div class="notes-list">
-                  <router-link to="/" class="list-item success">
-                    <div class="icon">
-                      <icon-success></icon-success>
-                    </div>
-                    <div class="info">
-                      <div class="title">Success</div>
-                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </router-link>
-                  <router-link to="/" class="list-item warning">
-                    <div class="icon">
-                      <icon-warning></icon-warning>
-                    </div>
-                    <div class="info">
-                      <div class="title">Warning !</div>
-                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </router-link>
-                  <router-link to="/" class="list-item error">
-                    <div class="icon">
-                      <icon-warning></icon-warning>
-                    </div>
-                    <div class="info">
-                      <div class="title">Error !</div>
-                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                    </div>
-                  </router-link>
-                </div>
+              </div>
+              <div class="notes-list">
+                <router-link to="/" class="list-item success">
+                  <div class="icon">
+                    <icon-success></icon-success>
+                  </div>
+                  <div class="info">
+                    <div class="title">Success</div>
+                    <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                  </div>
+                </router-link>
+                <router-link to="/" class="list-item warning">
+                  <div class="icon">
+                    <icon-warning></icon-warning>
+                  </div>
+                  <div class="info">
+                    <div class="title">Warning !</div>
+                    <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                  </div>
+                </router-link>
+                <router-link to="/" class="list-item error">
+                  <div class="icon">
+                    <icon-warning></icon-warning>
+                  </div>
+                  <div class="info">
+                    <div class="title">Error !</div>
+                    <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                  </div>
+                </router-link>
               </div>
             </div>
           </div>
+          <div class="notification-overlay" v-if="nav.notificationSidebar" @click.prevent="nav.notificationSidebar = false"></div>
+          <!-- Appointment -->
           <div @click.prevent="storeVar.aptBookModal = true" class="bell-icon desk-icon">
             <img src="/src/assets/images/png/add.png" alt="" />
-            <div class="tooltip">Add</div>
+            <div class="tooltip">Appointment</div>
           </div>
-          <div class="" v-click-outside="hideNoteSidebar">
-            <div class="bell-icon desk-icon" @click.prevent="showNoteSidebar()">
-              <img src="/src/assets/images/png/note.png" alt="" />
-              <div class="tooltip">Notes</div>
-            </div>
-            <!-- sticky notes -->
-            <div class="notes-section" v-if="nav.noteSidebar" >
-              <div class="card">
-                <div class="heading">
-                  <h3 class="">Notes</h3>
-                  <div class="icon" @click.prevent="nav.addModal = true">
-                    <icon-add></icon-add>
-                  </div>
+          <div class="bell-icon tab-icon" @click.prevent="nav.noteSidebar = true">
+            <img src="/src/assets/images/png/note.png" alt="" />
+            <div class="tooltip">Notes</div>
+          </div>
+          <!-- sticky notes -->
+          <div class="notes-section" v-if="nav.noteSidebar" >
+            <div class="card">
+              <div class="heading">
+                <h4 class="">Notes <icon-add @click.prevent="nav.addModal = true"></icon-add></h4>
+                <div class="icon" @click.prevent="nav.noteSidebar = false">
+                  <icon-cross></icon-cross>
                 </div>
-                <div class="notes-list">
-                  <div class="list-item">
-                    <div class="icon">
-                      <icon-note></icon-note>
-                    </div>
-                    <div class="data">
-                      <div class="title">At 4 O Clock meeting</div>
-                      <div class="text">03-08-2023 11:38 AM</div>
-                    </div>
-                    <div class="icon-edit icon-i black-btn" @click.prevent="nav.addModal = true">
-                      <icon-edit></icon-edit>
-                    </div>
-                    <div class="icon-delete icon-i black-btn" @click.prevent="nav.confirmModal = true">
-                      <icon-delete></icon-delete>
-                    </div>
+              </div>
+              <div class="notes-list">
+                <div class="list-item">
+                  <div class="icon">
+                    <icon-note></icon-note>
+                  </div>
+                  <div class="data">
+                    <div class="title">At 4 O Clock meeting</div>
+                    <div class="text">03-08-2023 11:38 AM</div>
+                  </div>
+                  <div class="icon-edit icon-i black-btn" @click.prevent="nav.addModal = true">
+                    <icon-edit></icon-edit>
+                  </div>
+                  <div class="icon-delete icon-i black-btn" @click.prevent="nav.confirmModal = true">
+                    <icon-delete></icon-delete>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="notes-overlay" v-if="nav.noteSidebar" @click.prevent="nav.noteSidebar = false"></div>
           <div class="account" v-click-outside="closeAccMenu">
             <div class="account-card grade-btn btn" @click.prevent="nav.accMenu = true">
               <img
@@ -179,16 +361,6 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link
-                    to="/"
-                    class="link"
-                    @click.prevent="nav.accMenu = false"
-                  >
-                    <img src="/src/assets/images/png/setting.png" alt="image" />
-                    <div class="text">Settings</div>
-                  </router-link>
-                </li>
-                <li>
                   <div class="link" @click.prevent="closeAccMenu()">
                     <img src="/src/assets/images/png/door.png" alt="image" />
                     <div class="text">Logout Now</div>
@@ -199,101 +371,7 @@
           </div>
         </div>
       </div>
-      <!-- sidebar -->
-      <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }" v-click-outside="closeSidebar">
-        <div class="sidebar-card">
-          <div class="close-icon" @click.prevent="nav.sidebar = false">
-            <icon-cross></icon-cross>
-          </div>
-          <div class="menu-icons">
-            <router-link to="/" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/eye.png" alt="image" />
-              </div>
-              <div class="text">Calender</div>
-            </router-link>
-            <router-link to="/dashboard" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/eye.png" alt="image" />
-              </div>
-              <div class="text">Dashboard</div>
-            </router-link>
-            <router-link to="/patients" class="list desk-view" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/microscope.png" alt="image" />
-              </div>
-              <div class="text">Patients</div>
-            </router-link>
-            <router-link to="/doctors" class="list desk-view" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/microscope.png" alt="image" />
-              </div>
-              <div class="text">Doctors</div>
-            </router-link>
-            <router-link to="/pathologist" class="list desk-view" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/microscope.png" alt="image" />
-              </div>
-              <div class="text">Pathologist</div>
-            </router-link>
-            <router-link to="/staff/details" class="list desk-view" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/microscope.png" alt="image" />
-              </div>
-              <div class="text">Staff</div>
-            </router-link>
-            <router-link to="/staff" class="list mob-view" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/microscope.png" alt="image" />
-              </div>
-              <div class="text">Staff</div>
-            </router-link>
-            <router-link to="/labtest" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Tests</div>
-            </router-link>
-            <router-link to="/visits" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Visits</div>
-            </router-link>
-            <router-link to="/billing" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Billing</div>
-            </router-link>
-            <router-link to="/expense" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Expense</div>
-            </router-link>
-            <router-link to="/site-setting" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Site Settings</div>
-            </router-link>
-            <router-link to="/prescription" class="list" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Prescription</div>
-            </router-link>
-            <!-- <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar"></router-link> -->
-            <router-link to="/appointment/patient" class="list mob-view" @click="toggleSidebar">
-              <div class="img grade-btn">
-                <img src="/src/assets/images/png/bill.png" alt="image" />
-              </div>
-              <div class="text">Patient Appoinments</div>
-            </router-link>
-          </div>
-        </div>
-      </div>
+      
     </div>
     <!-- modals -->
     <Modal v-model:show="nav.confirmModal" class="confirm-modal">
@@ -350,14 +428,19 @@ const toggleSidebar = () => {
     isSidebarOpen.value = true;
   }
 };
-// function closeSidebar () {
-//   if (!isSidebarOpen.value) {
-    
-//     setTimeout(() => {
-//       isClosing.value = false;
-//     }, 300); 
-//   }
+// const closeSideMenu = () => {
+//   if (isClosing.value) {
+//     isClosing.value = true;
+//     // setTimeout(() => {
+//     //   isSidebarOpen.value = false;
+//     //   isClosing.value = false;
+//     // }, 300); 
+//   } 
+//   // else {
+//   //   isClosing.value = true;
+//   // }
 // };
+
 const nav = reactive({
   accMenu: false,
   searchValue: "",
@@ -368,6 +451,8 @@ const nav = reactive({
   addModal: false,
   noteSidebar: false,
   notificationSidebar: false,
+  settingList: false,
+  aptList: false,
 });
 
 const matches = [
@@ -403,6 +488,9 @@ function closeSearch() {
   nav.isVisible = false;
 }
 
+// function closeSideMenu() {
+//   nav.sidebar = false;
+// }
 function closeAccMenu() {
   nav.accMenu = false;
 }
@@ -412,11 +500,18 @@ function hideNoteSidebar() {
 function showNoteSidebar() {
   nav.noteSidebar = true;
 }
+function showNotificationSidebar() {
+  nav.notificationSidebar = true;
+}
 function hideNotificationSidebar() {
   nav.notificationSidebar = false;
 }
-function showNotificationSidebar() {
-  nav.notificationSidebar = true;
+
+function toggleSetting() {
+  nav.settingList = !nav.settingList
+}
+function toggleApt() {
+  nav.aptList = !nav.aptList
 }
 </script>
 

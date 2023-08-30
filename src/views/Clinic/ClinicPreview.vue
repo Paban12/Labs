@@ -64,8 +64,8 @@
                   <div class="form-item col-5 mb-16">
                     <div class="title">City</div>
                     <SingleSelect
-                      v-model="preview.state"
-                      :options="stateOptions"
+                      v-model="preview.city"
+                      :options="cityOptions"
                       @selected="handleSelectedOption"
                       placeholder="Select city"
                     ></SingleSelect>

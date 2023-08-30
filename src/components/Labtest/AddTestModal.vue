@@ -223,7 +223,7 @@
 <script setup>
 import { reactive, computed } from "vue";
 import { useStore } from "vuex";
-// import { VueEditor } from "vue3-editor";
+import { VueEditor } from "vue3-editor";
 
 const store = useStore();
 const storeVar = computed(() => store.state.Auth);
@@ -262,7 +262,7 @@ const testTableData = reactive([
 
 //for table data
 const testOptions = [
-  { id: 1, name: "Option111111111111" },
+  { id: 1, name: "Option1" },
   { id: 2, name: "Option2" },
 ];
 const deptOptions = [

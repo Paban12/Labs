@@ -198,6 +198,22 @@
 
 
 //media queries
+
+@media (max-width: 768px){
+  .account-layout{
+    .container{
+      .main-content{
+        .main-content-left{
+          
+        }
+        .main-content-right{
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 560px){
   .account-layout{
     .container{

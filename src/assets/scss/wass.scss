@@ -45,6 +45,20 @@
 @import "custom/doctor-profile-layout";
 @import "custom/staff-add";
 @import "custom/billing";
+@import "custom/ref-sharing-layout";
+@import "custom/lab-dr-sharing";
+@import "custom/lab-dr-setting";
+@import "custom/faq-create";
+@import "custom/feedback";
+@import "custom/thyromax-plan";
+@import "custom/dept-page";
+@import "custom/practice-detail";
+@import "custom/login-access";
+@import "custom/calender-setting";
+@import "custom/patient-record";
+@import "custom/patient-group-share";
+@import "custom/ref-doctor";
+@import "custom/reports-layout";
 
 
 //main
@@ -62,6 +76,10 @@
 @import "main/apt-success-modal";
 @import "main/add-test-modal";
 @import "main/add-expense-modal";
+@import "main/billing-modal";
+@import "main/prefix-modal";
+@import "main/add-bill-modal";
+@import "main/print-modal";
 
 
 //doctor

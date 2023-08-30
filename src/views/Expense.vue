@@ -140,7 +140,7 @@
                     <select name="" id="">
                       <option value="">Cash</option>
                       <option value="">Card</option>
-                      <option value="">Check</option>
+                      <option value="">Cheque</option>
                       <option value="">Net Banking</option>
                       <option value="">Google Pay</option>
                       <option value="">Paytm</option>

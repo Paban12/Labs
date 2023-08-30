@@ -1,0 +1,18 @@
+.patient-record-page{
+  .container{
+    .card{
+      .card-body{
+        padding: 1rem;
+        padding-top: 0.5rem;
+        .tab-content{
+          .data{
+            font-size: 0.85rem;
+            input{
+              width: max-content;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -101,6 +101,8 @@
         background-size: cover;
         height: 2.5rem;
         width: 2.5rem;
+        min-height: 2.5rem;
+        min-width: 2.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -216,6 +218,8 @@
     background: var(--black);
     padding: 2rem 0;
     width: 300px;
+    z-index: 999;
+    box-shadow: var(--box-shadow);
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -224,7 +228,7 @@
     }
     .sidebar-card{
       position: relative;
-      .close-icon{
+      .mob-view{
         display: none;
       }
       .menu-icons{
@@ -233,23 +237,25 @@
         .list{
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 0.7rem 1rem;
+          gap: 13px;
+          padding: 0.9rem 1rem;
+          cursor: pointer;
           &:hover{
             background: #cccccc2a;
           }
-          .img{ 
-            height: 2rem;
-            width: 2rem;
+          .icon{
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 6px;
+            // margin-bottom: 6px;
             border-radius: 100%;
-            img{
-              height: 70%;
-              width: 70%;
-              border-radius: 100%;
+            #icon{
+              height: 1.5rem;
+              width: 1.5rem;
+              fill: var(--white);
+              #icon-inner{
+                fill: var(--white);
+              }
             }
           }
           .text{
@@ -257,11 +263,73 @@
             color: var(--white);
           }
         }
+        .router-link-active{
+          background: #fff;
+          &:hover{
+            background: #fff !important;
+          }
+          .icon{
+            #icon{
+              fill: var(--black);
+              #icon-inner{
+                fill: var(--black);
+              }
+            }
+          }
+          .text{
+            color: var(--black);
+            font-weight: 700;
+          }
+        }
+        .setting-title{
+          position: relative;
+          padding-right: 2.5rem;
+          .main-icon{
+            #icon{
+              height: 1.7rem;
+              width: 1.7rem;
+              fill: var(--white);
+            }
+          }
+          .icon{
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            #icon{
+              height: 1.5rem;
+              width: 1.5rem;
+              fill: var(--white);
+            }
+          }
+        }
+        .setting-list{
+          margin-left: 2.5rem;
+          display: block;
+        }
         .mob-view{
           display: none;
         }
       }
     }
+  }
+  .sidebar-overlay{
+    height: 100vh;
+    width: 100vw;
+    background: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    display: none;
+  }
+  .sidebar-overlay.open{
+    display: block;
+  }
+  .sidebar-overlay.closing{
+    display: none;
   }
   .sidebar.open {
     left: 0;
@@ -277,26 +345,36 @@
     right: 0;
     width: 350px;
     height: calc(100% - 4.5rem);
+    z-index: 110;
     .card{
       height: calc(100% - 4.5rem);
       padding: 0;
       .heading{
         background: var(--blue);
         color: var(--white);
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.7rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 3rem;
-        h3{
-          font-size: 1.2rem;
+        h4{
+          // font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          #icon{
+            height: 1.8rem;
+            width: 1.8rem;
+            fill: var(--white);
+            cursor: pointer;
+          }
         }
         .icon{
           display: flex;
           align-items: center;
           #icon{
-            height: 1.8rem;
-            width: 1.8rem;
+            height: 1.5rem;
+            width: 1.5rem;
             cursor: pointer;
             fill: var(--white);
           }
@@ -374,6 +452,15 @@
         }
       }
     }
+  }
+  .notes-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // background: red;
+    z-index: 100;
   }
   .notification-section{
     .card{
@@ -480,6 +567,15 @@
       }
     }
   }
+  .notification-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // background: red;
+    z-index: 100;
+  }
 }
 
 
@@ -498,7 +594,7 @@
         }
       }
       .right{
-        gap: 0.5rem;
+        gap: 1rem;
         .searchbar{
           display: none;
         }
@@ -603,10 +699,60 @@
       }
     }
     .sidebar{
+      padding-top: 1rem;
       .sidebar-card{
+        .mob-icons{
+          display: none;
+          align-items: center;
+          position: absolute;
+          top: -3rem;
+          left: 1rem;
+          gap: 1rem;
+          .bell-icon{
+            background-image: url(/src/assets/images/png/gradient-circle.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 2.5rem;
+            width: 2.5rem;
+            min-height: 2.5rem;
+            min-width: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            &:hover{
+              // box-shadow: none;
+              .tooltip{
+                transition: all 0.4s linear;
+                display: flex;
+              }
+            }
+            img{
+              height: 2.1rem;
+              width: 2.1rem;
+            }
+            .no{
+              position: absolute;
+              top: 0.5px;
+              right: 0.5px;
+              background: red;
+              height: 9px;
+              width: 9px;
+              border-radius: 100%;
+            }
+            .tooltip{
+              font-weight: 700;
+            }
+          }
+        }
         .menu-icons{
           .mob-view{
             display: flex;
+          }
+          .setting-list{
+            display: block !important;
           }
           .desk-view{
             display: none;
@@ -620,16 +766,23 @@
 @media (max-width: 560px){
   .navbar{
     .sidebar{
-      width: 100%;
+      // width: 100%;
       top: 0;
       height: 100vh;
       .sidebar-card{
         // posi
+        .mob-view{
+          display: block;
+        }
+        .mob-icons{
+          display: flex;
+
+        }
         .close-icon{
           position: absolute;
-          top: -1rem;
+          top: -3rem;
           right: 1rem;
-          display: block;
+          display: flex;
           #icon{
             height: 2rem;
             width: 2rem;

@@ -1,0 +1,49 @@
+.dept-page{
+  .container{
+    .card{
+      .card-body{
+        .search-select{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 2rem;
+          margin-bottom: 1.5rem;
+          .left{
+            width: 50%;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            .single-select{
+              width: 100%;
+            }
+          }
+          .searchbar{
+            width: 50%;
+          }
+        }
+        .dept-list{
+          .list-item{
+            display: flex;
+            align-items: flex-start;
+            width: max-content;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            &:not(:last-child){
+              margin-bottom: 0.5rem;
+            }
+            #icon{
+              height: 1.2rem;
+              width: 1.2rem;
+              cursor: pointer;
+              fill: var(--white);
+              margin-left: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

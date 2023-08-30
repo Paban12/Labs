@@ -1,0 +1,134 @@
+.thyromax-plan-page{
+  .container{
+    .card{
+      .card-body{
+        padding: 1rem;
+        padding-top: 0.5rem;
+        .tabs{
+          display: flex;
+          width: 100%;
+          border-radius: 5px;
+          padding-bottom: 0.5rem;
+          margin-bottom: 1rem;
+          border-bottom: 1px solid #eee;
+          .tab{
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+          }
+          .active{
+            background: var(--white);
+            color: var(--blue);
+            border-bottom: 2px solid var(--blue);
+            font-weight: 700;
+          }
+        }
+        .tab-content{
+          .about-plan{
+            .data{
+              margin-bottom: 1rem;
+              padding-bottom: 1rem;
+              border-bottom: 1px solid #eee;
+              .title{
+                margin-bottom: 8px;
+              }
+              .text{
+                font-size: 0.85rem;
+                strong{
+                  opacity: 0.8;
+                }
+              }
+            }
+          }
+          .plan-section{
+            .text{
+              margin-bottom: 1rem;
+            }
+            .plan-table{
+              .table{
+                border: 1px solid var(--border-color);
+                border-radius: 5px;
+                box-shadow: var(--box-shadow);
+                width: 700px;
+                .main-title{
+                  background: var(--light-blue);
+                  padding: 0.5rem 1rem;
+                  border-radius: 5px 5px 0 0;
+                  font-size: 0.9rem;
+                }
+                .thead{
+                  display: flex;
+                  border-bottom: 1px solid var(--border-color);
+                  .th{
+                    width: calc(100% / 3);
+                    padding: 0.5rem 1rem;
+                    font-weight: 700;
+                    font-size: 0.85rem;
+                    &:not(:last-child){
+                      border-right: 1px solid var(--border-color);
+                    }
+                  }
+                }
+                .tbody{
+                  margin-bottom: 1.5rem;
+                  .tr{
+                    display: flex;
+                    border-bottom: 1px solid var(--border-color);
+                    .td{
+                      width: calc(100% / 3);
+                      padding: 0.5rem 1rem;
+                      font-size: 0.85rem;
+
+                      &:not(:last-child){
+                        border-right: 1px solid var(--border-color);
+                      }
+                      .input{
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                        cursor: pointer;
+                        input{
+                          width: max-content;
+                        }
+                      }
+                    }
+                  }
+                }
+                .note{
+                  padding-left: 2rem;
+                  margin-bottom: 1rem;
+                  li{
+                    margin-bottom: 0.5rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//media queries
+@media (max-width: 560px){
+  .thyromax-plan-page{
+    .container{
+      .card{
+        .card-body{
+          .tab-content{
+            .plan-section{
+              .plan-table{
+                .table{
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

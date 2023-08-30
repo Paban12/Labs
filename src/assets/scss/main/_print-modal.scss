@@ -1,0 +1,74 @@
+.print-modal{
+  .modal{
+    .modal-dialog{
+      margin: 0;
+      height: 100%;
+      padding: 0;
+      // width: 100%;
+      .modal-content{
+        height: 100%;
+        .modal-body{
+          padding: 0;
+          height: calc(100% - 2.5rem);
+          .print-modal-content{
+            display: flex;
+            height: 100%;
+            .print-content{
+              width: 70%;
+              height: 100%;
+              iframe{
+                height: 100% !important;
+                // display: none;
+              }
+            }
+            .other-data{
+              padding: 1rem;
+              font-size: 0.8rem;
+              padding-bottom: 3rem;
+              position: relative;
+              width: 30%;
+              height: 100%;
+              .select-list{
+                height: calc(100% - 0.5rem);
+                overflow-y: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                  display: none;
+                }
+                .title{
+                  margin-bottom: 1rem;
+                  font-weight: 700;
+                }
+                .data{
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 10px;
+                  margin-bottom: 0.5rem;
+                  input{
+                    width: max-content;
+                    margin-top: 2px;
+                  }
+                }
+                .test-data{
+                  margin-left: 0.5rem;
+                }
+              }
+              .print-btn{
+                padding: 0.5rem;
+                display: flex;
+                justify-content: flex-end;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                border-top: 1px solid #eee;
+              }
+            }
+          }
+          
+        }
+      }
+    }
+  }
+}

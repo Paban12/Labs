@@ -1,0 +1,94 @@
+.reports-layout{
+  .container{
+    .card{
+      .card-body{
+        padding: 1rem;
+        .select-row{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1rem;
+          .left{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .select-dropdown{
+              width: 10rem;
+            }
+            .date-row{
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              .date-input{
+                width: 10rem;
+              }
+            }
+          }
+          .right{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .img{
+              box-shadow: var(--box-shadow);
+              background-image: url(/src/assets/images/png/gradient-circle.png);
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              border-radius: 100%;
+              height: 2.3rem;
+              width: 2.3rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              img{
+                height: 1.5rem;
+                width: 1.5rem;
+              }
+            }
+          }
+        }
+        .select-content{
+          .reports-page{
+            .card-sub-tabs{
+
+            }
+            .tab-content{
+              .patient-no-list{
+                display: flex;
+                align-items: flex-start;
+                gap: 2rem;
+                margin-bottom: 1rem;
+                .no{
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  .text{
+                    font-size: 0.85rem;
+                    margin-bottom: 4px;
+                  }
+                  .val{
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+              .search-select{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+                gap: 1rem;
+                .searchbar{
+                  width: 50%;
+                }
+                .select-dropdown{
+                  width: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

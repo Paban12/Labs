@@ -1,0 +1,35 @@
+.ref-sharing-page{
+  .modal{
+    .form{
+      .permissions{
+        .data-row{
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+        .data{
+          width: 100%;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          font-size: 0.8rem;
+          input{
+            width: max-content;
+            margin-top: 3px;
+            cursor: pointer;
+          }
+          span{
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--black);
+          }
+          .select-dropdown{
+            width: 100%;
+            // height: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

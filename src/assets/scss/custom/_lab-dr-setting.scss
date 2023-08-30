@@ -1,0 +1,18 @@
+.dr-default-setting{
+  padding: 1rem;
+  .select-dropdown{
+    width: 50%;
+  }
+  .check{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    input{
+      width: max-content;
+      margin-top: 3px;
+    }
+    .text{
+      font-size: 0.85rem;
+    }
+  }
+}

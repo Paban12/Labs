@@ -228,6 +228,12 @@ const routes = [
                 name: 'billing',
                 component: () => import( /* webpackChunkName: "billing" */ '../views/Billing.vue')
             },
+            //Reports
+            {
+                path: '/reports',
+                name: 'reports',
+                component: () => import( /* webpackChunkName: "reports" */ '../views/Reports/ReportsLayout.vue')
+            },
             //Settings
             {
                 path: '/site-setting',
@@ -235,9 +241,93 @@ const routes = [
                 component: () => import( /* webpackChunkName: "site setting" */ '../views/Settings/SiteSetting.vue')
             },
             {
+                path: '/practice-details',
+                name: 'practice details',
+                component: () => import( /* webpackChunkName: "practice details" */ '../views/Settings/PracticeDetails.vue')
+            },
+            {
+                path: '/thyromax-plan',
+                name: 'thyromax plan',
+                component: () => import( /* webpackChunkName: "thyromax plan" */ '../views/Settings/ThyromaxPlan.vue')
+            },
+            {
+                path: '/department',
+                name: 'department',
+                component: () => import( /* webpackChunkName: "department" */ '../views/Settings/Department.vue')
+            },
+            {
+                path: '/login-access',
+                name: 'login access',
+                component: () => import( /* webpackChunkName: "login access" */ '../views/Settings/LoginAccess.vue')
+            },
+            {
+                path: '/calender-setting',
+                name: 'calender setting',
+                component: () => import( /* webpackChunkName: "calender setting" */ '../views/Settings/Calender.vue')
+            },
+            {
+                path: '/patient-record',
+                name: 'patient-record',
+                component: () => import( /* webpackChunkName: "patient record" */ '../views/Settings/PatientRecord.vue')
+            },
+            {
+                path: '/patient-group',
+                name: 'patient-group',
+                component: () => import( /* webpackChunkName: "patient group" */ '../views/Settings/PatientGroups.vue')
+            },
+            {
+                path: '/reference-doctor',
+                name: 'reference-doctor',
+                component: () => import( /* webpackChunkName: "reference doctor" */ '../views/Settings/ReferenceDoctor.vue')
+            },
+            {
                 path: '/expense',
                 name: 'expense',
                 component: () => import( /* webpackChunkName: "expense" */ '../views/Expense.vue')
+            },
+            {
+                path: '/faq-create',
+                name: 'faq create',
+                component: () => import( /* webpackChunkName: "faq create" */ '../views/PolicyPages/FAQCreate.vue')
+            },
+            {
+                path: '/feedback',
+                name: 'feedback',
+                component: () => import( /* webpackChunkName: "feedback" */ '../views/Feedback.vue')
+            },
+            //Reference Share Layout
+            {
+                path: '/ref-share-layout',
+                redirect: '/reference-lab-doctor',
+                name: 'ref share layout',
+                component: () => import( /* webpackChunkName: "ref share layout" */ '../views/ReferenceSharing/RefShareLayout.vue'),
+                children: [
+                    {
+                        path: '/reference-lab-doctor',
+                        name: 'reference lab doctor',
+                        component: () => import( /* webpackChunkName: "reference lab doctor" */ '../views/ReferenceSharing/RefLabDoctor.vue')
+                    },
+                    {
+                        path: '/reference-lab-to',
+                        name: 'reference lab to',
+                        component: () => import( /* webpackChunkName: "reference lab to" */ '../views/ReferenceSharing/RefLabTo.vue')
+                    },
+                    {
+                        path: '/reference-lab-by',
+                        name: 'reference lab by',
+                        component: () => import( /* webpackChunkName: "reference lab by" */ '../views/ReferenceSharing/RefLabBy.vue')
+                    },
+                    {
+                        path: '/reference-lab-master',
+                        name: 'reference lab master',
+                        component: () => import( /* webpackChunkName: "reference lab master" */ '../views/ReferenceSharing/RefLabMaster.vue')
+                    },
+                    {
+                        path: '/phlebo-sharing',
+                        name: 'phlebo sharing',
+                        component: () => import( /* webpackChunkName: "pheblo sharing" */ '../views/ReferenceSharing/PhleboSharing.vue')
+                    },
+                ]
             },
             //mobile-view
             {

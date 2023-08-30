@@ -1,9 +1,19 @@
 <template>
   <div class="single-select">
-    <input type="text" ref="inputField" v-model="searchQuery" :placeholder="placeholder" @keydown.enter="selectSearch"
-      @click="handleKeyDown" />
+    <input
+      type="text"
+      ref="inputField"
+      v-model="searchQuery"
+      :placeholder="placeholder"
+      @keydown.enter="selectSearch"
+      @click="handleKeyDown"
+    />
     <ul class="dropdown-options">
-      <li v-for="option in filteredOptions" :key="option.id" @click="selectOption(option)">
+      <li
+        v-for="option in filteredOptions"
+        :key="option.id"
+        @click="selectOption(option)"
+      >
         {{ option.name }} {{ selectOption2 }}
       </li>
     </ul>
@@ -11,14 +21,19 @@
 </template>
 
 <script setup>
-import { computed, getCurrentInstance, onBeforeMount, onBeforeUnmount, ref } from "vue";
+import {
+  computed,
+  getCurrentInstance,
+  onBeforeMount,
+  onBeforeUnmount,
+  ref,
+} from "vue";
 defineEmits(["update:modelValue", "selected"]);
 // import {}
 
 const props = defineProps({
   modelValue: {
     type: String,
-    defaukt: null,
     required: true,
   },
   placeholder: {
@@ -31,12 +46,12 @@ const props = defineProps({
   },
   outside: {
     type: Boolean,
-    default: true
+    default: true,
   },
   selectData: {
     type: Object,
-    default: {}
-  }
+    default: {},
+  },
 });
 
 let searchQuery = ref("");
@@ -49,15 +64,15 @@ const filteredOptions = computed(() => {
     option.name.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
 });
-const computedValue = computed({
-  get: () => props.modelValue,
-  set: (value) => {
-    emit("update:modelValue", value);
-  },
-});
+// const computedValue = computed({
+//   get: () => props.modelValue,
+//   set: (value) => {
+//     emit("update:modelValue", value);
+//   },
+// });
 const selectOption2 = computed(() => {
   if (props.selectData.name) {
-    selectOption(props.selectData)
+    selectOption(props.selectData);
   }
 });
 const selectOption = (option) => {
@@ -91,7 +106,6 @@ const handleKeyDown = () => {
 
 // this is if required click outside to display none dropdown-options
 onBeforeMount(() => {
-
   // searchQuery.value = props.modelValue;
   if (props.outside) {
     window.addEventListener("click", handleClickOutside);
