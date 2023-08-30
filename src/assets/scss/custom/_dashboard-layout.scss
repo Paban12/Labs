@@ -17,9 +17,10 @@
 
 
 //media queries
-@media (max-width: 768px){
+@media (max-width: 1024px){
   .dashboard-layout{
     // overflow: auto;
+    // background: red;
     .middle-container{
       margin-top: 4.5rem;
       margin-left: 0;
@@ -31,9 +32,10 @@
       // &::-webkit-scrollbar {
       //   display: none;
       // }
+      // background: red;
       overflow-y: hidden;
       .middle-container-inner{
-        min-height: calc(100vh - 26.1rem);
+        min-height: calc(100vh - 9.05rem);
         // min-height: max-content;
         max-height: max-content;
       }

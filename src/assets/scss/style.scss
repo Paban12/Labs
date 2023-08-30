@@ -1074,14 +1074,14 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
 
 
 //media queries
-@media (max-width: 768px){
+@media (max-width: 1024px){
   .form{
     span{
       font-size: 12px;
     }
     .two-inputs{
-      flex-direction: column;
-      gap: 0;
+      // flex-direction: column;
+      // gap: 0;
       .form-item{
         width: 100%;
       }
@@ -1094,7 +1094,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     }
     .save-btn{
       .btn{
-        width: 100% !important;
+        // width: 100% ;
       }
     }
   }
