@@ -37,18 +37,18 @@
             </table>
           </div>
           <div class="table-no-data">
-            <div >No records Found!</div>
+            <div>No records Found!</div>
           </div>
           <div class="table-footer">
             <div class="entries">
               Showing <span>0</span> to <span>0</span> of <span>0</span> entries
             </div>
             <div class="pagination">
-              <span>First</span>
-              <span>Previous</span>
+              <icon-left-double-arrow></icon-left-double-arrow>
               <div class="page">1</div>
-              <span>Next</span>
-              <span>Last</span>
+              <div class="page active">2</div>
+              <div class="page">3</div>
+              <icon-right-double-arrow></icon-right-double-arrow>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ const doctorData = reactive([
     name: "Prakash Jhaa",
     phone: 8888888888,
     email: "patient@mail.com",
-    speciality: 'ENT'
+    speciality: "ENT",
   },
 ]);
 </script>

@@ -10,7 +10,10 @@
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
             <div class="add-btn">
-              <button class="btn black-btn" @click.prevent="formVar.addModal = true">
+              <button
+                class="btn black-btn"
+                @click.prevent="formVar.addModal = true"
+              >
                 Add New
               </button>
             </div>
@@ -45,8 +48,8 @@
                   <td>{{ item.note }}</td>
                   <td>
                     <div class="doc-pics">
-                      <img src="/src/assets/images/jpg/about1.jpg" alt="">
-                      <img src="/src/assets/images/jpg/login-bg2.jpg" alt="">
+                      <img src="/src/assets/images/jpg/about1.jpg" alt="" />
+                      <img src="/src/assets/images/jpg/login-bg2.jpg" alt="" />
                     </div>
                   </td>
                   <td class="text-center">
@@ -67,18 +70,18 @@
             </table>
           </div>
           <div class="table-no-data">
-            <div >No records Found!</div>
+            <div>No records Found!</div>
           </div>
           <div class="table-footer">
             <div class="entries">
               Showing <span>0</span> to <span>0</span> of <span>0</span> entries
             </div>
             <div class="pagination">
-              <span>First</span>
-              <span>Previous</span>
+              <icon-left-double-arrow></icon-left-double-arrow>
               <div class="page">1</div>
-              <span>Next</span>
-              <span>Last</span>
+              <div class="page active">2</div>
+              <div class="page">3</div>
+              <icon-right-double-arrow></icon-right-double-arrow>
             </div>
           </div>
         </div>
@@ -88,13 +91,20 @@
     <Modal v-model:show="formVar.confirmModal" class="confirm-modal">
       <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">
+        <button
+          class="btn grey-btn cancel-btn"
+          @click.prevent="formVar.confirmModal = false"
+        >
           Cancel
         </button>
         <button class="btn confirm-btn">Confirm</button>
       </div>
     </Modal>
-    <Modal v-model:show="formVar.addModal" class="add-expense-modal" headerClasses="header-bg">
+    <Modal
+      v-model:show="formVar.addModal"
+      class="add-expense-modal"
+      headerClasses="header-bg"
+    >
       <template v-slot:header>
         <div class="title" showHeader="true">Expenses</div>
         <div class="close-btn" @click.prevent="formVar.addModal = false">
@@ -116,22 +126,30 @@
               <th>Documents</th>
             </thead>
             <tbody>
-              <tr >
+              <tr>
                 <td>
-                  <input type="text" placeholder="Expense Title">
+                  <input type="text" placeholder="Expense Title" />
                 </td>
                 <td>
-                  <SingleSelect v-model="formVar.expense_type" :options="expenseTypeOptions" @selected="handleSelectedOption"
-                    placeholder="Select State"></SingleSelect>
+                  <SingleSelect
+                    v-model="formVar.expense_type"
+                    :options="expenseTypeOptions"
+                    @selected="handleSelectedOption"
+                    placeholder="Select State"
+                  ></SingleSelect>
                 </td>
                 <td>
-                  <input type="text" placeholder="Vendor Name">
+                  <input type="text" placeholder="Vendor Name" />
                 </td>
                 <td>
                   <div class="date-input">
-                    <input type="date" v-model="inputDate" @change="onDateChange" />
+                    <input
+                      type="date"
+                      v-model="inputDate"
+                      @change="onDateChange"
+                    />
                     <div class="icon">
-                      <img src="/src/assets/images/icons/calender.svg" alt="">
+                      <img src="/src/assets/images/icons/calender.svg" alt="" />
                     </div>
                   </div>
                 </td>
@@ -161,24 +179,42 @@
                   />
                 </td>
                 <td>
-                  <input type="number" placeholder="Amount">
+                  <input type="number" placeholder="Amount" />
                 </td>
                 <td>
-                  <input type="text" placeholder="Note">
+                  <input type="text" placeholder="Note" />
                 </td>
                 <td>
                   <div class="doc-row">
                     <div class="pic-upload">
-                      <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic" alt="" />
-                      <img v-else src="/src/assets/images/png/add.png" class="dummy-img pic" alt="" />
+                      <img
+                        v-if="formVar.imagePreview"
+                        :src="formVar.imagePreview"
+                        class="preview-image pic"
+                        id="profilePic"
+                        alt=""
+                      />
+                      <img
+                        v-else
+                        src="/src/assets/images/png/add.png"
+                        class="dummy-img pic"
+                        alt=""
+                      />
                       <label for="imgUpload" class="upload-file-block">
                         Add
                       </label>
-                      <input class="uploadProfileInput" type="file" name="profile_pic" id="imgUpload" accept="image/png"
-                        @change="previewProfile($event, profilePic)" style="display: none" />
-                        <div class="delete-icon">
-                          <icon-cross></icon-cross>
-                        </div>
+                      <input
+                        class="uploadProfileInput"
+                        type="file"
+                        name="profile_pic"
+                        id="imgUpload"
+                        accept="image/png"
+                        @change="previewProfile($event, profilePic)"
+                        style="display: none"
+                      />
+                      <div class="delete-icon">
+                        <icon-cross></icon-cross>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -202,18 +238,18 @@ const formVar = reactive({
   addModal: false,
   expense_type: null,
   imagePreview: "",
-})
+});
 
 const expenseData = reactive([
   {
-    expense_title: 'Fashion',
-    expense_type: 'Fashion',
-    date: '21/05/2022',
-    vendor: 'Mall',
-    pay_mode: 'Cash',
-    tax: '18% CGST',
+    expense_title: "Fashion",
+    expense_type: "Fashion",
+    date: "21/05/2022",
+    vendor: "Mall",
+    pay_mode: "Cash",
+    tax: "18% CGST",
     amt: 2000,
-    note: 'Have a nice',
+    note: "Have a nice",
   },
 ]);
 
@@ -251,9 +287,7 @@ const tab = [];
 async function previewProfile(event, id) {
   if (event) {
     const input = await event.target;
-    if (
-      input.files[0].type === 'image/png'
-    ) {
+    if (input.files[0].type === "image/png") {
       if (input.files) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -266,13 +300,12 @@ async function previewProfile(event, id) {
       }
     } else {
       formVar.imagePreview = null;
-      store.dispatch('ErrorSuccess/error', {
-        msg: 'Upload image in png, jpeg, jpg format.',
+      store.dispatch("ErrorSuccess/error", {
+        msg: "Upload image in png, jpeg, jpg format.",
       });
     }
   }
 }
-
 </script>
 
 <style>

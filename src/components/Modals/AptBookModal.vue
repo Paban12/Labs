@@ -383,8 +383,8 @@
           <input type="text" placeholder="Note">
         </div>
       </div>
-      <div class="save-btn form-item">
-        <button type="submit" class="btn black-btn">Book</button>
+      <div class="save-btn flex justify-end">
+        <button type="submit" class="btn black-btn w-10-r">Book</button>
       </div>
     </form>
   </Modal>

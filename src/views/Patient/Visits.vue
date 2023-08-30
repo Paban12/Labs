@@ -7,9 +7,9 @@
             <div class="title">Visits</div>
             <div class="search">
               <div class="date-input">
-                <input type="date">
+                <input type="date" />
                 <div class="icon">
-                  <img src="/src/assets/images/icons/calender.svg" alt="">
+                  <img src="/src/assets/images/icons/calender.svg" alt="" />
                 </div>
               </div>
               <button class="btn black-btn">Search</button>
@@ -40,13 +40,16 @@
                     <td class="text-center">
                       <div class="option-btns">
                         <router-link to="/" class="">
-                          <img src="/src/assets/images/png/printer.png" alt="">
+                          <img
+                            src="/src/assets/images/png/printer.png"
+                            alt=""
+                          />
                         </router-link>
                         <router-link to="/" class="">
-                          <img src="/src/assets/images/icons/mail.svg" alt="">
+                          <img src="/src/assets/images/icons/mail.svg" alt="" />
                         </router-link>
                         <router-link to="/visit-summary" class="">
-                          <img src="/src/assets/images/png/eye.png" alt="">
+                          <img src="/src/assets/images/png/eye.png" alt="" />
                         </router-link>
                       </div>
                     </td>
@@ -55,18 +58,19 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
-                Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
+                Showing <span>0</span> to <span>0</span> of
+                <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -77,20 +81,18 @@
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { reactive } from "vue";
 
-  const billData = reactive([
-    {
-      token: 25478,
-      doctor_name: 'Harish Verma',
-      patient_name: 'Ravish Kumar',
-      date: '15-05-2023',
-      remark: 'Take care',
-    },
-  ])
-
+const billData = reactive([
+  {
+    token: 25478,
+    doctor_name: "Harish Verma",
+    patient_name: "Ravish Kumar",
+    date: "15-05-2023",
+    remark: "Take care",
+  },
+]);
 </script>
 
 <style>
-
 </style>

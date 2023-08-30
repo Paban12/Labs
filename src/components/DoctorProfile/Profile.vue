@@ -3,23 +3,23 @@
     <form action="" class="form">
       <div class="two-inputs">
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Name</div>
             <input type="text" placeholder="Enter Name">
             <div class="err-msg">Please enter name</div>
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Phone No</div>
             <input type="number" placeholder="Enter Phone No">
             <div class="err-msg">Please enter phone no</div>
           </div>
         </div>
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Alternate Phone No</div>
             <input type="number" placeholder="Enter Alternate Phone No">
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Email</div>
             <input type="text" placeholder="Enter Email">
             <div class="err-msg">Please enter email</div>
@@ -28,7 +28,7 @@
       </div>
       <div class="two-inputs">
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Gender</div>
             <div class="select-dropdown">
               <select name="" id="">
@@ -39,7 +39,7 @@
             </div>
             <div class="err-msg">Please select gender</div>
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Date Of Birth</div>
             <div class="date-input">
               <input type="date" />
@@ -51,12 +51,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Registration Council & No</div>
             <input type="text" placeholder="Registration Council & No">
             <div class="err-msg">Please enter registration council & no</div>
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Registration Year</div>
             <input type="text" placeholder="Registration Year">
             <div class="err-msg">Please enter reg. year</div>
@@ -65,11 +65,11 @@
       </div>
       <div class="two-inputs">
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Experience</div>
             <input type="text" placeholder="Experience">
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">Registartion Type</div>
             <div class="select-dropdown">
               <select name="" id="">
@@ -81,12 +81,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">State</div>
             <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
               placeholder="Select State"></SingleSelect>
           </div>
-          <div class="form-item col-25 mb-16">
+          <div class="form-item col-5 mb-16">
             <div class="title">City</div>
             <SingleSelect v-model="formVar.city" :options="cityOptions" @selected="handleSelectedOption"
               placeholder="Select State"></SingleSelect>

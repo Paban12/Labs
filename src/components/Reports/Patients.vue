@@ -111,18 +111,18 @@
           </table>
         </div>
         <div class="table-no-data">
-          <div >No records Found!</div>
+          <div>No records Found!</div>
         </div>
         <div class="table-footer">
           <div class="entries">
             Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
-            <span>First</span>
-            <span>Previous</span>
+            <icon-left-double-arrow></icon-left-double-arrow>
             <div class="page">1</div>
-            <span>Next</span>
-            <span>Last</span>
+            <div class="page active">2</div>
+            <div class="page">3</div>
+            <icon-right-double-arrow></icon-right-double-arrow>
           </div>
         </div>
       </div>
@@ -134,43 +134,41 @@
 import { reactive } from "vue";
 
 const report = reactive({
-  tab: 1
-})
+  tab: 1,
+});
 
 const patientData = reactive([
   {
     p_id: 254,
-    date: '22/05/2023',
-    name: 'Ravi Kumar',
-    mobile: '+91 8888888888',
-    mail: 'user@mail.com',
-    gender: 'Male',
-    age: '42 years',
-    marital_status: 'Married',
-    blood_group: 'A+',
-    language: 'Bengali',
-    aadhar_no: '12345678945',
+    date: "22/05/2023",
+    name: "Ravi Kumar",
+    mobile: "+91 8888888888",
+    mail: "user@mail.com",
+    gender: "Male",
+    age: "42 years",
+    marital_status: "Married",
+    blood_group: "A+",
+    language: "Bengali",
+    aadhar_no: "12345678945",
     // category: 'category',
-    caste: 'Hindu',
-    sub_caste: 'Hindu',
-    religion: 'Hindu',
-    nationality: 'Indian',
-    education: '12th Pass',
-    occupation: 'Service',
+    caste: "Hindu",
+    sub_caste: "Hindu",
+    religion: "Hindu",
+    nationality: "Indian",
+    education: "12th Pass",
+    occupation: "Service",
     // street: 'MG Road',
     // locality: 'Ashoka Nagar',
-    city: 'Kolkata',
+    city: "Kolkata",
     // smoking_habit: 'Yes',
     // alcohol_consumption: 'Yes',
-    created_by: 'Rohith Sir',
-    created_at: '16 Aug, 2023 12:42 PM',
-    updated_by: 'Rohith Sir',
-    updated_at: '16 Aug, 2023 12:42 PM',
-  }
-])
-
+    created_by: "Rohith Sir",
+    created_at: "16 Aug, 2023 12:42 PM",
+    updated_by: "Rohith Sir",
+    updated_at: "16 Aug, 2023 12:42 PM",
+  },
+]);
 </script>
 
 <style>
-
 </style>

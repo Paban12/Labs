@@ -5,37 +5,37 @@
         <div class="card stat-card mb-16">
           <div class="stats">
             <div class="stat card1">
-              <img src="/src/assets/images/png/mobile.png" alt="image">
+              <img src="/src/assets/images/png/mobile.png" alt="image" />
               <div class="vals">
                 <div class="no">25</div>
                 <div class="text">Completed</div>
               </div>
             </div>
             <div class="stat card2">
-              <img src="/src/assets/images/png/mobile.png" alt="image">
+              <img src="/src/assets/images/png/mobile.png" alt="image" />
               <div class="vals">
                 <div class="no">25</div>
                 <div class="text">Pending</div>
               </div>
             </div>
             <div class="stat card3">
-              <img src="/src/assets/images/png/mobile.png" alt="image">
+              <img src="/src/assets/images/png/mobile.png" alt="image" />
               <div class="vals">
                 <div class="no">25</div>
                 <div class="text">Waiting</div>
               </div>
             </div>
-          </div> 
+          </div>
           <div class="search-section">
             <div class="row">
               <div class="col-25">
-                <input type="text" placeholder="Search by name">
+                <input type="text" placeholder="Search by name" />
               </div>
               <div class="col-25">
                 <div class="date-input">
-                  <input type="date">
+                  <input type="date" />
                   <div class="icon">
-                    <img src="/src/assets/images/icons/calender.svg" alt="">
+                    <img src="/src/assets/images/icons/calender.svg" alt="" />
                   </div>
                 </div>
               </div>
@@ -91,13 +91,16 @@
                     <td class="text-center">
                       <div class="option-btns">
                         <div class="">
-                          <img src="/src/assets/images/png/printer.png" alt="">
+                          <img
+                            src="/src/assets/images/png/printer.png"
+                            alt=""
+                          />
                         </div>
                         <div class="">
-                          <img src="/src/assets/images/icons/mail.svg" alt="">
+                          <img src="/src/assets/images/icons/mail.svg" alt="" />
                         </div>
                         <router-link to="/visit-summary" class="">
-                          <img src="/src/assets/images/png/eye.png" alt="">
+                          <img src="/src/assets/images/png/eye.png" alt="" />
                         </router-link>
                       </div>
                     </td>
@@ -106,18 +109,19 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
-                Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
+                Showing <span>0</span> to <span>0</span> of
+                <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -128,21 +132,19 @@
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { reactive } from "vue";
 
-  const consultData = reactive([
-    {
-      id: 125,
-      token: 25478,
-      name: 'Prakash Jhaa',
-      recent_visit: '20 Days ago',
-      total_visits: 10,
-      purpose: 'Consultation',
-    },
-  ])
-
+const consultData = reactive([
+  {
+    id: 125,
+    token: 25478,
+    name: "Prakash Jhaa",
+    recent_visit: "20 Days ago",
+    total_visits: 10,
+    purpose: "Consultation",
+  },
+]);
 </script>
 
 <style>
-
 </style>

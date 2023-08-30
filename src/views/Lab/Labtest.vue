@@ -5,11 +5,16 @@
         <div class="heading">
           <div class="main">
             <div class="title">Tests</div>
-            <button class="btn black-btn" @click.prevent="storeVar.addTestModal = true">Add</button>
+            <button
+              class="btn black-btn"
+              @click.prevent="storeVar.addTestModal = true"
+            >
+              Add
+            </button>
           </div>
           <div class="tabs">
             <div
-              class="tab" 
+              class="tab"
               @click.prevent="labTest.tab = 1"
               :class="labTest.tab === 1 ? 'active' : ''"
             >
@@ -102,7 +107,10 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="storeVar.addTestModal = true">
+                        <div
+                          class=""
+                          @click.prevent="storeVar.addTestModal = true"
+                        >
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
@@ -118,7 +126,7 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
@@ -126,11 +134,11 @@
                 <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -197,7 +205,10 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="storeVar.addPanelModal = true">
+                        <div
+                          class=""
+                          @click.prevent="storeVar.addPanelModal = true"
+                        >
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
@@ -213,7 +224,7 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
@@ -221,11 +232,11 @@
                 <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -268,7 +279,10 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="storeVar.addPackageModal = true">
+                        <div
+                          class=""
+                          @click.prevent="storeVar.addPackageModal = true"
+                        >
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
@@ -284,7 +298,7 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
@@ -292,11 +306,11 @@
                 <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -331,7 +345,10 @@
                     <td>{{ item.date }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div class="" @click.prevent="storeVar.addTemplateModal = true">
+                        <div
+                          class=""
+                          @click.prevent="storeVar.addTemplateModal = true"
+                        >
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
                         <div
@@ -347,7 +364,7 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
@@ -355,11 +372,11 @@
                 <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -368,13 +385,16 @@
     </div>
     <!-- modals -->
     <Modal v-model:show="labTest.confirmModal" class="confirm-modal">
-      <h4>
-        Are you sure want to Delete
-      </h4>
+      <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="labTest.confirmModal = false">Cancel</button>
+        <button
+          class="btn grey-btn cancel-btn"
+          @click.prevent="labTest.confirmModal = false"
+        >
+          Cancel
+        </button>
         <button class="btn confirm-btn">Confirm</button>
-      </div>      
+      </div>
     </Modal>
     <!-- components -->
     <AddTestModal />
@@ -386,7 +406,7 @@
 
 <script setup>
 import { reactive, computed } from "vue";
-import { useStore } from 'vuex';
+import { useStore } from "vuex";
 
 const store = useStore();
 const storeVar = computed(() => store.state.Auth);
@@ -400,55 +420,55 @@ const labTest = reactive({
 
 const testData = reactive([
   {
-    test_name: 'Dengue Ig G & Ig M Antibody Rapid, Serum',
-    display: 'Yes',
-    cat: 'Fever',
-    dept: 'Immunology & Serology',
+    test_name: "Dengue Ig G & Ig M Antibody Rapid, Serum",
+    display: "Yes",
+    cat: "Fever",
+    dept: "Immunology & Serology",
     test_code: 25478,
-    sample: 'Serum',
-    container: 'Urine Container',
+    sample: "Serum",
+    container: "Urine Container",
     sample_size: 3,
     price: 2000,
-    home_collection: 'yes',
-    report_within: '4 Hrs',
-  }
-])
+    home_collection: "yes",
+    report_within: "4 Hrs",
+  },
+]);
 
 const panelData = reactive([
   {
-    panel_name: 'Dengue Ig G & Ig M Antibody Rapid, Serum',
-    display: 'Yes',
-    cat: 'Fever',
-    dept: 'Immunology & Serology',
+    panel_name: "Dengue Ig G & Ig M Antibody Rapid, Serum",
+    display: "Yes",
+    cat: "Fever",
+    dept: "Immunology & Serology",
     test_code: 25478,
-    sample: 'Serum',
-    container: 'Urine Container',
+    sample: "Serum",
+    container: "Urine Container",
     sample_size: 3,
     price: 2000,
-    home_collection: 'yes',
-    report_within: '4 Hrs',
-  }
-])
+    home_collection: "yes",
+    report_within: "4 Hrs",
+  },
+]);
 
 const packageData = reactive([
   {
-    package_name: 'Dengue Ig ',
-    test_panel_name: 'Dengue Ig G & Ig M Antibody Rapid, Serum',
+    package_name: "Dengue Ig ",
+    test_panel_name: "Dengue Ig G & Ig M Antibody Rapid, Serum",
     price: 2000,
-    sample: 'Serum',
-    container: 'Urine Container',
-    home_collection: 'yes',
-    report_within: '4 Hrs',
-  }
-])
+    sample: "Serum",
+    container: "Urine Container",
+    home_collection: "yes",
+    report_within: "4 Hrs",
+  },
+]);
 
 const templateData = reactive([
   {
-    title: 'BLOOD CULTURE REPORT',
-    test: 'Glycosylated Hemoglobin(GHb/HbA1c)',
-    date: '30, May 2023',
-  }
-])
+    title: "BLOOD CULTURE REPORT",
+    test: "Glycosylated Hemoglobin(GHb/HbA1c)",
+    date: "30, May 2023",
+  },
+]);
 
 //multi select
 const testOptions = [

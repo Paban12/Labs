@@ -234,11 +234,11 @@
             {{ addressValid }}
           </div>
         </div>
-        <div class="save-btn form-item">
-          <button type="button" class="btn black-btn load-btn" v-if="storeVar.loaderButton">
+        <div class="save-btn flex justify-end">
+          <button type="button" class="btn black-btn w-10-r load-btn" v-if="storeVar.loaderButton">
             <icon-login-loader></icon-login-loader>
           </button>
-          <button type="submit" class="btn black-btn">Add</button>
+          <button type="submit" class="btn black-btn w-10-r">Add</button>
         </div>
       </form>
     </Modal>
