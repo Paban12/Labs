@@ -1,9 +1,9 @@
 .confirm-modal{
   // display: none;
   .modal{
-    .modal-header{
-      display: none !important;
-    }
+    // .modal-header{
+    //   display: none !important;
+    // }
     .modal-body{
       padding: 1.5rem 1.5rem !important;
       h4{
@@ -24,6 +24,21 @@
           background: var(--btn-bg);
           border: 1px solid var(--light-blue);
           color: var(--white);
+        }
+      }
+      .redio-section{
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem 1rem 2.5rem;
+        .radio, label{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0.5rem;
+          gap: 0.5rem;
+          input, label{
+            cursor: pointer;
+          }
         }
       }
     }

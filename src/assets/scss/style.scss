@@ -463,6 +463,14 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     .btn{
       text-decoration: none;
     }
+    .load-btn{
+      #icon{
+        height: 1.2rem;
+        width: 1.2rem;
+        fill: var(--white);
+        animation: rotate 1.0s infinite linear;
+      }
+    }
   }
   textarea{
     resize: none;

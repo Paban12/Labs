@@ -10,6 +10,8 @@ import { Alert } from "./modules/error-success";
 import { Page } from './modules/page'
 import { Notify } from './modules/notify'
 import { Staff } from './modules/staff'
+import { Doctor } from './modules/doctors'
+import { Laboratory } from './modules/laboratory'
 
 export default createStore({
   state,
@@ -23,5 +25,7 @@ export default createStore({
     Page,
     Notify,
     Staff,
+    Doctor,
+    Laboratory,
   }
 })

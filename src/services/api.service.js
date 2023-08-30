@@ -2,10 +2,12 @@ import axios from "axios";
 
 import { authHeader } from "./_helper";
 
-const rootURL = "http://192.168.29.31:3000/api/v1/";
+const rootURL = "http://localhost:3000/api/v1/";
 
 const authURL = rootURL + "auth";
 const accountURL = rootURL + "account";
+const doctorDetailsURL = rootURL + "doctor-details";
+const laboratoryURL = rootURL + "laboratory";
 
 /***** Login *****/
 function verifyId(loginId, password) {
@@ -30,11 +32,26 @@ function getStaff(limit, offset, keyword, status, role) {
     { headers: authHeader() }
   );
 }
+function getDoctor(limit, offset, keyword, status, role) {
+  return axios.get(
+    accountURL +
+    "/doctors?limit=" +
+    limit +
+    "&offset=" +
+    offset +
+    "&keyword=" +
+    keyword +
+    "&status=" +
+    status +
+    "&role=" +
+    role,
+    { headers: authHeader() }
+  );
+}
 function getOneStaff(id) {
   return axios.get(accountURL + "/" + id, { headers: authHeader() });
 }
 function addStaff(loginId, name, emailId, gender, dob, roles, password) {
-  console.log({ loginId, name, emailId, gender, dob, roles, password });
   return axios.post(
     accountURL,
     { loginId, name, emailId, gender, dob, roles, password },
@@ -54,6 +71,45 @@ function savePermission(id, menu) {
   );
 }
 
+function getDoctorProfile(id) {
+  return axios.get(doctorDetailsURL + "/profile/" + id, { headers: authHeader() });
+}
+function updateDoctorProfile(name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address, id) {
+  console.log({ name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address, id });
+  return axios.patch(doctorDetailsURL + '/' + id, { name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address }, { headers: authHeader() })
+}
+
+// Lab 
+function addLaboratory(name, emailId, phone, address, state, city,pincode) {
+  console.log({name, emailId, phone, address, state, city,pincode});
+  return axios.post(
+    laboratoryURL,
+    {name, emailId, phone, address, state, city,pincode},
+    { headers: authHeader() }
+  );
+}
+function updateLaboratory(id,name, emailId, phone, address, state, city,pincode) {
+  console.log({id,name, emailId, phone, address, state, city,pincode});
+  return axios.patch(
+    laboratoryURL + '/'+id,
+    {name, emailId, phone, address, state, city,pincode},
+    { headers: authHeader() }
+  );
+}
+function getLaboratory(limit, offset, keyword, status) {
+  return axios.get(
+    laboratoryURL +
+    "/all?limit=" +
+    limit +
+    "&offset=" +
+    offset +
+    "&keyword=" +
+    keyword +
+    "&status=" +
+    status,
+    { headers: authHeader() }
+  );
+}
 export const apiServices = {
   verifyId,
   verifyOtp,
@@ -62,4 +118,12 @@ export const apiServices = {
   addStaff,
   getPermission,
   savePermission,
+  getDoctor,
+  getDoctorProfile,
+  updateDoctorProfile,
+
+  // Lab 
+  addLaboratory,
+  getLaboratory,
+  updateLaboratory,
 };

@@ -2,7 +2,8 @@ export default {
   beforeMount: function (el, binding) {
     const ourClickEventHandler = (event) => {
       if (!el.contains(event.target) && el !== event.target) {
-        binding.value(event) // before binding it
+        // binding.value(event) // before binding it
+        binding.value
       }
     }
     el.__vueClickEventHandler__ = ourClickEventHandler

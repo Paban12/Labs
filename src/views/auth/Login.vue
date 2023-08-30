@@ -7,16 +7,16 @@
     <div class="form-item mb-16">
       <div class="title">Email</div>
       <div class="input">
-        <input type="email" placeholder="user@gmail.com">
-        <div class="err-msg"></div>
+        <input v-model="formVar.loginId" type="text" placeholder="Enter Phone Number" name="phone">
+        <div class="err-msg" v-if="formVar.submit && loginIdValid">{{  loginIdValid }}</div>
       </div>
     </div>
     <div class="form-item mb-16">
       <div class="title">Password</div>
       <div class="input">
-        <input type="password" placeholder="*******">
+        <input v-model="formVar.password" type="password" placeholder="*******">
       </div>
-      <div class="err-msg"></div>
+      <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
     </div>
     <div class="forgot">
       <router-link to="/forgot">Forgot Password?</router-link>

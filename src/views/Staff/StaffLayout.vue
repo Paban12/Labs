@@ -21,7 +21,7 @@
             <div class="searchbar">
               <div class="search">
                 <input type="text" placeholder="Search for Staff" @keyup="search($event.target.value)">
-                <img src="/src/assets/images/png/search.png" alt="">
+                <img src="/src/assets/images/png/search.png" alt="" @click="Search2">
               </div>
               <div class="drop">
                 <Select v-model="formVar.changeRole" :options="postOptions" @change.prevent="onChange" />
@@ -110,13 +110,16 @@ function getInfo(id){
   store.dispatch("Staff/getOneStaff", { id });
   router.push('/staff/details')
 }
+function Search2(){
+  getStaff(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role?.id)
+}
 function search(text){
-  if(text.length>3){
-    getStaff(formVar.limit, formVar.offset, text, formVar.status, formVar.role?.id)
-  } else if(text===''){
+  formVar.keyword=text
+if(text===''){
     getStaff(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role?.id)
   }
 }
+
 /* Functions/Methods */
 
 /* Validation */
