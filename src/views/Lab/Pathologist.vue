@@ -60,11 +60,11 @@
               Showing <span>0</span> to <span>0</span> of <span>0</span> entries
             </div>
             <div class="pagination">
-              <span>First</span>
-              <span>Previous</span>
+              <icon-left-double-arrow></icon-left-double-arrow>
               <div class="page">1</div>
-              <span>Next</span>
-              <span>Last</span>
+              <div class="page active">2</div>
+              <div class="page">3</div>
+              <icon-right-double-arrow></icon-right-double-arrow>
             </div>
           </div>
         </div>
@@ -171,8 +171,8 @@
           <textarea name="" id="" v-model="formVar.address" placeholder="Enter Address"></textarea>
           <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
-        <div class="save-btn form-item">
-          <button class="btn black-btn">Add</button>
+        <div class="save-btn flex justify-end">
+          <button type="submit" class="btn black-btn w-10-r">Add</button>
         </div>
       </form>
     </Modal>

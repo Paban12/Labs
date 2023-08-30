@@ -7,9 +7,9 @@
             <div class="title">Appointments</div>
             <div class="search">
               <div class="date-input">
-                <input type="date">
+                <input type="date" />
                 <div class="icon">
-                  <img src="/src/assets/images/icons/calender.svg" alt="">
+                  <img src="/src/assets/images/icons/calender.svg" alt="" />
                 </div>
               </div>
               <button class="btn yellow-btn">All APT</button>
@@ -42,18 +42,19 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
-                Showing <span>0</span> to <span>0</span> of <span>0</span> entries
+                Showing <span>0</span> to <span>0</span> of
+                <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
           </div>
@@ -77,16 +78,16 @@ const formVar = reactive({
   time: "",
   duration: "",
   dob: null,
-})
+});
 
 const billData = reactive([
   {
-    date: '12-05-2023',
-    time: '12:45',
-    doctor_name: 'Dr. Harish Verma',
-    service: 'ENT'
+    date: "12-05-2023",
+    time: "12:45",
+    doctor_name: "Dr. Harish Verma",
+    service: "ENT",
   },
-])
+]);
 
 //search select start//
 const doctorOptions = [
@@ -116,7 +117,7 @@ const handleSelectedOption = (option) => {
 /* Lifecycle/Hooks */
 /* Lifecycle/Hooks */
 
-/* Functions/Methods */ 
+/* Functions/Methods */
 
 const onSubmitAppointment = () => {
   if (
@@ -124,7 +125,7 @@ const onSubmitAppointment = () => {
     serviceValid.value ||
     timeValid.value ||
     durationValid.value ||
-    dobValid.value 
+    dobValid.value
   ) {
     formVar.submit = true;
     return;
@@ -165,7 +166,6 @@ const dobValid = computed(() => {
 });
 
 /* Validation */
-
 </script>
 
 <style></style>

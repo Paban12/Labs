@@ -42,18 +42,18 @@
           </table>
         </div>
         <div class="table-no-data">
-          <div >No records Found!</div>
+          <div>No records Found!</div>
         </div>
         <div class="table-footer">
           <div class="entries">
             Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
-            <span>First</span>
-            <span>Previous</span>
+            <icon-left-double-arrow></icon-left-double-arrow>
             <div class="page">1</div>
-            <span>Next</span>
-            <span>Last</span>
+            <div class="page active">2</div>
+            <div class="page">3</div>
+            <icon-right-double-arrow></icon-right-double-arrow>
           </div>
         </div>
       </div>
@@ -73,18 +73,36 @@
       <form action="" class="form">
         <div class="dr-pic flex justify-center mb-16">
           <div class="pic-upload">
-            <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic" alt="" />
-            <img v-else src="/src/assets/images/png/man.png" class="dummy-img pic" alt="" />
+            <img
+              v-if="formVar.imagePreview"
+              :src="formVar.imagePreview"
+              class="preview-image pic"
+              id="profilePic"
+              alt=""
+            />
+            <img
+              v-else
+              src="/src/assets/images/png/man.png"
+              class="dummy-img pic"
+              alt=""
+            />
             <label for="imgUpload" class="upload-file-block">
               Upload Pic
             </label>
-            <input class="uploadProfileInput" type="file" name="profile_pic" id="imgUpload" accept="image/png"
-              @change="previewProfile($event, profilePic)" style="display: none" />
+            <input
+              class="uploadProfileInput"
+              type="file"
+              name="profile_pic"
+              id="imgUpload"
+              accept="image/png"
+              @change="previewProfile($event, profilePic)"
+              style="display: none"
+            />
           </div>
         </div>
         <div class="row">
           <div class="form-item mb-16">
-            <input type="text" placeholder="Doctor Name">
+            <input type="text" placeholder="Doctor Name" />
           </div>
           <div class="form-item mb-16">
             <SingleSelect
@@ -95,24 +113,24 @@
             ></SingleSelect>
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Registration No">
+            <input type="number" placeholder="Registration No" />
           </div>
           <div class="form-item mb-16">
-            <input type="text" placeholder="Clinic/Hospital Name">
+            <input type="text" placeholder="Clinic/Hospital Name" />
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Lab/Diagnostic Sharing (%)">
+            <input type="number" placeholder="Lab/Diagnostic Sharing (%)" />
           </div>
         </div>
         <div class="row">
           <div class="form-item mb-16">
-            <input type="number" placeholder="Phone No">
+            <input type="number" placeholder="Phone No" />
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Landline No">
+            <input type="number" placeholder="Landline No" />
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Email">
+            <input type="number" placeholder="Email" />
           </div>
           <div class="form-item mb-16">
             <SingleSelect
@@ -134,49 +152,49 @@
 
         <div class="row">
           <div class="form-item mb-16">
-            <input type="number" placeholder="Pincode">
+            <input type="number" placeholder="Pincode" />
           </div>
           <div class="form-item mb-16">
-            <input type="text" placeholder="Address">
+            <input type="text" placeholder="Address" />
           </div>
         </div>
-  
+
         <div class="permissions">
           <div class="data">
-            <input type="checkbox">
+            <input type="checkbox" />
             <span>Permanently Lab/Diagnostic Not Sharing</span>
           </div>
           <div class="data">
-            <input type="checkbox" checked v-model="isVisible1">
+            <input type="checkbox" checked v-model="isVisible1" />
             <span class="f-w-bold">Permanently Lab/Diagnostic Not Sharing</span>
           </div>
 
           <div class="" v-if="isVisible1">
             <div class="data-row">
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Sample Name</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Sample Collection Status</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Test/sample Process status</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Test Price/Amount</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Latterhead On</span>
               </div>
             </div>
             <div class="data-row">
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <div class="select-dropdown">
                   <select name="" id="">
                     <option value="">View Report</option>
@@ -195,61 +213,65 @@
             </div>
           </div>
           <div class="data">
-            <input type="checkbox" checked v-model="isVisible2">
+            <input type="checkbox" checked v-model="isVisible2" />
             <span class="f-w-bold">SHaring Reports</span>
           </div>
           <div class="" v-if="isVisible2">
             <div class="data-row">
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Test Amount</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Doctor Discount</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Lab Discount</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Doctor Due</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>RCPT No.</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Paid Date</span>
               </div>
             </div>
             <div class="select-dropdown mb-16">
               <select name="" id="">
                 <option value="">All Records Seen in Sharing Report</option>
-                <option value="">Only Paid Records Seen in Sharing Report</option>
+                <option value="">
+                  Only Paid Records Seen in Sharing Report
+                </option>
               </select>
             </div>
           </div>
           <div class="data">
-            <input type="checkbox" checked v-model="isVisible3">
+            <input type="checkbox" checked v-model="isVisible3" />
             <span class="f-w-bold">Patient Appointment creat Acess</span>
           </div>
           <div class="" v-if="isVisible3">
             <div class="data-row">
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Creat patient Appointment</span>
               </div>
               <div class="data">
-                <input type="checkbox">
+                <input type="checkbox" />
                 <span>Create Invoice</span>
               </div>
               <div class="data">
                 <div class="select-dropdown mb-16">
                   <select name="" id="">
-                    <option value="">Only Ref. Dr. Added Patient View in Suggestion</option>
+                    <option value="">
+                      Only Ref. Dr. Added Patient View in Suggestion
+                    </option>
                     <option value="">All Patients View in Suggestion</option>
                   </select>
                 </div>
@@ -266,7 +288,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref } from "vue";
 
 const formVar = reactive({
   editModal: false,
@@ -274,7 +296,7 @@ const formVar = reactive({
   state: null,
   city: null,
   imagePreview: "",
-})
+});
 
 const isVisible1 = ref(true);
 const isVisible2 = ref(true);
@@ -282,13 +304,15 @@ const isVisible3 = ref(true);
 
 const testData = reactive([
   {
-    ref_doctor: 'Dr. Shukla',
+    ref_doctor: "Dr. Shukla",
     share: 5,
-    portal_access: 'Yes',
-    report_access: 'Sample Name, Sample collection status, Test/sample Process status, View Report, Test Price/Amount	',
-    sharing_access: 'Test Amount, Dr. Discount, Lab Discount, Dr. Due, RCPT No., Paid Date',
-  }
-])
+    portal_access: "Yes",
+    report_access:
+      "Sample Name, Sample collection status, Test/sample Process status, View Report, Test Price/Amount	",
+    sharing_access:
+      "Test Amount, Dr. Discount, Lab Discount, Dr. Due, RCPT No., Paid Date",
+  },
+]);
 
 //search select
 const specialityOptions = [
@@ -335,9 +359,7 @@ async function previewProfile(event, id) {
     }
   }
 }
-
 </script>
 
 <style>
-
 </style>

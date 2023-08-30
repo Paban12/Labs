@@ -9,7 +9,10 @@
             <img src="/src/assets/images/png/search.png" alt="" />
           </div>
           <div class="add-btn">
-            <button class="btn black-btn" @click.prevent="formVar.paymentData = true">
+            <button
+              class="btn black-btn"
+              @click.prevent="formVar.paymentData = true"
+            >
               Bill
             </button>
           </div>
@@ -45,18 +48,18 @@
           </table>
         </div>
         <div class="table-no-data">
-          <div >No records Found!</div>
+          <div>No records Found!</div>
         </div>
         <div class="table-footer">
           <div class="entries">
             Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
-            <span>First</span>
-            <span>Previous</span>
+            <icon-left-double-arrow></icon-left-double-arrow>
             <div class="page">1</div>
-            <span>Next</span>
-            <span>Last</span>
+            <div class="page active">2</div>
+            <div class="page">3</div>
+            <icon-right-double-arrow></icon-right-double-arrow>
           </div>
         </div>
       </div>
@@ -84,7 +87,7 @@
           <div class="id">RDID : 5</div>
         </div>
         <div class="right">
-          Bill Date : 
+          Bill Date :
           <div class="date-input">
             <input type="date" />
             <div class="icon">
@@ -130,7 +133,7 @@
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <input type="number" placeholder="00 %">
+                <input type="number" placeholder="00 %" />
               </td>
               <td>{{ item.paid }}</td>
               <td>{{ item.due }}</td>
@@ -196,13 +199,13 @@
                   </div>
                 </td>
                 <td>
-                  <input type="number" placeholder="00">
+                  <input type="number" placeholder="00" />
                 </td>
                 <td>00</td>
                 <td>00</td>
                 <td>00</td>
                 <td>
-                  <input type="number" placeholder="00">
+                  <input type="number" placeholder="00" />
                 </td>
               </tr>
             </tbody>
@@ -222,17 +225,17 @@ import { reactive } from "vue";
 const formVar = reactive({
   paymentData: false,
   refLab: null,
-})
+});
 //Main table
 const billData = reactive([
   {
-    date: '12/10/2022',
-    patient_name: 'Ravi Kumar',
-    test: 'Dr. Kumar',
-    phlebo: 'Dextor Labs',
+    date: "12/10/2022",
+    patient_name: "Ravi Kumar",
+    test: "Dr. Kumar",
+    phlebo: "Dextor Labs",
     price: 2000,
     paid: 1000,
-    paid_date: '12-10-2022',
+    paid_date: "12-10-2022",
     due: 1500,
   },
 ]);
@@ -241,9 +244,9 @@ const billData = reactive([
 //Modal Table
 const doctorBillingData = reactive([
   {
-    date: '12/10/2022',
-    patient_name: 'Ravi Kumar',
-    investigation: 'Post Prandial Blood Glucose',
+    date: "12/10/2022",
+    patient_name: "Ravi Kumar",
+    investigation: "Post Prandial Blood Glucose",
     price: 2000,
     paid: 1000,
     due: 1500,

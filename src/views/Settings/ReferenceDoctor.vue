@@ -20,7 +20,12 @@
             <div class="btns flex align-center gap-10">
               <button class="btn black-btn">Download</button>
               <button class="btn black-btn">Update</button>
-              <button class="btn black-btn" @click.prevent="formVar.addModal = true">+ Add</button>
+              <button
+                class="btn black-btn"
+                @click.prevent="formVar.addModal = true"
+              >
+                + Add
+              </button>
             </div>
           </div>
           <div class="dr-table">
@@ -48,7 +53,10 @@
                         <div class="" @click.prevent="formVar.addModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div class="" @click.prevent="formVar.confirmModal = true">
+                        <div
+                          class=""
+                          @click.prevent="formVar.confirmModal = true"
+                        >
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -58,34 +66,37 @@
               </table>
             </div>
             <div class="table-no-data">
-              <div >No records Found!</div>
+              <div>No records Found!</div>
             </div>
             <div class="table-footer">
               <div class="entries">
-                Showing <span>0</span> to <span>0</span> of <span>0</span> entries
+                Showing <span>0</span> to <span>0</span> of
+                <span>0</span> entries
               </div>
               <div class="pagination">
-                <span>First</span>
-                <span>Previous</span>
+                <icon-left-double-arrow></icon-left-double-arrow>
                 <div class="page">1</div>
-                <span>Next</span>
-                <span>Last</span>
+                <div class="page active">2</div>
+                <div class="page">3</div>
+                <icon-right-double-arrow></icon-right-double-arrow>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
     <!-- modals -->
     <Modal v-model:show="formVar.confirmModal" class="confirm-modal">
-      <h4>
-        Are you sure want to Delete
-      </h4>
+      <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">Cancel</button>
+        <button
+          class="btn grey-btn cancel-btn"
+          @click.prevent="formVar.confirmModal = false"
+        >
+          Cancel
+        </button>
         <button class="btn confirm-btn">Confirm</button>
-      </div>      
+      </div>
     </Modal>
     <Modal
       v-model:show="formVar.addModal"
@@ -101,18 +112,36 @@
       <form action="" class="form">
         <div class="dr-pic flex justify-center mb-16">
           <div class="pic-upload">
-            <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic" alt="" />
-            <img v-else src="/src/assets/images/png/man.png" class="dummy-img pic" alt="" />
+            <img
+              v-if="formVar.imagePreview"
+              :src="formVar.imagePreview"
+              class="preview-image pic"
+              id="profilePic"
+              alt=""
+            />
+            <img
+              v-else
+              src="/src/assets/images/png/man.png"
+              class="dummy-img pic"
+              alt=""
+            />
             <label for="imgUpload" class="upload-file-block">
               Upload Pic
             </label>
-            <input class="uploadProfileInput" type="file" name="profile_pic" id="imgUpload" accept="image/png"
-              @change="previewProfile($event, profilePic)" style="display: none" />
+            <input
+              class="uploadProfileInput"
+              type="file"
+              name="profile_pic"
+              id="imgUpload"
+              accept="image/png"
+              @change="previewProfile($event, profilePic)"
+              style="display: none"
+            />
           </div>
         </div>
         <div class="row">
           <div class="form-item mb-16">
-            <input type="text" placeholder="Doctor Name">
+            <input type="text" placeholder="Doctor Name" />
           </div>
           <div class="form-item mb-16">
             <SingleSelect
@@ -123,22 +152,21 @@
             ></SingleSelect>
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Registration No">
+            <input type="number" placeholder="Registration No" />
           </div>
           <div class="form-item mb-16">
-            <input type="text" placeholder="Clinic/Hospital Name">
+            <input type="text" placeholder="Clinic/Hospital Name" />
           </div>
         </div>
         <div class="row">
-          
           <div class="form-item mb-16">
-            <input type="number" placeholder="Phone No">
+            <input type="number" placeholder="Phone No" />
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Landline No">
+            <input type="number" placeholder="Landline No" />
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Email">
+            <input type="number" placeholder="Email" />
           </div>
         </div>
         <div class="row">
@@ -159,22 +187,24 @@
             ></SingleSelect>
           </div>
           <div class="form-item mb-16">
-            <input type="number" placeholder="Pincode">
+            <input type="number" placeholder="Pincode" />
           </div>
         </div>
         <div class="row">
           <div class="form-item mb-16">
-            <input type="number" placeholder="Lab/Diagnostic Sharing (%)">
+            <input type="number" placeholder="Lab/Diagnostic Sharing (%)" />
           </div>
           <div class="form-item mb-16">
-            <input type="text" placeholder="Address">
+            <input type="text" placeholder="Address" />
           </div>
         </div>
-  
+
         <div class="permission">
           <div class="data flex align-center gap-10">
-            <input type="checkbox" class="w-max">
-            <span class="text mb-0">Permanently Lab/Diagnostic Not Sharing</span>
+            <input type="checkbox" class="w-max" />
+            <span class="text mb-0"
+              >Permanently Lab/Diagnostic Not Sharing</span
+            >
           </div>
         </div>
         <div class="save-btn flex justify-end">
@@ -186,7 +216,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from "vue";
 
 const formVar = reactive({
   addModal: false,
@@ -195,17 +225,17 @@ const formVar = reactive({
   state: null,
   city: null,
   imagePreview: "",
-})
+});
 
 const doctorData = reactive([
   {
-    name: 'Dr. Rohit Sharma',
+    name: "Dr. Rohit Sharma",
     share: 5,
     reg_no: 12578,
-    clinic_hospital: 'Maharshi Karve Hospital',
-    mob_email: '+91 8888888888',
-  }
-])
+    clinic_hospital: "Maharshi Karve Hospital",
+    mob_email: "+91 8888888888",
+  },
+]);
 
 //search select
 const specialityOptions = [

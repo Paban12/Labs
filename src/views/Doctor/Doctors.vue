@@ -234,8 +234,8 @@
             {{ addressValid }}
           </div>
         </div>
-        <div class="save-btn form-item">
-          <button class="btn black-btn">Add</button>
+        <div class="save-btn flex justify-end">
+          <button class="btn black-btn w-10-r">Add</button>
         </div>
       </form>
     </Modal>

@@ -9,12 +9,18 @@
             <img src="/src/assets/images/png/search.png" alt="" />
           </div>
           <div class="add-btn">
-            <button class="btn black-btn" @click.prevent="formVar.billModal = true">
+            <button
+              class="btn black-btn"
+              @click.prevent="formVar.billModal = true"
+            >
               All Bill
             </button>
           </div>
           <div class="add-btn">
-            <button class="btn black-btn" @click.prevent="formVar.doctorBillModal = true">
+            <button
+              class="btn black-btn"
+              @click.prevent="formVar.doctorBillModal = true"
+            >
               Bill
             </button>
           </div>
@@ -56,18 +62,18 @@
           </table>
         </div>
         <div class="table-no-data">
-          <div >No records Found!</div>
+          <div>No records Found!</div>
         </div>
         <div class="table-footer">
           <div class="entries">
             Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
-            <span>First</span>
-            <span>Previous</span>
+            <icon-left-double-arrow></icon-left-double-arrow>
             <div class="page">1</div>
-            <span>Next</span>
-            <span>Last</span>
+            <div class="page active">2</div>
+            <div class="page">3</div>
+            <icon-right-double-arrow></icon-right-double-arrow>
           </div>
         </div>
       </div>
@@ -86,7 +92,7 @@
       </template>
       <div class="date-row">
         <div class="right">
-          Bill Date : 
+          Bill Date :
           <div class="date-input">
             <input type="date" />
             <div class="icon">
@@ -135,7 +141,7 @@
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <input type="number" placeholder="00 %">
+                <input type="number" placeholder="00 %" />
               </td>
               <td>{{ item.discount }} %</td>
               <td>{{ item.paid }}</td>
@@ -166,7 +172,7 @@
             <tbody>
               <tr>
                 <td>2</td>
-                <td>Post Prandial Blood Glucose	</td>
+                <td>Post Prandial Blood Glucose</td>
                 <td>2000</td>
                 <td>10</td>
                 <td>10</td>
@@ -237,7 +243,7 @@
           <div class="id">RDID : 5</div>
         </div>
         <div class="right">
-          Bill Date : 
+          Bill Date :
           <div class="date-input">
             <input type="date" />
             <div class="icon">
@@ -286,7 +292,7 @@
               <td>{{ item.investigation }}</td>
               <td>{{ item.price }}</td>
               <td>
-                <input type="number" placeholder="00 %">
+                <input type="number" placeholder="00 %" />
               </td>
               <td>{{ item.discount }} %</td>
               <td>{{ item.paid }}</td>
@@ -317,7 +323,7 @@
             <tbody>
               <tr>
                 <td>2</td>
-                <td>Post Prandial Blood Glucose	</td>
+                <td>Post Prandial Blood Glucose</td>
                 <td>2000</td>
                 <td>10</td>
                 <td>10</td>
@@ -359,13 +365,13 @@
                   </div>
                 </td>
                 <td>
-                  <input type="number" placeholder="00">
+                  <input type="number" placeholder="00" />
                 </td>
                 <td>00</td>
                 <td>00</td>
                 <td>00</td>
                 <td>
-                  <input type="number" placeholder="00">
+                  <input type="number" placeholder="00" />
                 </td>
               </tr>
             </tbody>
@@ -386,30 +392,30 @@ const formVar = reactive({
   billModal: false,
   doctorBillModal: false,
   doctor: null,
-})
+});
 //Main table
 const billData = reactive([
   {
-    date: '12/10/2022',
-    patient_name: 'Ravi Kumar',
-    test: 'Dr. Kumar',
-    ref_doctor: 'Dr. Kumar',
+    date: "12/10/2022",
+    patient_name: "Ravi Kumar",
+    test: "Dr. Kumar",
+    ref_doctor: "Dr. Kumar",
     price: 2000,
     share: 10,
     discount: 10,
     final_share: 1000,
     paid: 1000,
-    paid_date: '12-10-2022',
+    paid_date: "12-10-2022",
     due: 1500,
   },
 ]);
 //Modal Table
 const billingData = reactive([
   {
-    date: '12/10/2022',
-    patient_name: 'Ravi Kumar',
-    doctor: 'Dr. Kumar',
-    investigation: 'Post Prandial Blood Glucose',
+    date: "12/10/2022",
+    patient_name: "Ravi Kumar",
+    doctor: "Dr. Kumar",
+    investigation: "Post Prandial Blood Glucose",
     price: 2000,
     discount: 10,
     paid: 1000,
@@ -421,10 +427,10 @@ const billingData = reactive([
 //Modal Table
 const doctorBillingData = reactive([
   {
-    date: '12/10/2022',
-    patient_name: 'Ravi Kumar',
-    doctor: 'Dr. Kumar',
-    investigation: 'Post Prandial Blood Glucose',
+    date: "12/10/2022",
+    patient_name: "Ravi Kumar",
+    doctor: "Dr. Kumar",
+    investigation: "Post Prandial Blood Glucose",
     price: 2000,
     discount: 10,
     paid: 1000,

@@ -38,18 +38,18 @@
           </table>
         </div>
         <div class="table-no-data">
-          <div >No records Found!</div>
+          <div>No records Found!</div>
         </div>
         <div class="table-footer">
           <div class="entries">
             Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
-            <span>First</span>
-            <span>Previous</span>
+            <icon-left-double-arrow></icon-left-double-arrow>
             <div class="page">1</div>
-            <span>Next</span>
-            <span>Last</span>
+            <div class="page active">2</div>
+            <div class="page">3</div>
+            <icon-right-double-arrow></icon-right-double-arrow>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <form action="" class="form">
         <div class="form-item mb-16">
           <div class="title">Sharing</div>
-          <input type="number" placeholder="Sharing (₹)">
+          <input type="number" placeholder="Sharing (₹)" />
         </div>
         <div class="save-btn flex justify-end">
           <button class="btn black-btn w-10-r">Save</button>
@@ -80,22 +80,20 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from "vue";
 
 const formVar = reactive({
   editModal: false,
-})
+});
 
 const sharingData = reactive([
   {
-    name: 'Rohith Sir',
-    type: 'Staff',
+    name: "Rohith Sir",
+    type: "Staff",
     sharing: 5,
-  }
-])
-
+  },
+]);
 </script>
 
 <style>
-
 </style>

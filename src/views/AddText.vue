@@ -5,12 +5,14 @@
         <div class="search flex align-center gap-16">
           <div class="text f-w-bold">Custom Translation</div>
           <div class="input">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search..." />
             <!-- <icon-search></icon-search> -->
           </div>
           <div class="no text-small">1-89 of 87</div>
         </div>
-        <button class="btn black-btn" @click.prevent="addText.addModal = true">Add new Text</button>
+        <button class="btn black-btn" @click.prevent="addText.addModal = true">
+          Add new Text
+        </button>
       </div>
       <div class="card">
         <div class="table-outer box-shadow">
@@ -43,10 +45,13 @@
                 <td class="text-center">
                   <div class="option-btns">
                     <router-link to="/" class="edit-icon">
-                      <img src="/src/assets/images/png/edit.png" alt="">
+                      <img src="/src/assets/images/png/edit.png" alt="" />
                     </router-link>
-                    <div class="pointer" @click.prevent="addText.confirmModal = true">
-                      <img src="/src/assets/images/png/delete.png" alt="">
+                    <div
+                      class="pointer"
+                      @click.prevent="addText.confirmModal = true"
+                    >
+                      <img src="/src/assets/images/png/delete.png" alt="" />
                     </div>
                   </div>
                 </td>
@@ -55,79 +60,81 @@
           </table>
         </div>
         <div class="table-no-data">
-          <div >No records Found!</div>
+          <div>No records Found!</div>
         </div>
         <div class="table-footer">
           <div class="entries">
-            Showing <span>0</span> to <span>0</span> of <span>0</span> entries 
+            Showing <span>0</span> to <span>0</span> of <span>0</span> entries
           </div>
           <div class="pagination">
-            <span>First</span>
-            <span>Previous</span>
+            <icon-left-double-arrow></icon-left-double-arrow>
             <div class="page">1</div>
-            <span>Next</span>
-            <span>Last</span>
+            <div class="page active">2</div>
+            <div class="page">3</div>
+            <icon-right-double-arrow></icon-right-double-arrow>
           </div>
         </div>
       </div>
     </div>
     <!-- modals -->
     <Modal v-model:show="addText.confirmModal" class="confirm-modal">
-      <h4>
-        Are you sure want to Delete
-      </h4>
+      <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="addText.confirmModal = false">Cancel</button>
+        <button
+          class="btn grey-btn cancel-btn"
+          @click.prevent="addText.confirmModal = false"
+        >
+          Cancel
+        </button>
         <button class="btn confirm-btn">Confirm</button>
-      </div>      
+      </div>
     </Modal>
     <Modal v-model:show="addText.addModal" class="" headerClasses="header-bg">
       <template v-slot:header>
-        <div class="title" showHeader="true"> 
-          Add New Text
-        </div>
+        <div class="title" showHeader="true">Add New Text</div>
         <div class="close-btn" @click.prevent="addText.addModal = false">
           <icon-cross></icon-cross>
         </div>
       </template>
       <div class="modal-span text-center text-grey mb-16">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, voluptatum.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro,
+        voluptatum.
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">English</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Hindi</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Marathi</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Bengali</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Kanada</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Tamil</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Gujrati</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Malayalam</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <div class="dr-input lang-input mb-10">
         <div class="dr-tag">Punjabi</div>
-        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text" />
       </div>
       <button class="btn black-btn w-100 mt-16">Save</button>
     </Modal>
@@ -135,28 +142,27 @@
 </template>
 
 <script setup>
-  import { reactive } from 'vue';
+import { reactive } from "vue";
 
-  const addText = reactive({
-    confirmModal: false,
-    addModal: false,
-  })
+const addText = reactive({
+  confirmModal: false,
+  addModal: false,
+});
 
-  const textData = reactive([
-    {
-      english: 'English',
-      hindi: 'Hindi',
-      marathi: 'Marathi',
-      bengali: 'Bengali',
-      kanada: 'Kanada',
-      tamil: 'Tamil',
-      gujrati: 'Gujrati',
-      malayalam: 'Malayalam',
-      punjabi: 'Punjabi'
-    },
-  ])
+const textData = reactive([
+  {
+    english: "English",
+    hindi: "Hindi",
+    marathi: "Marathi",
+    bengali: "Bengali",
+    kanada: "Kanada",
+    tamil: "Tamil",
+    gujrati: "Gujrati",
+    malayalam: "Malayalam",
+    punjabi: "Punjabi",
+  },
+]);
 </script>
 
 <style>
-
 </style>
