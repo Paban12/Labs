@@ -46,10 +46,7 @@
                       <a class="" @click="navigate('/doctor/profile',item.id)">
                         <img src="/src/assets/images/png/man.png" alt="" />
                       </a>
-                      <div
-                        class=""
-                        @click.prevent="formVar.confirmModal = true"
-                      >
+                      <div class="" @click.prevent="formVar.confirmModal = true">
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
                     </div>
@@ -58,7 +55,7 @@
               </tbody>
             </table>
           </div>
-          <div class="table-no-data">
+          <div class="table-no-data" v-if="storeVar.doctorData.length <= 0">
             <div>No records Found!</div>
           </div>
           <div class="table-footer">
@@ -250,11 +247,14 @@
 
 <script setup>
 import moment from "moment";
-import { reactive, computed } from "vue";
+import { reactive, computed,onBeforeMount } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
 
 /* Constants */
 
+const router = useRouter();
 const store = useStore();
 const storeVar = computed(() => store.state.Doctor);
 
@@ -273,6 +273,11 @@ const genderOptions = [
   { id: 'OTHER', name: "OTHER" },
 ];
 const formVar = reactive({
+  limit:10,
+  offset:0,
+  keyword:"",
+  status:'ACTIVE',
+  role:'DOCTOR',
   submit: false,
   confirmModal: false,
   addModal: false,
