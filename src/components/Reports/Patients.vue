@@ -59,18 +59,18 @@
               <th>Blood Group</th>
               <th>Language Preference</th>
               <th>Aadhar No.</th>
-              <!-- <th>Category</th> -->
+              <th>Category</th>
               <th>Caste</th>
               <th>Subcaste</th>
               <th>Religion</th>
               <th>Nationality</th>
               <th>Education</th>
               <th>Occupation</th>
-              <!-- <th>Street</th> -->
-              <!-- <th>Locality</th> -->
+              <th>Street</th>
+              <th>Locality</th>
               <th>City</th>
-              <!-- <th>Smoking Habit</th>
-              <th>Alcohol Consumption</th> -->
+              <th>Smoking Habit</th>
+              <th>Alcohol Consumption</th>
               <th>Created By</th>
               <th>Created At</th>
               <th>Updated By</th>
@@ -90,18 +90,18 @@
                 <td>{{ item.blood_group }}</td>
                 <td>{{ item.language }}</td>
                 <td>{{ item.aadhar_no }}</td>
-                <!-- <td>{{ item.category }}</td> -->
+                <td>{{ item.category }}</td>
                 <td>{{ item.caste }}</td>
                 <td>{{ item.sub_caste }}</td>
                 <td>{{ item.religion }}</td>
                 <td>{{ item.nationality }}</td>
                 <td>{{ item.education }}</td>
                 <td>{{ item.occupation }}</td>
-                <!-- <td>{{ item.street }}</td> -->
-                <!-- <td>{{ item.locality }}</td> -->
+                <td>{{ item.street }}</td>
+                <td>{{ item.locality }}</td>
                 <td>{{ item.city }}</td>
-                <!-- <td>{{ item.smoking_habit }}</td>
-                <td>{{ item.alcohol_consumption }}</td> -->
+                <td>{{ item.smoking_habit }}</td>
+                <td>{{ item.alcohol_consumption }}</td>
                 <td>{{ item.created_by }}</td>
                 <td>{{ item.created_at }}</td>
                 <td>{{ item.updated_by }}</td>

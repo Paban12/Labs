@@ -86,6 +86,33 @@
                 }
               }
             }
+            .report-table{
+              // display: none;
+              .table-outer{
+                overflow-x: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                &::-webkit-scrollbar {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//media queries
+@media (max-width: 1024px){
+  .reports-layout{
+    .container{
+      .card-body{
+        .select-content{
+          .reports-page{
+            
           }
         }
       }
