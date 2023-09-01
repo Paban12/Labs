@@ -2,7 +2,20 @@
   <section class="reports-layout">
     <div class="container">
       <div class="card p-0">
-        <div class="card-header-bg">Reports</div>
+        <div class="card-header-bg">
+          <div class="title">Reports</div>
+          <div class="right">
+            <div class="img">
+              <img src="/src/assets/images/png/printer.png" alt="">
+            </div>
+            <div class="img">
+              <img src="/src/assets/images/png/mail.png" alt="">
+            </div>
+            <div class="img">
+              <img src="/src/assets/images/png/file.png" alt="">
+            </div>
+          </div>
+        </div>
         <div class="card-body">
           <div class="select-row">
             <div class="left">
@@ -36,20 +49,39 @@
                 </div>
               </div>
             </div>
-            <div class="right">
-              <div class="img">
-                <img src="/src/assets/images/png/printer.png" alt="">
-              </div>
-              <div class="img">
-                <img src="/src/assets/images/png/mail.png" alt="">
-              </div>
-              <div class="img">
-                <img src="/src/assets/images/png/file.png" alt="">
-              </div>
-            </div>
           </div>
           <div class="select-content" v-if="selectedTab === 0">
             <PatientReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 1">
+            <AppointmentReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 2">
+            <ExpenseReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 3">
+            <CommunicationReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 4">
+            <BillingReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 5">
+            <OnlineConsultReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 6">
+            <LabReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 7">
+            <GSTReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 8">
+            <BioMedicalWasteReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 9">
+            <MachineReport />
+          </div>
+          <div class="select-content" v-if="selectedTab === 10">
+            <InsuranceReport />
           </div>
         </div>
       </div>
