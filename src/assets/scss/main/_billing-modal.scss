@@ -59,3 +59,40 @@
     }
   }
 }
+
+
+
+//media queries
+@media (max-width: 1024px){
+  .billing-modal{
+    .modal{
+      // margin: 0.5rem;
+      .modal-dialog{
+        padding: 0.5rem;
+        .date-row{
+          .select-dr{
+            .single-select{
+              width: 9rem !important;
+            }
+            .id{
+              font-size: 0.85rem;
+            }
+          }
+          .right{
+            gap: 0.5rem !important;
+            font-size: 0.85rem;
+            .date-input{
+              width: 9rem !important;
+            }
+          }
+        }
+      }
+      .total-table, .pay-table{
+        th, td{
+          white-space: nowrap;
+          max-width: max-content;
+        }
+      }
+    }
+  }
+}

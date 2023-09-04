@@ -147,14 +147,14 @@
   transform: scale(0.3) translateY(-50%);
 }
 
-@media (max-width: 768px){
+@media (max-width: 1024px){
   .modal{
-    align-items: center;
+    // align-items: center;
     height: 100vh;
     padding: 0;
     .modal-dialog{
       width: 100% !important;
-      align-items: center;
+      align-items: flex-start;
       // height: calc(100% - 7rem);
       margin-top: 0;
       // overflow-y: scroll;

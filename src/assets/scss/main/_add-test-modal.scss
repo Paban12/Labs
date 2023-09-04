@@ -45,3 +45,27 @@
     }
   }
 }
+
+
+
+//media queries
+@media (max-width: 1024px){
+  .add-test-modal{
+    .modal{
+      .test-table{
+        width: 100%;
+        overflow-x: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .table{ 
+          td, th{
+            min-width: 8rem;
+          }
+        }
+      }
+    }
+  }
+}

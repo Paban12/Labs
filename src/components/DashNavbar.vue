@@ -250,90 +250,92 @@
               </div>
             </div>
           </div>
-          <div class="bell-icon tab-icon" @click.prevent="nav.notificationSidebar = true">
-            <img src="/src/assets/images/png/bell.png" alt="" />
-            <div class="no"></div>
-            <div class="tooltip">Notificationnn</div>
-          </div>
           <!-- notifications -->
-          <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
-            <div class="card">
-              <div class="heading">
-                <h4 class="">Notifications</h4>
-                <div class="icon" @click.prevent="nav.notificationSidebar = false">
-                  <icon-cross></icon-cross>
+          <div class="" v-click-outside="hideNotificationSidebar">
+            <div class="bell-icon" @click.prevent="showNotificationSidebar()">
+              <img src="/src/assets/images/png/bell.png" alt="" />
+              <div class="no"></div>
+              <div class="tooltip">Notification</div>
+            </div>
+            <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
+              <div class="card">
+                <div class="heading">
+                  <h4 class="">Notifications</h4>
+                  <div class="icon" @click.prevent="nav.notificationSidebar = false">
+                    <icon-cross></icon-cross>
+                  </div>
                 </div>
-              </div>
-              <div class="notes-list">
-                <router-link to="/" class="list-item success">
-                  <div class="icon">
-                    <icon-success></icon-success>
-                  </div>
-                  <div class="info">
-                    <div class="title">Success</div>
-                    <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                  </div>
-                </router-link>
-                <router-link to="/" class="list-item warning">
-                  <div class="icon">
-                    <icon-warning></icon-warning>
-                  </div>
-                  <div class="info">
-                    <div class="title">Warning !</div>
-                    <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                  </div>
-                </router-link>
-                <router-link to="/" class="list-item error">
-                  <div class="icon">
-                    <icon-warning></icon-warning>
-                  </div>
-                  <div class="info">
-                    <div class="title">Error !</div>
-                    <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
-                  </div>
-                </router-link>
+                <div class="notes-list">
+                  <router-link to="/" class="list-item success">
+                    <div class="icon">
+                      <icon-success></icon-success>
+                    </div>
+                    <div class="info">
+                      <div class="title">Success</div>
+                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </router-link>
+                  <router-link to="/" class="list-item warning">
+                    <div class="icon">
+                      <icon-warning></icon-warning>
+                    </div>
+                    <div class="info">
+                      <div class="title">Warning !</div>
+                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </router-link>
+                  <router-link to="/" class="list-item error">
+                    <div class="icon">
+                      <icon-warning></icon-warning>
+                    </div>
+                    <div class="info">
+                      <div class="title">Error !</div>
+                      <div class="sub-title">The developer has kept the source code structure adaptable enough for</div>
+                    </div>
+                  </router-link>
+                </div>
               </div>
             </div>
           </div>
-          <div class="notification-overlay" v-if="nav.notificationSidebar" @click.prevent="nav.notificationSidebar = false"></div>
           <!-- Appointment -->
-          <div @click.prevent="storeVar.aptBookModal = true" class="bell-icon desk-icon">
+          <div @click.prevent="storeVar.aptBookModal = true" class="bell-icon">
             <img src="/src/assets/images/png/add.png" alt="" />
             <div class="tooltip">Appointment</div>
           </div>
-          <div class="bell-icon tab-icon" @click.prevent="nav.noteSidebar = true">
-            <img src="/src/assets/images/png/note.png" alt="" />
-            <div class="tooltip">Notes</div>
-          </div>
           <!-- sticky notes -->
-          <div class="notes-section" v-if="nav.noteSidebar" >
-            <div class="card">
-              <div class="heading">
-                <h4 class="">Notes <icon-add @click.prevent="nav.addModal = true"></icon-add></h4>
-                <div class="icon" @click.prevent="nav.noteSidebar = false">
-                  <icon-cross></icon-cross>
+          <div class="" v-click-outside="hideNoteSidebar">
+            <div class="bell-icon tab-icon" @click.prevent="showNoteSidebar()">
+              <img src="/src/assets/images/png/note.png" alt="" />
+              <div class="tooltip">Notes</div>
+            </div>
+            <div class="notes-section" v-if="nav.noteSidebar" >
+              <div class="card">
+                <div class="heading">
+                  <h4 class="">Notes <icon-add @click.prevent="nav.addModal = true"></icon-add></h4>
+                  <div class="icon" @click.prevent="nav.noteSidebar = false">
+                    <icon-cross></icon-cross>
+                  </div>
                 </div>
-              </div>
-              <div class="notes-list">
-                <div class="list-item">
-                  <div class="icon">
-                    <icon-note></icon-note>
-                  </div>
-                  <div class="data">
-                    <div class="title">At 4 O Clock meeting</div>
-                    <div class="text">03-08-2023 11:38 AM</div>
-                  </div>
-                  <div class="icon-edit icon-i black-btn" @click.prevent="nav.addModal = true">
-                    <icon-edit></icon-edit>
-                  </div>
-                  <div class="icon-delete icon-i black-btn" @click.prevent="nav.confirmModal = true">
-                    <icon-delete></icon-delete>
+                <div class="notes-list">
+                  <div class="list-item">
+                    <div class="icon">
+                      <icon-note></icon-note>
+                    </div>
+                    <div class="data">
+                      <div class="title">At 4 O Clock meeting</div>
+                      <div class="text">03-08-2023 11:38 AM</div>
+                    </div>
+                    <div class="icon-edit icon-i black-btn" @click.prevent="nav.addModal = true">
+                      <icon-edit></icon-edit>
+                    </div>
+                    <div class="icon-delete icon-i black-btn" @click.prevent="nav.confirmModal = true">
+                      <icon-delete></icon-delete>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="notes-overlay" v-if="nav.noteSidebar" @click.prevent="nav.noteSidebar = false"></div>
           <div class="account" v-click-outside="closeAccMenu">
             <div class="account-card grade-btn btn" @click.prevent="nav.accMenu = true">
               <img

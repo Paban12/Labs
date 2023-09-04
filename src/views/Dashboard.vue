@@ -321,7 +321,7 @@ const carouselData = [
 const breakpoints2 = {
   // 700px and up
   700: {
-    itemsToShow: 2,
+    itemsToShow: 3,
     snapAlign: "center",
   },
   // 1024 and up

@@ -120,7 +120,7 @@
 
 
 //media queries
-@media (max-width: 768px){
+@media (max-width: 1024px){
   .table-outer{
     width: 100%;
     overflow-x: scroll;
@@ -129,7 +129,7 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    .table{
+    .table{ 
       td, th{
         min-width: 8rem;
       }

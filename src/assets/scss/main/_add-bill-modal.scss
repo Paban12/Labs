@@ -109,3 +109,18 @@
     }
   }
 }
+
+
+
+//media queries
+@media (max-width: 1024px){
+  .add-bill-modal{
+    // padding: 0.5rem;
+    .modal{
+      padding: 0.5rem;
+      .modal-dialog{
+        // margin: 0.5rem !important;
+      }
+    }
+  }
+}

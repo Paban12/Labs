@@ -61,6 +61,17 @@ const PatientMaster = defineAsyncComponent(() => import('../components/PatientGr
 
 //Reports
 const PatientReport = defineAsyncComponent(() => import('../components/Reports/Patients.vue'))
+const AppointmentReport = defineAsyncComponent(() => import('../components/Reports/Appointments.vue'))
+const ExpenseReport = defineAsyncComponent(() => import('../components/Reports/Expenses.vue'))
+const CommunicationReport = defineAsyncComponent(() => import('../components/Reports/Communication.vue'))
+const BillingReport = defineAsyncComponent(() => import('../components/Reports/Billing.vue'))
+const OnlineConsultReport = defineAsyncComponent(() => import('../components/Reports/OnlineConsult.vue'))
+const LabReport = defineAsyncComponent(() => import('../components/Reports/Lab.vue'))
+const GSTReport = defineAsyncComponent(() => import('../components/Reports/GST.vue'))
+const BioMedicalWasteReport = defineAsyncComponent(() => import('../components/Reports/BioMedicalWaste.vue'))
+const MachineReport = defineAsyncComponent(() => import('../components/Reports/Machines.vue'))
+const InsuranceReport = defineAsyncComponent(() => import('../components/Reports/Insurance.vue'))
+
 
 //icons
 const RightArrowIcon = defineAsyncComponent(() => import('../components/icons/right-arrow-svg.vue'))
@@ -184,6 +195,16 @@ const GlobalComponents = {
 
     //Reports
     app.component('PatientReport', PatientReport)
+    app.component('AppointmentReport', AppointmentReport)
+    app.component('ExpenseReport', ExpenseReport)
+    app.component('CommunicationReport', CommunicationReport)
+    app.component('BillingReport', BillingReport)
+    app.component('OnlineConsultReport', OnlineConsultReport)
+    app.component('LabReport', LabReport)
+    app.component('GSTReport', GSTReport)
+    app.component('BioMedicalWasteReport', BioMedicalWasteReport)
+    app.component('MachineReport', MachineReport)
+    app.component('InsuranceReport', InsuranceReport)
     
     // icons
     app.component('icon-right-arrow', RightArrowIcon)
