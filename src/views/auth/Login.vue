@@ -4,16 +4,16 @@
     <img src="/src/assets/images/logo/logo-black.png" class="logo" alt="" />
     <div class="text">Login to continue</div>
     <div class="form-item mb-16">
-      <div class="title">Email</div>
+      <div class="title">Phone</div>
       <div class="input">
-        <input type="email" placeholder="user@gmail.com" />
-        <div class="err-msg"></div>
+        <input v-model="formVar.loginId" type="text" name="phone" placeholder="Phone number" />
+        <div class="err-msg" v-if="formVar.submit && loginIdValid">{{ loginIdValid }}</div>
       </div>
     </div>
     <div class="form-item mb-16">
       <div class="title">Password</div>
       <div class="input">
-        <input type="password" placeholder="*******" />
+        <input v-model="formVar.password" type="password" placeholder="*******" />
       </div>
       <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
     </div>

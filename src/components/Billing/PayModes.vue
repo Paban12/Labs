@@ -37,12 +37,12 @@
           <th>Status</th>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in taxData" :key="item">
+          <tr v-for="(item, index) in storeVar.billingPayMode" :key="item">
             <td>{{ index + 1 }}</td>
-            <td>{{ item.pay_mode }}</td>
+            <td>{{ item.payMode?.level }}</td>
             <td>
               <label class="toggle-control">
-                <input type="checkbox" checked="checked" />
+                <input type="checkbox" v-model="item.status" @change="statusChange(item.status,item.id,item.payMode?.id)" />
                 <span class="control"></span>
               </label>
             </td>
@@ -54,49 +54,18 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, computed, onBeforeMount } from 'vue';
+import { useStore } from 'vuex'
+/* Constants */
 
-const taxData = reactive([
-  {
-    pay_mode: 'Amazon Pay',
-  },
-  {
-    pay_mode: 'Ayushman Card',
-  },
-  {
-    pay_mode: 'Card',
-  },
-  {
-    pay_mode: 'Cash',
-  },
-  {
-    pay_mode: 'Cheque',
-  },
-  {
-    pay_mode: 'Credit Card',
-  },
-  {
-    pay_mode: 'Debit Card',
-  },
-  {
-    pay_mode: 'Thyromax Pay',
-  },
-  {
-    pay_mode: 'Google Pay',
-  },
-  {
-    pay_mode: 'Net Banking',
-  },
-  {
-    pay_mode: 'Paytm',
-  },
-  {
-    pay_mode: 'PhonePe',
-  },
-  {
-    pay_mode: 'UPI',
-  },
-])
+const store = useStore();
+const storeVar = computed(() => store.state.Settings);
+
+function statusChange(status,id,payModeId){
+  store.dispatch("Settings/changePayModeStatus", {
+    status,id,payModeId
+  });
+}
 </script>
 
 <style>

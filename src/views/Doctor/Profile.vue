@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="about">
-          <div class="name">Dr. Anita Kumar</div> 
+          <div class="name">{{ storeVar.name }}</div> 
           <div class="education">
             MBBS, MD (internal medicine), DNB (internal medicine), FRCP (London)
           </div>

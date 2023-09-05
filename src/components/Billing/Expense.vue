@@ -2,14 +2,10 @@
   <section class="billing-expense">
     <div class="add-row mb-16">
       <div class="left">
-        <SingleSelect
-          v-model="formVar.expense"
-          :options="expenseOptions"
-          @selected="handleSelectedOption"
-          placeholder="Select State"
-        ></SingleSelect>
+        <input type="text" v-model="formVar.expense" placeholder="Enter expense">
+        <div class="err-msg" v-if="formVar.submit && expenseValid">{{ expenseValid }}</div>
         <div class="add-btn">
-          <button class="btn black-btn">+ Add</button>
+          <button class="btn black-btn" @click="addExpense">+ Add</button>
         </div>
       </div>
       <div class="right">
@@ -19,36 +15,59 @@
         </div>
       </div>
     </div>
-    <div class="expense-list">
-      <div class="list-item">
-        Utility Bills
-        <icon-cross></icon-cross>
-      </div>
-      <div class="list-item">
-        Meals and Entertainments
-        <icon-cross></icon-cross>
+    <div class="expense-list" >
+      <div class="list-item" v-for="(item, index) in storeVar.billingExpenseType" :key="index">
+        {{ item.expense }}
+        <icon-cross @click="deleteExpe(item.id)"></icon-cross>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, computed, onBeforeMount } from 'vue';
+import { useStore } from 'vuex'
+/* Constants */
+
+const store = useStore();
+const storeVar = computed(() => store.state.Settings);
 
 const formVar = reactive({
+  submit: false,
   expense: null,
-  city: null,
 });
+/* Constants */
 
-//search select start//
-const expenseOptions = [
-  { id: 1, name: "Option1" },
-  { id: 2, name: "Option2" },
-];
+/* Lifecycle/Hooks */
+/* Lifecycle/Hooks */
 
-const handleSelectedOption = (option) => {
-  console.log("Selected option:", option);
+/* Functions/Methods */
+
+const addExpense = () => {
+  if (expenseValid.value) {
+    formVar.submit = true;
+    return;
+  }
+  formVar.submit = false;
+  store.dispatch("Settings/addExpense", {
+    expense:formVar.expense
+  });
+  formVar.expense=null
 };
+function deleteExpe(id){
+  store.dispatch("Settings/deleteExpense", {
+    id:id
+  });
+}
+/* Functions/Methods */
+
+/* Validation */
+const expenseValid = computed(() => {
+  if (!formVar.expense) {
+    return "Please enter expense!";
+  }
+});
+/* Validation */
 </script>
 
 <style>

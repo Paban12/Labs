@@ -1,28 +1,28 @@
 <template>
   <section class="doctor-profile">
-    <form action="" class="form">
+    <form action="" class="form" @submit.prevent="onSubmitDoctor">
       <div class="two-inputs">
         <div class="row">
           <div class="form-item col-5 mb-16">
             <div class="title">Name</div>
-            <input type="text" placeholder="Enter Name">
-            <div class="err-msg">Please enter name</div>
+            <input type="text" v-model="storeVar.name" placeholder="Enter Name">
+            <div class="err-msg" v-if="formVar.submit && nameValid">{{ nameValid }}</div>
           </div>
           <div class="form-item col-5 mb-16">
             <div class="title">Phone No</div>
-            <input type="number" placeholder="Enter Phone No">
-            <div class="err-msg">Please enter phone no</div>
+            <input type="text" v-model="storeVar.mobile" placeholder="Enter Phone No">
+            <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
           </div>
         </div>
         <div class="row">
           <div class="form-item col-5 mb-16">
             <div class="title">Alternate Phone No</div>
-            <input type="number" placeholder="Enter Alternate Phone No">
+            <input type="text" v-model="storeVar.altMobile" placeholder="Enter Alternate Phone No">
           </div>
           <div class="form-item col-5 mb-16">
             <div class="title">Email</div>
-            <input type="text" placeholder="Enter Email">
-            <div class="err-msg">Please enter email</div>
+            <input type="text" v-model="storeVar.emailId" placeholder="Enter Email">
+            <div class="err-msg" v-if="formVar.submit && emailValid">{{ emailValid }}</div>
           </div>
         </div>
       </div>
@@ -30,36 +30,31 @@
         <div class="row">
           <div class="form-item col-5 mb-16">
             <div class="title">Gender</div>
-            <div class="select-dropdown">
-              <select name="" id="">
-                <option value="">Male</option>
-                <option value="">Female</option>
-                <option value="">Other</option>
-              </select>
-            </div>
-            <div class="err-msg">Please select gender</div>
+            <Select v-model="storeVar.gender" :options="genderOptions" placeholder="Select Department"></Select>
+            <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
           </div>
           <div class="form-item col-5 mb-16">
             <div class="title">Date Of Birth</div>
             <div class="date-input">
-              <input type="date" />
+              <input type="date" v-model="storeVar.dob" />
               <div class="icon">
                 <img src="/src/assets/images/icons/calender.svg" alt="">
               </div>
             </div>
-            <div class="err-msg">Please select DOB</div>
+            <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
           </div>
         </div>
         <div class="row">
           <div class="form-item col-5 mb-16">
             <div class="title">Registration Council & No</div>
-            <input type="text" placeholder="Registration Council & No">
-            <div class="err-msg">Please enter registration council & no</div>
+            <input type="text" v-model="storeVar.reg_number" placeholder="Registration Council & No">
+            <div class="err-msg" v-if="formVar.submit && regNumberValid">{{ regNumberValid }}</div>
           </div>
+          <span>{{ regExperienceCal }}</span>
           <div class="form-item col-5 mb-16">
             <div class="title">Registration Year</div>
-            <input type="text" placeholder="Registration Year">
-            <div class="err-msg">Please enter reg. year</div>
+            <input type="text" v-model="storeVar.reg_year" placeholder="Registration Year">
+            <div class="err-msg" v-if="formVar.submit && regYearValid">{{ regYearValid }}</div>
           </div>
         </div>
       </div>
@@ -67,29 +62,28 @@
         <div class="row">
           <div class="form-item col-5 mb-16">
             <div class="title">Experience</div>
-            <input type="text" placeholder="Experience">
+            <input type="text" v-model="storeVar.experience" placeholder="Experience" disabled>
+            <div class="err-msg" v-if="formVar.submit && regExperienceValid">{{ regExperienceValid }}</div>
           </div>
           <div class="form-item col-5 mb-16">
             <div class="title">Registartion Type</div>
-            <div class="select-dropdown">
-              <select name="" id="">
-                <option value="">Registration Type</option>
-                <option value="">Country</option>
-                <option value="">State</option>
-              </select>
-            </div>
+            <Select v-model="storeVar.reg_type" :options="registrationOptions" @selected="handleSelectedOption"
+              placeholder="Select State"></Select>
+              <div class="err-msg" v-if="formVar.submit && regTypeValid">{{ regTypeValid }}</div>
           </div>
         </div>
         <div class="row">
           <div class="form-item col-5 mb-16">
             <div class="title">State</div>
-            <SingleSelect v-model="formVar.state" :options="stateOptions" @selected="handleSelectedOption"
-              placeholder="Select State"></SingleSelect>
+            <SingleSelect v-model="storeVar.state" :options="stateOptions" @selected="handleSelectedOption"
+              :placeholder="storeVar.state"></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && stateValid">{{ stateValid }}</div>
           </div>
           <div class="form-item col-5 mb-16">
             <div class="title">City</div>
-            <SingleSelect v-model="formVar.city" :options="cityOptions" @selected="handleSelectedOption"
-              placeholder="Select State"></SingleSelect>
+            <SingleSelect v-model="storeVar.city" :options="cityOptions" @selected="handleSelectedOption"
+            :placeholder="storeVar.city"></SingleSelect>
+              <div class="err-msg" v-if="formVar.submit && cityValid">{{ cityValid }}</div>
           </div>
         </div>
       </div>
@@ -99,7 +93,8 @@
           <div class="err-msg" v-if="formVar.submit && addressValid">{{ addressValid }}</div>
         </div>
         <div class="form-item col-5 mb-16">
-          <textarea name="" id="" placeholder="About"></textarea>
+          <textarea name="" id="" v-model="storeVar.about" placeholder="About"></textarea>
+          <div class="err-msg" v-if="formVar.submit && aboutValid">{{ aboutValid }}</div>
         </div>
       </div>
       <div class="save-btn">
@@ -136,7 +131,8 @@ const formVar = reactive({
   id: null,
   state: null,
   city: null,
-  regType: registrationOptions[0]
+  regType: registrationOptions[0],
+  experience:null
 })
 /* Constants */
 
@@ -175,6 +171,10 @@ const onSubmitDoctor = () => {
     pincodeValid.value ||
     stateValid.value ||
     cityValid.value ||
+    regYearValid.value ||
+    regTypeValid.value ||
+    regExperienceValid.value ||
+    aboutValid.value ||
     addressValid.value
   ) {
     formVar.submit = true;
@@ -182,19 +182,23 @@ const onSubmitDoctor = () => {
   }
   formVar.submit = false;
   store.dispatch("Doctor/updateDoctorProfile", {
-    name:storeVar.value.name,
-    emailId:storeVar.value.emailId,
-    altEmail:"test@gmail.com",
-    mobile:storeVar.value.mobile,
-    altMobile:storeVar.value.altMobile,
-    gender:storeVar.value.gender?.id,
-    dob:storeVar.value.dob,
-    city:storeVar.value.city,
-    state:storeVar.value.state,
-    pincode:storeVar.value.pincode,
-    reg_number:storeVar.value.reg_number,
-    address:storeVar.value.address,
-    id:formVar.id,
+    name: storeVar.value.name,
+    emailId: storeVar.value.emailId,
+    altEmail: "test@gmail.com",
+    mobile: storeVar.value.mobile,
+    altMobile: storeVar.value.altMobile,
+    gender: storeVar.value.gender?.id,
+    dob: storeVar.value.dob,
+    city: storeVar.value.city,
+    state: storeVar.value.state,
+    pincode: storeVar.value.pincode,
+    reg_number: storeVar.value.reg_number,
+    reg_type: storeVar.value.reg_type?.id,
+    reg_year: storeVar.value.reg_year,
+    experience: storeVar.value.experience.toString(),
+    about: storeVar.value.about,
+    address: storeVar.value.address,
+    id: storeVar.value.id,
   });
 };
 const handleSelectedOption = (option) => {
@@ -280,12 +284,12 @@ const genderValid = computed(() => {
   }
 });
 const stateValid = computed(() => {
-  if (!formVar.state) {
+  if (!storeVar.value.state) {
     return "Please select state!";
   }
 });
 const cityValid = computed(() => {
-  if (!formVar.city) {
+  if (!storeVar.value.city) {
     return "Please select city!";
   }
 });
@@ -296,12 +300,39 @@ const addressValid = computed(() => {
 });
 const regNumberValid = computed(() => {
   if (!storeVar.value.reg_number) {
-    return "Please enter registration no!";
+    return "Please enter registration council & no!";
+  }
+}); 
+const regTypeValid = computed(() => {
+  if (!storeVar.value.reg_type.id) {
+    return "Please select registration type!";
+  }
+});
+
+const regYearValid = computed(() => {
+  if (!storeVar.value.reg_year) {
+    return "Please enter registration year!";
+  }
+});
+const regExperienceCal = computed(() => {
+  if (storeVar.value.reg_year) {
+    let yer=moment().format('YYYY')-moment(storeVar.value.reg_year).format('YYYY').toString()
+    storeVar.value.experience=yer
+  }
+});
+const regExperienceValid = computed(() => {
+  if (!storeVar.value.experience) {
+    return "Please enter experience!";
   }
 });
 const pincodeValid = computed(() => {
   if (!storeVar.value.pincode) {
     return "Please enter pincode !";
+  }
+});
+const aboutValid = computed(() => {
+  if (!storeVar.value.about) {
+    return "Please enter about !";
   }
 });
 function isNumber(e) {

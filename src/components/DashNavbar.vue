@@ -14,7 +14,7 @@
             <!-- <div class="text grade-text">Thyromax Labs</div> -->
           </router-link>
           <!-- sidebar -->
-          <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }" >
+          <div class="sidebar" :class="{ open: isSidebarOpen, closing: isClosing }">
             <div class="sidebar-card">
               <div class="mob-icons mob-view">
                 <div class="bell-icon" @click="showNotificationSidebar() && toggleSidebar()">
@@ -194,25 +194,15 @@
           </div>
           <div class="sidebar-overlay" :class="{ open: isSidebarOpen, closing: isClosing }" @click="toggleSidebar"></div>
         </div>
-        <div class="right"> 
+        <div class="right">
           <div class="searchbar">
             <div class="search-modal desk-data" v-click-outside="closeSearch">
               <div class="search-modal-header">
                 <div class="left">
-                  <input
-                    v-model="nav.searchValue"
-                    type="text"
-                    placeholder="Search Patients"
-                    @click.prevent="visible()"
-                  />
+                  <input v-model="nav.searchValue" type="text" placeholder="Search Patients" @click.prevent="visible()" />
                   <div class="options" v-if="nav.isVisible">
                     <div class="ul">
-                      <router-link
-                        to="/"
-                        class="li"
-                        v-for="(item, index) in matchList"
-                        :key="index"
-                      >
+                      <router-link to="/" class="li" v-for="(item, index) in matchList" :key="index">
                         <div class="match-name">{{ item.name }}</div>
                       </router-link>
                     </div>
@@ -229,8 +219,8 @@
           </div>
           <!-- search for mob view -->
           <div class="search-modal-mob" v-if="nav.searchModal">
-            <div class="search-modal mob-data" >
-              <div class="search-modal-header" > 
+            <div class="search-modal mob-data">
+              <div class="search-modal-header">
                 <div class="left">
                   <div class="back-arrow" @click.prevent="nav.searchModal = false">
                     <img src="/src/assets/images/icons/back.svg" alt="">
@@ -257,7 +247,7 @@
               <div class="no"></div>
               <div class="tooltip">Notification</div>
             </div>
-            <div class="notification-section notes-section" v-if="nav.notificationSidebar" >
+            <div class="notification-section notes-section" v-if="nav.notificationSidebar">
               <div class="card">
                 <div class="heading">
                   <h4 class="">Notifications</h4>
@@ -308,7 +298,7 @@
               <img src="/src/assets/images/png/note.png" alt="" />
               <div class="tooltip">Notes</div>
             </div>
-            <div class="notes-section" v-if="nav.noteSidebar" >
+            <div class="notes-section" v-if="nav.noteSidebar">
               <div class="card">
                 <div class="heading">
                   <h4 class="">Notes <icon-add @click.prevent="nav.addModal = true"></icon-add></h4>
@@ -338,32 +328,20 @@
           </div>
           <div class="account" v-click-outside="closeAccMenu">
             <div class="account-card grade-btn btn" @click.prevent="nav.accMenu = true">
-              <img
-                src="/src/assets/images/png/user.png"
-                class="user-img"
-                alt=""
-              />
+              <img src="/src/assets/images/png/user.png" class="user-img" alt="" />
               <h3>Profile</h3>
-              <img
-                src="/src/assets/images/icons/Line.svg"
-                class="arrow-img"
-                alt=""
-              />
+              <img src="/src/assets/images/icons/Line.svg" class="arrow-img" alt="" />
             </div>
             <div class="float-card" v-if="nav.accMenu">
               <ul>
                 <li>
-                  <router-link
-                    to="/profile"
-                    class="link"
-                    @click.prevent="nav.accMenu = false"
-                  >
+                  <router-link to="/profile" class="link" @click.prevent="nav.accMenu = false">
                     <img src="/src/assets/images/png/staff.png" alt="image" />
                     <div class="text">My Profile</div>
                   </router-link>
                 </li>
                 <li>
-                  <div class="link" @click.prevent="closeAccMenu()">
+                  <div class="link" @click="logout()">
                     <img src="/src/assets/images/png/door.png" alt="image" />
                     <div class="text">Logout Now</div>
                   </div>
@@ -373,7 +351,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
     <!-- modals -->
     <Modal v-model:show="nav.confirmModal" class="confirm-modal">
@@ -383,7 +361,7 @@
       <div class="btns">
         <button class="btn grey-btn cancel-btn" @click.prevent="nav.confirmModal = false">Cancel</button>
         <button class="btn confirm-btn">Confirm</button>
-      </div>      
+      </div>
     </Modal>
     <Modal v-model:show="nav.addModal" class="" headerClasses="header-bg">
       <template v-slot:header>
@@ -411,6 +389,7 @@
 import { reactive, ref } from "vue";
 import { computed } from "@vue/reactivity";
 import { useStore } from 'vuex'
+import router from "../router";
 
 /* constatnt */
 const store = useStore();
@@ -425,7 +404,7 @@ const toggleSidebar = () => {
     setTimeout(() => {
       isSidebarOpen.value = false;
       isClosing.value = false;
-    }, 300); 
+    }, 300);
   } else {
     isSidebarOpen.value = true;
   }
@@ -496,6 +475,11 @@ function closeSearch() {
 function closeAccMenu() {
   nav.accMenu = false;
 }
+function logout(){
+  localStorage.clear()
+  nav.accMenu = false;
+  router.push('/login')
+}
 function hideNoteSidebar() {
   nav.noteSidebar = false;
 }
@@ -517,5 +501,4 @@ function toggleApt() {
 }
 </script>
 
-<style>
-</style>
+<style></style>

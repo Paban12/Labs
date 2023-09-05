@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const SET_LOAD_MORE = (state, status) => {
   state.loadMore = status;
 };
@@ -43,6 +45,10 @@ export const DOCTOR_PROFILE = (state, data) => {
   state.signatureName=data.signatureName
   state.state=data.state
   state.status=data.status
+  state.reg_type={id:data.reg_type,name:data.reg_type}
+  state.reg_year=data.reg_year
+  state.about=data.about
+  state.experience=moment().format('YYYY')-moment(data.reg_year).format('YYYY').toString()
   
 };
 export const ADD_DOCTOR = (state, data) => {

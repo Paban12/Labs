@@ -14,6 +14,7 @@ export const getDoctor = async ({ commit, state }, { limit, offset, keyword, sta
 				state.lowerPage = cPage
 				state.upperStatus = true
 			} else {
+				state.lowerPage = cPage
 				state.upperStatus = false
 			}
 			commit("SET_LOADER", false, { root: true })
@@ -65,10 +66,10 @@ export const UserProfile = async ({ commit }) => {
 		}
 	);
 };
-export const updateDoctorProfile = async ({ commit }, { name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address, id
+export const updateDoctorProfile = async ({ commit }, { name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number,reg_type,reg_year,experience,about, address, id
 }) => {
 	commit("SET_LOADER", true, { root: true });
-	await apiServices.updateDoctorProfile(name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address, id).then(
+	await apiServices.updateDoctorProfile(name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number,reg_type,reg_year,experience,about, address, id).then(
 		async (response) => {
 			console.log(response.data);
 			commit("SET_LOADER", false, { root: true });

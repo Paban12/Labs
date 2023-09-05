@@ -17,13 +17,13 @@
           <th>Status</th>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in taxData" :key="item">
+          <tr v-for="(item, index) in storeVar.billingTax" :key="item">
             <td>{{ index + 1 }}</td>
-            <td>{{ item.tax_name }}</td>
-            <td>{{ item.tax_value }}</td>
+            <td>{{ item.gstList?.level }}</td>
+            <td>{{ item.gstList?.tax }}</td>
             <td>
               <label class="toggle-control">
-                <input type="checkbox" checked="checked" />
+                <input type="checkbox" v-model="item.status" @change="statusChange(item.status,item.id,item.gstList?.id)" />
                 <span class="control"></span>
               </label>
             </td>
@@ -35,74 +35,18 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, computed, onBeforeMount } from 'vue';
+import { useStore } from 'vuex'
+/* Constants */
 
-const taxData = reactive([
-  {
-    tax_name: 'CGST',
-    tax_value: 3,
-  },
-  {
-    tax_name: 'CGST',
-    tax_value: 6,
-  },
-  {
-    tax_name: 'CGST',
-    tax_value: 9,
-  },
-  {
-    tax_name: 'CGST',
-    tax_value: 14,
-  },
-  {
-    tax_name: 'GST',
-    tax_value: 5,
-  },
-  {
-    tax_name: 'GST',
-    tax_value: 12,
-  },
-  {
-    tax_name: 'GST',
-    tax_value: 18,
-  },
-  {
-    tax_name: 'GST',
-    tax_value: 28,
-  },
-  {
-    tax_name: 'IGST',
-    tax_value: 5,
-  },
-  {
-    tax_name: 'IGST',
-    tax_value: 12,
-  },
-  {
-    tax_name: 'IGST',
-    tax_value: 18,
-  },
-  {
-    tax_name: 'IGST',
-    tax_value: 28,
-  },
-  {
-    tax_name: 'SGST',
-    tax_value: 3,
-  },
-  {
-    tax_name: 'SGST',
-    tax_value: 6,
-  },
-  {
-    tax_name: 'SGST',
-    tax_value: 9,
-  },
-  {
-    tax_name: 'SGST',
-    tax_value: 14,
-  },
-])
+const store = useStore();
+const storeVar = computed(() => store.state.Settings);
+
+function statusChange(status,id,gstListId){
+  store.dispatch("Settings/changeTaxStatus", {
+    status,id,gstListId
+  });
+}
 </script>
 
 <style>

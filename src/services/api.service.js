@@ -7,7 +7,9 @@ const rootURL = "http://localhost:3000/api/v1/";
 const authURL = rootURL + "auth";
 const accountURL = rootURL + "account";
 const doctorDetailsURL = rootURL + "doctor-details";
-const laboratoryURL = rootURL + "laboratory";
+const laboratoryURL = rootURL + "laboratory"; 
+const settingURL = rootURL + "settings";
+const settingBillingURL = rootURL + "setting-billing";
 
 /***** Login *****/
 function verifyId(loginId, password) {
@@ -74,9 +76,9 @@ function savePermission(id, menu) {
 function getDoctorProfile(id) {
   return axios.get(doctorDetailsURL + "/profile/" + id, { headers: authHeader() });
 }
-function updateDoctorProfile(name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address, id) {
-  console.log({ name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address, id });
-  return axios.patch(doctorDetailsURL + '/' + id, { name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number, address }, { headers: authHeader() })
+function updateDoctorProfile(name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number,reg_type,reg_year,experience,about, address, id) {
+  console.log({ name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number,reg_type,reg_year,experience,about, address, id });
+  return axios.patch(doctorDetailsURL + '/' + id, { name, emailId, altEmail, mobile, altMobile, gender, dob, city, state, pincode, reg_number,reg_type,reg_year,experience,about, address }, { headers: authHeader() })
 }
 
 // Lab 
@@ -110,6 +112,28 @@ function getLaboratory(limit, offset, keyword, status) {
     { headers: authHeader() }
   );
 }
+
+function getSettings(){
+  return axios.get(settingURL + "/default", { headers: authHeader() });
+}
+function changeTaxStatus(status,id,gstListId){
+  console.log({id,status,gstListId});
+  return axios.patch(settingBillingURL + "/tax/" + id,{status,gstListId}, { headers: authHeader() });
+}
+function changePayModeStatus(status,id,payModeId){
+  console.log({status,id,payModeId});
+  return axios.patch(settingBillingURL + "/payMode/" + id,{status,payModeId}, { headers: authHeader() });
+}
+function addExpense(expense){
+  return axios.post(settingBillingURL + "/expense",{expense}, { headers: authHeader() });
+}
+function deleteExpense(id){
+  return axios.delete(settingBillingURL + "/expense/" + id, { headers: authHeader() });
+}
+function changeChargeStatus(status,id,chargeId,amount){
+  console.log({status,id,chargeId,amount});
+  return axios.patch(settingBillingURL + "/charge/" + id,{status,chargeId,amount}, { headers: authHeader() });
+}
 export const apiServices = {
   verifyId,
   verifyOtp,
@@ -126,4 +150,11 @@ export const apiServices = {
   addLaboratory,
   getLaboratory,
   updateLaboratory,
+
+  getSettings,
+  changeTaxStatus,
+  changePayModeStatus,
+  addExpense,
+  changeChargeStatus,
+  deleteExpense,
 };
