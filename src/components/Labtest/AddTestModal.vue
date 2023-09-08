@@ -25,15 +25,11 @@
           <th class="text-center">Option</th>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in testTableData" :key="item">
+          <tr v-for="(item, index) in formVar.testTableData" :key="item">
             <td>{{ index + 1 }}</td>
             <td>
-              <SingleSelect
-                v-model="formVar.test"
-                :options="testOptions"
-                @selected="handleSelectedOption"
-                placeholder="Search Test"
-              ></SingleSelect>
+              <SingleSelect v-model="formVar.test" :options="testOptions" @selected="handleSelectedTestName"
+                placeholder="Search Test"></SingleSelect>
             </td>
             <td>
               <div class="select-dropdown">
@@ -44,31 +40,19 @@
               </div>
             </td>
             <td>
-              <SingleSelect
-                v-model="formVar.dept"
-                :options="deptOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Department"
-              ></SingleSelect>
+              <SingleSelect v-model="formVar.dept" :options="deptOptions" @selected="handleSelectedOption"
+                placeholder="Select Department"></SingleSelect>
             </td>
             <td>
               <input type="number" placeholder="Test Code" />
             </td>
             <td>
-              <SingleSelect
-                v-model="formVar.sample"
-                :options="sampleOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Sample"
-              ></SingleSelect>
+              <SingleSelect v-model="formVar.sample" :options="sampleOptions" @selected="handleSelectedOption"
+                placeholder="Select Sample"></SingleSelect>
             </td>
             <td>
-              <SingleSelect
-                v-model="formVar.container"
-                :options="containerOptions"
-                @selected="handleSelectedOption"
-                placeholder="Select Container"
-              ></SingleSelect>
+              <SingleSelect v-model="formVar.container" :options="containerOptions" @selected="handleSelectedOption"
+                placeholder="Select Container"></SingleSelect>
             </td>
             <td>
               <div class="sample-input">
@@ -149,7 +133,7 @@
           <th class="text-center">Option</th>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in testTableData" :key="item">
+          <tr v-for="(item, index) in formVar.referenceData" :key="item">
             <td>{{ index + 1 }}</td>
             <td>
               <div class="select-dropdown">
@@ -199,7 +183,7 @@
         </tbody>
       </table>
     </div>
-    <div class="add-ref mb-16">
+    <div class="add-ref mb-16" @click="addMoreReference">
       + Add New Reference
     </div>
     <div class="save-btn">
@@ -226,7 +210,7 @@ import { useStore } from "vuex";
 import { VueEditor } from "vue3-editor";
 
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
+const storeVar = computed(() => store.state.Labtest);
 
 const customToolbar = [
   [{ header: [false, 1, 2, 3, 4, 5, 6] }],
@@ -252,14 +236,22 @@ const formVar = reactive({
   container: null,
   referenceModal: false,
   noteModal: false,
+  referenceData: [{
+    id: 1
+  }],
+  testTableData: [{
+    id: 1,
+  }]
 })
 
-const testTableData = reactive([
-  {
-    id: 2,
+const handleSelectedTestName = (option) => {
+  if (option) {
+    // formVar.testTableData.push({id:option})
   }
-])
-
+};
+const addMoreReference = ()=>{
+  formVar.referenceData.push({id:452})
+}
 //for table data
 const testOptions = [
   { id: 1, name: "Option1" },
@@ -282,5 +274,4 @@ const handleSelectedOption = (option) => {
 };
 </script>
 
-<style>
-</style>
+<style></style>

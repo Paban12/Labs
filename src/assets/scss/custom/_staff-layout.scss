@@ -158,6 +158,10 @@
               .staff-name{
                 font-size: 1rem;
                 font-weight: 700;
+                .sub{
+                  font-size: 0.8rem;
+                  padding: 0.5rem 0;
+                }
               }
               .post{
                 position: absolute;
@@ -170,9 +174,10 @@
                 border-radius: 0 5px 0 5px;
               }
               .delete-btn{
-                // position: absolute;
-                // top: 0;
-                // right: 5rem;
+                position: absolute;
+                top: 20px;
+                right: 5px;
+
                 background: var(--white);
                 border-radius: 100%;
                 height: 1.5rem;
@@ -180,7 +185,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin-left: 1rem;
+                // margin-left: 1rem;
                 cursor: pointer;
                 img{
                   height: 1rem;

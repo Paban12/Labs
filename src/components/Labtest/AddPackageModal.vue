@@ -97,7 +97,7 @@ import { reactive, computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
+const storeVar = computed(() => store.state.Labtest);
 
 const formVar = reactive({
   test_panel: null,

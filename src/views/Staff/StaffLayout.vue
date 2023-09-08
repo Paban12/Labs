@@ -108,7 +108,7 @@ function onChange(){
 }
 function getInfo(id){
   store.dispatch("Staff/getOneStaff", { id });
-  router.push('/staff/details')
+  router.push({path:'/staff/details'})
 }
 function Search2(){
   getStaff(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role?.id)

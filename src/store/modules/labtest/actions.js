@@ -2,14 +2,14 @@ import { apiServices } from '../../../services/api.service';
 import { successHandler, errorHandler } from '../../../services/_helper';
 import router from '../../../router';
 
-export const getLaboratory = async ({ commit, state }, { limit, offset, keyword, status, cPage }) => {
+export const getLabtest = async ({ commit, state }, { limit, offset, keyword, cPage }) => {
 	console.log({ limit, offset, keyword, status, cPage });
 	commit("SET_LOADER", true, { root: true });
 	// commit("SET_LOADER_BUTTON", true);
-	await apiServices.getLaboratory(limit, offset, keyword, status).then(
+	await apiServices.getLabtest(limit, offset, keyword).then(
 		(response) => {
 			console.log(response.data);
-			commit('ALL_LABORATORY', response.data)
+			commit('ALL_LABTEST', response.data)
 			if (state.totalLaboratory > offset + limit) {
 				state.lowerPage = cPage
 				state.upperStatus = true

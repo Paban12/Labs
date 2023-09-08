@@ -15,6 +15,7 @@ const specializationURL = rootURL + "specialization";
 const staffScheduleURL =rootURL +'staff-schedule'
 const doctorScheduleURL=rootURL + 'doctor-schedule'
 const organizationURL=rootURL + 'organization'
+const labtestUrl = rootURL + 'lab-tests'
 
 /***** Login *****/
 function verifyId(loginId, password) {
@@ -103,7 +104,10 @@ function updateAvailability(id,StaffSchedule){
 function getPermission(id) {
   return axios.get(staffDetailsURL + "/" + id, { headers: authHeader() });
 }
-
+function updateStaff(name,designation,emailId,gender,dob,id){
+  console.log({name,designation,emailId,gender,dob,id});
+  return axios.patch(staffDetailsURL + "/profile/" + id,{name,designation,emailId,gender,dob} ,{ headers: authHeader() });
+}
 function savePermission(id, menu) {
   return axios.put(
     rootURL + "user-permissions/" + id,
@@ -216,12 +220,26 @@ function changeChargeStatus(status, id, chargeId, amount) {
   console.log({ status, id, chargeId, amount });
   return axios.patch(settingBillingURL + "/charge/" + id, { status, chargeId, amount }, { headers: authHeader() });
 }
+
+function getLabtest(limit, offset, keyword){
+  return axios.get(
+    labtestUrl +
+    "?limit=" +
+    limit +
+    "&offset=" +
+    offset +
+    "&keyword=" +
+    keyword ,
+    { headers: authHeader() }
+  );
+}
 export const apiServices = {
   verifyId,
   verifyOtp,
   getStaff,
   getOneStaff,
   addStaff,
+  updateStaff,
   getPermission,
   savePermission,
   getDoctor,
@@ -254,4 +272,6 @@ export const apiServices = {
 
   getSpecialization,
   getOrganization,
+
+  getLabtest,
 };

@@ -18,7 +18,9 @@ export const ALL_STAFF = (state, data) => {
   state.mobile = data.result[0]?.phoneNumber
   state.roles = { id: data.result[0]?.roles, name: data.result[0]?.roles }
   state.gender = { id: data.result[0]?.staffDetail?.gender, name: data.result[0]?.staffDetail?.gender }
-  state.gender2 = data.result[0]?.staffDetail?.gender
+  state.gender2 = data.result[0]?.staffDetail?.gender 
+  state.dob=data.result[0]?.staffDetail?.dob
+  state.designation=data.result[0]?.staffDetail?.designation
   state.roles2 = data.result[0]?.roles
   state.staffId = data.result[0]?.id
 };
@@ -29,6 +31,8 @@ export const STAFF_DETAILS = (state, data) => {
   state.roles = { id: data.roles, name: data.roles }
   state.gender = { id: data.staffDetail?.gender, name: data.staffDetail?.gender }
   state.gender2 = data.staffDetail?.gender
+  state.dob=data.staffDetail?.dob
+  state.designation=data.staffDetail?.designation
   state.roles2 = data.roles
   state.staffId = data.id
 };
@@ -99,7 +103,10 @@ export const SET_AVAILABILITY = (state, data) => {
   ]
   if(data.staffSchedule.length>0){
     state.Availability=data.staffSchedule
+    state.staffDetailId=data.id
   }else{
     state.Availability=dayData
+    state.staffDetailId=data.id
+
   }
 }

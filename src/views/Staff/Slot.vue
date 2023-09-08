@@ -30,14 +30,28 @@
 <script setup>
 import { computed, reactive, onBeforeMount } from "vue";
 import { useStore } from "vuex";
-
+import { useRoute } from "vue-router";
 /* Constants */
+const postOptions = [
+  { id: 'STAFF', name: "STAFF" },
+  { id: 'EMPLOYEE', name: "EMPLOYEE" },
+  { id: 'FRONT DESK', name: "FRONT DESK" },
+  { id: 'BACK DESK', name: "BACK DESK" },
+  { id: 'PATHOLOGIEST', name: "PATHOLOGIEST" },
+];
 const store = useStore();
+const route = useRoute();
 const storeVar = computed(() => store.state.Staff);
 const formVar = reactive({
   submit: false,
   loginId: null,
   showTime: true,
+  id:null,
+  limit: 10,
+  offset: 0,
+  keyword: "",
+  status: 'ACTIVE',
+  role: postOptions[0],
 });
 
 
@@ -45,13 +59,16 @@ const formVar = reactive({
 
 /* Lifecycle/Hooks */
 onBeforeMount(() => {
-  loadIdFromUrl()
+  if (route.query.id) {
+    formVar.id = route.query.id
+    loadIdFromUrl()
+  }
 })
 
 /* Lifecycle/Hooks */
 
 function loadIdFromUrl() {
-  store.dispatch('Staff/getAvailability', { id: storeVar.value.staffId })
+  store.dispatch('Staff/getAvailability', { id: formVar.id})
 }
 /* Functions/Methods */
 
@@ -60,8 +77,12 @@ function toggleTime() {
 }
 
 const onAvailabilitySub = () => {
+  console.log({
+    id:storeVar.value.staffDetailId,    
+    StaffSchedule:storeVar.value.Availability
+  });
   store.dispatch("Staff/updateAvailability", { 
-    id:storeVar.value.staffId,    
+    id:storeVar.value.staffDetailId,    
     StaffSchedule:storeVar.value.Availability
   });
 };

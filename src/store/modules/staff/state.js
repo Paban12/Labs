@@ -9,4 +9,5 @@ export default {
   totalStaff:0,
   permissiondata:[],
   Availability:[],
+  staffDetailId:null,
 };

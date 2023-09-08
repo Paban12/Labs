@@ -10,7 +10,7 @@
         <div class="form-item col-5 mb-16">
           <div class="title">Phone No</div>
           <input type="number" v-model="storeVar.mobile" placeholder="Enter phone no"
-          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)">
+          v-on:keypress="isNumber($event)"  v-on:keyup="phnum($event.target.value)" disabled>
           <div class="err-msg" v-if="formVar.submit && phoneValid">{{ phoneValid }}</div>
         </div>
       </div>
@@ -24,41 +24,33 @@
           <div class="title">Gender</div>
           <Select v-model="storeVar.gender" :options="genderOptions" @selected="handleSelectedOption"
             placeholder="Select"></Select>
-          <div class="err-msg" v-if="formVar.submit && passwordValid">{{ passwordValid }}</div>
+          <div class="err-msg" v-if="formVar.submit && genderValid">{{ genderValid }}</div>
         </div>
       </div>
       <div class="row">
         <div class="form-item col-5 mb-16">
           <div class="title">Role</div>
-          <Select v-model="storeVar.roles" :options="desOptions" @selected="handleSelectedOption" placeholder="Select">
+          <Select v-model="storeVar.roles" :options="desOptions" @selected="handleSelectedOption" placeholder="Select" disabled>
           </Select>
           <div class="err-msg" v-if="formVar.submit && roleValid">{{ roleValid }}</div>
         </div>
+        <div class="form-item col-5 mb-16">
+          <div class="title">DOB</div>
+          <input type="date" v-model="storeVar.dob" placeholder="Enter Designation">
+            <div class="err-msg" v-if="formVar.submit && dobValid">{{ dobValid }}</div>
+        </div>
+      </div>
+      <div class="row">
         <div class="form-item col-5 mb-16">
           <div class="title">Designation</div>
           <input type="text" v-model="storeVar.designation" placeholder="Enter Designation">
             <div class="err-msg" v-if="formVar.submit && designationValid">{{ designationValid }}</div>
         </div>
-      </div>
-      <div class="row">
-        <div class="form-item col-5 mb-16">
+        <!-- <div class="form-item col-5 mb-16">
           <div class="title">Text Signature</div>
           <input type="text" v-model="formVar.signature" placeholder="Enter Text Signature">
           <div class="err-msg" v-if="formVar.submit && signatureValid">{{ signatureValid }}</div>
-        </div>
-        <div class="form-item col-5 mb-16">
-          <div class="title">Upload Sign (PNG Format only)</div>
-          <div class="pic-upload">
-            <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic" alt="" />
-            <img v-else src="/src/assets/images/png/sign.png" class="dummy-img pic" alt="" />
-            <label for="imgUpload" class="upload-file-block">
-              Upload Sign
-            </label>
-            <input class="uploadProfileInput" type="file" name="profile_pic" id="imgUpload" accept="image/png"
-              @change="previewProfile($event, profilePic)" style="display: none" />
-          </div>
-          <div class="err-msg" v-if="formVar.submit && fileValid">{{ fileValid }}</div>
-        </div>
+        </div> -->
       </div>
       <div class="save-btn flex justify-center">
         <button type="submit" class="btn black-btn w-50">Update</button>
@@ -145,19 +137,22 @@ const onSubmitStaff = () => {
   if (
     nameValid.value ||
     emailValid.value ||
-    phoneValid.value ||
-    roleValid.value ||
     designationValid.value ||
-    signatureValid.value ||
-    fileValid.value 
+    dobValid.value ||
+    genderValid.value 
   ) {
     formVar.submit = true;
     return;
   }
   formVar.submit = false;
-  store.dispatch("Auth/verifyUser", {     
-    userId: 10563543453,
-    password: 4532453, });
+  store.dispatch("Staff/updateStaff", {     
+  name: storeVar.value.name,
+  designation: storeVar.value.designation,
+  emailId: storeVar.value.emailId,
+  gender: storeVar.value.gender?.id,
+  dob: storeVar.value.dob,
+  id:storeVar.value.staffId
+  });
 };
 /* Functions/Methods */
 
@@ -186,6 +181,16 @@ const emailValid = computed(() => {
 const roleValid = computed(() => {
   if (!storeVar.value.roles) {
     return "Please select roles!";
+  }
+});
+const genderValid = computed(() => {
+  if (!storeVar.value.gender) {
+    return "Please select gender!";
+  }
+});
+const dobValid = computed(() => {
+  if (!storeVar.value.dob) {
+    return "Please select dob!";
   }
 });
 const designationValid = computed(() => {

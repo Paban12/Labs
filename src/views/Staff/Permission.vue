@@ -61,14 +61,17 @@ const formVar = reactive({
 });
 
 onBeforeMount(() => {
-  loadIdFromUrl()
+  if (route.query.id) {
+    formVar.id = route.query.id
+    loadIdFromUrl()
+  }
 })
 
 function loadIdFromUrl() {
-  store.dispatch('Staff/getAvailability', { id: storeVar.value.staffId })
+  store.dispatch('Staff/getPermission', { id: formVar.id })
 }
 function submit() {
-  store.dispatch('Staff/savePermission', { id: storeVar.value.staffId, menu: storeVar.value.permissiondata })
+  store.dispatch('Staff/savePermission', { id: formVar.id, menu: storeVar.value.permissiondata })
 }
 const chackedall = () => {
   if (formVar.statusAll==true) {

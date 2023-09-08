@@ -5,35 +5,36 @@
         <div class="heading">
           <div class="main">
             <div class="title">Tests</div>
-            <button class="btn black-btn" @click.prevent="storeVar.addTestModal = true">
+            <button class="btn black-btn" @click="openModal()">
               Add
             </button>
           </div>
           <div class="tabs">
-            <div class="tab" @click.prevent="labTest.tab = 1" :class="labTest.tab === 1 ? 'active' : ''">
+            <div class="tab" @click.prevent="formVar.tab = 1" :class="formVar.tab === 1 ? 'active' : ''">
               Lab
             </div>
-            <div class="tab" @click.prevent="labTest.tab = 2" :class="labTest.tab === 2 ? 'active' : ''">
+            <div class="tab" @click.prevent="formVar.tab = 2" :class="formVar.tab === 2 ? 'active' : ''">
               Panel
             </div>
-            <div class="tab" @click.prevent="labTest.tab = 3" :class="labTest.tab === 3 ? 'active' : ''">
+            <div class="tab" @click.prevent="formVar.tab = 3" :class="formVar.tab === 3 ? 'active' : ''">
               Package
             </div>
-            <div class="tab" @click.prevent="labTest.tab = 4" :class="labTest.tab === 4 ? 'active' : ''">
+            <div class="tab" @click.prevent="formVar.tab = 4" :class="formVar.tab === 4 ? 'active' : ''">
               Template
             </div>
           </div>
         </div>
         <div class="card-body">
-          <div class="tab-content" v-if="labTest.tab === 1">
+          <div class="tab-content" v-if="formVar.tab === 1">
             <div class="search-row row">
-              <div class="col-3 form-item mb-16">
+              <div class="col-4 form-item mb-16">
                 <input type="text" placeholder="Search By Name/Dept" />
               </div>
-              <div class="col-3 form-item mb-16">
-                <MultiSelect v-model="labTest.tests" :options="testOptions" :tabs="tab" />
-              </div>
-              <div class="col-2 form-item mb-16">
+              <!-- <div class="col-3 form-item mb-16">
+                <MultiSelect v-model="formVar.tests" :options="testOptions" :tabs="tab" />
+              </div> -->
+              <div class="col-4 form-item mb-16">
+                <!-- <Select v-model="formVar.changeRole" :options="postOptions" @change.prevent="onChange"></Select> -->
                 <div class="select-dropdown">
                   <select name="" id="">
                     <option value="">Active Test</option>
@@ -41,7 +42,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-2 form-item mb-16">
+              <div class="col-4 form-item mb-16">
                 <div class="select-dropdown">
                   <select name="" id="">
                     <option value="">Test List</option>
@@ -69,7 +70,7 @@
                   <th class="text-center">View</th>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, index) in testData" :key="item">
+                  <tr v-for="(item, index) in storeVar.labtestData" :key="item">
                     <td>{{ index + 1 }}</td>
                     <td>{{ item.test_name }}</td>
                     <td>{{ item.display }}</td>
@@ -87,7 +88,7 @@
                         <div class="" @click.prevent="storeVar.addTestModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div class="" @click.prevent="labTest.confirmModal = true">
+                        <div class="" @click.prevent="formVar.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -96,10 +97,10 @@
                 </tbody>
               </table>
             </div>
-            <div class="table-no-data">
+            <div class="table-no-data" v-if="storeVar.labtestData.length<=0">
               <div>No records Found!</div>
             </div>
-            <div class="table-footer">
+            <div class="table-footer" v-if="storeVar.labtestData.length>0">
               <div class="entries">
                 Showing <span>0</span> to <span>0</span> of
                 <span>0</span> entries
@@ -113,15 +114,15 @@
               </div>
             </div>
           </div>
-          <div class="tab-content" v-if="labTest.tab === 2">
+          <div class="tab-content" v-if="formVar.tab === 2">
             <div class="search-row row">
-              <div class="col-3 form-item mb-16">
+              <div class="col-4 form-item mb-16">
                 <input type="text" placeholder="Search By Name/Dept" />
               </div>
-              <div class="col-3 form-item mb-16">
-                <MultiSelect v-model="labTest.panel" :options="panelOptions" :tabs="tab" />
-              </div>
-              <div class="col-2 form-item mb-16">
+              <!-- <div class="col-3 form-item mb-16">
+                <MultiSelect v-model="formVar.panel" :options="panelOptions" :tabs="tab" />
+              </div> -->
+              <div class="col-4 form-item mb-16">
                 <div class="select-dropdown">
                   <select name="" id="">
                     <option value="">Active Panel</option>
@@ -129,7 +130,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-2 form-item mb-16">
+              <div class="col-4 form-item mb-16">
                 <div class="select-dropdown">
                   <select name="" id="">
                     <option value="">Panel List</option>
@@ -175,7 +176,7 @@
                         <div class="" @click.prevent="storeVar.addPanelModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div class="" @click.prevent="labTest.confirmModal = true">
+                        <div class="" @click.prevent="formVar.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -201,7 +202,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-content" v-if="labTest.tab === 3">
+          <div class="tab-content" v-if="formVar.tab === 3">
             <div class="search-row row">
               <div class="col-3 form-item mb-16">
                 <input type="text" placeholder="Search By Name" />
@@ -243,7 +244,7 @@
                         <div class="" @click.prevent="storeVar.addPackageModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div class="" @click.prevent="labTest.confirmModal = true">
+                        <div class="" @click.prevent="formVar.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -269,7 +270,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-content" v-if="labTest.tab === 4">
+          <div class="tab-content" v-if="formVar.tab === 4">
             <div class="search-row row">
               <div class="col-3 form-item mb-16">
                 <input type="text" placeholder="Search By Title/Test" />
@@ -303,7 +304,7 @@
                         <div class="" @click.prevent="storeVar.addTemplateModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div class="" @click.prevent="labTest.confirmModal = true">
+                        <div class="" @click.prevent="formVar.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -333,10 +334,10 @@
       </div>
     </div>
     <!-- modals -->
-    <Modal v-model:show="labTest.confirmModal" class="confirm-modal">
+    <Modal v-model:show="formVar.confirmModal" class="confirm-modal">
       <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button class="btn grey-btn cancel-btn" @click.prevent="labTest.confirmModal = false">
+        <button class="btn grey-btn cancel-btn" @click.prevent="formVar.confirmModal = false">
           Cancel
         </button>
         <button class="btn confirm-btn">Confirm</button>
@@ -351,18 +352,37 @@
 </template>
 
 <script setup>
-import { reactive, computed } from "vue";
-import { useStore } from "vuex";
+import { reactive, computed, onBeforeMount } from 'vue';
+import { useStore } from 'vuex'
 
+/* Constants */
 const store = useStore();
-const storeVar = computed(() => store.state.Auth);
-
-const labTest = reactive({
+const storeVar = computed(() => store.state.Labtest);
+const formVar = reactive({
+  limit: 10,
+  offset: 0,
+  keyword: '',
+  submit: false,
   tab: 1,
   tests: null,
   panel: null,
   confirmModal: false,
-});
+  cPage: 1,
+})
+
+
+/* Constants */
+
+/* Lifecycle/Hooks */
+onBeforeMount(() => {
+  getLabtest(formVar.limit, formVar.offset, formVar.keyword,formVar.cPage)
+})
+/* Lifecycle/Hooks */
+
+/* Functions/Methods */
+function getLabtest(limit, offset, keyword, cPage) {
+  store.dispatch("Labtest/getLabtest", { limit, offset, keyword, cPage });
+}
 
 const testData = reactive([
   {
@@ -428,6 +448,18 @@ const panelOptions = [
   { id: 3, name: "Option 3" },
 ];
 const tab = [];
+
+function openModal(){
+  if(formVar.tab === 1){
+    storeVar.value.addTestModal=true
+  }else if(formVar.tab === 2){
+    storeVar.value.addPanelModal=true
+  }else if(formVar.tab === 3){
+    storeVar.value.addPackageModal=true
+  }else if(formVar.tab === 4){
+    storeVar.value.addTemplateModal=true
+  }
+}
 </script>
 
 <style></style>
