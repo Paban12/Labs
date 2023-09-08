@@ -1,19 +1,21 @@
 <template>
   <section class="dr-expertise">
-    <form action="" class="form">
+    <form action="" class="form" @submit.prevent="onSubmitDoctor">
       <div class="row">
-        <div class="form-item col-5 mb-16">
+        <div class="form-item col-16 mb-16">
           <div class="title">Expertise</div>
-          <textarea name="" id="" rows="5" placeholder=""></textarea>
-          <div class="err-msg">Please enter expertise</div>
+          <textarea name="" id="" rows="5" v-model="formVar.expertise" placeholder=""></textarea>
+          <div class="err-msg" v-if="formVar.submit && nameValid">
+              {{ nameValid }}
+            </div>
         </div>
-        <div class="form-item col-5 mb-16">
+        <!-- <div class="form-item col-5 mb-16">
           <div class="title">Associated Hospital</div>
           <textarea name="" id="" rows="5" placeholder=""></textarea>
           <div class="err-msg">Please enter associated hospital</div>
-        </div>
+        </div> -->
       </div>
-      <div class="form-item mb-16">
+      <!-- <div class="form-item mb-16">
         <div class="title">Specialization</div>
         <MultiSelect
           :options="specialityOptions"
@@ -22,22 +24,66 @@
           placeholder="Select Specialization"
         />
         <div class="err-msg">Please select specialization</div>
-      </div>
+      </div> -->
       <div class="save-btn">
-        <button class="btn black-btn w-10-r">Save</button>
+        <button type="submit" class="btn black-btn w-10-r">Save</button>
       </div>
     </form>
   </section>
 </template>
 
 <script setup>
+import moment from "moment";
+import { reactive, computed, onBeforeMount } from 'vue';
+import { useStore } from 'vuex'
+import router from "../../router";
+import { useRoute } from "vue-router";
 
-//multi select
-const specialityOptions = [
-  { id: 1, name: "ENT" },
-  { id: 2, name: "General Surgen" },
-];
-const tab = [];
+/* Constants */
+const store = useStore()
+const route = useRoute();
+const storeVar = computed(() => store.state.Doctor);
+const formVar = reactive({
+  expertise:null
+
+})
+
+/* Constants */
+
+/* Lifecycle/Hooks */
+onBeforeMount(() => {
+  // getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, formVar.cPage)
+})
+/* Lifecycle/Hooks */
+
+/* Functions/Methods */
+function getDoctor(limit, offset, keyword, status, role, cPage) {
+  store.dispatch("Doctor/getDoctor", { limit, offset, keyword, status, role, cPage });
+}
+
+const onSubmitDoctor = () => {
+  if (
+    nameValid.value 
+  ) {
+    formVar.submit = true;
+    return;
+  }
+  formVar.submit = false;
+  store.dispatch("Doctor/addExpertise", {
+    expertise:formVar.expertise,
+    doctorDetailId:storeVar.value.id,
+  });
+};
+/* Functions/Methods */
+
+/* Validation */
+const nameValid = computed(() => {
+  if (!formVar.expertise) {
+    return "Please enter expertise!";
+  }
+});
+
+/* Validation */
 
 </script>
 

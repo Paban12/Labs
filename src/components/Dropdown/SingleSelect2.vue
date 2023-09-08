@@ -62,7 +62,7 @@ const selectOption2 = computed(() => {
 });
 const selectOption = (option) => {
   searchQuery.value = option.name;
-  instance.emit("update:modelValue", option.name);
+  instance.emit("update:modelValue", option.id);
   instance.emit("selected", option);
   focusNextInput();
 };

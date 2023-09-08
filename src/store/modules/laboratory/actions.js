@@ -70,6 +70,21 @@ export const updateLaboratory = async ({ commit }, { id,name, emailId, phone, ad
 	);
 };
 
+export const updateStatus = async ({ commit }, { id,status }) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.updateStatus(id,status).then(
+		async (response) => {
+			commit('SET_STATUS',id)
+			successHandler("uploaded successfully!");
+			commit("SET_LOADER", false, { root: true });
+		},
+		(error) => {
+			errorHandler(error.response);
+			commit("SET_LOADER", false, { root: true });
+		}
+	);
+};
+
 export const uploadProfileImage = async ({ commit }, { file }) => {
 	commit("SET_LOADER", true, { root: true });
 	await apiServices.uploadProfileImage(file).then(

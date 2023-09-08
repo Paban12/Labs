@@ -12,6 +12,4 @@ export default {
   doctorData:[],
   totalDoctor:0,
   permissiondata:[],
-  specializationData:[{id:null,name:'Select Speciality'}],
-  organizationData:[]
 };

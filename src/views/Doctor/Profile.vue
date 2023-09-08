@@ -10,18 +10,28 @@
               Upload Pic
             </label>
             <input class="uploadProfileInput" type="file" name="profile_pic" id="imgUpload" accept="image/png"
-              @change="previewProfile($event, profilePic)" style="display: none" />
+              @change="previewProfile($event)" style="display: none" />
           </div>
         </div>
         <div class="about">
           <div class="name">{{ storeVar.name }}</div> 
           <div class="education">
-            MBBS, MD (internal medicine), DNB (internal medicine), FRCP (London)
+            <span v-for="(item, index) in storeVar.doctorEducation" :key="index">
+              <span>{{ item.qualification }}, </span>
+            </span>
+            <span v-if="storeVar.doctorEducation?.length<=0">-</span>
+            <!-- MBBS, MD (internal medicine), DNB (internal medicine), FRCP (London) -->
           </div>
           <div class="data-row">
             <div class="data">
               <div class="title">Specialization :</div>
-              <div class="val">Cardiology, Cardiac Surgery</div>
+              <div class="val" >
+                <span v-for="(item, index) in storeVar.doctorSpecialization" :key="index">
+                  <span>
+                    {{ item.specialization?.name }}, 
+                  </span>
+                </span>
+              </div>
             </div>
             <div class="data">
               <div class="title">Expertise :</div>
@@ -31,7 +41,7 @@
           <div class="data-row">
             <div class="data">
               <div class="title">Experience :</div>
-              <div class="val">15 Years</div>
+              <div class="val">{{ storeVar.experience }} Years</div>
             </div>
             <div class="data">
               <div class="title">Phone No :</div>
@@ -68,15 +78,15 @@
             @click.prevent="formVar.tab = 5"
             :class="formVar.tab === 5 ? 'active' : ''"
           >
-            <div class="text">Language</div>
+            <div class="text">Specialization</div>
           </div>
-          <div
+          <!-- <div
             class="tab"
             @click.prevent="formVar.tab = 6"
             :class="formVar.tab === 6 ? 'active' : ''"
           >
             <div class="text">Fees & Availability</div>
-          </div>
+          </div> -->
           <div
             class="tab"
             @click.prevent="formVar.tab = 7"
@@ -91,13 +101,13 @@
           >
             <div class="text">Sign & Cert</div>
           </div>
-          <div
+          <!-- <div
             class="tab"
             @click.prevent="formVar.tab = 9"
             :class="formVar.tab === 9 ? 'active' : ''"
           >
             <div class="text">Block</div>
-          </div>
+          </div> -->
         </div>
         <div class="tabs-content">
           <div class="content" v-if="formVar.tab === 1">
@@ -110,8 +120,11 @@
             <DoctorExpertise />
           </div>
           <div class="content" v-if="formVar.tab === 5">
-            <DoctorLanguage />
+            <DoctorSpecialization />
           </div>
+          <!-- <div class="content" v-if="formVar.tab === 5">
+            <DoctorLanguage />
+          </div> -->
           <div class="content" v-if="formVar.tab === 6">
             <DoctorFees />
           </div>
@@ -145,9 +158,14 @@ const formVar = reactive({
   tab: 1,
   imagePreview: "",
 })
-
+function saveProfile(file) {
+  console.log(file);
+  store.dispatch("Doctor/profileUpload", {
+    file
+  });
+}
 // Upload Docs
-async function previewProfile(event, id) {
+async function previewProfile(event) {
   if (event) {
     const input = await event.target;
     if (
@@ -160,7 +178,7 @@ async function previewProfile(event, id) {
         };
         if (input.files[0]) {
           reader.readAsDataURL(input.files[0]);
-          await saveProfile(id, input.files[0]);
+          saveProfile(input.files[0]);
         }
       }
     } else {

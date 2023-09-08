@@ -144,3 +144,34 @@ export const getPermission = async ({ commit, dispatch },{id}) => {
 	  }
 	);
   };
+
+  export const getAvailability = async ({ commit, dispatch },{id}) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.getPermission(id).then(
+	  (response) => { 
+		console.log(response.data);
+		commit("SET_LOADER", false, { root: true });
+		commit("SET_AVAILABILITY", response.data.user);
+	  },
+	  (error) => {
+		commit("SET_LOADER", false, { root: true });
+		commit("SET_PERMISSION", []);
+		errorHandler(error.response);
+	  }
+	);
+  };
+  export const updateAvailability = async ({ commit, dispatch },{id,StaffSchedule}) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.updateAvailability(id,StaffSchedule).then(
+	  (response) => { 
+		console.log(response.data);
+		commit("SET_LOADER", false, { root: true });
+		successHandler('Update Successfully')
+	  },
+	  (error) => {
+		commit("SET_LOADER", false, { root: true });
+		commit("SET_PERMISSION", []);
+		errorHandler(error.response);
+	  }
+	);
+  };

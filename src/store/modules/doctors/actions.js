@@ -39,17 +39,134 @@ export const getDoctorProfile = async ({ commit, dispatch }, { id }) => {
 		}
 	);
 };
-export const addDoctor = async ({ commit }, { loginId, name, emailId, gender, dob, roles, password }) => {
+export const addDoctor = async ({ commit }, {mobile,name,emailId,gender,dob,roles,password,city,state,reg_number,reg_year,reg_type, experience, address, about, altMobile, altEmail,type}) => {
 	commit("SET_LOADER_BUTTON", true);
-	await apiServices.addStaff(loginId, name, emailId, gender, dob, roles, password).then(
+	await apiServices.addDoctor(mobile,name,emailId,gender,dob,roles,password,city,state,reg_number,reg_year,reg_type, experience, address, about, altMobile, altEmail,type).then(
 		(response) => {
 			console.log(response.data);
-			commit('ADD_DOCTOR', { response: response.data, loginId, name, emailId, gender, dob, roles, })
+			commit('ADD_DOCTOR', { response: response.data, mobile, name, emailId, gender, dob, roles, })
 			commit("SET_LOADER_BUTTON", false);
 		},
 		(error) => {
 			commit("SET_LOADER_BUTTON", false);
 			errorHandler(error.response)
+		}
+	);
+};
+export const updateSchedule = async ({ commit }, { schedule, id }) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.updateSchedule(schedule, id).then(
+	  async (response) => {
+		console.log(response.data);
+		commit("SET_LOADER", false, { root: true });
+		successHandler("Schedule updated successfully!");
+	  },
+	  (error) => {
+		errorHandler(error.response);
+		commit("SET_LOADER", false, { root: true });
+	  }
+	);
+  };
+export const addExpertise = async ({ commit }, {expertise,doctorDetailId}) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.addExpertise(expertise,doctorDetailId).then(
+		(response) => {
+			console.log(response.data);
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
+};
+export const addSpeciality = async ({ commit }, {specializationId,doctorDetailId,data}) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.addSpeciality(specializationId,doctorDetailId).then(
+		(response) => {
+			console.log(response.data);
+			commit('ADD_SPECIALITY',{id:response.data,data})
+			successHandler('Added Successfully')
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
+};
+export const addQualification = async ({ commit }, {doctorDetailId,qualification,college,city,passingYear}) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.addQualification(doctorDetailId,qualification,college,city,passingYear).then(
+		(response) => {
+			console.log(response.data);
+			commit('ADD_QUALIFICATION',{id:response.data.id,proof:response.data.proof,doctorDetailId,qualification,college,city,passingYear})
+			successHandler('Added Successfully')
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
+};
+export const deleteSpeciality = async ({ commit }, {id}) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.deleteSpeciality(id).then(
+		(response) => {
+			console.log(response.data);
+			commit('DELETE_SPECIALITY',id)
+			successHandler('Delete Successfully')
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
+};
+
+export const deleteQualification = async ({ commit }, {id}) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.deleteQualification(id).then(
+		(response) => {
+			console.log(response.data);
+			commit('DELETE_QUALIFICATION',id)
+			successHandler('Delete Successfully')
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
+};
+export const getSpecialization = async ({ commit },{limit, offset, keyword, status}) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.getSpecialization(limit, offset, keyword, status).then(
+		async (response) => {
+			console.log(response.data);
+			commit("SET_SPECIALIZATION", response.data);
+			commit("SET_LOADER", false, { root: true });
+		},
+		(error) => {
+			errorHandler(error.response, 'User');
+			commit("SET_LOADER", false, { root: true });
+		}
+	);
+};
+
+export const getOrganization = async ({ commit },{limit, offset, keyword, status}) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.getOrganization(limit, offset, keyword, status).then(
+		async (response) => {
+			console.log(response.data);
+			commit("SET_ORGANIZATION", response.data);
+			commit("SET_LOADER", false, { root: true });
+		},
+		(error) => {
+			errorHandler(error.response, 'User');
+			commit("SET_LOADER", false, { root: true });
 		}
 	);
 };
@@ -82,11 +199,26 @@ export const updateDoctorProfile = async ({ commit }, { name, emailId, altEmail,
 	);
 };
 
-export const uploadProfileImage = async ({ commit }, { file }) => {
+export const signatureUpload = async ({ commit }, { file }) => {
 	commit("SET_LOADER", true, { root: true });
-	await apiServices.uploadProfileImage(file).then(
+	await apiServices.signatureUpload(file).then(
 		async (response) => {
-			commit('UDATE_IMAGE_PROPOSAL', response.data)
+			// commit('UDATE_IMAGE_PROPOSAL', response.data)
+			successHandler("Image uploaded successfully!");
+			commit("SET_LOADER", false, { root: true });
+		},
+		(error) => {
+			errorHandler(error.response, 'User');
+			commit("SET_LOADER", false, { root: true });
+		}
+	);
+};
+
+export const profileUpload = async ({ commit }, { file }) => {
+	commit("SET_LOADER", true, { root: true });
+	await apiServices.profileUpload(file).then(
+		async (response) => {
+			// commit('UDATE_IMAGE_PROPOSAL', response.data)
 			successHandler("Image uploaded successfully!");
 			commit("SET_LOADER", false, { root: true });
 		},

@@ -8,4 +8,5 @@ export default {
   staffData:[],
   totalStaff:0,
   permissiondata:[],
+  Availability:[],
 };

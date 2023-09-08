@@ -80,3 +80,9 @@ export const UPDATE_LAB = (state, data) => {
     state.addModal = false
   }
 };
+export const SET_STATUS = (state, data) => {
+  const objIndex = state.laboratoryData.findIndex((obj) => obj.id === data);
+  if(objIndex>=0){
+    state.laboratoryData.splice(objIndex,1)
+  }
+};

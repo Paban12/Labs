@@ -6,7 +6,7 @@
           <div class="title">All Laboratories</div>
           <div class="right">
             <div class="searchbar">
-              <input type="text" placeholder="Search Laboratory" />
+              <input type="text" @input="search($event.target.value)" placeholder="Search Laboratory" />
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
             <!-- <div class="select-dropdown"> -->
@@ -46,7 +46,7 @@
                         <img src="/src/assets/images/png/delete.png" alt="" />
                       </div>
                       <div class="" @click="statusLab(item.id,item.status)">
-                        <img src="/src/assets/images/png/delete.png" alt="" />
+                        <img src="/src/assets/images/png/status.png" alt="" />
                       </div>
                     </div>
                   </td>
@@ -57,7 +57,7 @@
           <div class="table-no-data" v-if="storeVar.laboratoryData.length <= 0">
             <div>No records Found!</div>
           </div>
-          <div class="table-footer">
+          <div class="table-footer" v-if="storeVar.laboratoryData.length > 0">
             <div class="entries">
               Showing <span>{{ formVar.offset }}</span> to <span>{{ formVar.limit + formVar.offset }}</span> of <span>{{
                 storeVar.totalLaboratory }}</span> entries
@@ -115,7 +115,7 @@
         <button class="btn grey-btn cancel-btn" @click.prevent="formVar.statusModal = false">
           Cancel
         </button>
-        <button class="btn confirm-btn">Confirm</button>
+        <button type="button" class="btn confirm-btn" @click="changeStatusSubmit">Confirm</button>
       </div>
     </Modal>
     <Modal v-model:show="storeVar.addModal" class="" headerClasses="header-bg">
@@ -237,6 +237,13 @@ onBeforeMount(() => {
 function getLaboratory(limit, offset, keyword, status, cPage) {
   store.dispatch("Laboratory/getLaboratory", { limit, offset, keyword, status, cPage });
 }
+function search(text){
+  if(text.length>2){
+    getLaboratory(formVar.limit, formVar.offset, text, formVar.status?.id, formVar.cPage)
+  }else if(text.length<=0){
+    getLaboratory(formVar.limit, formVar.offset, formVar.keyword, formVar.status?.id, formVar.cPage)
+  }
+}
 function lowerClick(page) {
   if (page > 1) {
     formVar.offset = formVar.offset - formVar.limit
@@ -309,6 +316,14 @@ function statusLab(id,status){
   formVar.id=id
   formVar.cStatus=status
   formVar.statusModal=true
+}
+
+function changeStatusSubmit(){
+  store.dispatch("Laboratory/updateStatus", {
+      id: formVar.id,
+      status: formVar.cStatus,
+    })
+    formVar.statusModal=false
 }
 const onSubmitLab = () => {
   if (

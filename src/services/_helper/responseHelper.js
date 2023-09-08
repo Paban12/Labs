@@ -1,17 +1,12 @@
 import router from '../../router';
 import * as store from '../../store';
 
-export function errorHandler(res,type) {
+export function errorHandler(res) {
+	console.log(res);
 	if (res.status === 401) {
 		setAlert({ type: "danger", message: res.data.message });
 		localStorage.clear();
-		if(type==='User'){
-			router.push('/login');
-			loginModal(true)
-		}else{
-			router.push('/login');
-			loginModal(false)
-		}
+		router.push('/login');
 		return;
 	}
 	if (res.status === 403) {

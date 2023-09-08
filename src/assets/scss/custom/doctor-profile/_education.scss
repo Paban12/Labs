@@ -6,6 +6,7 @@
     margin-bottom: 1rem;
     .input{
       width: 20rem;
+      padding: 0.5rem;
       .title{
         font-size: 0.85rem;
         margin-bottom: 4px;
@@ -22,6 +23,49 @@
       #icon{
         height: 1.5rem;
         width: 1.5rem;
+      }
+    }
+  }
+  .quaTable{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .table{
+      width: 50%;
+    }
+  }
+}
+
+.doctor-specialization-details{
+  .edu-row{
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    .input{
+      width: 100rem;
+      .title{
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+      }
+    }
+    .doc-upload{
+      .title{
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+      }
+    }
+    .icon{
+      cursor: pointer;
+      #icon{
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+    .speTable{
+      width: 75%;
+      .table{
+        width: 78%;
       }
     }
   }

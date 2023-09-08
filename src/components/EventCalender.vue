@@ -380,7 +380,7 @@ const props = defineProps({
 const instance = getCurrentInstance();
 const gridList = ref([]);
 const inputDate = ref(null);
-const typeList = ["Today", "Day", "Week", "Month"];
+const typeList = ["Day", "Week", "Month"];
 const typeIndex = ref("Day");
 
 let startOfDay = moment(inputDate).startOf(typeIndex.value);

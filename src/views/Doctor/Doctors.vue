@@ -6,7 +6,7 @@
           <div class="title">All Doctors</div>
           <div class="right">
             <div class="searchbar">
-              <input type="text" placeholder="Search Doctors" />
+              <input type="text" @input="search($event.target.value)" placeholder="Search Doctors" />
               <img src="/src/assets/images/png/search.png" alt="" />
             </div>
             <div class="add-btn">
@@ -36,7 +36,9 @@
                   <td>{{ item.doctorDetail?.name }}</td>
                   <td>{{ item.phoneNumber }}</td>
                   <td>{{ item.doctorDetail?.emailId }}</td>
-                  <td>{{ item.speciality }}</td>
+                  <td><span v-for="(items, index) in item.doctorDetail?.doctorSpecialization" :key="index">
+                    <span>{{ items.specialization?.name }}, </span>
+                  </span></td>
                   <td>{{ item.doctorDetail?.status }}</td>
                   <td class="text-center">
                     <div class="option-btns">
@@ -55,7 +57,7 @@
           <div class="table-no-data" v-if="storeVar.doctorData.length <= 0">
             <div>No records Found!</div>
           </div>
-          <div class="table-footer">
+          <div class="table-footer" v-if="storeVar.doctorData.length > 0">
             <div class="entries">
               Showing <span>{{ formVar.offset }}</span> to <span>{{ formVar.limit + formVar.offset }}</span> of <span>{{
                 storeVar.totalDoctor }}</span> entries
@@ -139,7 +141,7 @@
             </div>
           </div>
           <div class="form-item mb-16">
-            <Select v-model="formVar.speciality" :options="specialityOptions" @selected="handleSelectedOption"
+            <Select v-model="formVar.speciality" :options="storeVar.specializationData" @selected="handleSelectedOption"
               placeholder="Select Speciality"></Select>
             <div class="err-msg" v-if="formVar.submit && specialityValid">
               {{ specialityValid }}
@@ -154,6 +156,7 @@
               {{ councilValid }}
             </div>
           </div>
+          <span>{{ regExperienceCal }}</span>
           <div class="form-item mb-16">
             <input type="text" v-model="formVar.council_year" placeholder="Enter Registration Year" />
             <div class="err-msg" v-if="formVar.submit && CyearValid">
@@ -161,7 +164,7 @@
             </div>
           </div>
           <div class="form-item mb-16">
-            <input type="text" v-model="formVar.experience" placeholder="Enter Experience (Years)" />
+            <input type="text" v-model="formVar.experience" placeholder="Enter Experience (Years)" disabled/>
             <div class="err-msg" v-if="formVar.submit && experienceValid">
               {{ experienceValid }}
             </div>
@@ -276,7 +279,7 @@ const formVar = reactive({
   email: null,
   gender: genderOptions[0],
   registration_type: RegistrationType[0],
-  speciality: specialityOptions[0],
+  speciality: { id: null, name: 'Select Speciality' },
   council_no: null,
   council_year: null,
   experience: null,
@@ -293,12 +296,23 @@ const formVar = reactive({
 /* Lifecycle/Hooks */
 onBeforeMount(() => {
   getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, formVar.cPage)
+  getSpecialization(formVar.limit, formVar.offset, formVar.keyword, true)
 })
 /* Lifecycle/Hooks */
 
 /* Functions/Methods */
 function getDoctor(limit, offset, keyword, status, role, cPage) {
   store.dispatch("Doctor/getDoctor", { limit, offset, keyword, status, role, cPage });
+}
+function getSpecialization(limit, offset, keyword, status) {
+  store.dispatch("Doctor/getSpecialization", { limit, offset, keyword, status });
+}
+function search(text){
+  if(text.length>2){
+    getDoctor(formVar.limit, formVar.offset, text, formVar.status, formVar.role, formVar.cPage)
+  }else if(text.length<=0){
+    getDoctor(formVar.limit, formVar.offset, formVar.keyword, formVar.status, formVar.role, formVar.cPage)
+  }
 }
 function lowerClick(page) {
   if (page > 1) {
@@ -363,13 +377,24 @@ const onSubmitDoctor = () => {
   }
   formVar.submit = false;
   store.dispatch("Doctor/addDoctor", {
-    loginId: formVar.phone,
+    mobile: formVar.phone,
     name: formVar.name,
     emailId: formVar.email,
-    gender: formVar.gender,
+    gender: formVar.gender?.id,
     dob: formVar.dob,
     roles: formVar.role,
-    password: formVar.password
+    password: formVar.password,
+    city: formVar.city,
+    state: formVar.state,
+    reg_number: formVar.council_no,
+    reg_year: formVar.council_year,
+    reg_type: formVar.registration_type.id,
+    experience: formVar.experience,
+    address: formVar.address,
+    about: null,
+    altMobile: null,
+    altEmail: null,
+    type:formVar.role
   });
 };
 const handleSelectedOption = (option) => {
@@ -408,6 +433,19 @@ function getAge(dateString) {
 const ageCalculate = computed(() => {
   if (formVar.dob) {
     getAge(formVar.dob)
+  }
+});
+
+const regExperienceCal = computed(() => {
+  if (formVar.council_year) {
+    let yer=moment().format('YYYY')-moment(formVar.council_year).format('YYYY').toString()
+    if(yer){
+      if(JSON.parse(yer) >1){
+        formVar.experience=yer.toString()
+      }
+    }
+  }else if(!formVar.council_year){
+    formVar.experience=null
   }
 });
 /* Functions/Methods */

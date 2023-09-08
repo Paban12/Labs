@@ -5,40 +5,21 @@
         <div class="heading">
           <div class="main">
             <div class="title">Tests</div>
-            <button
-              class="btn black-btn"
-              @click.prevent="storeVar.addTestModal = true"
-            >
+            <button class="btn black-btn" @click.prevent="storeVar.addTestModal = true">
               Add
             </button>
           </div>
           <div class="tabs">
-            <div
-              class="tab"
-              @click.prevent="labTest.tab = 1"
-              :class="labTest.tab === 1 ? 'active' : ''"
-            >
+            <div class="tab" @click.prevent="labTest.tab = 1" :class="labTest.tab === 1 ? 'active' : ''">
               Lab
             </div>
-            <div
-              class="tab"
-              @click.prevent="labTest.tab = 2"
-              :class="labTest.tab === 2 ? 'active' : ''"
-            >
+            <div class="tab" @click.prevent="labTest.tab = 2" :class="labTest.tab === 2 ? 'active' : ''">
               Panel
             </div>
-            <div
-              class="tab"
-              @click.prevent="labTest.tab = 3"
-              :class="labTest.tab === 3 ? 'active' : ''"
-            >
+            <div class="tab" @click.prevent="labTest.tab = 3" :class="labTest.tab === 3 ? 'active' : ''">
               Package
             </div>
-            <div
-              class="tab"
-              @click.prevent="labTest.tab = 4"
-              :class="labTest.tab === 4 ? 'active' : ''"
-            >
+            <div class="tab" @click.prevent="labTest.tab = 4" :class="labTest.tab === 4 ? 'active' : ''">
               Template
             </div>
           </div>
@@ -50,11 +31,7 @@
                 <input type="text" placeholder="Search By Name/Dept" />
               </div>
               <div class="col-3 form-item mb-16">
-                <MultiSelect
-                  v-model="labTest.tests"
-                  :options="testOptions"
-                  :tabs="tab"
-                />
+                <MultiSelect v-model="labTest.tests" :options="testOptions" :tabs="tab" />
               </div>
               <div class="col-2 form-item mb-16">
                 <div class="select-dropdown">
@@ -107,16 +84,10 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div
-                          class=""
-                          @click.prevent="storeVar.addTestModal = true"
-                        >
+                        <div class="" @click.prevent="storeVar.addTestModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div
-                          class=""
-                          @click.prevent="labTest.confirmModal = true"
-                        >
+                        <div class="" @click.prevent="labTest.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -148,11 +119,7 @@
                 <input type="text" placeholder="Search By Name/Dept" />
               </div>
               <div class="col-3 form-item mb-16">
-                <MultiSelect
-                  v-model="labTest.panel"
-                  :options="panelOptions"
-                  :tabs="tab"
-                />
+                <MultiSelect v-model="labTest.panel" :options="panelOptions" :tabs="tab" />
               </div>
               <div class="col-2 form-item mb-16">
                 <div class="select-dropdown">
@@ -205,16 +172,10 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div
-                          class=""
-                          @click.prevent="storeVar.addPanelModal = true"
-                        >
+                        <div class="" @click.prevent="storeVar.addPanelModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div
-                          class=""
-                          @click.prevent="labTest.confirmModal = true"
-                        >
+                        <div class="" @click.prevent="labTest.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -279,16 +240,10 @@
                     <td>{{ item.report_within }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div
-                          class=""
-                          @click.prevent="storeVar.addPackageModal = true"
-                        >
+                        <div class="" @click.prevent="storeVar.addPackageModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div
-                          class=""
-                          @click.prevent="labTest.confirmModal = true"
-                        >
+                        <div class="" @click.prevent="labTest.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -345,16 +300,10 @@
                     <td>{{ item.date }}</td>
                     <td class="text-center">
                       <div class="option-btns">
-                        <div
-                          class=""
-                          @click.prevent="storeVar.addTemplateModal = true"
-                        >
+                        <div class="" @click.prevent="storeVar.addTemplateModal = true">
                           <img src="/src/assets/images/png/edit.png" alt="" />
                         </div>
-                        <div
-                          class=""
-                          @click.prevent="labTest.confirmModal = true"
-                        >
+                        <div class="" @click.prevent="labTest.confirmModal = true">
                           <img src="/src/assets/images/png/delete.png" alt="" />
                         </div>
                       </div>
@@ -387,10 +336,7 @@
     <Modal v-model:show="labTest.confirmModal" class="confirm-modal">
       <h4>Are you sure want to Delete</h4>
       <div class="btns">
-        <button
-          class="btn grey-btn cancel-btn"
-          @click.prevent="labTest.confirmModal = false"
-        >
+        <button class="btn grey-btn cancel-btn" @click.prevent="labTest.confirmModal = false">
           Cancel
         </button>
         <button class="btn confirm-btn">Confirm</button>
@@ -484,5 +430,4 @@ const panelOptions = [
 const tab = [];
 </script>
 
-<style>
-</style>
+<style></style>

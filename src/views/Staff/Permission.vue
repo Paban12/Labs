@@ -65,7 +65,7 @@ onBeforeMount(() => {
 })
 
 function loadIdFromUrl() {
-  store.dispatch('Staff/getPermission', { id: storeVar.value.staffId })
+  store.dispatch('Staff/getAvailability', { id: storeVar.value.staffId })
 }
 function submit() {
   store.dispatch('Staff/savePermission', { id: storeVar.value.staffId, menu: storeVar.value.permissiondata })
