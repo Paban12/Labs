@@ -79,10 +79,6 @@ const formVar = reactive({
   signature:null,
 })
 
-const specialityOptions = [
-  { id: 1, name: "Speciality1" },
-  { id: 2, name: "Speciality2" },
-];
 const desOptions = [
   { id: 'EMPLOYEE', name: "EMPLOYEE" },
   { id: 'DOCTOR', name: "DOCTOR" },

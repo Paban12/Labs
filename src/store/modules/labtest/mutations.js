@@ -45,22 +45,32 @@ export const DOCTOR_PROFILE = (state, data) => {
   state.status = data.status
 
 };
-export const SET_LAB_LIST = (state, data) => {
+export const ADD_LABTEST = (state, data) => {
   const payload = {
-    address: data.address,
-    city: data.city,
-    createdAt: data.response.createdAt,
-    emailId: data.emailId,
-    id: data.response.id,
-    name: data.name,
-    phone: data.phone,
-    pincode: data.pincode,
-    state: data.state,
-    status: data.response.status,
+    container:data.container,
+    discount:data.discount,
+    homeCollection:data.homeCollection,
+    id:data.id,
+    labCategory:data.labCategory,
+    labDepartment:data.labDepartment,
+    labReference:data.labReference,
+    labSample:data.labSample,
+    packageName:data.packageName,
+    price:data.price,
+    printNote:data.printNote,
+    reportWithin:data.reportWithin,
+    reportWithinType:data.reportWithinType,
+    sampleSize:data.sampleSize,
+    sampleSizeType:data.sampleSizeType,
+    status:data.status,
+    testCode:data.testCode,
+    title:data.title,
+    titleDisplayStatus:data.titleDisplayStatus,
+    type:data.type,
   }
-  state.laboratoryData.push(payload)
-  state.addModal = false
-  state.totalLaboratory = state.totalLaboratory + 1
+  state.labtestData.push(payload)
+  state.addTestModal=false
+  state.totalLabtest = state.totalLabtest + 1
 };
 
 export const UPDATE_LAB = (state, data) => {

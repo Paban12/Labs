@@ -8,12 +8,37 @@
           <div class="err-msg" v-if="formVar.submit && nameValid">
               {{ nameValid }}
             </div>
+
         </div>
         <!-- <div class="form-item col-5 mb-16">
           <div class="title">Associated Hospital</div>
           <textarea name="" id="" rows="5" placeholder=""></textarea>
           <div class="err-msg">Please enter associated hospital</div>
         </div> -->
+        <div class="quaTable">
+        <div class="table">
+        <table>
+          <thead>
+            <th>Sl no</th>
+            <th>Expertise</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) in storeVar.doctorExpertise" :key="index">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.expertise }}</td>
+              <td class="text-center">
+                    <div class="option-btns">
+                      <div class="" @click="DeleteExpertise(item.id)">
+                        <img src="/src/assets/images/png/delete.png" alt="" />
+                      </div>
+                    </div>
+                  </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
       </div>
       <!-- <div class="form-item mb-16">
         <div class="title">Specialization</div>
@@ -28,6 +53,7 @@
       <div class="save-btn">
         <button type="submit" class="btn black-btn w-10-r">Save</button>
       </div>
+ 
     </form>
   </section>
 </template>
@@ -73,7 +99,14 @@ const onSubmitDoctor = () => {
     expertise:formVar.expertise,
     doctorDetailId:storeVar.value.id,
   });
+  formVar.expertise=null
 };
+
+function DeleteExpertise(id){
+  store.dispatch("Doctor/deleteExpertise", {
+    id
+  });
+}
 /* Functions/Methods */
 
 /* Validation */

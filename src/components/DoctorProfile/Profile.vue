@@ -168,7 +168,6 @@ const onSubmitDoctor = () => {
     dobValid.value ||
     altMobileValid.value ||
     regNumberValid.value ||
-    pincodeValid.value ||
     stateValid.value ||
     cityValid.value ||
     regYearValid.value ||

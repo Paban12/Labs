@@ -72,17 +72,17 @@
                 <tbody>
                   <tr v-for="(item, index) in storeVar.labtestData" :key="item">
                     <td>{{ index + 1 }}</td>
-                    <td>{{ item.test_name }}</td>
-                    <td>{{ item.display }}</td>
-                    <td>{{ item.cat }}</td>
-                    <td>{{ item.dept }}</td>
-                    <td>{{ item.test_code }}</td>
-                    <td>{{ item.sample }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.titleDisplayStatus }}</td>
+                    <td>{{ item.labCategory }}</td>
+                    <td>{{ item.labDepartment }}</td>
+                    <td>{{ item.testCode }}</td>
+                    <td>{{ item.labSample }}</td>
                     <td>{{ item.container }}</td>
-                    <td>{{ item.sample_size }}</td>
+                    <td>{{ item.sampleSize }} {{ item.sampleSizeType }}</td>
                     <td>{{ item.price }}</td>
-                    <td>{{ item.home_collection }}</td>
-                    <td>{{ item.report_within }}</td>
+                    <td>{{ item.homeCollection }}</td>
+                    <td>{{ item.reportWithin }} {{ item.reportWithinType }}</td>
                     <td class="text-center">
                       <div class="option-btns">
                         <div class="" @click.prevent="storeVar.addTestModal = true">
@@ -102,16 +102,17 @@
             </div>
             <div class="table-footer" v-if="storeVar.labtestData.length>0">
               <div class="entries">
-                Showing <span>0</span> to <span>0</span> of
-                <span>0</span> entries
-              </div>
-              <div class="pagination">
-                <icon-left-double-arrow></icon-left-double-arrow>
-                <div class="page">1</div>
-                <div class="page active">2</div>
-                <div class="page">3</div>
-                <icon-right-double-arrow></icon-right-double-arrow>
-              </div>
+              Showing <span>{{ formVar.offset }}</span> to <span>{{ formVar.limit + formVar.offset }}</span> of <span>{{
+                storeVar.totalLaboratory }}</span> entries
+            </div>
+            <div class="pagination">
+              <span @click="clickFirst">First</span>
+              <icon-left-double-arrow @click="lowerClick(storeVar.lowerPage)"></icon-left-double-arrow>
+              <div class="page active" @click="lowerClick(storeVar.lowerPage)">{{ storeVar.lowerPage }}</div>
+              <!-- <div v-if="storeVar.upperPage" class="page" @click="upperClick(storeVar.upperPage)">{{ storeVar.upperPage }}</div> -->
+              <icon-right-double-arrow @click="upperClick(storeVar.lowerPage)"></icon-right-double-arrow>
+              <span @click="clickLast">Last</span>
+            </div>
             </div>
           </div>
           <div class="tab-content" v-if="formVar.tab === 2">
@@ -384,21 +385,6 @@ function getLabtest(limit, offset, keyword, cPage) {
   store.dispatch("Labtest/getLabtest", { limit, offset, keyword, cPage });
 }
 
-const testData = reactive([
-  {
-    test_name: "Dengue Ig G & Ig M Antibody Rapid, Serum",
-    display: "Yes",
-    cat: "Fever",
-    dept: "Immunology & Serology",
-    test_code: 25478,
-    sample: "Serum",
-    container: "Urine Container",
-    sample_size: 3,
-    price: 2000,
-    home_collection: "yes",
-    report_within: "4 Hrs",
-  },
-]);
 
 const panelData = reactive([
   {
@@ -436,18 +422,47 @@ const templateData = reactive([
   },
 ]);
 
-//multi select
-const testOptions = [
-  { id: 1, name: "Option 1" },
-  { id: 2, name: "Option 2" },
-  { id: 3, name: "Option 3" },
-];
-const panelOptions = [
-  { id: 1, name: "Option 1" },
-  { id: 2, name: "Option 2" },
-  { id: 3, name: "Option 3" },
-];
-const tab = [];
+function lowerClick(page) {
+  if (page > 1) {
+    formVar.offset = formVar.offset - formVar.limit
+    getLaboratory(formVar.limit, formVar.offset, formVar.keyword, formVar.status?.id, page <= 1 ? 1 : page - 1)
+    storeVar.value.lowerPage = page <= 1 ? 1 : page - 1
+  }
+}
+function upperClick(page) {
+  if (storeVar.value.upperStatus) {
+    formVar.offset = formVar.offset + formVar.limit
+    getLaboratory(formVar.limit, formVar.offset, formVar.keyword, formVar.status?.id, page + 1)
+    storeVar.value.lowerPage = page + 1
+  }
+}
+function clickFirst() {
+  if (storeVar.value.lowerPage > 1) {
+    formVar.offset = 0
+    getLaboratory(formVar.limit, formVar.offset, formVar.keyword, formVar.status?.id, 1)
+    let pageNumber = storeVar.value.totalDoctor / formVar.limit
+    if (Number.isInteger(pageNumber)) {
+      storeVar.value.lowerPage = pageNumber
+    }
+    else {
+      storeVar.value.lowerPage = Number(pageNumber.toFixed(0)) + 1
+    }
+  }
+}
+function clickLast() {
+  if (storeVar.value.upperStatus) {
+    let remainder = storeVar.value.totalDoctor % formVar.limit
+    formVar.offset = storeVar.value.totalDoctor - remainder
+    getLaboratory(formVar.limit, formVar.offset, formVar.keyword, formVar.status?.id, 1)
+    let pageNumber = storeVar.value.totalDoctor / formVar.limit
+    if (Number.isInteger(pageNumber)) {
+      storeVar.value.lowerPage = pageNumber
+    }
+    else {
+      storeVar.value.lowerPage = Math.trunc(pageNumber) + 1
+    }
+  }
+}
 
 function openModal(){
   if(formVar.tab === 1){

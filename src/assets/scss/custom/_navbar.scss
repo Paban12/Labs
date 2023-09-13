@@ -20,6 +20,7 @@
       .menu-icon{
         cursor: pointer;
         display: flex;
+        width: 35px;
         #icon{
           height: 1.5rem;
           width: 1.5rem;
@@ -27,6 +28,7 @@
         }
       }
       .cross-icon{
+        cursor: pointer;
         #icon{
           height: 2rem;
           width: 2rem;

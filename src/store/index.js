@@ -15,6 +15,7 @@ import { Laboratory } from './modules/laboratory'
 import { Settings } from './modules/settings'
 import { Patient } from './modules/patient'
 import { Labtest } from './modules/labtest'
+import { Faq } from './modules/faq'
 
 export default createStore({
   state,
@@ -32,6 +33,7 @@ export default createStore({
     Laboratory,
     Settings,
     Patient,
-    Labtest
+    Labtest,
+    Faq,
   }
 })

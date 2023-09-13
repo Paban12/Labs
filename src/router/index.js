@@ -5,6 +5,7 @@ const routes = [
     {
         path: '/login-layout',
         redirect: '/login',
+        requiresAuth: false,
         name: 'login layout',
         component: () => import( /* webpackChunkName: "login layout" */ '../views/auth/LoginLayout.vue'),
         children : [
@@ -25,6 +26,7 @@ const routes = [
         path: '/',
         redirect: '/appointment/calender',
         name: 'dashboard layout',
+        requiresAuth: true,
         component: () => import( /* webpackChunkName: "dashboard layout" */ '../views/DashboardLayout.vue'),
         children: [
             {
@@ -41,6 +43,7 @@ const routes = [
             {
                 path: '/patient',
                 redirect: '/patient/profile',
+                requiresAuth: true,
                 name: 'patient profile',
                 component: () => import( /* webpackChunkName: "patient layout" */ '../views/Patient/ProfileLayout.vue'),
                 children: [
@@ -401,7 +404,25 @@ const router = createRouter({
       return savedPosition || { top: 0 };
     },
   });
-
+  router.beforeEach(async (to, from, next) => {
+    const isAuthenticated = localStorage.getItem("accessToken");
+  
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+      if (isAuthenticated) {
+        if (findRoute(to.path)) {
+          next();
+          return;
+        } else {
+          next(false);
+          return;
+        }
+      } else {
+        next("/login");
+        return;
+      }
+    }
+    next();
+  });
 // function scrollBehavior() {
 //     window.scrollTo(0, 0);
 // }

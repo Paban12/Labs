@@ -386,8 +386,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
-import { computed } from "@vue/reactivity";
+import { reactive, computed, onBeforeMount, ref } from "vue";
 import { useStore } from 'vuex'
 import router from "../router";
 
@@ -421,7 +420,14 @@ const toggleSidebar = () => {
 //   //   isClosing.value = true;
 //   // }
 // };
+/* Lifecycle/Hooks */
+onBeforeMount(() => {
+  getDoctorProfile()
+})
 
+function getDoctorProfile() {
+  store.dispatch("Doctor/getProfile",);
+}
 const nav = reactive({
   accMenu: false,
   searchValue: "",

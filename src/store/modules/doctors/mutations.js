@@ -75,7 +75,14 @@ export const ADD_SPECIALITY = (state, data) => {
   }
   state.doctorSpecialization.push(pushData)
 }
-
+export const ADD_EXPERTISE = (state, data) => {
+  const pushData = {
+    id: data.id,
+    expertise:data.expertise,
+    doctorDetailId:data.doctorDetailId
+  }
+  state.doctorExpertise.push(pushData)
+}
 export const ADD_QUALIFICATION = (state, data) => {
   const pushData = {
     city: data.city,
@@ -89,6 +96,12 @@ export const ADD_QUALIFICATION = (state, data) => {
     qualification: data.qualification,
   }
   state.doctorEducation.push(pushData)
+}
+export const DELETE_EXPERTISE = (state, data) => {
+  const objIndex = state.doctorExpertise.findIndex((obj) => obj.id === data);
+  if (objIndex >= 0) {
+    state.doctorExpertise.splice(objIndex, 1)
+  }
 }
 export const DELETE_SPECIALITY = (state, data) => {
   const objIndex = state.doctorSpecialization.findIndex((obj) => obj.id === data);

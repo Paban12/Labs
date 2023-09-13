@@ -3,7 +3,7 @@ import { successHandler, errorHandler } from '../../../services/_helper';
 import router from '../../../router';
 
 export const getLabtest = async ({ commit, state }, { limit, offset, keyword, cPage }) => {
-	console.log({ limit, offset, keyword, status, cPage });
+	console.log({ limit, offset, keyword, cPage });
 	commit("SET_LOADER", true, { root: true });
 	// commit("SET_LOADER_BUTTON", true);
 	await apiServices.getLabtest(limit, offset, keyword).then(
@@ -39,12 +39,12 @@ export const getDoctorProfile = async ({ commit, dispatch }, { id }) => {
 		}
 	);
 };
-export const addLaboratory = async ({ commit }, { name, emailId, phone, address, state, city,pincode }) => {
+export const addLabtest = async ({ commit,state }, { title,packageName,titleDisplayStatus,labCategory,labDepartment,testCode,labSample,container,sampleSize,sampleSizeType,price,discount,homeCollection,reportWithin,reportWithinType,printNote,type,labReference }) => {
 	commit("SET_LOADER_BUTTON", true);
-	await apiServices.addLaboratory(name, emailId, phone, address, state, city,pincode).then(
+	await apiServices.addLabtest(title,packageName,titleDisplayStatus,labCategory,labDepartment,testCode,labSample,container,sampleSize,sampleSizeType,price,discount,homeCollection,reportWithin,reportWithinType,printNote,type,labReference).then(
 		(response) => {
 			console.log(response.data);
-			commit('SET_LAB_LIST',{response:response.data,name, emailId, phone, address, state, city,pincode})
+			commit('ADD_LABTEST',{id:response.data.id, title,packageName,titleDisplayStatus,labCategory,labDepartment,testCode,labSample,container,sampleSize,sampleSizeType,price,discount,homeCollection,reportWithin,reportWithinType,printNote,type,labReference})
 			commit("SET_LOADER_BUTTON", false);
 			successHandler('Laboratory Added Successfully')
 		},

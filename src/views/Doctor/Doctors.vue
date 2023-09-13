@@ -39,7 +39,7 @@
                   <td><span v-for="(items, index) in item.doctorDetail?.doctorSpecialization" :key="index">
                     <span>{{ items.specialization?.name }}, </span>
                   </span></td>
-                  <td><span :class="item.doctorDetail?.status"></span> {{ item.doctorDetail?.status }}</td>
+                  <td><span :class="item.doctorDetail?.status">{{ item.doctorDetail?.status }}</span></td>
                   <td class="text-center">
                     <div class="option-btns">
                       <a class="" @click="navigate('/doctor/profile', item.id)">

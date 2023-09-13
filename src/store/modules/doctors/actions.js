@@ -39,6 +39,8 @@ export const getDoctorProfile = async ({ commit, dispatch }, { id }) => {
 		}
 	);
 };
+
+
 export const addDoctor = async ({ commit }, {mobile,name,emailId,gender,dob,roles,password,city,state,reg_number,reg_year,reg_type, experience, address, about, altMobile, altEmail,type}) => {
 	commit("SET_LOADER_BUTTON", true);
 	await apiServices.addDoctor(mobile,name,emailId,gender,dob,roles,password,city,state,reg_number,reg_year,reg_type, experience, address, about, altMobile, altEmail,type).then(
@@ -72,6 +74,7 @@ export const addExpertise = async ({ commit }, {expertise,doctorDetailId}) => {
 	await apiServices.addExpertise(expertise,doctorDetailId).then(
 		(response) => {
 			console.log(response.data);
+			commit('ADD_EXPERTISE',{id:response.data,expertise,doctorDetailId})
 			commit("SET_LOADER_BUTTON", false);
 		},
 		(error) => {
@@ -125,7 +128,21 @@ export const deleteSpeciality = async ({ commit }, {id}) => {
 		}
 	);
 };
-
+export const deleteExpertise = async ({ commit }, {id}) => {
+	commit("SET_LOADER_BUTTON", true);
+	await apiServices.deleteExpertise(id).then(
+		(response) => {
+			console.log(response.data);
+			commit('DELETE_EXPERTISE',id)
+			successHandler('Delete Successfully')
+			commit("SET_LOADER_BUTTON", false);
+		},
+		(error) => {
+			commit("SET_LOADER_BUTTON", false);
+			errorHandler(error.response)
+		}
+	);
+};
 export const deleteQualification = async ({ commit }, {id}) => {
 	commit("SET_LOADER_BUTTON", true);
 	await apiServices.deleteQualification(id).then(
@@ -170,11 +187,12 @@ export const getOrganization = async ({ commit },{limit, offset, keyword, status
 		}
 	);
 };
-export const UserProfile = async ({ commit }) => {
+export const getProfile = async ({ commit }) => {
 	commit("SET_LOADER", true, { root: true });
-	await apiServices.UserProfile().then(
+	await apiServices.getProfile().then(
 		async (response) => {
-			commit("SET_PROFILE", response.data);
+			console.log(response.data);
+			commit("DOCTOR_PROFILE", response.data);
 			commit("SET_LOADER", false, { root: true });
 		},
 		(error) => {

@@ -9,15 +9,19 @@
         <div class="right">
           <div class="input">
             Create
+            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Create')"/>
           </div>
           <div class="input">
             Read
+            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Read')"/>
           </div>
           <div class="input">
             Update
+            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Update')"/>
           </div>
           <div class="input">
             Delete
+            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Delete')"/>
           </div>
         </div>
       </div>
@@ -73,6 +77,8 @@ function loadIdFromUrl() {
 function submit() {
   store.dispatch('Staff/savePermission', { id: formVar.id, menu: storeVar.value.permissiondata })
 }
+
+// const 
 const chackedall = () => {
   if (formVar.statusAll==true) {
     for (let index = 0; index < storeVar.value.permissiondata.length; index++) {

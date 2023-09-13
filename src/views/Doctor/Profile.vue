@@ -35,7 +35,13 @@
             </div>
             <div class="data">
               <div class="title">Expertise :</div>
-              <div class="val">Interventional Cardiology</div>
+              <div class="val">
+                <span v-for="(item, index) in storeVar.doctorExpertise" :key="index">
+                  <span>
+                    {{ item.expertise }}, 
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
           <div class="data-row">

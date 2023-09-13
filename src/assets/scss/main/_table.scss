@@ -57,6 +57,14 @@
           min-width: 100%;
           width: 100%;
         }
+        .PENDING{
+          color: rgb(255, 174, 0)!important;
+          font-weight: 500;
+        }
+        .VERIFIED{
+          color: green;
+          font-weight: 500;
+        }
       }
     }
     .grey-row{

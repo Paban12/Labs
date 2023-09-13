@@ -16,6 +16,7 @@ const staffScheduleURL =rootURL +'staff-schedule'
 const doctorScheduleURL=rootURL + 'doctor-schedule'
 const organizationURL=rootURL + 'organization'
 const labtestUrl = rootURL + 'lab-tests'
+const faqUrl = rootURL + 'faqs'
 
 /***** Login *****/
 function verifyId(loginId, password) {
@@ -88,6 +89,10 @@ function getDoctor(limit, offset, keyword, status, role) {
     { headers: authHeader() }
   );
 }
+function getProfile(){
+  return axios.get(doctorDetailsURL + "/profile" , { headers: authHeader() });
+
+}
 function getOneStaff(id) {
   return axios.get(accountURL + "/" + id, { headers: authHeader() });
 }
@@ -146,6 +151,9 @@ function profileUpload(file){
 }
 function addExpertise(expertise,doctorDetailId){
   return axios.post(rootURL + 'doctor-expertise',{expertise,doctorDetailId},{ headers: authHeader() })
+}
+function deleteExpertise(id){
+  return axios.delete(rootURL + 'doctor-expertise/' + id,{headers: authHeader() })
 }
 function addSpeciality(specializationId,doctorDetailId){
   return axios.post(rootURL + 'doctor-specialization',{specializationId,doctorDetailId},{ headers: authHeader() })
@@ -233,9 +241,41 @@ function getLabtest(limit, offset, keyword){
     { headers: authHeader() }
   );
 }
+function addLabtest(title,packageName,titleDisplayStatus,labCategory,labDepartment,testCode,labSample,container,sampleSize,sampleSizeType,price,discount,homeCollection,reportWithin,reportWithinType,printNote,type,labReference) {
+  console.log({ title,packageName,titleDisplayStatus,labCategory,labDepartment,testCode,labSample,container,sampleSize,sampleSizeType,price,discount,homeCollection,reportWithin,reportWithinType,printNote,type,labReference });
+  return axios.post(
+    labtestUrl,
+    { title,packageName,titleDisplayStatus,labCategory,labDepartment,testCode,labSample,container,sampleSize,sampleSizeType,price,discount,homeCollection,reportWithin,reportWithinType,printNote,type,labReference },
+    { headers: authHeader() }
+  );
+}
+
+function getFaq(limit,offset,keyword){
+  return axios.get(
+    faqUrl +
+    "?limit=" +
+    limit +
+    "&offset=" +
+    offset +
+    "&keyword=" +
+    keyword ,
+    { headers: authHeader() }
+  );
+}
+function addFaq(question,answer){
+  return axios.post(
+    faqUrl,{ question,answer },{ headers: authHeader() }
+  );
+}
+function updateFaq(id,question,answer){
+  return axios.patch(
+    faqUrl+'/'+id,{ question,answer },{ headers: authHeader() }
+  );
+}
 export const apiServices = {
   verifyId,
   verifyOtp,
+  getProfile,
   getStaff,
   getOneStaff,
   addStaff,
@@ -252,6 +292,7 @@ export const apiServices = {
   profileUpload,
 
   addExpertise,
+  deleteExpertise,
   addSpeciality,
   deleteSpeciality,
   addQualification,
@@ -274,4 +315,9 @@ export const apiServices = {
   getOrganization,
 
   getLabtest,
+  addLabtest,
+
+  getFaq,
+  addFaq,
+  updateFaq,
 };
