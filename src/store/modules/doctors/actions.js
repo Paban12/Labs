@@ -185,19 +185,19 @@ export const getOrganization = async ({ commit },{limit, offset, keyword, status
 			errorHandler(error.response, 'User');
 			commit("SET_LOADER", false, { root: true });
 		}
-	);
+	); 
 };
 export const getProfile = async ({ commit }) => {
-	commit("SET_LOADER", true, { root: true });
+	commit("SET_LOADER_BUTTON", true);
 	await apiServices.getProfile().then(
 		async (response) => {
 			console.log(response.data);
 			commit("DOCTOR_PROFILE", response.data);
-			commit("SET_LOADER", false, { root: true });
+			commit("SET_LOADER_BUTTON", false);
 		},
 		(error) => {
 			errorHandler(error.response, 'User');
-			commit("SET_LOADER", false, { root: true });
+			commit("SET_LOADER_BUTTON", false);
 		}
 	);
 };

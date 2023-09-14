@@ -159,6 +159,22 @@ body{
   border: 1px solid #ccc !important;
 }
 
+
+body::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  // background: linear-gradient(to right, rgba(255, 230, 0, 0.5),rgba(255, 0, 0, 0.384));
+  background: gray;
+  width: 8px; 
+  // border-radius: 8px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, rgba(255, 230, 0, 0.712),rgba(255, 0, 0, 0.384));
+  width: 10px; 
+  border-radius: 8px;
+}
 .btn {
   cursor: pointer;
   border-radius: 5px;
@@ -1069,6 +1085,7 @@ input[type='date'], input[type='text'], input[type='number'], .select-dropdown{
     font-weight: 700;
   }
 }
+
 
 
 
