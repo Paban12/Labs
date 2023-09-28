@@ -3,25 +3,26 @@
     <div class="permission-list">
       <div class="list-item">
         <div class="left">
-          <div class="title f-w-bold">Permissions</div>
-          <input type="checkbox" v-model="formVar.statusAll" @change="chackedall"/>
+          <div class="title f-w-bold">Permissions
+            <input type="checkbox" v-model="formVar.statusAll" @change="chackedall"/>
+          </div>
         </div>
         <div class="right">
           <div class="input">
             Create
-            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Create')"/>
+            <input type="checkbox" v-model="formVar.statusCreate" @change="chacke('Create')"/>
           </div>
           <div class="input">
             Read
-            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Read')"/>
+            <input type="checkbox" v-model="formVar.statusRead" @change="chacke('Read')"/>
           </div>
           <div class="input">
             Update
-            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Update')"/>
+            <input type="checkbox" v-model="formVar.statusUpdate" @change="chacke('Update')"/>
           </div>
           <div class="input">
             Delete
-            <input type="checkbox" v-model="formVar.statusAll" @change="chacke('Delete')"/>
+            <input type="checkbox" v-model="formVar.statusDelete" @change="chacke('Delete')"/>
           </div>
         </div>
       </div>
@@ -62,6 +63,10 @@ const formVar = reactive({
   permission: [],
   menu: [],
   statusAll: false,
+  statusCreate:false,
+  statusRead:false,
+  statusDelete:false,
+  statusUpdate:false,
 });
 
 onBeforeMount(() => {
@@ -84,6 +89,10 @@ const chackedall = () => {
     for (let index = 0; index < storeVar.value.permissiondata.length; index++) {
 		const element = storeVar.value.permissiondata[index].userPermission;
 		for (let index = 0; index < element.length; index++) {
+      formVar.statusCreate=true
+      formVar.statusRead=true
+      formVar.statusDelete=true
+      formVar.statusUpdate=true
 			 element[index].status=true;
 		}
 	}
@@ -91,7 +100,36 @@ const chackedall = () => {
 	for (let index = 0; index < storeVar.value.permissiondata.length; index++) {
 		const element = storeVar.value.permissiondata[index].userPermission;
 		for (let index = 0; index < element.length; index++) {
+      formVar.statusCreate=false
+      formVar.statusRead=false
+      formVar.statusDelete=false
+      formVar.statusUpdate=false
 			 element[index].status=false;
+		}
+	}
+  }
+}
+
+const chacke = (data) => {
+  if (formVar.statusCreate || formVar.statusRead ||formVar.statusUpdate || formVar.statusDelete) {
+    for (let index = 0; index < storeVar.value.permissiondata.length; index++) {
+		const element = storeVar.value.permissiondata[index].userPermission;
+		for (let index = 0; index < element.length; index++) {
+      let NameElement=element[index].permission.name
+      if(NameElement===data){
+        element[index].status=true;
+      }
+		}
+	}
+  } else if (!formVar.statusCreate || !formVar.statusRead ||
+  !formVar.statusUpdate || !formVar.statusDelete) {
+	for (let index = 0; index < storeVar.value.permissiondata.length; index++) {
+		const element = storeVar.value.permissiondata[index].userPermission;
+		for (let index = 0; index < element.length; index++) {
+      let NameElement=element[index].permission.name
+      if(NameElement===data){
+        element[index].status=false;
+      }
 		}
 	}
   }

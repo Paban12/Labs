@@ -39,8 +39,6 @@ export const getDoctorProfile = async ({ commit, dispatch }, { id }) => {
 		}
 	);
 };
-
-
 export const addDoctor = async ({ commit }, {mobile,name,emailId,gender,dob,roles,password,city,state,reg_number,reg_year,reg_type, experience, address, about, altMobile, altEmail,type}) => {
 	commit("SET_LOADER_BUTTON", true);
 	await apiServices.addDoctor(mobile,name,emailId,gender,dob,roles,password,city,state,reg_number,reg_year,reg_type, experience, address, about, altMobile, altEmail,type).then(

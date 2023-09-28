@@ -4,7 +4,8 @@
       <div class="top-info-card card">
         <div class="img">
           <div class="pic-upload">
-            <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic" alt="" />
+            <img v-if="formVar.imagePreview" :src="formVar.imagePreview" class="preview-image pic" id="profilePic"
+              alt="" />
             <img v-else src="/src/assets/images/png/man.png" class="dummy-img pic" alt="" />
             <label for="imgUpload" class="upload-file-block">
               Upload Pic
@@ -14,21 +15,21 @@
           </div>
         </div>
         <div class="about">
-          <div class="name">{{ storeVar.name }}</div> 
+          <div class="name">{{ storeVar.name }}</div>
           <div class="education">
             <span v-for="(item, index) in storeVar.doctorEducation" :key="index">
               <span>{{ item.qualification }}, </span>
             </span>
-            <span v-if="storeVar.doctorEducation?.length<=0">-</span>
+            <span v-if="storeVar.doctorEducation?.length <= 0">-</span>
             <!-- MBBS, MD (internal medicine), DNB (internal medicine), FRCP (London) -->
           </div>
           <div class="data-row">
             <div class="data">
               <div class="title">Specialization :</div>
-              <div class="val" >
+              <div class="val">
                 <span v-for="(item, index) in storeVar.doctorSpecialization" :key="index">
                   <span>
-                    {{ item.specialization?.name }}, 
+                    {{ item.specialization?.name }},
                   </span>
                 </span>
               </div>
@@ -38,7 +39,7 @@
               <div class="val">
                 <span v-for="(item, index) in storeVar.doctorExpertise" :key="index">
                   <span>
-                    {{ item.expertise }}, 
+                    {{ item.expertise }},
                   </span>
                 </span>
               </div>
@@ -55,35 +56,19 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>
       <div class="profile-main-content card">
         <div class="tab-options">
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 1"
-            :class="formVar.tab === 1 ? 'active' : ''"
-          >
+          <div class="tab" @click.prevent="formVar.tab = 1" :class="formVar.tab === 1 ? 'active' : ''">
             <div class="text">Profile</div>
           </div>
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 2"
-            :class="formVar.tab === 2 ? 'active' : ''"
-          >
+          <div class="tab" @click.prevent="formVar.tab = 2" :class="formVar.tab === 2 ? 'active' : ''">
             <div class="text">Education</div>
           </div>
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 3"
-            :class="formVar.tab === 3 ? 'active' : ''"
-          >
+          <div class="tab" @click.prevent="formVar.tab = 3" :class="formVar.tab === 3 ? 'active' : ''">
             <div class="text">Expertise</div>
           </div>
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 5"
-            :class="formVar.tab === 5 ? 'active' : ''"
-          >
+          <div class="tab" @click.prevent="formVar.tab = 5" :class="formVar.tab === 5 ? 'active' : ''">
             <div class="text">Specialization</div>
           </div>
           <!-- <div
@@ -93,18 +78,10 @@
           >
             <div class="text">Fees & Availability</div>
           </div> -->
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 7"
-            :class="formVar.tab === 7 ? 'active' : ''"
-          >
+          <div class="tab" @click.prevent="formVar.tab = 7" :class="formVar.tab === 7 ? 'active' : ''">
             <div class="text">Schedule</div>
           </div>
-          <div
-            class="tab"
-            @click.prevent="formVar.tab = 8"
-            :class="formVar.tab === 8 ? 'active' : ''"
-          >
+          <div class="tab" @click.prevent="formVar.tab = 8" :class="formVar.tab === 8 ? 'active' : ''">
             <div class="text">Sign & Cert</div>
           </div>
           <!-- <div
@@ -197,5 +174,4 @@ async function previewProfile(event) {
 }
 </script>
 
-<style>
-</style>
+<style></style>

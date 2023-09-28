@@ -14,6 +14,10 @@
         input{
           width: max-content;
           cursor: pointer;
+          margin-left: 0.5rem;
+        }
+        .title{
+          display: flex;
         }
         .details{
           line-height: 1.2;
@@ -40,6 +44,7 @@
           input{
             cursor: pointer;
             width: max-content;
+            margin-left: 0.5rem;
           }
           .name{
             padding: 0.5rem;
